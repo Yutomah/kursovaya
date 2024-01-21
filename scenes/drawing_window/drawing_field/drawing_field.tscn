@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://drbicnlpm8ygd"]
 
-[ext_resource type="Script" path="res://scenes/drawing_field/drawing_field.gd" id="1_011a4"]
+[ext_resource type="Script" path="res://scenes/drawing_window/drawing_field/drawing_field.gd" id="1_011a4"]
 
 [node name="DrawingField" type="Node2D"]
 script = ExtResource("1_011a4")

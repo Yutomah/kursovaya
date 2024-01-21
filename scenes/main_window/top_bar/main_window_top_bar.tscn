@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bseqanhbkxpgw"]
+
+[ext_resource type="PackedScene" uid="uid://cgfi0o2ukf7x5" path="res://scenes/main_window/top_bar/menu_bar/main_window_menu_bar.tscn" id="1_dasvo"]
+[ext_resource type="PackedScene" uid="uid://d1bps8gdh6bcs" path="res://scenes/main_window/top_bar/tool_bar/main_window_tool_bar.tscn" id="2_buphm"]
+
+[node name="MainWindowTopBar" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" parent="VBoxContainer" instance=ExtResource("1_dasvo")]
+layout_mode = 2
+
+[node name="MainWindowToolBar" parent="VBoxContainer" instance=ExtResource("2_buphm")]
+layout_mode = 2

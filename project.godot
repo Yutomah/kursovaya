@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="kursovaya"
-run/main_scene="res://scenes/drawing_field/drawing_field.tscn"
+run/main_scene="res://scenes/main_window/main_window.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
