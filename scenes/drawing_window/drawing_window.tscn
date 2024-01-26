@@ -1,8 +1,95 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvbehmxilpdh2"]
+[gd_scene load_steps=7 format=3 uid="uid://cvbehmxilpdh2"]
 
-[ext_resource type="Script" path="res://scenes/drawing_window/drawing_window.gd" id="1_b7f5b"]
+[ext_resource type="Script" path="res://scenes/drawing_window/InfiniteGridCheckBox.gd" id="1_a68to"]
+[ext_resource type="Script" path="res://scenes/drawing_window/ClearFieldButton.gd" id="1_o5a3g"]
+[ext_resource type="Script" path="res://scenes/drawing_window/drawing_window.gd" id="1_pusqv"]
+[ext_resource type="Script" path="res://scenes/drawing_window/CameraToDefaultButton.gd" id="2_d31vs"]
+[ext_resource type="PackedScene" uid="uid://drbicnlpm8ygd" path="res://scenes/drawing_window/drawing_field/drawing_field.tscn" id="2_ecuwn"]
+[ext_resource type="Script" path="res://scenes/drawing_window/FieldSizeApplyButton.gd" id="4_ceo65"]
 
-[node name="DrawingWindow" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_b7f5b")
+[node name="DrawingWindow" type="Window"]
+position = Vector2i(500, 50)
+size = Vector2i(500, 500)
+wrap_controls = true
+script = ExtResource("1_pusqv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HFlowContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ClearFieldButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Стереть всё"
+script = ExtResource("1_o5a3g")
+
+[node name="CameraToDefaultButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Вернуть камеру"
+script = ExtResource("2_d31vs")
+
+[node name="FieldSizeContainer" type="HFlowContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FieldSizeLabel" type="Label" parent="CanvasLayer/VBoxContainer/FieldSizeContainer"]
+layout_mode = 2
+text = "Размер поля"
+
+[node name="InfiniteGridCheckBox" type="CheckBox" parent="CanvasLayer/VBoxContainer/FieldSizeContainer"]
+layout_mode = 2
+text = "Бесконечный"
+script = ExtResource("1_a68to")
+
+[node name="WidthContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/FieldSizeContainer"]
+layout_mode = 2
+
+[node name="WidthLabel" type="Label" parent="CanvasLayer/VBoxContainer/FieldSizeContainer/WidthContainer"]
+layout_mode = 2
+text = "Ширина"
+
+[node name="WidthLineEdit" type="SpinBox" parent="CanvasLayer/VBoxContainer/FieldSizeContainer/WidthContainer"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="HeightContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/FieldSizeContainer"]
+layout_mode = 2
+
+[node name="HeightLabel" type="Label" parent="CanvasLayer/VBoxContainer/FieldSizeContainer/HeightContainer"]
+layout_mode = 2
+text = "Длина"
+
+[node name="HeightLineEdit" type="SpinBox" parent="CanvasLayer/VBoxContainer/FieldSizeContainer/HeightContainer"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="FieldSizeApplyButton" type="Button" parent="CanvasLayer/VBoxContainer/FieldSizeContainer"]
+layout_mode = 2
+text = "Применить"
+script = ExtResource("4_ceo65")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/VBoxContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(500, 395)
+render_target_update_mode = 4
+
+[node name="DrawingField" parent="CanvasLayer/VBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_ecuwn")]
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="gui_focus_changed" from="." to="." method="_on_gui_focus_changed"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/ClearFieldButton" to="CanvasLayer/VBoxContainer/HBoxContainer/ClearFieldButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/CameraToDefaultButton" to="CanvasLayer/VBoxContainer/HBoxContainer/CameraToDefaultButton" method="_on_pressed"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/FieldSizeContainer/InfiniteGridCheckBox" to="CanvasLayer/VBoxContainer/FieldSizeContainer/InfiniteGridCheckBox" method="_on_toggled"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/FieldSizeContainer/FieldSizeApplyButton" to="CanvasLayer/VBoxContainer/FieldSizeContainer/FieldSizeApplyButton" method="_on_pressed"]

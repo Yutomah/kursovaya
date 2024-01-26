@@ -1,8 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://drbicnlpm8ygd"]
+[gd_scene load_steps=7 format=3 uid="uid://drbicnlpm8ygd"]
 
 [ext_resource type="Script" path="res://scenes/drawing_window/drawing_field/drawing_field.gd" id="1_011a4"]
+[ext_resource type="Script" path="res://scenes/drawing_window/drawing_field/Grid.gd" id="2_5b4a7"]
+[ext_resource type="Texture2D" uid="uid://c0h62ncn8qhas" path="res://icon.svg" id="2_jlins"]
+[ext_resource type="Script" path="res://scenes/drawing_window/drawing_field/Camera2D.gd" id="2_mn0gb"]
+[ext_resource type="Script" path="res://scenes/drawing_window/drawing_field/FiniteGrid.gd" id="4_im5yk"]
+[ext_resource type="Script" path="res://scenes/drawing_window/drawing_field/InfiniteGrid.gd" id="4_opjhw"]
 
 [node name="DrawingField" type="Node2D"]
 script = ExtResource("1_011a4")
 
-[node name="Lines" type="Node2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("2_mn0gb")
+
+[node name="Grid" type="Node2D" parent="."]
+script = ExtResource("2_5b4a7")
+
+[node name="InfiniteGrid" type="Node2D" parent="Grid"]
+script = ExtResource("4_opjhw")
+
+[node name="FiniteGrid" type="Node2D" parent="Grid"]
+visible = false
+script = ExtResource("4_im5yk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jlins")
