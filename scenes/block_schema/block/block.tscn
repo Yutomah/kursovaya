@@ -1,16 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2d1md6i3po2n"]
+[gd_scene load_steps=5 format=3 uid="uid://d2d1md6i3po2n"]
 
+[ext_resource type="Script" path="res://scenes/block_schema/block/block.gd" id="1_cs1tj"]
 [ext_resource type="PackedScene" uid="uid://sdm7fyk8ggig" path="res://scenes/block_schema/block/block_link/link_begin.tscn" id="1_ryr7y"]
 [ext_resource type="PackedScene" uid="uid://dobi4gaiuyt0s" path="res://scenes/block_schema/block/block_link/link_end.tscn" id="2_2ibuj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_53d3y"]
+font_color = Color(1, 0.152941, 1, 1)
 
 [node name="Block" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -50.0
-offset_top = -25.0
+offset_top = -50.0
 offset_right = 50.0
-offset_bottom = 25.0
+offset_bottom = 50.0
 pivot_offset = Vector2(50, 25)
+script = ExtResource("1_cs1tj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -19,9 +24,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+color = Color(0.313726, 0.176471, 0.101961, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Me" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_53d3y")
+
+[node name="Parent" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "null"
+
+[node name="Child" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "null"
 
 [node name="LinkBegin" parent="." instance=ExtResource("1_ryr7y")]
-position = Vector2(50, 50)
+position = Vector2(50, 100)
 
 [node name="LinkEnd" parent="." instance=ExtResource("2_2ibuj")]
 position = Vector2(50, 0)
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
