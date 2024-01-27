@@ -17,6 +17,7 @@ func _unhandled_input(event):
 	if event.is_action_released("LKM") and LKM_pressed:
 		LKM_pressed = false
 		$Line2D.points[1] = Vector2.ZERO
+		GB.link_deactivated.emit()
 		
 func _on_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed("LKM"):
@@ -24,7 +25,6 @@ func _on_input_event(viewport, event, shape_idx):
 		LKM_pressed = true
 		
 func on_link_received(begin_node: Area2D, end_node: Area2D):
-	print("waht")
 	if begin_node == self:
 		end_node.previous_begin_node = self
 		var pos = to_local(end_node.to_global(Vector2.ZERO))
