@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://l5ihubsr6ge"]
+
+[ext_resource type="Script" path="res://scenes/block_schema/block/block_link/block_input.gd" id="1_ywkr3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5myhq"]
+
+[node name="BlockInput" type="Area2D"]
+script = ExtResource("1_ywkr3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5myhq")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

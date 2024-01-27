@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://vqbc6l7eehv"]
+
+[ext_resource type="Script" path="res://scenes/block_schema/block/block_link/block_output.gd" id="1_5c4mm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5lj3x"]
+
+[node name="BlockOutput" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_5c4mm")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+default_color = Color(0.631373, 0, 0.156863, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5lj3x")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

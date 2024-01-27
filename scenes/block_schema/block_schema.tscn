@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://duskkg7uviw28"]
+
+[ext_resource type="PackedScene" uid="uid://d2d1md6i3po2n" path="res://scenes/block_schema/block/block.tscn" id="1_xoxk7"]
+
+[node name="BlockSchema" type="Node2D"]
+position = Vector2(1, 0)
+
+[node name="Block" parent="." instance=ExtResource("1_xoxk7")]
+offset_left = 218.0
+offset_top = 12.0
+offset_right = 318.0
+offset_bottom = 62.0
+
+[node name="Block2" parent="." instance=ExtResource("1_xoxk7")]
+offset_left = 323.0
+offset_top = 118.0
+offset_right = 423.0
+offset_bottom = 168.0
+
+[node name="Block3" parent="." instance=ExtResource("1_xoxk7")]
+offset_left = 199.0
+offset_top = 313.0
+offset_right = 299.0
+offset_bottom = 363.0
+
+[node name="Block4" parent="." instance=ExtResource("1_xoxk7")]
+offset_left = 82.0
+offset_top = 184.0
+offset_right = 182.0
+offset_bottom = 234.0
+
+[node name="Block5" parent="." instance=ExtResource("1_xoxk7")]
+offset_left = 607.0
+offset_top = 48.0
+offset_right = 707.0
+offset_bottom = 98.0
+
+[node name="Block6" parent="." instance=ExtResource("1_xoxk7")]
+offset_left = 458.0
+offset_top = 190.0
+offset_right = 558.0
+offset_bottom = 240.0

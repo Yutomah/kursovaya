@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2d1md6i3po2n"]
+
+[ext_resource type="PackedScene" uid="uid://l5ihubsr6ge" path="res://scenes/block_schema/block/block_link/block_input.tscn" id="1_8gi6k"]
+[ext_resource type="PackedScene" uid="uid://vqbc6l7eehv" path="res://scenes/block_schema/block/block_link/block_output.tscn" id="2_tcnjm"]
+
+[node name="Block" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -50.0
+offset_top = -25.0
+offset_right = 50.0
+offset_bottom = 25.0
+pivot_offset = Vector2(50, 25)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlockInput" parent="." instance=ExtResource("1_8gi6k")]
+position = Vector2(50, 0)
+
+[node name="BlockOutput" parent="." instance=ExtResource("2_tcnjm")]
+position = Vector2(50, 50)
