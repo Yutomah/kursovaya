@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2d1md6i3po2n"]
 
-[ext_resource type="PackedScene" uid="uid://l5ihubsr6ge" path="res://scenes/block_schema/block/block_link/block_input.tscn" id="1_8gi6k"]
-[ext_resource type="PackedScene" uid="uid://vqbc6l7eehv" path="res://scenes/block_schema/block/block_link/block_output.tscn" id="2_tcnjm"]
+[ext_resource type="PackedScene" uid="uid://sdm7fyk8ggig" path="res://scenes/block_schema/block/block_link/link_begin.tscn" id="1_ryr7y"]
+[ext_resource type="PackedScene" uid="uid://dobi4gaiuyt0s" path="res://scenes/block_schema/block/block_link/link_end.tscn" id="2_2ibuj"]
 
 [node name="Block" type="Control"]
 layout_mode = 3
@@ -20,8 +20,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BlockInput" parent="." instance=ExtResource("1_8gi6k")]
-position = Vector2(50, 0)
-
-[node name="BlockOutput" parent="." instance=ExtResource("2_tcnjm")]
+[node name="LinkBegin" parent="." instance=ExtResource("1_ryr7y")]
 position = Vector2(50, 50)
+
+[node name="LinkEnd" parent="." instance=ExtResource("2_2ibuj")]
+position = Vector2(50, 0)

@@ -16,16 +16,17 @@ func _process(delta):
 	pass
 
 func _on_input_event(viewport, event, shape_idx):
-	if event.is_action_released("LKM"):
+	if event.is_action_released("LKM") and connection_waiting:
 		if not previous_begin_node == null:
 			previous_begin_node.get_node("Line2D").points[1] = Vector2.ZERO
-		GB.link_received.emit(begin_node, self)
+		var t_begin_node = begin_node
+		GB.link_received.emit(t_begin_node, self)
 	
-func on_link_activated(output:Area2D):
+func on_link_activated(begin_node:Area2D):
 	connection_waiting = true
-	begin_node = output
+	self.begin_node = begin_node
 	
-func on_link_received():
+func on_link_received(_begin_node: Area2D, _end_node :Area2D):
 	connection_waiting = false
 	begin_node = null
 

@@ -2,6 +2,7 @@ extends Node2D
 
 var LKM_pressed = false
 var end_node:Area2D
+
 func _ready():
 	GB.link_received.connect(on_link_received)
 	
@@ -23,6 +24,7 @@ func _on_input_event(viewport, event, shape_idx):
 		LKM_pressed = true
 		
 func on_link_received(begin_node: Area2D, end_node: Area2D):
+	print("waht")
 	if begin_node == self:
 		end_node.previous_begin_node = self
 		var pos = to_local(end_node.to_global(Vector2.ZERO))
