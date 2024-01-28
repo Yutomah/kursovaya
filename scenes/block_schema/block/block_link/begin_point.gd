@@ -7,10 +7,13 @@ enum PointType {COMMON_POINT, TRUE_POINT, FALSE_POINT}
 
 var end_point:EndPoint:
 	set(value):
-		#get_parent().child_block = null
 		end_point = value
-		#if value != null:
-			#get_parent().child_block = value.get_parent()
+		var my_block = get_parent().get_parent() as Block
+		var value_block = null
+		if value != null:
+			value_block = value.get_parent().get_parent() as Block
+			#print(value_block.name, value)
+		my_block.child_blocks[point_type] = value_block
 
 func _ready():
 	pass

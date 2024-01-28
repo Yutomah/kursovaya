@@ -7,10 +7,13 @@ enum PointType {COMMON_POINT, UNCOMMON_POINT}
 var connection_waiting:bool = false
 var begin_point:BeginPoint = null:
 	set(value):
-		#get_parent().parent_block = null
 		begin_point = value
-		#if value != null:
-			#get_parent().parent_block = value.get_parent()
+		var my_block = get_parent().get_parent() as Block
+		var value_block = null
+		if value != null:
+			value_block =value.get_parent().get_parent() as Block
+			#print(value_block.name)
+		my_block.parent_blocks[point_type] = value_block
 
 func _ready():
 	pass
@@ -23,5 +26,8 @@ func _process(delta):
 	pass
 
 
-
-
+func _on_input_event(viewport, event, shape_idx):
+	if event.is_action_pressed("LKM"):
+		if begin_point != null:
+			begin_point._on_input_event(viewport,event,shape_idx)
+		

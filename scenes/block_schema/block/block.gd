@@ -6,13 +6,13 @@ var old_mouse_position:Vector2
 
 
 
-var parent_block:Block = null:
-	set(value):
-		parent_block = value
-		if value != null:
-			$VBoxContainer/Parent.text = value.name
-		else:
-			$VBoxContainer/Parent.text = "null"
+#var parent_block:Block = null:
+	#set(value):
+		#parent_block = value
+		#if value != null:
+			#$VBoxContainer/Parent.text = value.name
+		#else:
+			#$VBoxContainer/Parent.text = "null"
 
 var parent_blocks:Dictionary
 var child_blocks:Dictionary
@@ -60,6 +60,6 @@ func init_parent_child_blocks_dict():
 	for begin_point:BeginPoint in $BeginPoints.get_children():
 		child_blocks[begin_point.point_type] = null
 	for end_point:EndPoint in $EndPoints.get_children():
-		child_blocks[end_point.point_type] = null
+		parent_blocks[end_point.point_type] = null
 
 	

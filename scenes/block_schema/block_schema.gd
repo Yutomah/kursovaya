@@ -9,12 +9,11 @@ func _ready():
 				
 func on_link_activated(begin_point:BeginPoint):
 	active_begin_point = begin_point
+	abort_existing_link(active_begin_point)
 	activate_end_points(begin_point)
 				
 func on_link_deactivated(last_mouse_pos: Vector2):
 	var active_end_point = get_end_node_on_mouse(last_mouse_pos)
-	
-	abort_existing_link(active_begin_point)
 	
 	if active_end_point != null:
 		create_new_link(active_begin_point, active_end_point)
@@ -22,6 +21,7 @@ func on_link_deactivated(last_mouse_pos: Vector2):
 	active_begin_point = null
 	
 	deactivate_end_nodes()
+	print_all()
 	
 func abort_existing_link(begin_point:BeginPoint):
 	if begin_point.end_point != null:
@@ -60,11 +60,32 @@ func activate_end_points(begin_point:BeginPoint):
 		for end_point:EndPoint in block.get_node("EndPoints").get_children():
 			if  block != begin_point.get_parent().get_parent():
 				end_point.connection_waiting = true
-				print(block.name)
 				
-	print("\n")
 			
 func deactivate_end_nodes():
 	for block in get_children():
 		for end_point:EndPoint in block.get_node("EndPoints").get_children():
 			end_point.connection_waiting = false
+
+func print_all():
+	for block:Block in get_children():
+		print(block.name)
+		var names = "childs: "
+		print(block.child_blocks)
+		for key in block.child_blocks:
+			if block.child_blocks[key] != null:
+				names += block.child_blocks[key].name + " "
+			else:
+				names += "null "
+		print(names)
+		
+		names = "parents: "
+		print(block.parent_blocks)
+		for key in block.parent_blocks:
+			if block.parent_blocks[key] != null:
+				names += block.parent_blocks[key].name + " "
+			else:
+				names += "null "
+		print(names)
+		print("\n")
+		
