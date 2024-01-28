@@ -1,25 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://uc04gc8dldaw"]
+[gd_scene load_steps=5 format=3 uid="uid://uc04gc8dldaw"]
 
 [ext_resource type="Script" path="res://scenes/block_schema/block_schema.gd" id="1_7swtx"]
-[ext_resource type="PackedScene" uid="uid://d2d1md6i3po2n" path="res://scenes/block_schema/block/block.tscn" id="1_w8xnc"]
+[ext_resource type="PackedScene" uid="uid://8cbnm6y30vb8" path="res://scenes/block_schema/block/common_block.tscn" id="2_fm7jq"]
+[ext_resource type="PackedScene" uid="uid://b30rpnaokt2l2" path="res://scenes/block_schema/block/if_block.tscn" id="3_bdya8"]
+[ext_resource type="PackedScene" uid="uid://dv5yp4vc74xr7" path="res://scenes/block_schema/block/block_monster.tscn" id="4_uh5wm"]
 
 [node name="BlockSchema" type="Node2D"]
 script = ExtResource("1_7swtx")
 
-[node name="Block1" parent="." instance=ExtResource("1_w8xnc")]
-offset_left = 446.0
-offset_top = 53.0
-offset_right = 546.0
-offset_bottom = 153.0
+[node name="CommonBlock" parent="." instance=ExtResource("2_fm7jq")]
+offset_left = 117.0
+offset_top = 170.0
+offset_right = 217.0
+offset_bottom = 320.0
 
-[node name="Block2" parent="." instance=ExtResource("1_w8xnc")]
-offset_left = 92.0
-offset_top = 183.0
-offset_right = 192.0
-offset_bottom = 283.0
+[node name="CommonBlock2" parent="." instance=ExtResource("2_fm7jq")]
+offset_left = 367.0
+offset_top = 87.0
+offset_right = 467.0
+offset_bottom = 237.0
 
-[node name="Block3" parent="." instance=ExtResource("1_w8xnc")]
-offset_left = 284.0
-offset_top = 166.0
-offset_right = 384.0
-offset_bottom = 266.0
+[node name="CommonBlock3" parent="." instance=ExtResource("2_fm7jq")]
+offset_left = 527.0
+offset_top = 198.0
+offset_right = 627.0
+offset_bottom = 348.0
+
+[node name="IfBlock" parent="." instance=ExtResource("3_bdya8")]
+offset_left = 234.0
+offset_top = 4.0
+offset_right = 334.0
+offset_bottom = 154.0
+
+[node name="IfBlock2" parent="." instance=ExtResource("3_bdya8")]
+offset_left = 608.0
+offset_top = 18.0
+offset_right = 708.0
+offset_bottom = 168.0
+
+[node name="BlockMonster" parent="." instance=ExtResource("4_uh5wm")]
+offset_left = 252.0
+offset_top = 259.0
+offset_right = 352.0
+offset_bottom = 409.0

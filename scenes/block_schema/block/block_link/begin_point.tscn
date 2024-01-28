@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://sdm7fyk8ggig"]
 
-[ext_resource type="Script" path="res://scenes/block_schema/block/block_link/link_begin.gd" id="1_85r6c"]
+[ext_resource type="Script" path="res://scenes/block_schema/block/block_link/begin_point.gd" id="1_xjvcr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5lj3x"]
 
-[node name="LinkBegin" type="Area2D"]
+[node name="BeginPoint" type="Area2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_85r6c")
+script = ExtResource("1_xjvcr")
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 0, 0)

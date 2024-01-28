@@ -1,13 +1,16 @@
 extends Area2D
-class_name begin_point
+class_name BeginPoint
 
 var LKM_pressed = false
-var end_node:Area2D:
+enum PointType {COMMON_POINT, TRUE_POINT, FALSE_POINT}
+@export var point_type:PointType 
+
+var end_point:EndPoint:
 	set(value):
-		get_parent().child_block = null
-		end_node = value
-		if value != null:
-			get_parent().child_block = value.get_parent()
+		#get_parent().child_block = null
+		end_point = value
+		#if value != null:
+			#get_parent().child_block = value.get_parent()
 
 func _ready():
 	pass

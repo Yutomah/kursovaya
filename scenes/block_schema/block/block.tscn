@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2d1md6i3po2n"]
+[gd_scene load_steps=4 format=3 uid="uid://d2d1md6i3po2n"]
 
 [ext_resource type="Script" path="res://scenes/block_schema/block/block.gd" id="1_cs1tj"]
-[ext_resource type="PackedScene" uid="uid://sdm7fyk8ggig" path="res://scenes/block_schema/block/block_link/link_begin.tscn" id="1_ryr7y"]
-[ext_resource type="PackedScene" uid="uid://dobi4gaiuyt0s" path="res://scenes/block_schema/block/block_link/link_end.tscn" id="2_2ibuj"]
+[ext_resource type="LabelSettings" uid="uid://dlr834h5g5mhd" path="res://Fonts/small_block_text.tres" id="2_wksdl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_53d3y"]
 font_color = Color(1, 0.152941, 1, 1)
@@ -11,9 +10,9 @@ font_color = Color(1, 0.152941, 1, 1)
 layout_mode = 3
 anchors_preset = 0
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -75.0
 offset_right = 50.0
-offset_bottom = 50.0
+offset_bottom = 75.0
 pivot_offset = Vector2(50, 25)
 script = ExtResource("1_cs1tj")
 
@@ -42,15 +41,25 @@ label_settings = SubResource("LabelSettings_53d3y")
 [node name="Parent" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "null"
+label_settings = ExtResource("2_wksdl")
 
-[node name="Child" type="Label" parent="VBoxContainer"]
+[node name="CommonPoint" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "null"
+label_settings = ExtResource("2_wksdl")
 
-[node name="LinkBegin" parent="." instance=ExtResource("1_ryr7y")]
-position = Vector2(50, 100)
+[node name="TruePoint" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "null"
+label_settings = ExtResource("2_wksdl")
 
-[node name="LinkEnd" parent="." instance=ExtResource("2_2ibuj")]
-position = Vector2(50, 0)
+[node name="FalsePoint" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "null"
+label_settings = ExtResource("2_wksdl")
+
+[node name="BeginPoints" type="Node2D" parent="."]
+
+[node name="EndPoints" type="Node2D" parent="."]
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

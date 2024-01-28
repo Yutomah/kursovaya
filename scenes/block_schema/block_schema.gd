@@ -1,68 +1,70 @@
 extends Node2D
 
-var active_begin_node:Area2D
-var connection_active:bool = false
+var active_begin_point:BeginPoint
 	
 func _ready():
 	GB.link_activated.connect((on_link_activated))
 	GB.link_deactivated.connect(on_link_deactivated)
 	
 				
-func on_link_activated(begin_node:Area2D):
-	connection_active = true
-	active_begin_node = begin_node
-	activate_end_nodes(begin_node)
+func on_link_activated(begin_point:BeginPoint):
+	active_begin_point = begin_point
+	activate_end_points(begin_point)
 				
 func on_link_deactivated(last_mouse_pos: Vector2):
-	var end_node = get_end_node_on_mouse(last_mouse_pos)
+	var active_end_point = get_end_node_on_mouse(last_mouse_pos)
 	
-	if active_begin_node.end_node != null:
-		#print(active_begin_node.end_node.begin_node.get_parent().name)
-		active_begin_node.end_node.begin_node = null
-		#print(active_begin_node.end_node.begin_node)
+	abort_existing_link(active_begin_point)
+	
+	if active_end_point != null:
+		create_new_link(active_begin_point, active_end_point)
 		
-	active_begin_node.end_node = end_node 
-		
-	var pos = Vector2.ZERO
-	if end_node != null:
-		remove_dublicate_connections(end_node)
-		end_node.begin_node = active_begin_node
-		pos = active_begin_node.to_local(end_node.to_global(Vector2.ZERO))
-	active_begin_node.get_node("Line2D").points[1] = pos
-	
-	
-	connection_active = false
-	active_begin_node = null
+	active_begin_point = null
 	
 	deactivate_end_nodes()
 	
-		
+func abort_existing_link(begin_point:BeginPoint):
+	if begin_point.end_point != null:
+		begin_point.end_point.begin_point = null
+	begin_point.end_point = null
+	begin_point.get_node("Line2D").points[1] = Vector2.ZERO
+
+func create_new_link(begin_point:BeginPoint, end_point:EndPoint):
+	remove_dublicate_connections(end_point)
+	end_point.begin_point = begin_point
+	begin_point.end_point = end_point
+	var pos = begin_point.to_local(end_point.to_global(Vector2.ZERO))
+	active_begin_point.get_node("Line2D").points[1] = pos
+	
 func get_end_node_on_mouse(last_mouse_pos: Vector2):
 	for block in get_children():
-		var connection_point = block.get_node("LinkEnd")
-		if connection_point.connection_waiting:
-			var col_shape = connection_point.get_node("CollisionShape2D") as CollisionShape2D
-			var radius = col_shape.shape.radius
-			var pos = col_shape.to_global(Vector2.ZERO)
-			if Geometry2D.is_point_in_circle(last_mouse_pos, pos, radius):
-				return connection_point
+		for end_point:EndPoint in block.get_node("EndPoints").get_children():
+			if end_point.connection_waiting:
+				var col_shape = end_point.get_node("CollisionShape2D") as CollisionShape2D
+				var radius = col_shape.shape.radius
+				var pos = col_shape.to_global(Vector2.ZERO)
+				if Geometry2D.is_point_in_circle(last_mouse_pos, pos, radius):
+					return end_point
 	return null
 
-func remove_dublicate_connections(end_node:Area2D):
+func remove_dublicate_connections(end_point:Area2D):
 	for block in get_children():
-		var begin_node = block.get_node("LinkBegin") as begin_point
-		if begin_node == end_node.begin_node:
-			end_node.begin_node.get_node("Line2D").points[1] = Vector2.ZERO
-			end_node.begin_node.end_node = null
-			end_node.begin_node = null
+		for begin_point:BeginPoint in block.get_node("BeginPoints").get_children():
+			if begin_point.end_point == end_point:
+				begin_point.get_node("Line2D").points[1] = Vector2.ZERO
+				begin_point.end_point.begin_point = null
+				begin_point.end_point = null
 	
-func activate_end_nodes(begin_node:Area2D):
+func activate_end_points(begin_point:BeginPoint):
 	for block in get_children():
-		var connection_point = block.get_node("LinkEnd") as end_point
-		if  block != begin_node.get_parent():
-			connection_point.connection_waiting = true
+		for end_point:EndPoint in block.get_node("EndPoints").get_children():
+			if  block != begin_point.get_parent().get_parent():
+				end_point.connection_waiting = true
+				print(block.name)
+				
+	print("\n")
 			
 func deactivate_end_nodes():
 	for block in get_children():
-		var connection_point = block.get_node("LinkEnd") as end_point
-		connection_point.connection_waiting = false
+		for end_point:EndPoint in block.get_node("EndPoints").get_children():
+			end_point.connection_waiting = false

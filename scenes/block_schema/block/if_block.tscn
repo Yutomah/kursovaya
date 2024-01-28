@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b30rpnaokt2l2"]
+
+[ext_resource type="PackedScene" uid="uid://d2d1md6i3po2n" path="res://scenes/block_schema/block/block.tscn" id="1_tup11"]
+[ext_resource type="PackedScene" uid="uid://sdm7fyk8ggig" path="res://scenes/block_schema/block/block_link/begin_point.tscn" id="3_lowoj"]
+[ext_resource type="PackedScene" uid="uid://dobi4gaiuyt0s" path="res://scenes/block_schema/block/block_link/end_point.tscn" id="4_dyvwf"]
+
+[node name="IfBlock" instance=ExtResource("1_tup11")]
+
+[node name="BeginPoint" parent="BeginPoints" index="0" instance=ExtResource("3_lowoj")]
+position = Vector2(2, 150)
+point_type = 1
+
+[node name="BeginPoint2" parent="BeginPoints" index="1" instance=ExtResource("3_lowoj")]
+position = Vector2(100, 152)
+point_type = 2
+
+[node name="EndPoint" parent="EndPoints" index="0" instance=ExtResource("4_dyvwf")]
+position = Vector2(51, 0)
