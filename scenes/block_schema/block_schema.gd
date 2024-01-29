@@ -3,6 +3,8 @@ extends Node2D
 var active_begin_point:BeginPoint
 	
 func _ready():
+	GB.current_tool = GB.SELECTION_TOOL
+	GB.focus_window = GB.MAIN_WINDOW
 	GB.link_activated.connect((on_link_activated))
 	GB.link_deactivated.connect(on_link_deactivated)
 	

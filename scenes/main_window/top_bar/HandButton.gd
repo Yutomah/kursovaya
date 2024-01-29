@@ -1,4 +1,4 @@
-extends Control
+extends Button
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,9 +11,5 @@ func _process(delta):
 	pass
 
 
-func _on_mouse_entered():
-	GB.focus_window = GB.MAIN_WINDOW
-
-
-func _on_mouse_exited():
-	GB.focus_window = GB.NONE_WINDOW
+func _on_pressed():
+	GB.current_tool = GB.HAND_TOOL

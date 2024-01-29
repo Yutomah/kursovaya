@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdc5qxhxp27cy"]
+[gd_scene load_steps=9 format=3 uid="uid://cdc5qxhxp27cy"]
 
 [ext_resource type="Script" path="res://scenes/main_window/main_window.gd" id="1_rbayp"]
 [ext_resource type="PackedScene" uid="uid://bseqanhbkxpgw" path="res://scenes/main_window/top_bar/main_window_top_bar.tscn" id="1_y748h"]
@@ -7,11 +7,26 @@
 [ext_resource type="PackedScene" uid="uid://cvbehmxilpdh2" path="res://scenes/drawing_window/drawing_window.tscn" id="3_h70fp"]
 [ext_resource type="Script" path="res://scenes/main_window/Camera2D.gd" id="4_yntj6"]
 [ext_resource type="Texture2D" uid="uid://c0h62ncn8qhas" path="res://icon.svg" id="5_waxp4"]
+[ext_resource type="PackedScene" uid="uid://uc04gc8dldaw" path="res://scenes/block_schema/block_schema.tscn" id="8_h60xt"]
 
 [node name="MainWindow" type="Node2D"]
 script = ExtResource("1_rbayp")
 
+[node name="DrawingWindow" parent="." instance=ExtResource("3_h70fp")]
+visible = false
+
+[node name="BlockSchema" parent="." instance=ExtResource("8_h60xt")]
+z_index = -1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("4_yntj6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 44)
+texture = ExtResource("5_waxp4")
+
 [node name="HUD" type="CanvasLayer" parent="."]
+layer = -2
 
 [node name="Control" type="Control" parent="HUD"]
 layout_mode = 3
@@ -20,26 +35,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("2_egbop")
 
 [node name="MainWindowTopBar" parent="HUD/Control" instance=ExtResource("1_y748h")]
 layout_mode = 1
-offset_right = 132.0
 offset_bottom = 66.0
+mouse_filter = 1
 
 [node name="MainWindowFootBar" parent="HUD/Control" instance=ExtResource("2_scasd")]
 layout_mode = 1
-offset_top = 577.0
-offset_right = 250.0
-offset_bottom = 608.0
+offset_top = -31.0
+mouse_filter = 1
 
-[node name="DrawingWindow" parent="." instance=ExtResource("3_h70fp")]
-visible = false
-
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("4_yntj6")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("5_waxp4")
-
-[connection signal="mouse_entered" from="HUD/Control" to="." method="_on_control_mouse_entered"]
+[connection signal="mouse_entered" from="HUD/Control" to="HUD/Control" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HUD/Control" to="HUD/Control" method="_on_mouse_exited"]

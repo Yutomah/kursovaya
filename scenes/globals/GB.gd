@@ -8,5 +8,8 @@ signal change_drawing_window_vision
 signal link_activated(begin_point:BeginPoint)
 signal link_deactivated(last_mouse_pos:Vector2)
 
-enum {MAIN_WINDOW, DRAW_WINDOW, BLOCK_SCHEMA}
-var focus_window = MAIN_WINDOW
+enum {NONE_WINDOW, MAIN_WINDOW, DRAW_WINDOW, BLOCK_SCHEMA}
+enum {NONE_TOOL, SELECTION_TOOL, HAND_TOOL, ZOOM_TOOL}
+
+var focus_window = NONE_WINDOW
+var current_tool = NONE_TOOL

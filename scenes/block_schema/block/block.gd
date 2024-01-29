@@ -4,32 +4,14 @@ class_name Block
 var LKM_pressed:bool = false
 var old_mouse_position:Vector2
 
-
-
-#var parent_block:Block = null:
-	#set(value):
-		#parent_block = value
-		#if value != null:
-			#$VBoxContainer/Parent.text = value.name
-		#else:
-			#$VBoxContainer/Parent.text = "null"
-
 var parent_blocks:Dictionary
 var child_blocks:Dictionary
 
-#var child_block:Block = null:
-	#set(value):
-		#child_block = value
-		#if value != null:
-			#$VBoxContainer/Child.text = value.name
-		#else:
-			#$VBoxContainer/Child.text = "null"
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	GB.focus_window = GB.BLOCK_SCHEMA
 	$VBoxContainer/Me.text = self.name
 	init_parent_child_blocks_dict()
+	GB.focus_window = GB.MAIN_WINDOW
+	GB.current_tool = GB.SELECTION_TOOL
 	pass # Replace with function body.
 
 
@@ -49,7 +31,9 @@ func _process(delta):
 		
 
 func _on_gui_input(event):
-	if event.is_action_pressed("LKM") and GB.focus_window == GB.BLOCK_SCHEMA:
+	print("block", GB.focus_window, GB.current_tool)
+	if event.is_action_pressed("LKM") and GB.focus_window == GB.MAIN_WINDOW \
+	and GB.current_tool == GB.SELECTION_TOOL:
 		LKM_pressed = true
 		old_mouse_position = get_local_mouse_position()
 	if event.is_action_released("LKM"):
@@ -62,3 +46,7 @@ func init_parent_child_blocks_dict():
 		parent_blocks[end_point.point_type] = null
 
 	
+
+
+func _on_mouse_entered():
+	GB.focus_window = GB.MAIN_WINDOW

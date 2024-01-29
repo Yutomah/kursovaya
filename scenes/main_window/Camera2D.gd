@@ -12,7 +12,8 @@ func _process(delta):
 	camera_movement()
 
 func camera_movement():
-	if Input.is_action_just_pressed("LKM") and GB.focus_window == GB.MAIN_WINDOW:
+	if Input.is_action_just_pressed("LKM") and GB.focus_window == GB.MAIN_WINDOW \
+	and GB.current_tool == GB.HAND_TOOL:
 		LKM_pressed = true
 		old_mouse_position = get_global_mouse_position()
 	if Input.is_action_just_released("LKM"):

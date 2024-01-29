@@ -8,7 +8,8 @@ var current_zoom = 2
 var can_zoom:bool = true
 
 func camera_movement():
-	if Input.is_action_just_pressed("LKM") and GB.focus_window == GB.DRAW_WINDOW:
+	if Input.is_action_just_pressed("LKM") and GB.focus_window == GB.DRAW_WINDOW \
+	and GB.current_tool == GB.HAND_TOOL:
 		LKM_pressed = true
 		old_mouse_position = get_global_mouse_position()
 	if Input.is_action_just_released("LKM"):
@@ -23,7 +24,6 @@ func camera_zoom(delta):
 		if Input.is_key_pressed(KEY_2) and current_zoom < 4:
 			current_zoom += 1
 		
-		print(1)
 		zoom = zoom_list[current_zoom] * Vector2.ONE
 		can_zoom = false
 		get_tree().create_timer(0.2).timeout.connect(func(): can_zoom = true)

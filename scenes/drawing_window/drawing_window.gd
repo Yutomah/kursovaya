@@ -18,8 +18,13 @@ func _on_close_requested():
 
 
 func _on_gui_focus_changed(node):
-	print("inside ", node)
+	pass
 
 
 func _on_mouse_entered():
 	GB.focus_window = GB.DRAW_WINDOW
+	print("drawing_window")
+
+
+func _on_mouse_exited():
+	GB.focus_window = GB.NONE_WINDOW

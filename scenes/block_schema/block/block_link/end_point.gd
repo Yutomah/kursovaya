@@ -27,7 +27,8 @@ func _process(delta):
 
 
 func _on_input_event(viewport, event, shape_idx):
-	if event.is_action_pressed("LKM"):
+	if event.is_action_pressed("LKM") and GB.focus_window == GB.MAIN_WINDOW \
+	and GB.current_tool == GB.SELECTION_TOOL:
 		if begin_point != null:
 			begin_point._on_input_event(viewport,event,shape_idx)
 			get_parent().get_parent().LKM_pressed = false
