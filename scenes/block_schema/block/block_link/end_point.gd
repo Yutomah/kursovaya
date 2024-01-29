@@ -8,11 +8,11 @@ var connection_waiting:bool = false
 var begin_point:BeginPoint = null:
 	set(value):
 		begin_point = value
+		
 		var my_block = get_parent().get_parent() as Block
 		var value_block = null
 		if value != null:
 			value_block =value.get_parent().get_parent() as Block
-			#print(value_block.name)
 		my_block.parent_blocks[point_type] = value_block
 
 func _ready():
@@ -30,4 +30,4 @@ func _on_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed("LKM"):
 		if begin_point != null:
 			begin_point._on_input_event(viewport,event,shape_idx)
-		
+			get_parent().get_parent().LKM_pressed = false

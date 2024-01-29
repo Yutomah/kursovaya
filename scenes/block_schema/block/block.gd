@@ -52,7 +52,6 @@ func _on_gui_input(event):
 	if event.is_action_pressed("LKM") and GB.focus_window == GB.BLOCK_SCHEMA:
 		LKM_pressed = true
 		old_mouse_position = get_local_mouse_position()
-		
 	if event.is_action_released("LKM"):
 		LKM_pressed = false
 

@@ -9,11 +9,13 @@ func _ready():
 				
 func on_link_activated(begin_point:BeginPoint):
 	active_begin_point = begin_point
-	abort_existing_link(active_begin_point)
+	
 	activate_end_points(begin_point)
 				
 func on_link_deactivated(last_mouse_pos: Vector2):
 	var active_end_point = get_end_node_on_mouse(last_mouse_pos)
+	
+	abort_existing_link(active_begin_point)
 	
 	if active_end_point != null:
 		create_new_link(active_begin_point, active_end_point)
@@ -21,7 +23,7 @@ func on_link_deactivated(last_mouse_pos: Vector2):
 	active_begin_point = null
 	
 	deactivate_end_nodes()
-	print_all()
+	#print_all()
 	
 func abort_existing_link(begin_point:BeginPoint):
 	if begin_point.end_point != null:
@@ -88,4 +90,4 @@ func print_all():
 				names += "null "
 		print(names)
 		print("\n")
-		
+	print("----------------------------------------")
