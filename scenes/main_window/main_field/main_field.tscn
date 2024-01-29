@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnrs1qa0qqffs"]
+
+[ext_resource type="Texture2D" uid="uid://c0h62ncn8qhas" path="res://icon.svg" id="1_tkbn6"]
+[ext_resource type="Script" path="res://scenes/main_window/Camera2D.gd" id="2_5xddv"]
+[ext_resource type="PackedScene" uid="uid://uc04gc8dldaw" path="res://scenes/block_schema/block_schema.tscn" id="3_i7ste"]
+
+[node name="MainField" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 44)
+texture = ExtResource("1_tkbn6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("2_5xddv")
+
+[node name="BlockSchema" parent="." instance=ExtResource("3_i7ste")]

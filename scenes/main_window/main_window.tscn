@@ -1,13 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdc5qxhxp27cy"]
+[gd_scene load_steps=7 format=3 uid="uid://cdc5qxhxp27cy"]
 
 [ext_resource type="Script" path="res://scenes/main_window/main_window.gd" id="1_rbayp"]
 [ext_resource type="PackedScene" uid="uid://bseqanhbkxpgw" path="res://scenes/main_window/top_bar/main_window_top_bar.tscn" id="1_y748h"]
 [ext_resource type="Script" path="res://scenes/main_window/Control.gd" id="2_egbop"]
 [ext_resource type="PackedScene" uid="uid://bpxtayo5uy4gy" path="res://scenes/main_window/foot_bar/main_window_foot_bar.tscn" id="2_scasd"]
 [ext_resource type="PackedScene" uid="uid://cvbehmxilpdh2" path="res://scenes/drawing_window/drawing_window.tscn" id="3_h70fp"]
-[ext_resource type="Script" path="res://scenes/main_window/Camera2D.gd" id="4_yntj6"]
-[ext_resource type="Texture2D" uid="uid://c0h62ncn8qhas" path="res://icon.svg" id="5_waxp4"]
-[ext_resource type="PackedScene" uid="uid://uc04gc8dldaw" path="res://scenes/block_schema/block_schema.tscn" id="8_h60xt"]
+[ext_resource type="PackedScene" uid="uid://bnrs1qa0qqffs" path="res://scenes/main_window/main_field/main_field.tscn" id="5_utdbd"]
 
 [node name="MainWindow" type="Node2D"]
 script = ExtResource("1_rbayp")
@@ -15,18 +13,7 @@ script = ExtResource("1_rbayp")
 [node name="DrawingWindow" parent="." instance=ExtResource("3_h70fp")]
 visible = false
 
-[node name="BlockSchema" parent="." instance=ExtResource("8_h60xt")]
-z_index = -1
-
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("4_yntj6")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, 44)
-texture = ExtResource("5_waxp4")
-
 [node name="HUD" type="CanvasLayer" parent="."]
-layer = -2
 
 [node name="Control" type="Control" parent="HUD"]
 layout_mode = 3
@@ -38,14 +25,36 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("2_egbop")
 
-[node name="MainWindowTopBar" parent="HUD/Control" instance=ExtResource("1_y748h")]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Control"]
 layout_mode = 1
-offset_bottom = 66.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainWindowTopBar" parent="HUD/Control/VBoxContainer" instance=ExtResource("1_y748h")]
+layout_mode = 2
+size_flags_vertical = 0
 mouse_filter = 1
 
-[node name="MainWindowFootBar" parent="HUD/Control" instance=ExtResource("2_scasd")]
-layout_mode = 1
-offset_top = -31.0
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HUD/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="HUD/Control/VBoxContainer/SubViewportContainer"]
+disable_3d = true
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(1152, 543)
+render_target_update_mode = 4
+
+[node name="MainField" parent="HUD/Control/VBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("5_utdbd")]
+
+[node name="MainWindowFootBar" parent="HUD/Control/VBoxContainer" instance=ExtResource("2_scasd")]
+layout_mode = 2
+size_flags_vertical = 8
 mouse_filter = 1
 
 [connection signal="mouse_entered" from="HUD/Control" to="HUD/Control" method="_on_mouse_entered"]

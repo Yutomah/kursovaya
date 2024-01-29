@@ -31,7 +31,6 @@ func _process(delta):
 		
 
 func _on_gui_input(event):
-	print("block", GB.focus_window, GB.current_tool)
 	if event.is_action_pressed("LKM") and GB.focus_window == GB.MAIN_WINDOW \
 	and GB.current_tool == GB.SELECTION_TOOL:
 		LKM_pressed = true

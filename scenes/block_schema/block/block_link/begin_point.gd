@@ -31,6 +31,7 @@ func _unhandled_input(event):
 		LKM_pressed = false
 		
 func _on_input_event(viewport, event, shape_idx):
+	print("a")
 	if event.is_action_pressed("LKM") and GB.focus_window == GB.MAIN_WINDOW \
 	and GB.current_tool == GB.SELECTION_TOOL:
 		GB.link_activated.emit(self)
