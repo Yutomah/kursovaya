@@ -7,7 +7,7 @@ const CELL_AMOUNT:int = 200
 	
 func _draw():
 	draw_inf_grid(CELL_SIZE, CELL_AMOUNT, 1)
-	
+	draw_circle(Vector2.ZERO, 5, Color.DARK_GRAY)
 
 	
 func draw_inf_grid(cell_size:int, cell_amount:int, width:float = 1, color:Color = Color.DARK_GRAY)->void:

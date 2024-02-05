@@ -35,8 +35,10 @@ func _on_gui_input(event):
 	and GB.current_tool == GB.SELECTION_TOOL:
 		LKM_pressed = true
 		old_mouse_position = get_local_mouse_position()
+		
 	if event.is_action_released("LKM"):
 		LKM_pressed = false
+		
 
 func init_parent_child_blocks_dict():
 	for begin_point:BeginPoint in $BeginPoints.get_children():
@@ -45,7 +47,7 @@ func init_parent_child_blocks_dict():
 		parent_blocks[end_point.point_type] = null
 
 	
-
-
 func _on_mouse_entered():
 	GB.focus_window = GB.MAIN_WINDOW
+
+

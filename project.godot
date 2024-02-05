@@ -23,6 +23,15 @@ GB="*res://scenes/globals/GB.gd"
 
 window/stretch/scale_mode="integer"
 
+[file_customization]
+
+folder_colors={
+"res://scenes/block_schema/": "orange",
+"res://scenes/drawing_window/": "green",
+"res://scenes/globals/": "pink",
+"res://scenes/main_window/": "gray"
+}
+
 [input]
 
 LKM={

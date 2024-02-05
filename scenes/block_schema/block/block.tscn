@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2d1md6i3po2n"]
+[gd_scene load_steps=3 format=3 uid="uid://d2d1md6i3po2n"]
 
 [ext_resource type="Script" path="res://scenes/block_schema/block/block.gd" id="1_cs1tj"]
-[ext_resource type="LabelSettings" uid="uid://dlr834h5g5mhd" path="res://Fonts/small_block_text.tres" id="2_wksdl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_53d3y"]
 font_color = Color(1, 0.152941, 1, 1)
@@ -38,26 +37,6 @@ grow_vertical = 2
 [node name="Me" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_53d3y")
-
-[node name="Parent" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "null"
-label_settings = ExtResource("2_wksdl")
-
-[node name="CommonPoint" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "null"
-label_settings = ExtResource("2_wksdl")
-
-[node name="TruePoint" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "null"
-label_settings = ExtResource("2_wksdl")
-
-[node name="FalsePoint" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "null"
-label_settings = ExtResource("2_wksdl")
 
 [node name="BeginPoints" type="Node2D" parent="."]
 

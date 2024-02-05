@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnaqsxn2bbu6a"]
+
+[ext_resource type="PackedScene" uid="uid://d2d1md6i3po2n" path="res://scenes/block_schema/block/block.tscn" id="1_5ipcj"]
+[ext_resource type="Script" path="res://scenes/block_schema/block/block_begin/block_begin.gd" id="2_nbi3h"]
+[ext_resource type="PackedScene" uid="uid://sdm7fyk8ggig" path="res://scenes/block_schema/block/block_link/begin_point.tscn" id="3_juown"]
+
+[node name="BlockBegin" instance=ExtResource("1_5ipcj")]
+script = ExtResource("2_nbi3h")
+
+[node name="Button" type="Button" parent="VBoxContainer" index="1"]
+layout_mode = 2
+text = "Начать"
+
+[node name="BeginPoint" parent="BeginPoints" index="0" instance=ExtResource("3_juown")]
+position = Vector2(50, 150)
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

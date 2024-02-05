@@ -1,7 +1,6 @@
 extends Node2D
 
 const CELL_SIZE:int = 32
-
 var is_inf_grid:bool = true:
 	set(value):
 		if value:
