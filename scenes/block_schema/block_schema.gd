@@ -8,7 +8,7 @@ func _ready():
 	GB.link_activated.connect((on_link_activated))
 	GB.link_deactivated.connect(on_link_deactivated)
 	
-				
+
 func on_link_activated(begin_point:BeginPoint):
 	active_begin_point = begin_point
 	
@@ -25,7 +25,6 @@ func on_link_deactivated(last_mouse_pos: Vector2):
 	active_begin_point = null
 	
 	deactivate_end_nodes()
-	#print_all()
 	
 func abort_existing_link(begin_point:BeginPoint):
 	if begin_point.end_point != null:
@@ -41,7 +40,7 @@ func create_new_link(begin_point:BeginPoint, end_point:EndPoint):
 	active_begin_point.get_node("Line2D").points[1] = pos
 	
 func get_end_node_on_mouse(last_mouse_pos: Vector2):
-	for block in get_children():
+	for block in $Blocks.get_children():
 		for end_point:EndPoint in block.get_node("EndPoints").get_children():
 			if end_point.connection_waiting:
 				var col_shape = end_point.get_node("CollisionShape2D") as CollisionShape2D
@@ -52,7 +51,7 @@ func get_end_node_on_mouse(last_mouse_pos: Vector2):
 	return null
 
 func remove_dublicate_connections(end_point:Area2D):
-	for block in get_children():
+	for block in $Blocks.get_children():
 		for begin_point:BeginPoint in block.get_node("BeginPoints").get_children():
 			if begin_point.end_point == end_point:
 				begin_point.get_node("Line2D").points[1] = Vector2.ZERO
@@ -60,19 +59,20 @@ func remove_dublicate_connections(end_point:Area2D):
 				begin_point.end_point = null
 	
 func activate_end_points(begin_point:BeginPoint):
-	for block in get_children():
+	for block in $Blocks.get_children():
 		for end_point:EndPoint in block.get_node("EndPoints").get_children():
 			if  block != begin_point.get_parent().get_parent():
 				end_point.connection_waiting = true
 				
 			
 func deactivate_end_nodes():
-	for block in get_children():
+	for block in $Blocks.get_children():
 		for end_point:EndPoint in block.get_node("EndPoints").get_children():
 			end_point.connection_waiting = false
 
+
 func print_all():
-	for block:Block in get_children():
+	for block:Block in $Blocks.get_children():
 		print(block.name)
 		var names = "childs: "
 		print(block.child_blocks)

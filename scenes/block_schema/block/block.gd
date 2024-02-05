@@ -12,7 +12,6 @@ func _ready():
 	init_parent_child_blocks_dict()
 	GB.focus_window = GB.MAIN_WINDOW
 	GB.current_tool = GB.SELECTION_TOOL
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

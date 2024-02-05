@@ -11,6 +11,7 @@ func _process(delta):
 	super._process(delta)
 
 func signal_processing(block_begin:BlockBegin):
+	await get_tree().create_timer(0.3).timeout
 	var x = $VBoxContainer/XContainer/SpinBox.value
 	var y = $VBoxContainer/YContainer/SpinBox.value
 	var direction = Vector2(x,y)
