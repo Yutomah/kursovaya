@@ -14,6 +14,11 @@ signal line_jump_wanted(block_begin:BlockBegin, direction:Vector2)
 signal link_activated(begin_point:BeginPoint)
 signal link_deactivated(last_mouse_pos:Vector2)
 
+signal block_rkm_menu_opened()
+signal block_schema_rkm_menu_opened()
+
+var is_block_rkm_menu_open:bool = false
+
 enum {NONE_WINDOW, MAIN_WINDOW, DRAW_WINDOW, BLOCK_SCHEMA}
 enum {NONE_TOOL, SELECTION_TOOL, HAND_TOOL, ZOOM_TOOL}
 

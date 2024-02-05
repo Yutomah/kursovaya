@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2d1md6i3po2n"]
+[gd_scene load_steps=4 format=3 uid="uid://d2d1md6i3po2n"]
 
 [ext_resource type="Script" path="res://scenes/block_schema/block/block.gd" id="1_cs1tj"]
+[ext_resource type="PackedScene" uid="uid://j1804rvmevo" path="res://scenes/block_schema/block/block_rkm_menu/block_rkm_menu.tscn" id="2_7pa3h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_53d3y"]
 font_color = Color(1, 0.152941, 1, 1)
@@ -42,5 +43,9 @@ label_settings = SubResource("LabelSettings_53d3y")
 
 [node name="EndPoints" type="Node2D" parent="."]
 
+[node name="BlockRkmMenu" parent="." instance=ExtResource("2_7pa3h")]
+layout_mode = 1
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
