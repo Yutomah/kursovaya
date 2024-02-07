@@ -21,7 +21,6 @@ func signal_processing(block_begin:BlockBegin):
 	else:
 		line_drawed = block_begin.grid_line.line_draw(direction)
 		
-	
 	if line_drawed:
 		if child_blocks[BeginPoint.PointType.COMMON_POINT] != null:
 			child_blocks[BeginPoint.PointType.COMMON_POINT].signal_processing(block_begin)

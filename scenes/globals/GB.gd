@@ -18,6 +18,8 @@ signal link_deactivated(last_mouse_pos:Vector2)
 
 signal block_rkm_menu_opened()
 signal block_schema_rkm_menu_opened()
+signal activate_all_begin_blocks_wanted()
+
 
 var is_block_rkm_menu_open:bool = false
 

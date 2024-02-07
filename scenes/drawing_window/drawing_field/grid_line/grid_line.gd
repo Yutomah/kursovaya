@@ -40,6 +40,9 @@ func can_draw(current_grid_pos):
 	GB.line_draw_ended.emit(result)
 	return result
 	
-
+func remove_myself():
+	block_begin.grid_line = null
+	queue_free()
+	
 func _process(delta):
 	pass

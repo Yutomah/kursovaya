@@ -4,17 +4,31 @@ var GridLineScene:PackedScene = preload("res://scenes/drawing_window/drawing_fie
 
 func _ready():
 	GB.line_creation_wanted.connect(on_line_creation_wanted)
+	GB.clear_field_wanted.connect(clear_grid_lines)
 	
 func on_line_creation_wanted(block_begin:BlockBegin):
-	remove_grid_line(block_begin)
+	var old_line =  find_grid_line(block_begin)
+	if old_line != null:
+		old_line.remove_myself()
 
 	var line:GridLine = GridLineScene.instantiate() as GridLine
 	line.block_begin = block_begin
 	add_child(line);
-	print(3)
 	GB.line_created.emit(block_begin, line)
 
-func remove_grid_line(block_begin:BlockBegin):
+#func remove_grid_line(grid_line:GridLine):
+	##for grid_line:GridLine in get_children():
+		##if grid_line.block_begin == block_begin:
+			##block_begin.grid_line = null
+			##grid_line.queue_free()
+
+func clear_grid_lines():
+	for grid_line:GridLine in get_children():
+		grid_line.remove_myself()
+
+func find_grid_line(block_begin:BlockBegin):
 	for grid_line:GridLine in get_children():
 		if grid_line.block_begin == block_begin:
-			grid_line.queue_free()
+			return grid_line
+	return null
+		

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bseqanhbkxpgw"]
+[gd_scene load_steps=5 format=3 uid="uid://bseqanhbkxpgw"]
 
 [ext_resource type="Script" path="res://scenes/main_window/top_bar/DrawingWindowOpenButton.gd" id="1_nf6rh"]
+[ext_resource type="Script" path="res://scenes/main_window/top_bar/ActivateAllButton.gd" id="2_6prld"]
 [ext_resource type="Script" path="res://scenes/main_window/top_bar/SelectionButton.gd" id="2_unrqb"]
 [ext_resource type="Script" path="res://scenes/main_window/top_bar/HandButton.gd" id="3_4dl4s"]
 
@@ -38,6 +39,11 @@ layout_mode = 2
 text = "Доска"
 script = ExtResource("1_nf6rh")
 
+[node name="ActivateAllButton" type="Button" parent="VBoxContainer/MainWindowMenuBar"]
+layout_mode = 2
+text = "Активировать всё"
+script = ExtResource("2_6prld")
+
 [node name="MainWindowToolBar" type="HFlowContainer" parent="VBoxContainer"]
 layout_mode = 2
 
@@ -56,5 +62,6 @@ layout_mode = 2
 text = "Увеличение"
 
 [connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/DrawingWindowOpenButton" to="VBoxContainer/MainWindowMenuBar/DrawingWindowOpenButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/ActivateAllButton" to="VBoxContainer/MainWindowMenuBar/ActivateAllButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainWindowToolBar/SelectionButton" to="VBoxContainer/MainWindowToolBar/SelectionButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainWindowToolBar/HandButton" to="VBoxContainer/MainWindowToolBar/HandButton" method="_on_pressed"]

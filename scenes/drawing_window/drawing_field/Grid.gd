@@ -29,3 +29,5 @@ func _process(delta):
 		var grid_y = int($"../Camera2D".offset.y / CELL_SIZE) * CELL_SIZE
 		$InfiniteGrid.position = Vector2(grid_x, grid_y)
 		
+func _draw():
+	draw_circle(Vector2.ZERO, 5, Color.DARK_GRAY)
