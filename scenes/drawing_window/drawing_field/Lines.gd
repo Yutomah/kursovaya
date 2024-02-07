@@ -11,6 +11,8 @@ func on_line_creation_wanted(block_begin:BlockBegin):
 	var line:GridLine = GridLineScene.instantiate() as GridLine
 	line.block_begin = block_begin
 	add_child(line);
+	print(3)
+	GB.line_created.emit(block_begin, line)
 
 func remove_grid_line(block_begin:BlockBegin):
 	for grid_line:GridLine in get_children():

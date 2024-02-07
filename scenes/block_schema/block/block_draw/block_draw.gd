@@ -5,7 +5,6 @@ class_name BlockDraw
 func _ready():
 	super._ready()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super._process(delta)
@@ -14,13 +13,20 @@ func signal_processing(block_begin:BlockBegin):
 	await get_tree().create_timer(0.3).timeout
 	var x = $VBoxContainer/XContainer/SpinBox.value
 	var y = $VBoxContainer/YContainer/SpinBox.value
-	var direction = Vector2(x,y)
+	var direction = Vector2i(x,y)
+	
+	var line_drawed:bool
 	if $VBoxContainer/CheckBox.button_pressed == true:
-		GB.line_jump_wanted.emit(block_begin, direction)
+		line_drawed = block_begin.grid_line.line_jump(direction)
 	else:
-		GB.line_draw_wanted.emit(block_begin, direction)
+		line_drawed = block_begin.grid_line.line_draw(direction)
 		
-	if child_blocks[BeginPoint.PointType.COMMON_POINT] != null:
-		child_blocks[BeginPoint.PointType.COMMON_POINT].signal_processing(block_begin)
+	
+	if line_drawed:
+		if child_blocks[BeginPoint.PointType.COMMON_POINT] != null:
+			child_blocks[BeginPoint.PointType.COMMON_POINT].signal_processing(block_begin)
+		else:
+			print("Отсутствует блок для последующей передачи")
 	else:
-		print("over")
+		print("Нарушение границ доски")
+

@@ -7,8 +7,10 @@ signal change_field_size_wanted(is_infinite:bool, size:Vector2i)
 signal change_drawing_window_vision
 
 signal line_creation_wanted(block_begin:BlockBegin)
-signal line_draw_wanted(block_begin:BlockBegin, direction:Vector2)
-signal line_jump_wanted(block_begin:BlockBegin, direction:Vector2)
+signal line_created(block_begin:BlockBegin, grid_line:GridLine)
+signal line_draw_wanted(block_begin:BlockBegin, direction:Vector2i)
+signal line_jump_wanted(block_begin:BlockBegin, direction:Vector2i)
+signal line_draw_ended(result:bool)
 
 #blocks
 signal link_activated(begin_point:BeginPoint)

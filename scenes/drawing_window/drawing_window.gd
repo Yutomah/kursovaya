@@ -23,7 +23,6 @@ func _on_gui_focus_changed(node):
 
 func _on_mouse_entered():
 	GB.focus_window = GB.DRAW_WINDOW
-	print("drawing_window")
 
 
 func _on_mouse_exited():

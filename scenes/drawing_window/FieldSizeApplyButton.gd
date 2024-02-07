@@ -12,7 +12,6 @@ func _process(delta):
 
 
 func _on_pressed():
-	print($"../InfiniteGridCheckBox".button_pressed)
 	if $"../InfiniteGridCheckBox".button_pressed:
 		GB.change_field_size_wanted.emit($"../InfiniteGridCheckBox".button_pressed, Vector2i(-1,-1))
 	else:

@@ -22,4 +22,3 @@ func _unhandled_input(event):
 
 func on_block_rkm_menu_opened():
 	hide()
-	print(1)

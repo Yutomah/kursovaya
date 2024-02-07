@@ -1,8 +1,11 @@
 extends Node2D
 
 const CELL_SIZE:int = 32
+var grid_size:Vector2i
+
 var is_inf_grid:bool = true:
 	set(value):
+		is_inf_grid = value
 		if value:
 			$InfiniteGrid.show()
 			$FiniteGrid.hide()
@@ -10,6 +13,7 @@ var is_inf_grid:bool = true:
 			$InfiniteGrid.hide()
 			$FiniteGrid.queue_redraw()
 			$FiniteGrid.show()
+			grid_size = $FiniteGrid.grid_size
 
 func on_change_field_size_wanted(is_inf_grid:bool, grid_size:Vector2i):
 	if not is_inf_grid:
