@@ -47,7 +47,7 @@ stretch = true
 disable_3d = true
 handle_input_locally = false
 physics_object_picking = true
-size = Vector2i(1152, 543)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="MainField" parent="HUD/Control/VBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("5_utdbd")]

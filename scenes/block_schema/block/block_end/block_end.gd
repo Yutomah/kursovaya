@@ -10,5 +10,5 @@ func _ready():
 func _process(delta):
 	super._process(delta)
 
-func signal_processing(block_begin:BlockBegin):
+func zap_processing(zap:Zap):
 	pass

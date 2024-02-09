@@ -79,3 +79,5 @@ func delete_myself():
 			end_point.begin_point.end_point = null
 		end_point.begin_point.get_node("Line2D").points[1] = Vector2.ZERO
 	queue_free()
+
+

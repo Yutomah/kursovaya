@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://p80l6bt25euk"]
+
+[ext_resource type="PackedScene" uid="uid://d2d1md6i3po2n" path="res://scenes/block_schema/block/block.tscn" id="1_4sxdo"]
+[ext_resource type="Script" path="res://scenes/block_schema/block/block_join/block_join.gd" id="2_dftag"]
+[ext_resource type="PackedScene" uid="uid://sdm7fyk8ggig" path="res://scenes/block_schema/block/block_link/begin_point.tscn" id="3_pkbqp"]
+[ext_resource type="PackedScene" uid="uid://dobi4gaiuyt0s" path="res://scenes/block_schema/block/block_link/end_point.tscn" id="4_yiirb"]
+
+[node name="BlockJoin" instance=ExtResource("1_4sxdo")]
+offset_left = -150.0
+offset_right = 150.0
+script = ExtResource("2_dftag")
+
+[node name="EndPointAmountContainer" type="HBoxContainer" parent="VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/EndPointAmountContainer" index="0"]
+layout_mode = 2
+text = "Число входов"
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/EndPointAmountContainer" index="1"]
+layout_mode = 2
+min_value = 1.0
+max_value = 1.0
+value = 1.0
+allow_greater = true
+
+[node name="BeginPointAmountContainer" type="HBoxContainer" parent="VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/BeginPointAmountContainer" index="0"]
+layout_mode = 2
+text = "Число выходов"
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/BeginPointAmountContainer" index="1"]
+layout_mode = 2
+min_value = 1.0
+max_value = 1.0
+value = 1.0
+allow_greater = true
+
+[node name="AcceptButton" type="Button" parent="VBoxContainer" index="3"]
+layout_mode = 2
+text = "Применить"
+
+[node name="BeginPoint" parent="BeginPoints" index="0" instance=ExtResource("3_pkbqp")]
+position = Vector2(150, 150)
+
+[node name="EndPoint" parent="EndPoints" index="0" instance=ExtResource("4_yiirb")]
+position = Vector2(150, 0)
+
+[connection signal="pressed" from="VBoxContainer/AcceptButton" to="." method="_on_accept_button_pressed"]

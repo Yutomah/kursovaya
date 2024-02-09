@@ -9,7 +9,7 @@ func _ready():
 func _process(delta):
 	super._process(delta)
 
-func signal_processing(block_begin:BlockBegin):
+func zap_processing(zap:Zap):
 	await get_tree().create_timer(0.3).timeout
 	var x = $VBoxContainer/XContainer/SpinBox.value
 	var y = $VBoxContainer/YContainer/SpinBox.value
@@ -17,13 +17,13 @@ func signal_processing(block_begin:BlockBegin):
 	
 	var line_drawed:bool
 	if $VBoxContainer/CheckBox.button_pressed == true:
-		line_drawed = block_begin.grid_line.line_jump(direction)
+		line_drawed = zap.grid_line.line_jump(direction)
 	else:
-		line_drawed = block_begin.grid_line.line_draw(direction)
+		line_drawed = zap.grid_line.line_draw(direction)
 		
 	if line_drawed:
 		if child_blocks[BeginPoint.PointType.COMMON_POINT] != null:
-			child_blocks[BeginPoint.PointType.COMMON_POINT].signal_processing(block_begin)
+			child_blocks[BeginPoint.PointType.COMMON_POINT].zap_processing(zap)
 		else:
 			print("Отсутствует блок для последующей передачи")
 	else:
