@@ -2,6 +2,7 @@ extends Node2D
 
 const CELL_SIZE:int = 32
 var grid_size:Vector2i
+@export var camera:Camera2D
 
 var is_inf_grid:bool = true:
 	set(value):
@@ -25,8 +26,8 @@ func _ready():
 	
 func _process(delta):
 	if is_inf_grid:
-		var grid_x = int($"../Camera2D".offset.x / CELL_SIZE) * CELL_SIZE
-		var grid_y = int($"../Camera2D".offset.y / CELL_SIZE) * CELL_SIZE
+		var grid_x = int(camera.offset.x / CELL_SIZE) * CELL_SIZE
+		var grid_y = int(camera.offset.y / CELL_SIZE) * CELL_SIZE
 		$InfiniteGrid.position = Vector2(grid_x, grid_y)
 		
 func _draw():

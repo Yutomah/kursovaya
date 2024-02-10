@@ -1,14 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdc5qxhxp27cy"]
+[gd_scene load_steps=5 format=3 uid="uid://cdc5qxhxp27cy"]
 
-[ext_resource type="Script" path="res://scenes/main_window/main_window.gd" id="1_rbayp"]
 [ext_resource type="PackedScene" uid="uid://bseqanhbkxpgw" path="res://scenes/main_window/top_bar/main_window_top_bar.tscn" id="1_y748h"]
-[ext_resource type="Script" path="res://scenes/main_window/Control.gd" id="2_egbop"]
 [ext_resource type="PackedScene" uid="uid://bpxtayo5uy4gy" path="res://scenes/main_window/foot_bar/main_window_foot_bar.tscn" id="2_scasd"]
+[ext_resource type="PackedScene" uid="uid://bna6lcmwx6e22" path="res://scenes/block_environment/block_environment.tscn" id="3_7p3uo"]
 [ext_resource type="PackedScene" uid="uid://cvbehmxilpdh2" path="res://scenes/drawing_window/drawing_window.tscn" id="3_h70fp"]
-[ext_resource type="PackedScene" uid="uid://bnrs1qa0qqffs" path="res://scenes/main_window/main_field/main_field.tscn" id="5_utdbd"]
 
 [node name="MainWindow" type="Node2D"]
-script = ExtResource("1_rbayp")
 
 [node name="DrawingWindow" parent="." instance=ExtResource("3_h70fp")]
 visible = false
@@ -23,7 +20,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("2_egbop")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/Control"]
 layout_mode = 1
@@ -38,19 +34,9 @@ layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 1
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="HUD/Control/VBoxContainer"]
+[node name="BlockEnvironment" parent="HUD/Control/VBoxContainer" instance=ExtResource("3_7p3uo")]
 layout_mode = 2
 size_flags_vertical = 3
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="HUD/Control/VBoxContainer/SubViewportContainer"]
-disable_3d = true
-handle_input_locally = false
-physics_object_picking = true
-size = Vector2i(2, 2)
-render_target_update_mode = 4
-
-[node name="MainField" parent="HUD/Control/VBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("5_utdbd")]
 
 [node name="MainWindowFootBar" parent="HUD/Control/VBoxContainer" instance=ExtResource("2_scasd")]
 layout_mode = 2

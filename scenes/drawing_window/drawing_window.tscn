@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scenes/drawing_window/ClearFieldButton.gd" id="1_o5a3g"]
 [ext_resource type="Script" path="res://scenes/drawing_window/drawing_window.gd" id="1_pusqv"]
 [ext_resource type="Script" path="res://scenes/drawing_window/CameraToDefaultButton.gd" id="2_d31vs"]
-[ext_resource type="PackedScene" uid="uid://drbicnlpm8ygd" path="res://scenes/drawing_window/drawing_field/drawing_field.tscn" id="2_ecuwn"]
 [ext_resource type="Script" path="res://scenes/drawing_window/FieldSizeApplyButton.gd" id="4_ceo65"]
+[ext_resource type="PackedScene" uid="uid://x83yn2bdb4nx" path="res://scenes/drawing_window/draw_environment/draw_environment.tscn" id="6_yv56n"]
 
 [node name="DrawingWindow" type="Window"]
 position = Vector2i(500, 50)
@@ -74,22 +74,13 @@ layout_mode = 2
 text = "Применить"
 script = ExtResource("4_ceo65")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/VBoxContainer"]
+[node name="DrawEnvironment" parent="CanvasLayer/VBoxContainer" instance=ExtResource("6_yv56n")]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/VBoxContainer/SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(500, 395)
-render_target_update_mode = 4
-
-[node name="DrawingField" parent="CanvasLayer/VBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_ecuwn")]
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
-[connection signal="gui_focus_changed" from="." to="." method="_on_gui_focus_changed"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/ClearFieldButton" to="CanvasLayer/VBoxContainer/HBoxContainer/ClearFieldButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/CameraToDefaultButton" to="CanvasLayer/VBoxContainer/HBoxContainer/CameraToDefaultButton" method="_on_pressed"]
 [connection signal="toggled" from="CanvasLayer/VBoxContainer/FieldSizeContainer/InfiniteGridCheckBox" to="CanvasLayer/VBoxContainer/FieldSizeContainer/InfiniteGridCheckBox" method="_on_toggled"]

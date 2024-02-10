@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://x83yn2bdb4nx"]
+
+[ext_resource type="Script" path="res://scenes/drawing_window/draw_environment/draw_environment.gd" id="1_ivwxe"]
+[ext_resource type="Script" path="res://scenes/drawing_window/draw_environment/draw_field/Grid.gd" id="2_51bjt"]
+[ext_resource type="Script" path="res://scenes/drawing_window/draw_environment/draw_field/InfiniteGrid.gd" id="3_wa6gs"]
+[ext_resource type="Script" path="res://scenes/drawing_window/draw_environment/draw_field/FiniteGrid.gd" id="4_qjrpv"]
+[ext_resource type="Script" path="res://scenes/drawing_window/draw_environment/draw_field/Lines.gd" id="5_qdnu8"]
+
+[node name="DrawEnvironment" type="SubViewportContainer" node_paths=PackedStringArray("camera")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+script = ExtResource("1_ivwxe")
+camera = NodePath("SubViewport/Camera2D")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+
+[node name="Grid" type="Node2D" parent="SubViewport" node_paths=PackedStringArray("camera")]
+script = ExtResource("2_51bjt")
+camera = NodePath("../Camera2D")
+
+[node name="InfiniteGrid" type="Node2D" parent="SubViewport/Grid"]
+script = ExtResource("3_wa6gs")
+
+[node name="FiniteGrid" type="Node2D" parent="SubViewport/Grid"]
+visible = false
+script = ExtResource("4_qjrpv")
+
+[node name="Lines" type="Node2D" parent="SubViewport/Grid"]
+script = ExtResource("5_qdnu8")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

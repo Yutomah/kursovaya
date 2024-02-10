@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dxh32jixytoni"]
 
-[ext_resource type="Script" path="res://scenes/drawing_window/drawing_field/grid_line/grid_line.gd" id="1_kg1we"]
+[ext_resource type="Script" path="res://scenes/drawing_window/draw_environment/draw_field/grid_line/grid_line.gd" id="1_kg1we"]
 
 [node name="GridLine" type="Node2D"]
 script = ExtResource("1_kg1we")

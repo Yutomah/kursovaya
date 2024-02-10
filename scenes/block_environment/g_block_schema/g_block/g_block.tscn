@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://176g3cp8n76a"]
+
+[ext_resource type="Script" path="res://scenes/block_environment/g_block_schema/g_block/g_block.gd" id="1_bsts3"]
+
+[node name="GBlock" type="Node2D"]
+script = ExtResource("1_bsts3")
+
+[node name="Control" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+
+[node name="Background" type="ColorRect" parent="Control"]
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.4, 0.447059, 0.45098, 1)
+
+[node name="Content" type="VBoxContainer" parent="Control"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Control/Content"]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="Control/Content"]
+layout_mode = 2
+
+[node name="EndPoints" type="Node2D" parent="."]
+
+[node name="BeginPoints" type="Node2D" parent="."]
+
+[connection signal="gui_input" from="Control" to="." method="_on_control_gui_input"]
+[connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]
