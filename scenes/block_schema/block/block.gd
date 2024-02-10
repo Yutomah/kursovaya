@@ -80,4 +80,11 @@ func delete_myself():
 		end_point.begin_point.get_node("Line2D").points[1] = Vector2.ZERO
 	queue_free()
 
-
+func refresh_link():
+	for begin_point:BeginPoint in $BeginPoints.get_children():
+		if begin_point.end_point != null:
+			var end_point = begin_point.end_point
+			var local_pos = begin_point.to_local(end_point.to_global(Vector2.ZERO))
+			begin_point.get_node("Line2D").points[-1] = local_pos
+	
+	

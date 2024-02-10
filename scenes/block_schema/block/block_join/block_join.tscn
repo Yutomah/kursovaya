@@ -24,21 +24,7 @@ max_value = 1.0
 value = 1.0
 allow_greater = true
 
-[node name="BeginPointAmountContainer" type="HBoxContainer" parent="VBoxContainer" index="2"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/BeginPointAmountContainer" index="0"]
-layout_mode = 2
-text = "Число выходов"
-
-[node name="SpinBox" type="SpinBox" parent="VBoxContainer/BeginPointAmountContainer" index="1"]
-layout_mode = 2
-min_value = 1.0
-max_value = 1.0
-value = 1.0
-allow_greater = true
-
-[node name="AcceptButton" type="Button" parent="VBoxContainer" index="3"]
+[node name="AcceptButton" type="Button" parent="VBoxContainer" index="2"]
 layout_mode = 2
 text = "Применить"
 
