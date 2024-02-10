@@ -12,13 +12,11 @@ signal line_jump_wanted(zap:Zap, direction:Vector2i)
 signal line_draw_ended(result:bool)
 
 
-signal block_rkm_menu_opened()
-signal block_schema_rkm_menu_opened()
+signal context_menu_open_wanted()
+signal context_menu_close_wanted()
+
 signal activate_all_begin_blocks_wanted()
-
-
-var is_block_rkm_menu_open:bool = false
 
 enum {NONE_TOOL, SELECTION_TOOL, HAND_TOOL, ZOOM_TOOL}
 
-var current_tool = NONE_TOOL
+var current_tool = SELECTION_TOOL

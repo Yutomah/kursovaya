@@ -1,7 +1,7 @@
 class_name Zap
 
 var grid_line:GridLine = null
-var block_begin:BlockBegin = null
+var block_begin:GBlockBegin = null
 
 func clone()->Zap:
 	var new_zap:Zap = Zap.new()

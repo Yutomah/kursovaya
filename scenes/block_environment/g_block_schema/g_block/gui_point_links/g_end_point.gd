@@ -1,7 +1,7 @@
 extends Node2D
 class_name GEndPoint
 
-@export var block:GBlock
+@onready var block:GBlock = get_parent().get_parent()
 var begin_point:GBeginPoint
 	
 func _draw():

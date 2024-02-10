@@ -13,4 +13,3 @@ func _process(delta):
 
 func _on_pressed():
 	GB.current_tool = GB.SELECTION_TOOL
-	print(4)

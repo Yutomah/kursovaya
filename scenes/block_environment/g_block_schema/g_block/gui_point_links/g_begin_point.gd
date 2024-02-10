@@ -4,7 +4,7 @@ class_name GBeginPoint
 var LKM_pressed = false
 
 @onready var line:Line2D = %Line
-@export var block:GBlock
+@onready var block:GBlock = get_parent().get_parent()
 var end_point:GEndPoint
 
 func _draw():

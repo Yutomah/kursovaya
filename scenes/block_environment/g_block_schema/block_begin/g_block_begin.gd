@@ -1,11 +1,10 @@
 extends GBlock
 class_name GBlockBegin
 
-@export var begin_point:GBeginPoint  
+@onready var begin_point:GBeginPoint = $BeginPoints/GBeginPoint
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	class_type = "Начальный блок"
 	super._ready()
 	GB.activate_all_begin_blocks_wanted.connect(zap_processing)
 
