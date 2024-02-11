@@ -19,6 +19,7 @@ script = ExtResource("1_pusqv")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 0
 
 [node name="HBoxContainer" type="HFlowContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
@@ -80,7 +81,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/ClearFieldButton" to="CanvasLayer/VBoxContainer/HBoxContainer/ClearFieldButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/CameraToDefaultButton" to="CanvasLayer/VBoxContainer/HBoxContainer/CameraToDefaultButton" method="_on_pressed"]
 [connection signal="toggled" from="CanvasLayer/VBoxContainer/FieldSizeContainer/InfiniteGridCheckBox" to="CanvasLayer/VBoxContainer/FieldSizeContainer/InfiniteGridCheckBox" method="_on_toggled"]

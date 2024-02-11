@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://ofxjqo2dv70r"]
+
+[ext_resource type="PackedScene" uid="uid://176g3cp8n76a" path="res://scenes/block_environment/g_block_schema/g_block/g_block.tscn" id="1_qfhdh"]
+[ext_resource type="Script" path="res://scenes/block_environment/g_block_schema/block_while/g_block_while.gd" id="2_7vlpr"]
+[ext_resource type="PackedScene" uid="uid://cq3i7td46je11" path="res://scenes/block_environment/g_block_schema/g_block/gui_point_links/g_end_point.tscn" id="3_7f5yb"]
+[ext_resource type="PackedScene" uid="uid://dvd6ysg6qyrj2" path="res://scenes/block_environment/g_block_schema/g_block/gui_point_links/g_begin_point.tscn" id="4_ualsm"]
+
+[node name="GBlockWhile" instance=ExtResource("1_qfhdh")]
+script = ExtResource("2_7vlpr")
+
+[node name="Type" parent="Control/MarginContainer/Content" index="1"]
+text = "Блок цикла"
+
+[node name="XContainer" type="HBoxContainer" parent="Control/MarginContainer/Content" index="2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/Content/XContainer" index="0"]
+layout_mode = 2
+text = "X"
+
+[node name="XSpinBox" type="SpinBox" parent="Control/MarginContainer/Content/XContainer" index="1"]
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+
+[node name="YContainer" type="HBoxContainer" parent="Control/MarginContainer/Content" index="3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/Content/YContainer" index="0"]
+layout_mode = 2
+text = "Y"
+
+[node name="YSpinBox" type="SpinBox" parent="Control/MarginContainer/Content/YContainer" index="1"]
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+
+[node name="Distance container" type="HBoxContainer" parent="Control/MarginContainer/Content" index="4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/Content/Distance container" index="0"]
+layout_mode = 2
+text = "Dist"
+
+[node name="DistanceSpinBox" type="SpinBox" parent="Control/MarginContainer/Content/Distance container" index="1"]
+layout_mode = 2
+min_value = 1.0
+max_value = 1.0
+value = 1.0
+allow_greater = true
+
+[node name="GEndPoint" parent="EndPoints" index="0" instance=ExtResource("3_7f5yb")]
+position = Vector2(0, -87)
+
+[node name="GEndPoint2" parent="EndPoints" index="1" instance=ExtResource("3_7f5yb")]
+position = Vector2(-71, 0)
+
+[node name="GBeginPoint" parent="BeginPoints" index="0" instance=ExtResource("4_ualsm")]
+position = Vector2(39, 85)
+
+[node name="GBeginPoint2" parent="BeginPoints" index="1" instance=ExtResource("4_ualsm")]
+position = Vector2(-38, 87)

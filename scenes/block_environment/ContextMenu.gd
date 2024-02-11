@@ -1,12 +1,13 @@
 extends MarginContainer
 
 
-@onready var block_schema = $"../SubViewport/GBlockSchema"
+@onready var block_schema = $"../GBlockSchema"
 @onready var BlockTypes = {
 	"begin" :preload("res://scenes/block_environment/g_block_schema/block_begin/g_block_begin.tscn"),
-	"action" :preload("res://scenes/block_environment/g_block_schema/block_action/g_block_action.tscn"),
+	"action":preload("res://scenes/block_environment/g_block_schema/block_action/g_block_action.tscn"),
 	"if": preload("res://scenes/block_environment/g_block_schema/block_if/g_block_if.tscn"),
 	"join":preload("res://scenes/block_environment/g_block_schema/block_join/g_block_join.tscn"),
+	"while":preload("res://scenes/block_environment/g_block_schema/block_while/g_block_while.tscn"),
 	"end" :preload("res://scenes/block_environment/g_block_schema/block_end/g_block_end.tscn")
 }
 
@@ -17,27 +18,23 @@ func _input(event):
 	
 func _on_button_pressed():
 	var opt = $VBoxContainer/HBoxContainer/OptionButton as OptionButton
+	var block
 	match(opt.selected):
 		0:
-			var block = BlockTypes["begin"].instantiate()
-			block_schema.add_child(block)
-			block.position = block.get_parent().get_local_mouse_position()
+			block = BlockTypes["begin"].instantiate()
 		1:
-			var block = BlockTypes["action"].instantiate()
-			block_schema.add_child(block)
-			block.position = block.get_parent().to_local(get_global_mouse_position())
+			block = BlockTypes["action"].instantiate()
 		2:
-			var block = BlockTypes["if"].instantiate()
-			block_schema.add_child(block)
-			block.position = block.get_parent().to_local(get_global_mouse_position())
+			block = BlockTypes["if"].instantiate()
 		3:
-			var block = BlockTypes["join"].instantiate()
-			block_schema.add_child(block)
-			block.position = block.get_parent().to_local(get_global_mouse_position())
+			block = BlockTypes["join"].instantiate()
 		4:
-			var block = BlockTypes["end"].instantiate()
-			block_schema.add_child(block)
-			block.position = block.get_parent().to_local(get_global_mouse_position())
+			block = BlockTypes["while"].instantiate()
+		5:
+			block = BlockTypes["end"].instantiate()
+			
+	block_schema.add_child(block)
+	block.position = block_schema.to_local(global_position)
 	close_context_menu()
 	
 func close_context_menu():
