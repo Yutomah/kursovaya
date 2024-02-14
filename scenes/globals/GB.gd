@@ -11,7 +11,7 @@ signal line_draw_wanted(zap:Zap, direction:Vector2i)
 signal line_jump_wanted(zap:Zap, direction:Vector2i)
 signal line_draw_ended(result:bool)
 
-signal context_menu_close_wanted()
+signal context_menu_open_wanted(context_menu:ContextMenu)
 
 signal activate_all_begin_blocks_wanted()
 signal pause_all_blocks_wanted()

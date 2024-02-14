@@ -3,7 +3,8 @@ extends Control
 var LKM_pressed:bool = false
 var old_mouse_position:Vector2
 @export var camera:Camera2D
-@onready var context_menu = $"../../../ContextMenu"
+var context_menu = preload("res://scenes/context_menu_layer/context_menu\
+/block_field_context_menu/block_field_context_menu.tscn")
 
 func _process(delta):
 	if LKM_pressed:
@@ -18,10 +19,14 @@ func _on_gui_input(event):
 		old_mouse_position = camera.get_global_mouse_position()
 		
 	if event.is_action_pressed("RKM"):
-		context_menu.global_position = context_menu.get_global_mouse_position()
-		$"../../../ContextMenu".show()
+		open_context_menu()
 
 func _input(event):
 	if event.is_action_released("LKM") and LKM_pressed:
 		LKM_pressed = false
 
+func open_context_menu():
+	var menu := context_menu.instantiate() as BlockFieldContextMenu
+	menu.block_schema = %GBlockSchema
+	GB.context_menu_open_wanted.emit(menu)
+	

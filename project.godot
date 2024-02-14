@@ -26,6 +26,7 @@ window/stretch/scale_mode="integer"
 [file_customization]
 
 folder_colors={
+"res://scenes/context_menu_layer/": "pink",
 "res://scenes/drawing_window/": "green",
 "res://scenes/globals/": "pink",
 "res://scenes/main_window/": "gray"

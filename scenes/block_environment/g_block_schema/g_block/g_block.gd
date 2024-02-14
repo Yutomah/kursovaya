@@ -3,7 +3,9 @@ class_name GBlock
 
 var LKM_pressed:bool = false
 var old_mouse_position:Vector2
-@onready var context_menu = $ContextMenu
+
+var context_menu:PackedScene = preload("res://scenes/context_menu_layer/context_menu\
+/block_context_menu/g_block_context_menu.tscn")
 
 func _ready():
 	pass
@@ -31,8 +33,7 @@ func _on_control_gui_input(event):
 		$Control.accept_event()
 		
 	if event.is_action_pressed("RKM"):
-		context_menu.show()
-		context_menu.position = get_local_mouse_position()
+		open_context_menu()
 		$Control.accept_event()
 		
 func _input(event):
@@ -45,3 +46,9 @@ func remove_myself():
 	for end_point:GEndPoint in $EndPoints.get_children():
 		end_point.remove_link()
 	queue_free()
+
+func open_context_menu():
+	var menu := context_menu.instantiate() as BlockContextMenu
+	menu.block = self
+	GB.context_menu_open_wanted.emit(menu)
+	

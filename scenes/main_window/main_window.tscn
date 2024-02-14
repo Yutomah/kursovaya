@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdc5qxhxp27cy"]
+[gd_scene load_steps=7 format=3 uid="uid://cdc5qxhxp27cy"]
 
 [ext_resource type="Script" path="res://scenes/main_window/main_window.gd" id="1_jk2hf"]
 [ext_resource type="PackedScene" uid="uid://bseqanhbkxpgw" path="res://scenes/main_window/top_bar/main_window_top_bar.tscn" id="1_y748h"]
 [ext_resource type="PackedScene" uid="uid://bpxtayo5uy4gy" path="res://scenes/main_window/foot_bar/main_window_foot_bar.tscn" id="2_scasd"]
 [ext_resource type="PackedScene" uid="uid://bna6lcmwx6e22" path="res://scenes/block_environment/block_environment.tscn" id="3_7p3uo"]
 [ext_resource type="PackedScene" uid="uid://dmcqpynme8xtt" path="res://scenes/drawing_window/drawing_window2.tscn" id="3_djpur"]
+[ext_resource type="PackedScene" uid="uid://cmvdua3qdtn7h" path="res://scenes/context_menu_layer/context_menu_layer.tscn" id="6_sylqq"]
 
 [node name="MainWindow" type="Node2D"]
 script = ExtResource("1_jk2hf")
@@ -50,3 +51,5 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 1
+
+[node name="ContextMenuLayer" parent="HUD" instance=ExtResource("6_sylqq")]
