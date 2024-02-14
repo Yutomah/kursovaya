@@ -7,10 +7,14 @@ var old_mouse_position:Vector2
 var context_menu:PackedScene = preload("res://scenes/context_menu_layer/context_menu\
 /block_context_menu/g_block_context_menu.tscn")
 
+var delay:float = 0.3
+signal pause_remove_wanted()
+
 func _ready():
-	pass
+	GB.continue_all_blocks_wanted.connect(func():pause_remove_wanted.emit())
+	GB.stop_all_blocks_wanted.connect(func():pause_remove_wanted.emit())
 	
-func _process(delta):
+func _process(_delta):
 	if LKM_pressed:
 		var dif = get_local_mouse_position() - old_mouse_position
 		position += dif
@@ -46,9 +50,19 @@ func remove_myself():
 	for end_point:GEndPoint in $EndPoints.get_children():
 		end_point.remove_link()
 	queue_free()
-
+	
 func open_context_menu():
 	var menu := context_menu.instantiate() as BlockContextMenu
 	menu.block = self
 	GB.context_menu_open_wanted.emit(menu)
+
+func zap_processing_control():
+	$Control.modulate = Color.BURLYWOOD
+	await get_tree().create_timer(delay).timeout
+	if GB.paused:
+		await GB.continue_all_blocks_wanted
 	
+	$Control.modulate = Color.WHITE
+	return true if GB.running else false
+
+

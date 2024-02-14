@@ -59,8 +59,9 @@ func refresh_links():
 		end_point.begin_point.update_static_line_pos()
 			
 func zap_processing(zap:Zap):
-	if begin_point.end_point != null:
-		begin_point.end_point.block.zap_processing(zap)
-	else:
-		print("Отсутствует блок для последующей передачи")
+	if await zap_processing_control():
+		if begin_point.end_point != null:
+			begin_point.end_point.block.zap_processing(zap)
+		else:
+			print("Отсутствует блок для последующей передачи")
 		

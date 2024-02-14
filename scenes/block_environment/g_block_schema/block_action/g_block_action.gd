@@ -14,22 +14,22 @@ func _process(delta):
 	pass
 	
 func zap_processing(zap:Zap):
-	await get_tree().create_timer(0.3).timeout
-	var x = $Control/MarginContainer/Content/XContainer/SpinBox.value
-	var y = $Control/MarginContainer/Content/YContainer/SpinBox.value
-	var direction = Vector2i(x,y)
-	
-	var line_drawed:bool
-	if $Control/MarginContainer/Content/CheckBox.button_pressed == true:
-		line_drawed = zap.grid_line.line_jump(direction)
-	else:
-		line_drawed = zap.grid_line.line_draw(direction)
+	if await zap_processing_control():
+		var x = $Control/MarginContainer/Content/XContainer/SpinBox.value
+		var y = $Control/MarginContainer/Content/YContainer/SpinBox.value
+		var direction = Vector2i(x,y)
 		
-	if line_drawed:
-		if begin_point.end_point != null:
-			begin_point.end_point.block.zap_processing(zap)
+		var line_drawed:bool
+		if $Control/MarginContainer/Content/CheckBox.button_pressed == true:
+			line_drawed = zap.grid_line.line_jump(direction)
 		else:
-			print("Отсутствует блок для последующей передачи")
-	else:
-		print("Нарушение границ доски")
+			line_drawed = zap.grid_line.line_draw(direction)
+			
+		if line_drawed:
+			if begin_point.end_point != null:
+				begin_point.end_point.block.zap_processing(zap)
+			else:
+				print("Отсутствует блок для последующей передачи")
+		else:
+			print("Нарушение границ доски")
 

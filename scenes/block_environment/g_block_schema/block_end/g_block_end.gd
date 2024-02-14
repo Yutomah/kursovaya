@@ -13,5 +13,6 @@ func _process(delta):
 	pass
 
 func zap_processing(zap:Zap):
-	print(name)
+	if await zap_processing_control():
+		print("over")
 	pass

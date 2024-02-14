@@ -14,13 +14,13 @@ signal line_draw_ended(result:bool)
 signal context_menu_open_wanted(context_menu:ContextMenu)
 
 signal activate_all_begin_blocks_wanted()
-signal pause_all_blocks_wanted()
 signal continue_all_blocks_wanted()
 signal stop_all_blocks_wanted()
 
 enum {NONE_TOOL, SELECTION_TOOL, HAND_TOOL, ZOOM_TOOL}
 
 var current_tool = SELECTION_TOOL
+
 
 var running:bool = false
 var paused:bool = false

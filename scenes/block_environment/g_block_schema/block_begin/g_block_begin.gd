@@ -13,14 +13,20 @@ func _process(delta):
 	super._process(delta)
 
 func zap_processing():
-	var zap = Zap.new()
-	zap.block_begin = self
-	GB.line_creation_wanted.emit(zap)
-	if begin_point.end_point != null:
-		begin_point.end_point.block.zap_processing(zap)
-	else:
-		print("Прерывание сигнала")
+	if await zap_processing_control():
+		var zap = Zap.new()
+		zap.block_begin = self
+		GB.line_creation_wanted.emit(zap)
+		if begin_point.end_point != null:
+			begin_point.end_point.block.zap_processing(zap)
+		else:
+			print("Прерывание сигнала")
 
 
 func _on_activate_button_pressed():
 	zap_processing()
+	GB.running = true
+
+func on_activate_all_begin_buttons_pressed():
+	if $Control/MarginContainer/Content/MassActivationCheckbox.button_pressed():
+		zap_processing()
