@@ -1,87 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvbehmxilpdh2"]
+[gd_scene load_steps=3 format=3 uid="uid://cvbehmxilpdh2"]
 
-[ext_resource type="Script" path="res://scenes/drawing_window/InfiniteGridCheckBox.gd" id="1_a68to"]
-[ext_resource type="Script" path="res://scenes/drawing_window/ClearFieldButton.gd" id="1_o5a3g"]
 [ext_resource type="Script" path="res://scenes/drawing_window/drawing_window.gd" id="1_pusqv"]
-[ext_resource type="Script" path="res://scenes/drawing_window/CameraToDefaultButton.gd" id="2_d31vs"]
-[ext_resource type="Script" path="res://scenes/drawing_window/FieldSizeApplyButton.gd" id="4_ceo65"]
-[ext_resource type="PackedScene" uid="uid://x83yn2bdb4nx" path="res://scenes/drawing_window/draw_environment/draw_environment.tscn" id="6_yv56n"]
+[ext_resource type="PackedScene" uid="uid://dmcqpynme8xtt" path="res://scenes/drawing_window/drawing_window2.tscn" id="2_giiat"]
 
 [node name="DrawingWindow" type="Window"]
-position = Vector2i(500, 50)
+handle_input_locally = false
+position = Vector2i(318, 36)
 size = Vector2i(500, 500)
 wrap_controls = true
+mouse_passthrough = true
 script = ExtResource("1_pusqv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 0
-
-[node name="HBoxContainer" type="HFlowContainer" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-
-[node name="ClearFieldButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Стереть всё"
-script = ExtResource("1_o5a3g")
-
-[node name="CameraToDefaultButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Вернуть камеру"
-script = ExtResource("2_d31vs")
-
-[node name="FieldSizeContainer" type="HFlowContainer" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-
-[node name="FieldSizeLabel" type="Label" parent="CanvasLayer/VBoxContainer/FieldSizeContainer"]
-layout_mode = 2
-text = "Размер поля"
-
-[node name="InfiniteGridCheckBox" type="CheckBox" parent="CanvasLayer/VBoxContainer/FieldSizeContainer"]
-layout_mode = 2
-text = "Бесконечный"
-script = ExtResource("1_a68to")
-
-[node name="WidthContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/FieldSizeContainer"]
-layout_mode = 2
-
-[node name="WidthLabel" type="Label" parent="CanvasLayer/VBoxContainer/FieldSizeContainer/WidthContainer"]
-layout_mode = 2
-text = "Ширина"
-
-[node name="WidthLineEdit" type="SpinBox" parent="CanvasLayer/VBoxContainer/FieldSizeContainer/WidthContainer"]
-layout_mode = 2
-min_value = 1.0
-value = 1.0
-
-[node name="HeightContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/FieldSizeContainer"]
-layout_mode = 2
-
-[node name="HeightLabel" type="Label" parent="CanvasLayer/VBoxContainer/FieldSizeContainer/HeightContainer"]
-layout_mode = 2
-text = "Длина"
-
-[node name="HeightLineEdit" type="SpinBox" parent="CanvasLayer/VBoxContainer/FieldSizeContainer/HeightContainer"]
-layout_mode = 2
-min_value = 1.0
-value = 1.0
-
-[node name="FieldSizeApplyButton" type="Button" parent="CanvasLayer/VBoxContainer/FieldSizeContainer"]
-layout_mode = 2
-text = "Применить"
-script = ExtResource("4_ceo65")
-
-[node name="DrawEnvironment" parent="CanvasLayer/VBoxContainer" instance=ExtResource("6_yv56n")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="VBoxContainer" parent="CanvasLayer" instance=ExtResource("2_giiat")]
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/ClearFieldButton" to="CanvasLayer/VBoxContainer/HBoxContainer/ClearFieldButton" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/CameraToDefaultButton" to="CanvasLayer/VBoxContainer/HBoxContainer/CameraToDefaultButton" method="_on_pressed"]
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/FieldSizeContainer/InfiniteGridCheckBox" to="CanvasLayer/VBoxContainer/FieldSizeContainer/InfiniteGridCheckBox" method="_on_toggled"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/FieldSizeContainer/FieldSizeApplyButton" to="CanvasLayer/VBoxContainer/FieldSizeContainer/FieldSizeApplyButton" method="_on_pressed"]

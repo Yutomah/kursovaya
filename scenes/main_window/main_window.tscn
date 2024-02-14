@@ -1,14 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdc5qxhxp27cy"]
+[gd_scene load_steps=6 format=3 uid="uid://cdc5qxhxp27cy"]
 
+[ext_resource type="Script" path="res://scenes/main_window/main_window.gd" id="1_jk2hf"]
 [ext_resource type="PackedScene" uid="uid://bseqanhbkxpgw" path="res://scenes/main_window/top_bar/main_window_top_bar.tscn" id="1_y748h"]
 [ext_resource type="PackedScene" uid="uid://bpxtayo5uy4gy" path="res://scenes/main_window/foot_bar/main_window_foot_bar.tscn" id="2_scasd"]
 [ext_resource type="PackedScene" uid="uid://bna6lcmwx6e22" path="res://scenes/block_environment/block_environment.tscn" id="3_7p3uo"]
-[ext_resource type="PackedScene" uid="uid://cvbehmxilpdh2" path="res://scenes/drawing_window/drawing_window.tscn" id="3_h70fp"]
+[ext_resource type="PackedScene" uid="uid://dmcqpynme8xtt" path="res://scenes/drawing_window/drawing_window2.tscn" id="3_djpur"]
 
 [node name="MainWindow" type="Node2D"]
-
-[node name="DrawingWindow" parent="." instance=ExtResource("3_h70fp")]
-visible = false
+script = ExtResource("1_jk2hf")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -32,16 +31,22 @@ grow_vertical = 2
 [node name="MainWindowTopBar" parent="HUD/Control/VBoxContainer" instance=ExtResource("1_y748h")]
 layout_mode = 2
 size_flags_vertical = 0
+focus_mode = 1
 mouse_filter = 1
 
-[node name="BlockEnvironment" parent="HUD/Control/VBoxContainer" instance=ExtResource("3_7p3uo")]
+[node name="HSplitContainer" type="HSplitContainer" parent="HUD/Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+split_offset = 500
+
+[node name="BlockEnvironment" parent="HUD/Control/VBoxContainer/HSplitContainer" instance=ExtResource("3_7p3uo")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="drawing_window2" parent="HUD/Control/VBoxContainer/HSplitContainer" instance=ExtResource("3_djpur")]
+layout_mode = 2
 
 [node name="MainWindowFootBar" parent="HUD/Control/VBoxContainer" instance=ExtResource("2_scasd")]
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 1
-
-[connection signal="mouse_entered" from="HUD/Control" to="HUD/Control" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="HUD/Control" to="HUD/Control" method="_on_mouse_exited"]

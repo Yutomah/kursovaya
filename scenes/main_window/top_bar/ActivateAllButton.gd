@@ -10,6 +10,3 @@ func _ready():
 func _process(delta):
 	pass
 
-
-func _on_pressed():
-	GB.activate_all_begin_blocks_wanted.emit()

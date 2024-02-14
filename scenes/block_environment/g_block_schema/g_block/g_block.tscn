@@ -45,6 +45,7 @@ text = "Базовый блок"
 
 [node name="ContextMenu" type="MarginContainer" parent="."]
 visible = false
+z_index = 100
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_saqvh")

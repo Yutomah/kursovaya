@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmcqpynme8xtt"]
+
+[ext_resource type="Script" path="res://scenes/drawing_window/ClearFieldButton.gd" id="1_4nrle"]
+[ext_resource type="Script" path="res://scenes/drawing_window/CameraToDefaultButton.gd" id="2_fn5v8"]
+[ext_resource type="Script" path="res://scenes/drawing_window/PlayButton.gd" id="3_khyny"]
+[ext_resource type="Script" path="res://scenes/drawing_window/PauseButton.gd" id="4_sl6hx"]
+[ext_resource type="Script" path="res://scenes/drawing_window/StupButton.gd" id="5_03cf2"]
+[ext_resource type="Script" path="res://scenes/drawing_window/InfiniteGridCheckBox.gd" id="6_4l1ua"]
+[ext_resource type="Script" path="res://scenes/drawing_window/FieldSizeApplyButton.gd" id="7_tywt6"]
+[ext_resource type="PackedScene" uid="uid://x83yn2bdb4nx" path="res://scenes/drawing_window/draw_environment/draw_environment.tscn" id="8_bcpr3"]
+
+[node name="DrawingWindow2" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+
+[node name="HBoxContainer" type="HFlowContainer" parent="."]
+layout_mode = 2
+
+[node name="ClearFieldButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Стереть всё"
+script = ExtResource("1_4nrle")
+
+[node name="CameraToDefaultButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Вернуть камеру"
+script = ExtResource("2_fn5v8")
+
+[node name="RunButtonsContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="HBoxContainer/RunButtonsContainer"]
+layout_mode = 2
+text = "play"
+script = ExtResource("3_khyny")
+
+[node name="PauseButton" type="Button" parent="HBoxContainer/RunButtonsContainer"]
+layout_mode = 2
+text = "pause"
+script = ExtResource("4_sl6hx")
+
+[node name="StupButton" type="Button" parent="HBoxContainer/RunButtonsContainer"]
+layout_mode = 2
+text = "stop"
+script = ExtResource("5_03cf2")
+
+[node name="FieldSizeContainer" type="HFlowContainer" parent="."]
+layout_mode = 2
+
+[node name="FieldSizeLabel" type="Label" parent="FieldSizeContainer"]
+layout_mode = 2
+text = "Размер поля"
+
+[node name="InfiniteGridCheckBox" type="CheckBox" parent="FieldSizeContainer"]
+layout_mode = 2
+text = "Бесконечный"
+script = ExtResource("6_4l1ua")
+
+[node name="WidthContainer" type="HBoxContainer" parent="FieldSizeContainer"]
+layout_mode = 2
+
+[node name="WidthLabel" type="Label" parent="FieldSizeContainer/WidthContainer"]
+layout_mode = 2
+text = "Ширина"
+
+[node name="WidthLineEdit" type="SpinBox" parent="FieldSizeContainer/WidthContainer"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="HeightContainer" type="HBoxContainer" parent="FieldSizeContainer"]
+layout_mode = 2
+
+[node name="HeightLabel" type="Label" parent="FieldSizeContainer/HeightContainer"]
+layout_mode = 2
+text = "Длина"
+
+[node name="HeightLineEdit" type="SpinBox" parent="FieldSizeContainer/HeightContainer"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="FieldSizeApplyButton" type="Button" parent="FieldSizeContainer"]
+layout_mode = 2
+text = "Применить"
+script = ExtResource("7_tywt6")
+
+[node name="DrawEnvironment" parent="." instance=ExtResource("8_bcpr3")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="HBoxContainer/ClearFieldButton" to="HBoxContainer/ClearFieldButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/CameraToDefaultButton" to="HBoxContainer/CameraToDefaultButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/RunButtonsContainer/PlayButton" to="HBoxContainer/RunButtonsContainer/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/RunButtonsContainer/PauseButton" to="HBoxContainer/RunButtonsContainer/PauseButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/RunButtonsContainer/StupButton" to="HBoxContainer/RunButtonsContainer/StupButton" method="_on_pressed"]
+[connection signal="toggled" from="FieldSizeContainer/InfiniteGridCheckBox" to="FieldSizeContainer/InfiniteGridCheckBox" method="_on_toggled"]
+[connection signal="pressed" from="FieldSizeContainer/FieldSizeApplyButton" to="FieldSizeContainer/FieldSizeApplyButton" method="_on_pressed"]

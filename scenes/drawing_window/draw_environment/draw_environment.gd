@@ -27,3 +27,4 @@ func _input(event):
 
 func camera_to_default():
 	camera.offset = Vector2.ZERO
+

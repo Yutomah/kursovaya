@@ -40,6 +40,7 @@ camera = NodePath("../..")
 
 [node name="ContextMenu" type="MarginContainer" parent="SubViewport/Root"]
 visible = false
+z_index = 100
 offset_right = 277.0
 offset_bottom = 31.0
 script = ExtResource("4_i0wvd")
@@ -53,7 +54,7 @@ layout_mode = 2
 [node name="OptionButton" type="OptionButton" parent="SubViewport/Root/ContextMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 item_count = 6
-selected = 1
+selected = 0
 popup/item_0/text = "Начальный блок"
 popup/item_0/id = 0
 popup/item_1/text = "Блок действия"
