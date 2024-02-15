@@ -26,12 +26,14 @@ func _process(_delta):
 			if end_point.begin_point != null:
 				end_point.begin_point.update_static_line_pos()
 				
-func _on_control_mouse_entered():
-	$Control.grab_focus()
+
 
 
 func _on_control_gui_input(event):
+	if event.is_action_pressed("LKM") and GB.current_tool == GB.HAND_TOOL:
+		GB.hand_tool_on_block_pressed.emit(event)
 	if event.is_action_pressed("LKM") and GB.current_tool == GB.SELECTION_TOOL:
+		print(11)
 		LKM_pressed = true
 		old_mouse_position = get_local_mouse_position()
 		$Control.accept_event()

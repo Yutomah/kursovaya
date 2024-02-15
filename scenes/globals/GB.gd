@@ -11,6 +11,9 @@ signal line_draw_wanted(zap:Zap, direction:Vector2i)
 signal line_jump_wanted(zap:Zap, direction:Vector2i)
 signal line_draw_ended(result:bool)
 
+#blocks
+signal hand_tool_on_block_pressed(event:InputEvent)
+
 #context_menu
 signal context_menu_open_wanted(context_menu:ContextMenu)
 

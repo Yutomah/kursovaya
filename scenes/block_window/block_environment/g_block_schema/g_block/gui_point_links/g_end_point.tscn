@@ -22,4 +22,4 @@ focus_mode = 1
 mouse_filter = 1
 
 [connection signal="gui_input" from="ControlEnd" to="." method="_on_control_end_gui_input"]
-[connection signal="mouse_entered" from="ControlEnd" to="." method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="ControlEnd" to="." method="_on_control_end_mouse_entered"]

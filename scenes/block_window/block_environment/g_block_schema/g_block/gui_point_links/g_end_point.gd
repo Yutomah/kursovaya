@@ -8,8 +8,6 @@ func _draw():
 	draw_circle(Vector2.ZERO, 7, Color.SKY_BLUE)
 	draw_circle(Vector2.ZERO, 3, Color.WHEAT)
 
-func _on_mouse_entered():
-	$ControlEnd.grab_focus()
 
 func remove_link():
 	if begin_point!= null:
@@ -22,3 +20,7 @@ func _on_control_end_gui_input(event):
 		if begin_point != null:
 			begin_point.LKM_pressed = true
 			$ControlEnd.accept_event()
+
+
+func _on_control_end_mouse_entered():
+	$ControlEnd.grab_focus()

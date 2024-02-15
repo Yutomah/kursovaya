@@ -27,9 +27,6 @@ func _input(event):
 		var focus_owner = get_viewport().gui_get_focus_owner()
 		if focus_owner != null and focus_owner.get_parent() is GEndPoint:
 			create_link(focus_owner.get_parent())
-			
-func _on_mouse_entered():
-	$ControlBegin.grab_focus()
 
 func remove_link():
 	if end_point != null:

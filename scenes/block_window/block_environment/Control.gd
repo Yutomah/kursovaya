@@ -6,12 +6,11 @@ var old_mouse_position:Vector2
 var context_menu = preload("res://scenes/context_menu_layer/context_menu\
 /block_field_context_menu/block_field_context_menu.tscn")
 
+func _ready():
+	GB.hand_tool_on_block_pressed.connect(_on_gui_input)
 func _process(_delta):
 	if LKM_pressed:
 		camera.offset += old_mouse_position - camera.get_global_mouse_position()
-		
-func _on_mouse_entered():
-	grab_focus()
 
 func _on_gui_input(event):
 	if event.is_action_pressed("LKM") and GB.current_tool == GB.HAND_TOOL:
