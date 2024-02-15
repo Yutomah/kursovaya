@@ -9,7 +9,7 @@ func _ready():
 	GB.camera_to_default_wanted.connect(camera_to_default)
 	
 	
-func _process(delta):
+func _process(_delta):
 	if LKM_pressed:
 		camera.offset += old_mouse_position - $SubViewport/Camera2D.get_global_mouse_position()
 	

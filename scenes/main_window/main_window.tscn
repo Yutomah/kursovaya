@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scenes/main_window/main_window.gd" id="1_jk2hf"]
 [ext_resource type="PackedScene" uid="uid://bseqanhbkxpgw" path="res://scenes/main_window/top_bar/main_window_top_bar.tscn" id="1_y748h"]
 [ext_resource type="PackedScene" uid="uid://bpxtayo5uy4gy" path="res://scenes/main_window/foot_bar/main_window_foot_bar.tscn" id="2_scasd"]
-[ext_resource type="PackedScene" uid="uid://bna6lcmwx6e22" path="res://scenes/block_environment/block_environment.tscn" id="3_7p3uo"]
-[ext_resource type="PackedScene" uid="uid://dmcqpynme8xtt" path="res://scenes/drawing_window/drawing_window2.tscn" id="3_djpur"]
+[ext_resource type="PackedScene" uid="uid://dmcqpynme8xtt" path="res://scenes/drawing_window/drawing_window.tscn" id="3_djpur"]
+[ext_resource type="PackedScene" uid="uid://cvnp5l08gxo0" path="res://scenes/block_window/block_window.tscn" id="3_x44e1"]
 [ext_resource type="PackedScene" uid="uid://cp1fjsm5pxsv3" path="res://scenes/log_window/log_window.tscn" id="4_pd31y"]
 [ext_resource type="PackedScene" uid="uid://cmvdua3qdtn7h" path="res://scenes/context_menu_layer/context_menu_layer.tscn" id="6_sylqq"]
 
@@ -43,13 +43,15 @@ split_offset = 500
 
 [node name="VSplitContainer" type="VSplitContainer" parent="HUD/Content/VBoxContainer/HSplitContainer"]
 layout_mode = 2
+split_offset = 100
 
-[node name="BlockEnvironment" parent="HUD/Content/VBoxContainer/HSplitContainer/VSplitContainer" instance=ExtResource("3_7p3uo")]
+[node name="BlockWindow" parent="HUD/Content/VBoxContainer/HSplitContainer/VSplitContainer" instance=ExtResource("3_x44e1")]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="LogWindow" parent="HUD/Content/VBoxContainer/HSplitContainer/VSplitContainer" instance=ExtResource("4_pd31y")]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="drawing_window2" parent="HUD/Content/VBoxContainer/HSplitContainer" instance=ExtResource("3_djpur")]
 layout_mode = 2

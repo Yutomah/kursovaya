@@ -20,3 +20,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.321569, 0.556863, 0.47451, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="SubViewport/HBoxContainer"]
+layout_mode = 2
+text = "Кнопка 1"
+
+[node name="Button2" type="Button" parent="SubViewport/HBoxContainer"]
+layout_mode = 2
+text = "Кнопка 2"

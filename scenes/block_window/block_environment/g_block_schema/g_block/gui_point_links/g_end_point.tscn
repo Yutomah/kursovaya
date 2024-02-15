@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cq3i7td46je11"]
 
-[ext_resource type="Script" path="res://scenes/block_environment/g_block_schema/g_block/gui_point_links/g_end_point.gd" id="1_qe5me"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/g_block_schema/g_block/gui_point_links/g_end_point.gd" id="1_qe5me"]
 
 [node name="GEndPoint" type="Node2D"]
 script = ExtResource("1_qe5me")

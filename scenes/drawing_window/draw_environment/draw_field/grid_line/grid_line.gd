@@ -34,9 +34,9 @@ func line_jump(direction:Vector2i):
 		return true
 	return false
 
-func can_draw(current_grid_pos):
-	var in_borders_x = current_grid_pos.x <= grid.grid_size.x and current_grid_pos.x >= 0
-	var in_borders_y = current_grid_pos.y <= grid.grid_size.y and current_grid_pos.y >= 0
+func can_draw(grid_pos):
+	var in_borders_x = grid_pos.x <= grid.grid_size.x and grid_pos.x >= 0
+	var in_borders_y = grid_pos.y <= grid.grid_size.y and grid_pos.y >= 0
 	var result = (in_borders_x and in_borders_y and !grid.is_inf_grid) or grid.is_inf_grid
 	GB.line_draw_ended.emit(result)
 	return result
@@ -47,8 +47,7 @@ func remove_myself():
 func check_for_border(direction:Vector2i, distance:int = 1):
 	return can_draw(current_grid_pos + direction*distance)
 	
-func _process(delta):
-	pass
+
 
 func clone(zap:Zap)->GridLine:
 	var scene = PackedScene.new()

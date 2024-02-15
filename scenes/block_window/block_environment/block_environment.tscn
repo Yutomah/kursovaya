@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bna6lcmwx6e22"]
 
-[ext_resource type="PackedScene" uid="uid://y7rt1fkggvb0" path="res://scenes/block_environment/g_block_schema/g_block_schema.tscn" id="1_54gbm"]
-[ext_resource type="Script" path="res://scenes/block_environment/Control.gd" id="3_1xnwo"]
+[ext_resource type="PackedScene" uid="uid://y7rt1fkggvb0" path="res://scenes/block_window/block_environment/g_block_schema/g_block_schema.tscn" id="1_54gbm"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/Control.gd" id="3_1xnwo"]
 
 [node name="BlockEnvironment" type="SubViewportContainer"]
 anchors_preset = 15

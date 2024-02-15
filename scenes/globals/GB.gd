@@ -11,16 +11,17 @@ signal line_draw_wanted(zap:Zap, direction:Vector2i)
 signal line_jump_wanted(zap:Zap, direction:Vector2i)
 signal line_draw_ended(result:bool)
 
+#context_menu
 signal context_menu_open_wanted(context_menu:ContextMenu)
 
+
+#tools
+enum {NONE_TOOL, SELECTION_TOOL, HAND_TOOL, ZOOM_TOOL}
+var current_tool = SELECTION_TOOL
+
+# zap_player
 signal activate_all_begin_blocks_wanted()
 signal continue_all_blocks_wanted()
 signal stop_all_blocks_wanted()
-
-enum {NONE_TOOL, SELECTION_TOOL, HAND_TOOL, ZOOM_TOOL}
-
-var current_tool = SELECTION_TOOL
-
-
 var running:bool = false
 var paused:bool = false

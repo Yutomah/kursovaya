@@ -2,8 +2,10 @@ extends GBlock
 class_name GBlockJoin
 
 @onready var begin_point:GBeginPoint = $BeginPoints/GBeginPoint
-@onready var end_point_scene:PackedScene = preload("res://scenes/block_environment/g_block_schema/g_block/gui_point_links/g_end_point.tscn")
-@onready var begin_point_scene:PackedScene = preload("res://scenes/block_environment/g_block_schema/g_block/gui_point_links/g_begin_point.tscn")
+@onready var end_point_scene:PackedScene = preload("res://scenes/block_window\
+/block_environment/g_block_schema/g_block/gui_point_links/g_end_point.tscn")
+@onready var begin_point_scene:PackedScene = preload("res://scenes/block_window\
+/block_environment/g_block_schema/g_block/gui_point_links/g_begin_point.tscn")
 @onready var DEFAULT_SIZE = $Control.size
 
 func _ready():

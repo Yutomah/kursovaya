@@ -24,7 +24,7 @@ func on_change_field_size_wanted(is_inf_grid:bool, grid_size:Vector2i):
 func _ready():
 	GB.change_field_size_wanted.connect(on_change_field_size_wanted)
 	
-func _process(delta):
+func _process(_delta):
 	if is_inf_grid:
 		var grid_x = int(camera.offset.x / CELL_SIZE) * CELL_SIZE
 		var grid_y = int(camera.offset.y / CELL_SIZE) * CELL_SIZE

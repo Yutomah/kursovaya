@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://6511h840dpyr"]
 
-[ext_resource type="PackedScene" uid="uid://176g3cp8n76a" path="res://scenes/block_environment/g_block_schema/g_block/g_block.tscn" id="1_x54yn"]
-[ext_resource type="Script" path="res://scenes/block_environment/g_block_schema/block_join/g_block_join.gd" id="2_jw1ja"]
-[ext_resource type="PackedScene" uid="uid://cq3i7td46je11" path="res://scenes/block_environment/g_block_schema/g_block/gui_point_links/g_end_point.tscn" id="3_5wr1i"]
-[ext_resource type="PackedScene" uid="uid://dvd6ysg6qyrj2" path="res://scenes/block_environment/g_block_schema/g_block/gui_point_links/g_begin_point.tscn" id="4_atv1g"]
+[ext_resource type="PackedScene" uid="uid://176g3cp8n76a" path="res://scenes/block_window/block_environment/g_block_schema/g_block/g_block.tscn" id="1_x54yn"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/g_block_schema/block_join/g_block_join.gd" id="2_jw1ja"]
+[ext_resource type="PackedScene" uid="uid://cq3i7td46je11" path="res://scenes/block_window/block_environment/g_block_schema/g_block/gui_point_links/g_end_point.tscn" id="3_5wr1i"]
+[ext_resource type="PackedScene" uid="uid://dvd6ysg6qyrj2" path="res://scenes/block_window/block_environment/g_block_schema/g_block/gui_point_links/g_begin_point.tscn" id="4_atv1g"]
 
 [node name="GBlockJoin" instance=ExtResource("1_x54yn")]
 script = ExtResource("2_jw1ja")

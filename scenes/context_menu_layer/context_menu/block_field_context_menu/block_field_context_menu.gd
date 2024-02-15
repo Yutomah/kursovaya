@@ -4,12 +4,12 @@ class_name BlockFieldContextMenu
 var block_schema
 
 @onready var BlockTypes = {
-	"begin" :preload("res://scenes/block_environment/g_block_schema/block_begin/g_block_begin.tscn"),
-	"action":preload("res://scenes/block_environment/g_block_schema/block_action/g_block_action.tscn"),
-	"if": preload("res://scenes/block_environment/g_block_schema/block_if/g_block_if.tscn"),
-	"join":preload("res://scenes/block_environment/g_block_schema/block_join/g_block_join.tscn"),
-	"while":preload("res://scenes/block_environment/g_block_schema/block_while/g_block_while.tscn"),
-	"end" :preload("res://scenes/block_environment/g_block_schema/block_end/g_block_end.tscn")
+	"begin" :preload("res://scenes/block_window/block_environment/g_block_schema/block_begin/g_block_begin.tscn"),
+	"action":preload("res://scenes/block_window/block_environment/g_block_schema/block_action/g_block_action.tscn"),
+	"if": preload("res://scenes/block_window/block_environment/g_block_schema/block_if/g_block_if.tscn"),
+	"join":preload("res://scenes/block_window/block_environment/g_block_schema/block_join/g_block_join.tscn"),
+	"while":preload("res://scenes/block_window/block_environment/g_block_schema/block_while/g_block_while.tscn"),
+	"end" :preload("res://scenes/block_window/block_environment/g_block_schema/block_end/g_block_end.tscn")
 }
 
 func _on_button_pressed():

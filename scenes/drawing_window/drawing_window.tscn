@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmcqpynme8xtt"]
+
+[ext_resource type="Script" path="res://scenes/drawing_window/ClearFieldButton.gd" id="1_4nrle"]
+[ext_resource type="Script" path="res://scenes/drawing_window/CameraToDefaultButton.gd" id="2_fn5v8"]
+[ext_resource type="Script" path="res://scenes/drawing_window/InfiniteGridCheckBox.gd" id="6_4l1ua"]
+[ext_resource type="Script" path="res://scenes/drawing_window/FieldSizeApplyButton.gd" id="7_tywt6"]
+[ext_resource type="PackedScene" uid="uid://x83yn2bdb4nx" path="res://scenes/drawing_window/draw_environment/draw_environment.tscn" id="8_bcpr3"]
+
+[node name="DrawingWindow" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VerticalContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="HBoxContainer" type="HFlowContainer" parent="VerticalContainer"]
+layout_mode = 2
+
+[node name="ClearFieldButton" type="Button" parent="VerticalContainer/HBoxContainer"]
+layout_mode = 2
+text = "Стереть всё"
+script = ExtResource("1_4nrle")
+
+[node name="CameraContainer" type="HBoxContainer" parent="VerticalContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="CameraToDefaultButton" type="Button" parent="VerticalContainer/HBoxContainer/CameraContainer"]
+layout_mode = 2
+text = "Вернуть камеру"
+script = ExtResource("2_fn5v8")
+
+[node name="SpinBox" type="SpinBox" parent="VerticalContainer/HBoxContainer/CameraContainer"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="VerticalContainer/HBoxContainer/CameraContainer"]
+layout_mode = 2
+
+[node name="FieldSizeContainer" type="HFlowContainer" parent="VerticalContainer"]
+layout_mode = 2
+
+[node name="FieldSizeLabel" type="Label" parent="VerticalContainer/FieldSizeContainer"]
+layout_mode = 2
+text = "Размер поля"
+
+[node name="InfiniteGridCheckBox" type="CheckBox" parent="VerticalContainer/FieldSizeContainer"]
+layout_mode = 2
+text = "Бесконечный"
+script = ExtResource("6_4l1ua")
+
+[node name="WidthContainer" type="HBoxContainer" parent="VerticalContainer/FieldSizeContainer"]
+layout_mode = 2
+
+[node name="WidthLabel" type="Label" parent="VerticalContainer/FieldSizeContainer/WidthContainer"]
+layout_mode = 2
+text = "Ширина"
+
+[node name="WidthLineEdit" type="SpinBox" parent="VerticalContainer/FieldSizeContainer/WidthContainer"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="HeightContainer" type="HBoxContainer" parent="VerticalContainer/FieldSizeContainer"]
+layout_mode = 2
+
+[node name="HeightLabel" type="Label" parent="VerticalContainer/FieldSizeContainer/HeightContainer"]
+layout_mode = 2
+text = "Длина"
+
+[node name="HeightLineEdit" type="SpinBox" parent="VerticalContainer/FieldSizeContainer/HeightContainer"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="FieldSizeApplyButton" type="Button" parent="VerticalContainer/FieldSizeContainer"]
+layout_mode = 2
+text = "Применить"
+script = ExtResource("7_tywt6")
+
+[node name="DrawEnvironment" parent="VerticalContainer" instance=ExtResource("8_bcpr3")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="VerticalContainer/HBoxContainer/ClearFieldButton" to="VerticalContainer/HBoxContainer/ClearFieldButton" method="_on_pressed"]
+[connection signal="pressed" from="VerticalContainer/HBoxContainer/CameraContainer/CameraToDefaultButton" to="VerticalContainer/HBoxContainer/CameraContainer/CameraToDefaultButton" method="_on_pressed"]
+[connection signal="toggled" from="VerticalContainer/FieldSizeContainer/InfiniteGridCheckBox" to="VerticalContainer/FieldSizeContainer/InfiniteGridCheckBox" method="_on_toggled"]
+[connection signal="pressed" from="VerticalContainer/FieldSizeContainer/FieldSizeApplyButton" to="VerticalContainer/FieldSizeContainer/FieldSizeApplyButton" method="_on_pressed"]

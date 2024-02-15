@@ -10,7 +10,7 @@ var end_point:GEndPoint
 func _draw():
 	draw_circle(Vector2.ZERO, 7, Color.SKY_BLUE)
 
-func _process(delta):
+func _process(_delta):
 	if LKM_pressed:
 		line.points[1] = get_local_mouse_position()
 

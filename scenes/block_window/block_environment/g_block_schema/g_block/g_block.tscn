@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://176g3cp8n76a"]
+[gd_scene load_steps=3 format=3 uid="uid://176g3cp8n76a"]
 
-[ext_resource type="Script" path="res://scenes/block_environment/g_block_schema/g_block/g_block.gd" id="1_bsts3"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/g_block_schema/g_block/g_block.gd" id="1_bsts3"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/g_block_schema/g_block/NameContainer.gd" id="2_nol8g"]
 
 [node name="GBlock" type="Node2D"]
 script = ExtResource("1_bsts3")
@@ -31,8 +32,25 @@ theme_override_constants/margin_bottom = 10
 [node name="Content" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
 
-[node name="Name" type="Label" parent="Control/MarginContainer/Content"]
+[node name="NameContainer" type="Control" parent="Control/MarginContainer/Content"]
+custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 1
+script = ExtResource("2_nol8g")
+
+[node name="NameLabel" type="Label" parent="Control/MarginContainer/Content/NameContainer"]
+layout_mode = 2
+offset_right = 114.0
+offset_bottom = 23.0
+mouse_filter = 1
+text = "aboba"
+
+[node name="NameLineEdit" type="LineEdit" parent="Control/MarginContainer/Content/NameContainer"]
+visible = false
+layout_mode = 0
+offset_right = 67.0625
+offset_bottom = 31.0
 
 [node name="Type" type="Label" parent="Control/MarginContainer/Content"]
 layout_mode = 2
@@ -44,3 +62,4 @@ text = "Базовый блок"
 
 [connection signal="gui_input" from="Control" to="." method="_on_control_gui_input"]
 [connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]
+[connection signal="gui_input" from="Control/MarginContainer/Content/NameContainer/NameLabel" to="Control/MarginContainer/Content/NameContainer" method="_on_name_label_gui_input"]

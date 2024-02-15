@@ -6,7 +6,7 @@ var old_mouse_position:Vector2
 var context_menu = preload("res://scenes/context_menu_layer/context_menu\
 /block_field_context_menu/block_field_context_menu.tscn")
 
-func _process(delta):
+func _process(_delta):
 	if LKM_pressed:
 		camera.offset += old_mouse_position - camera.get_global_mouse_position()
 		
