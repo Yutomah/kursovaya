@@ -10,14 +10,14 @@ script = ExtResource("2_7df40")
 [node name="Type" parent="Control/MarginContainer/Content" index="1"]
 text = "Начальный блок"
 
-[node name="ActivateButton" type="Button" parent="Control/MarginContainer/Content" index="2"]
-layout_mode = 2
-text = "Начать"
-
-[node name="MassActivationCheckbox" type="CheckBox" parent="Control/MarginContainer/Content" index="3"]
+[node name="MassActivationCheckbox" type="CheckBox" parent="Control/MarginContainer/Content" index="2"]
 layout_mode = 2
 button_pressed = true
 text = "Активировать со всеми"
+
+[node name="ActivateButton" type="Button" parent="Control/MarginContainer/Content" index="3"]
+layout_mode = 2
+text = "Начать"
 
 [node name="GBeginPoint" parent="BeginPoints" index="0" instance=ExtResource("3_ebcp8")]
 position = Vector2(2, 70)

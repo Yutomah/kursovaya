@@ -1,8 +1,7 @@
 extends Button
 
-
-
 func _on_pressed():
-	GB.clear_field_wanted.emit()
+	PSM.process_input(PSM.INPUT.CLEAR)
+
 
 

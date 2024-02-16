@@ -8,13 +8,11 @@ var context_menu:PackedScene = preload("res://scenes/context_menu_layer/context_
 /block_context_menu/g_block_context_menu.tscn")
 
 var delay:float = 0.3
-signal pause_remove_wanted()
+
 
 var block_name:String
 
 func _ready():
-	GB.continue_all_blocks_wanted.connect(func():pause_remove_wanted.emit())
-	GB.stop_all_blocks_wanted.connect(func():pause_remove_wanted.emit())
 	GB.block_name_changed.emit()
 	
 func _process(_delta):
@@ -62,21 +60,24 @@ func open_context_menu():
 
 func zap_processing_control(zap:Zap):
 	$Control.modulate = Color.BURLYWOOD
+	
 	await get_tree().create_timer(delay).timeout
-	if GB.paused:
-		await GB.continue_all_blocks_wanted
+	
+	if PSM.state == PSM.STATE.PAUSE:
+		await PSM.state_changed
+		
 	$Control.modulate = Color.WHITE
-	print(2, zap)
-	return GB.running and !(zap == null)
+	
+	return PSM.state == PSM.STATE.PLAY and zap != null \
+	and zap.grid_line != null and !zap.grid_line.is_queued_for_deletion()
+	
 
 
 func _on_tree_exited():
 	GB.block_name_changed.emit()
 
 func error_base():
-	GB.running = false
-	GB.paused = false
-	GB.stop_all_blocks_wanted.emit()
+	PSM.process_input(PSM.INPUT.STOP)
 	
 	
 func error_next_block_not_exist():

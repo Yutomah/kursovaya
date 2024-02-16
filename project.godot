@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GB="*res://scenes/globals/GB.gd"
+PSM="*res://scenes/globals/PSM.gd"
 
 [display]
 

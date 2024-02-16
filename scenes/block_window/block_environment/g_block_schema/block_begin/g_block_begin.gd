@@ -4,24 +4,25 @@ class_name GBlockBegin
 @onready var begin_point:GBeginPoint = $BeginPoints/GBeginPoint
 var zap:Zap = null
 # Called when the node enters the scene tree for the first time.
+
 func _ready():
 	super._ready()
-	GB.activate_all_begin_blocks_wanted.connect(zap_processing)
+	PSM.activate_all_begin_blocks_wanted.connect(zap_processing)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super._process(delta)
 
 func zap_processing():
+	
 	if zap != null:
 		zap.remove_myself()
 		
 	zap = Zap.new()
 	zap.block_begin = self
 	GB.line_creation_wanted.emit(zap)
-	print(1, zap)
 	if await zap_processing_control(zap):
-		print(3, zap)
+		
 		if begin_point.end_point != null:
 			begin_point.end_point.block.zap_processing(zap)
 		else:
@@ -35,7 +36,7 @@ func arg_zap_processing(zap:Zap):
 			error_next_block_not_exist()
 			
 func _on_activate_button_pressed():
-	GB.running = true
+	PSM.process_input(PSM.INPUT.LPLAY)
 	zap_processing()
 	
 

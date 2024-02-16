@@ -1,13 +1,21 @@
 extends Button
 
-func _process(_delta):
-	if !GB.running:
-		disabled = true
-	else:
-		disabled = false
+
+func _ready():
+	PSM.state_changed.connect(on_state_changed)
+	
+func on_state_changed():
+	match PSM.state:
+		PSM.STATE.PLAY:
+			disabled = false
+		PSM.STATE.PAUSE:
+			disabled = false
+		PSM.STATE.STOP:
+			disabled = true
+		PSM.STATE.CLEAR:
+			disabled = true
 		
 func _on_pressed():
-	GB.running = false
-	GB.paused = false
-	GB.stop_all_blocks_wanted.emit()
+	PSM.process_input(PSM.INPUT.STOP)
+	
 	
