@@ -14,7 +14,7 @@ func _process(delta):
 	pass
 	
 func zap_processing(zap:Zap):
-	if await zap_processing_control():
+	if await zap_processing_control(zap):
 		var x = $Control/MarginContainer/Content/XContainer/SpinBox.value
 		var y = $Control/MarginContainer/Content/YContainer/SpinBox.value
 		var direction = Vector2i(x,y)
@@ -29,7 +29,7 @@ func zap_processing(zap:Zap):
 			if begin_point.end_point != null:
 				begin_point.end_point.block.zap_processing(zap)
 			else:
-				print("Отсутствует блок для последующей передачи")
+				error_next_block_not_exist()
 		else:
-			print("Нарушение границ доски")
+			error_line_beyond_borders()
 

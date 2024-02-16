@@ -10,9 +10,12 @@ var context_menu:PackedScene = preload("res://scenes/context_menu_layer/context_
 var delay:float = 0.3
 signal pause_remove_wanted()
 
+var block_name:String
+
 func _ready():
 	GB.continue_all_blocks_wanted.connect(func():pause_remove_wanted.emit())
 	GB.stop_all_blocks_wanted.connect(func():pause_remove_wanted.emit())
+	GB.block_name_changed.emit()
 	
 func _process(_delta):
 	if LKM_pressed:
@@ -33,7 +36,6 @@ func _on_control_gui_input(event):
 	if event.is_action_pressed("LKM") and GB.current_tool == GB.HAND_TOOL:
 		GB.hand_tool_on_block_pressed.emit(event)
 	if event.is_action_pressed("LKM") and GB.current_tool == GB.SELECTION_TOOL:
-		print(11)
 		LKM_pressed = true
 		old_mouse_position = get_local_mouse_position()
 		$Control.accept_event()
@@ -58,13 +60,34 @@ func open_context_menu():
 	menu.block = self
 	GB.context_menu_open_wanted.emit(menu)
 
-func zap_processing_control():
+func zap_processing_control(zap:Zap):
 	$Control.modulate = Color.BURLYWOOD
 	await get_tree().create_timer(delay).timeout
 	if GB.paused:
 		await GB.continue_all_blocks_wanted
-	
+	print(2)
 	$Control.modulate = Color.WHITE
-	return true if GB.running else false
+	print(GB.running)
+	print(zap.grid_line != null)
+	return GB.running and zap.grid_line != null
 
 
+func _on_tree_exited():
+	GB.block_name_changed.emit()
+
+func error_base():
+	GB.stop_all_blocks_wanted.emit()
+	GB.running = false
+	GB.paused = false
+	
+func error_next_block_not_exist():
+	print("Отсутствует блок для последующей передачи")
+	error_base()
+
+func error_line_beyond_borders():
+	print("Линия вышла за границы доски")
+	error_base()
+	
+func error_no_selected_begin_block():
+	print("Не выбрано функции в блоке функции")
+	error_base()

@@ -13,6 +13,10 @@ func _process(delta):
 	pass
 
 func zap_processing(zap:Zap):
-	if await zap_processing_control():
-		print("over")
-	pass
+	if await zap_processing_control(zap):
+		if zap.return_stack.size() > 0:
+			var return_block:GBlock = zap.return_stack.pop_back()
+			if return_block != null:
+				return_block.zap_processing(zap)
+			else:
+				error_next_block_not_exist()

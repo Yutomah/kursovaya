@@ -39,7 +39,7 @@ layout_mode = 2
 text = "pause"
 script = ExtResource("2_fi6wo")
 
-[node name="StupButton" type="Button" parent="VBoxContainer/MainWindowMenuBar/RunButtonsContainer"]
+[node name="StopButton" type="Button" parent="VBoxContainer/MainWindowMenuBar/RunButtonsContainer"]
 layout_mode = 2
 text = "stop"
 script = ExtResource("3_1x6q7")
@@ -59,6 +59,6 @@ script = ExtResource("3_4dl4s")
 
 [connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/PlayButton" to="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/PlayButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/PauseButton" to="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/PauseButton" method="_on_pressed"]
-[connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/StupButton" to="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/StupButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/StopButton" to="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/StopButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainWindowToolBar/SelectionButton" to="VBoxContainer/MainWindowToolBar/SelectionButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainWindowToolBar/HandButton" to="VBoxContainer/MainWindowToolBar/HandButton" method="_on_pressed"]

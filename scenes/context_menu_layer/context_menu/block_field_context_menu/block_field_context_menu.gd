@@ -9,7 +9,8 @@ var block_schema
 	"if": preload("res://scenes/block_window/block_environment/g_block_schema/block_if/g_block_if.tscn"),
 	"join":preload("res://scenes/block_window/block_environment/g_block_schema/block_join/g_block_join.tscn"),
 	"while":preload("res://scenes/block_window/block_environment/g_block_schema/block_while/g_block_while.tscn"),
-	"end" :preload("res://scenes/block_window/block_environment/g_block_schema/block_end/g_block_end.tscn")
+	"end" :preload("res://scenes/block_window/block_environment/g_block_schema/block_end/g_block_end.tscn"),
+	"func" :preload("res://scenes/block_window/block_environment/g_block_schema/block_function/g_block_function.tscn")
 }
 
 func _on_button_pressed():
@@ -27,6 +28,8 @@ func _on_button_pressed():
 		4:
 			block = BlockTypes["while"].instantiate()
 		5:
+			block = BlockTypes["func"].instantiate()
+		6: 
 			block = BlockTypes["end"].instantiate()
 	block.position = block_schema.get_local_mouse_position()-size/2
 	block_schema.add_child(block)
