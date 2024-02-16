@@ -20,3 +20,7 @@ func zap_processing(zap:Zap):
 				return_block.zap_processing(zap)
 			else:
 				error_next_block_not_exist()
+		else:
+			GB.running = false
+			GB.paused = false
+			GB.stop_all_blocks_wanted.emit()

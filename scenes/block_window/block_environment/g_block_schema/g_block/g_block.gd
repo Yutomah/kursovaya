@@ -65,20 +65,19 @@ func zap_processing_control(zap:Zap):
 	await get_tree().create_timer(delay).timeout
 	if GB.paused:
 		await GB.continue_all_blocks_wanted
-	print(2)
 	$Control.modulate = Color.WHITE
-	print(GB.running)
-	print(zap.grid_line != null)
-	return GB.running and zap.grid_line != null
+	print(2, zap)
+	return GB.running and !(zap == null)
 
 
 func _on_tree_exited():
 	GB.block_name_changed.emit()
 
 func error_base():
-	GB.stop_all_blocks_wanted.emit()
 	GB.running = false
 	GB.paused = false
+	GB.stop_all_blocks_wanted.emit()
+	
 	
 func error_next_block_not_exist():
 	print("Отсутствует блок для последующей передачи")

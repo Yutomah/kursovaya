@@ -1,7 +1,7 @@
 extends Node2D
 class_name GridLine
 
-var zap:Zap = null
+var zap:Zap
 var CELL_SIZE:int
 var color:Color = Color.WHITE
 @onready var grid = get_parent().get_parent()
@@ -42,20 +42,9 @@ func can_draw(grid_pos):
 	return result
 	
 func remove_myself():
+	zap.block_begin.zap = null
 	queue_free()
 	
 func check_for_border(direction:Vector2i, distance:int = 1):
 	return can_draw(current_grid_pos + direction*distance)
 	
-
-
-func clone(zap:Zap)->GridLine:
-	var scene = PackedScene.new()
-	scene.pack(self)
-	var new_grid_line:GridLine = scene.instantiate()
-	new_grid_line.zap = zap
-	get_parent().add_child(new_grid_line)
-	new_grid_line.current_line = new_grid_line.get_child(-1)
-	new_grid_line.current_grid_pos = current_grid_pos
-	
-	return new_grid_line

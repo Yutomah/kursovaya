@@ -39,11 +39,11 @@ mouse_filter = 1
 [node name="HSplitContainer" type="HSplitContainer" parent="HUD/Content/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-split_offset = 500
+split_offset = 1000
 
 [node name="VSplitContainer" type="VSplitContainer" parent="HUD/Content/VBoxContainer/HSplitContainer"]
 layout_mode = 2
-split_offset = 100
+split_offset = 300
 
 [node name="BlockWindow" parent="HUD/Content/VBoxContainer/HSplitContainer/VSplitContainer" instance=ExtResource("3_x44e1")]
 layout_mode = 2
