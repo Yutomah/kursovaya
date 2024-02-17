@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bseqanhbkxpgw"]
+[gd_scene load_steps=7 format=3 uid="uid://bseqanhbkxpgw"]
 
 [ext_resource type="Script" path="res://scenes/drawing_window/PlayButton.gd" id="1_03lao"]
 [ext_resource type="Script" path="res://scenes/drawing_window/PauseButton.gd" id="2_fi6wo"]
 [ext_resource type="Script" path="res://scenes/main_window/top_bar/SelectionButton.gd" id="2_unrqb"]
 [ext_resource type="Script" path="res://scenes/drawing_window/StupButton.gd" id="3_1x6q7"]
 [ext_resource type="Script" path="res://scenes/main_window/top_bar/HandButton.gd" id="3_4dl4s"]
+[ext_resource type="Script" path="res://scenes/drawing_window/ClearFieldButton.gd" id="4_q5st8"]
 
 [node name="MainWindowTopBar" type="PanelContainer"]
 anchors_preset = 10
@@ -44,6 +45,11 @@ layout_mode = 2
 text = "stop"
 script = ExtResource("3_1x6q7")
 
+[node name="ClearFieldButton" type="Button" parent="VBoxContainer/MainWindowMenuBar/RunButtonsContainer"]
+layout_mode = 2
+text = "Стереть всё"
+script = ExtResource("4_q5st8")
+
 [node name="MainWindowToolBar" type="HFlowContainer" parent="VBoxContainer"]
 layout_mode = 2
 
@@ -60,5 +66,6 @@ script = ExtResource("3_4dl4s")
 [connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/PlayButton" to="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/PlayButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/PauseButton" to="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/PauseButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/StopButton" to="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/StopButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/ClearFieldButton" to="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/ClearFieldButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainWindowToolBar/SelectionButton" to="VBoxContainer/MainWindowToolBar/SelectionButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainWindowToolBar/HandButton" to="VBoxContainer/MainWindowToolBar/HandButton" method="_on_pressed"]

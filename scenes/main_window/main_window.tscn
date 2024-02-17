@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bpxtayo5uy4gy" path="res://scenes/main_window/foot_bar/main_window_foot_bar.tscn" id="2_scasd"]
 [ext_resource type="PackedScene" uid="uid://dmcqpynme8xtt" path="res://scenes/drawing_window/drawing_window.tscn" id="3_djpur"]
 [ext_resource type="PackedScene" uid="uid://cvnp5l08gxo0" path="res://scenes/block_window/block_window.tscn" id="3_x44e1"]
-[ext_resource type="PackedScene" uid="uid://cp1fjsm5pxsv3" path="res://scenes/log_window/log_window.tscn" id="4_pd31y"]
+[ext_resource type="PackedScene" uid="uid://cwvv32aquw5qq" path="res://scenes/log_window/log_window.tscn" id="4_pd31y"]
 [ext_resource type="PackedScene" uid="uid://cmvdua3qdtn7h" path="res://scenes/context_menu_layer/context_menu_layer.tscn" id="6_sylqq"]
 
 [node name="MainWindow" type="Node2D"]
@@ -53,7 +53,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="drawing_window2" parent="HUD/Content/VBoxContainer/HSplitContainer" instance=ExtResource("3_djpur")]
+[node name="DrawingWindow" parent="HUD/Content/VBoxContainer/HSplitContainer" instance=ExtResource("3_djpur")]
 layout_mode = 2
 
 [node name="MainWindowFootBar" parent="HUD/Content/VBoxContainer" instance=ExtResource("2_scasd")]

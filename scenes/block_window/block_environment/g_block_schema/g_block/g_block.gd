@@ -80,14 +80,14 @@ func error_base():
 	PSM.process_input(PSM.INPUT.STOP)
 	
 	
-func error_next_block_not_exist():
-	print("Отсутствует блок для последующей передачи")
+func error_next_block_not_exist(zap:Zap):
+	zap.log_group.write_record("Отсутствует блок для последующей передачи", self)
 	error_base()
 
-func error_line_beyond_borders():
-	print("Линия вышла за границы доски")
+func error_line_beyond_borders(zap:Zap):
+	zap.log_group.write_record("Линия вышла за границы доски", self)
 	error_base()
 	
-func error_no_selected_begin_block():
-	print("Не выбрано функции в блоке функции")
+func error_no_selected_begin_block(zap:Zap):
+	zap.log_group.write_record("Не выбрано функции в блоке функции", self)
 	error_base()

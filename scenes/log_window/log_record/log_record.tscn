@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://8v8p8r2ge2se"]
+
+[ext_resource type="Script" path="res://scenes/log_window/log_record/log_record.gd" id="1_y1yae"]
+
+[node name="LogRecord" type="PanelContainer"]
+script = ExtResource("1_y1yae")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Бла бла бла"
+autowrap_mode = 2

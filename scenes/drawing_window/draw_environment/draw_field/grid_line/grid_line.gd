@@ -42,7 +42,6 @@ func can_draw(grid_pos):
 	return result
 	
 func remove_myself():
-	zap.block_begin.zap = null
 	queue_free()
 	
 func check_for_border(direction:Vector2i, distance:int = 1):

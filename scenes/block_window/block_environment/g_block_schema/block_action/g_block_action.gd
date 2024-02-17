@@ -6,12 +6,10 @@ class_name GBlockAction
  
 func _ready():
 	super._ready()
-	pass # Replace with function body.
 
 
 func _process(delta):
 	super._process(delta)
-	pass
 	
 func zap_processing(zap:Zap):
 	if await zap_processing_control(zap):
@@ -27,9 +25,10 @@ func zap_processing(zap:Zap):
 			
 		if line_drawed:
 			if begin_point.end_point != null:
+				zap.log_group.write_record(block_name, self)
 				begin_point.end_point.block.zap_processing(zap)
 			else:
-				error_next_block_not_exist()
+				error_next_block_not_exist(zap)
 		else:
-			error_line_beyond_borders()
+			error_line_beyond_borders(zap)
 

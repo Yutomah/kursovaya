@@ -30,3 +30,7 @@ func _on_name_line_edit_text_submitted(new_text):
 	GB.block_name_changed.emit()
 	$NameLabel.show()
 	$NameLineEdit.hide()
+
+
+func _on_name_line_edit_focus_entered():
+	$NameLineEdit.select()

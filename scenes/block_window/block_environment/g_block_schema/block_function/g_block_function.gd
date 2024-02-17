@@ -19,6 +19,7 @@ func zap_processing(zap:Zap):
 				zap.return_stack.append(begin_point.end_point.block)
 			else:
 				zap.return_stack.append(null)
+			zap.log_group.write_record(block_name, self)
 			%OptionButton.block_begin_array[%OptionButton.selected].arg_zap_processing(zap)
 		else:
-			error_no_selected_begin_block()
+			error_no_selected_begin_block(zap)

@@ -15,6 +15,9 @@ signal hand_tool_on_block_pressed(event:InputEvent)
 signal block_name_changed()
 signal block_begin_array_changed(begin_block_array:Array[GBlockBegin])
 
+#log
+signal create_log_group_wanted(zap:Zap)
+
 #context_menu
 signal context_menu_open_wanted(context_menu:ContextMenu)
 

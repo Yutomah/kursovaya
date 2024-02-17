@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmcqpynme8xtt"]
+[gd_scene load_steps=5 format=3 uid="uid://dmcqpynme8xtt"]
 
-[ext_resource type="Script" path="res://scenes/drawing_window/ClearFieldButton.gd" id="1_4nrle"]
 [ext_resource type="Script" path="res://scenes/drawing_window/CameraToDefaultButton.gd" id="2_fn5v8"]
 [ext_resource type="Script" path="res://scenes/drawing_window/InfiniteGridCheckBox.gd" id="6_4l1ua"]
 [ext_resource type="Script" path="res://scenes/drawing_window/FieldSizeApplyButton.gd" id="7_tywt6"]
@@ -26,11 +25,6 @@ mouse_filter = 0
 
 [node name="HBoxContainer" type="HFlowContainer" parent="VerticalContainer"]
 layout_mode = 2
-
-[node name="ClearFieldButton" type="Button" parent="VerticalContainer/HBoxContainer"]
-layout_mode = 2
-text = "Стереть всё"
-script = ExtResource("1_4nrle")
 
 [node name="CameraContainer" type="HBoxContainer" parent="VerticalContainer/HBoxContainer"]
 layout_mode = 2
@@ -92,7 +86,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[connection signal="pressed" from="VerticalContainer/HBoxContainer/ClearFieldButton" to="VerticalContainer/HBoxContainer/ClearFieldButton" method="_on_pressed"]
 [connection signal="pressed" from="VerticalContainer/HBoxContainer/CameraContainer/CameraToDefaultButton" to="VerticalContainer/HBoxContainer/CameraContainer/CameraToDefaultButton" method="_on_pressed"]
 [connection signal="toggled" from="VerticalContainer/FieldSizeContainer/InfiniteGridCheckBox" to="VerticalContainer/FieldSizeContainer/InfiniteGridCheckBox" method="_on_toggled"]
 [connection signal="pressed" from="VerticalContainer/FieldSizeContainer/FieldSizeApplyButton" to="VerticalContainer/FieldSizeContainer/FieldSizeApplyButton" method="_on_pressed"]

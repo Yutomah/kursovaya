@@ -58,12 +58,14 @@ func relocate_points():
 
 func refresh_links():
 	for end_point:GEndPoint in $EndPoints.get_children():
-		end_point.begin_point.update_static_line_pos()
+		if end_point.begin_point != null:
+			end_point.begin_point.update_static_line_pos()
 			
 func zap_processing(zap:Zap):
 	if await zap_processing_control(zap):
 		if begin_point.end_point != null:
+			zap.log_group.write_record(block_name, self)
 			begin_point.end_point.block.zap_processing(zap)
 		else:
-			error_next_block_not_exist()
+			error_next_block_not_exist(zap)
 		

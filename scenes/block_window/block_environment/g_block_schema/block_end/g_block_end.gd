@@ -17,10 +17,9 @@ func zap_processing(zap:Zap):
 		if zap.return_stack.size() > 0:
 			var return_block:GBlock = zap.return_stack.pop_back()
 			if return_block != null:
+				zap.log_group.write_record(block_name, self)
 				return_block.zap_processing(zap)
 			else:
-				error_next_block_not_exist()
+				error_next_block_not_exist(zap)
 		else:
-			GB.running = false
-			GB.paused = false
-			GB.stop_all_blocks_wanted.emit()
+			PSM.process_input(PSM.INPUT.STOP)

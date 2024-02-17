@@ -24,11 +24,13 @@ func zap_processing(zap:Zap):
 		
 		if zap.grid_line.check_for_border(direction, distance):
 			if true_point.end_point != null:
+				zap.log_group.write_record(block_name, self)
 				true_point.end_point.block.zap_processing(zap)
 			else:
-				error_next_block_not_exist()
+				error_next_block_not_exist(zap)
 		else:
 			if false_point.end_point != null:
+				zap.log_group.write_record(block_name, self)
 				false_point.end_point.block.zap_processing(zap)
 			else:
-				error_next_block_not_exist()
+				error_next_block_not_exist(zap)
