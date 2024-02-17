@@ -17,7 +17,7 @@ func zap_processing():
 	
 	if zap != null:
 		zap.remove_myself()
-		
+	
 	zap = Zap.new()
 	zap.block_begin = self
 	GB.line_creation_wanted.emit(zap)

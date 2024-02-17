@@ -8,12 +8,13 @@ var context_menu:PackedScene = preload("res://scenes/context_menu_layer/context_
 /block_context_menu/g_block_context_menu.tscn")
 
 var delay:float = 0.3
-
+var related_log_records:Array[LogRecord] = []
 
 var block_name:String
 
 func _ready():
 	GB.block_name_changed.emit()
+	PSM.state_changed.connect(on_state_changed)
 	
 func _process(_delta):
 	if LKM_pressed:
@@ -36,6 +37,8 @@ func _on_control_gui_input(event):
 	if event.is_action_pressed("LKM") and GB.current_tool == GB.SELECTION_TOOL:
 		LKM_pressed = true
 		old_mouse_position = get_local_mouse_position()
+		
+		
 		$Control.accept_event()
 		
 	if event.is_action_pressed("RKM"):
@@ -59,14 +62,14 @@ func open_context_menu():
 	GB.context_menu_open_wanted.emit(menu)
 
 func zap_processing_control(zap:Zap):
-	$Control.modulate = Color.BURLYWOOD
+	m_highlight()
 	
 	await get_tree().create_timer(delay).timeout
 	
 	if PSM.state == PSM.STATE.PAUSE:
 		await PSM.state_changed
 		
-	$Control.modulate = Color.WHITE
+	m_dehighlight()
 	
 	return PSM.state == PSM.STATE.PLAY and zap != null \
 	and zap.grid_line != null and !zap.grid_line.is_queued_for_deletion()
@@ -76,6 +79,20 @@ func zap_processing_control(zap:Zap):
 func _on_tree_exited():
 	GB.block_name_changed.emit()
 
+func m_highlight():
+	$Control.modulate = Color.BURLYWOOD
+
+func m_dehighlight():
+	$Control.modulate = Color.WHITE
+
+func m_highlight_related_log_records():
+	for log_record:LogRecord in related_log_records:
+		log_record.m_highlight()
+
+func m_dehighlight_related_log_records():
+	for log_record:LogRecord in related_log_records:
+		log_record.m_dehighlight()
+		
 func error_base():
 	PSM.process_input(PSM.INPUT.STOP)
 	
@@ -91,3 +108,24 @@ func error_line_beyond_borders(zap:Zap):
 func error_no_selected_begin_block(zap:Zap):
 	zap.log_group.write_record("Не выбрано функции в блоке функции", self)
 	error_base()
+
+
+func _on_control_focus_exited():
+	m_dehighlight()
+	m_dehighlight_related_log_records()
+
+func _on_control_focus_entered():
+	m_highlight()
+	m_highlight_related_log_records()
+
+func on_state_changed():
+	match PSM.state:
+		PSM.STATE.PLAY:
+			related_log_records = []
+		PSM.STATE.PAUSE:
+			pass
+		PSM.STATE.STOP:
+			pass
+		PSM.STATE.CLEAR:
+			related_log_records = []
+		

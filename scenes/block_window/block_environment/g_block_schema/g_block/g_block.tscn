@@ -71,6 +71,8 @@ text = "Базовый блок"
 [node name="BeginPoints" type="Node2D" parent="."]
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="focus_entered" from="Control" to="." method="_on_control_focus_entered"]
+[connection signal="focus_exited" from="Control" to="." method="_on_control_focus_exited"]
 [connection signal="gui_input" from="Control" to="." method="_on_control_gui_input"]
 [connection signal="gui_input" from="Control/MarginContainer/Content/NameContainer/NameLabel" to="Control/MarginContainer/Content/NameContainer" method="_on_name_label_gui_input"]
 [connection signal="focus_entered" from="Control/MarginContainer/Content/NameContainer/NameLineEdit" to="Control/MarginContainer/Content/NameContainer" method="_on_name_line_edit_focus_entered"]
