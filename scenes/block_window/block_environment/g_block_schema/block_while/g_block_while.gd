@@ -17,6 +17,7 @@ func _process(delta):
 
 func zap_processing(zap:Zap):
 	if await zap_processing_control(zap):
+		zap.log_group.write_record(block_name, self)
 		var x_dir = $Control/MarginContainer/Content/XContainer/XSpinBox.value
 		var y_dir = $Control/MarginContainer/Content/YContainer/YSpinBox.value
 		var direction = Vector2i(x_dir,y_dir)
@@ -24,13 +25,11 @@ func zap_processing(zap:Zap):
 		
 		if zap.grid_line.check_for_border(direction, distance):
 			if true_point.end_point != null:
-				zap.log_group.write_record(block_name, self)
 				true_point.end_point.block.zap_processing(zap)
 			else:
 				error_next_block_not_exist(zap)
 		else:
 			if false_point.end_point != null:
-				zap.log_group.write_record(block_name, self)
 				false_point.end_point.block.zap_processing(zap)
 			else:
 				error_next_block_not_exist(zap)

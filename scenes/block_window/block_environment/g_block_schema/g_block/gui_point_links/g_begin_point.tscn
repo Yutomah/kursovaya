@@ -23,6 +23,7 @@ mouse_filter = 1
 
 [node name="Line" type="Line2D" parent="."]
 unique_name_in_owner = true
+z_index = 1
 points = PackedVector2Array(0, 0, 0, 0)
 width = 2.0
 default_color = Color(0.631373, 0, 0.156863, 1)

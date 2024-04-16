@@ -63,8 +63,8 @@ func refresh_links():
 			
 func zap_processing(zap:Zap):
 	if await zap_processing_control(zap):
+		zap.log_group.write_record(block_name, self)
 		if begin_point.end_point != null:
-			zap.log_group.write_record(block_name, self)
 			begin_point.end_point.block.zap_processing(zap)
 		else:
 			error_next_block_not_exist(zap)

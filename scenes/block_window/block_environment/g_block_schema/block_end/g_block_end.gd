@@ -14,12 +14,13 @@ func _process(delta):
 
 func zap_processing(zap:Zap):
 	if await zap_processing_control(zap):
+		zap.log_group.write_record(block_name, self)
 		if zap.return_stack.size() > 0:
 			var return_block:GBlock = zap.return_stack.pop_back()
 			if return_block != null:
-				zap.log_group.write_record(block_name, self)
 				return_block.zap_processing(zap)
 			else:
 				error_next_block_not_exist(zap)
 		else:
-			PSM.process_input(PSM.INPUT.STOP)
+			remove_from_group("working_blocks")
+			PSM.process_input(PSM.INPUT.LSTOP)

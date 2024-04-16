@@ -19,6 +19,7 @@ func _on_name_line_edit_focus_exited():
 		$NameLabel.text = $NameLineEdit.text
 		g_block.block_name = $NameLabel.text
 		GB.block_name_changed.emit()
+		$"../../..".grab_focus()
 		$NameLabel.show()
 		$NameLineEdit.hide()
 	
@@ -32,5 +33,3 @@ func _on_name_line_edit_text_submitted(new_text):
 	$NameLineEdit.hide()
 
 
-func _on_name_line_edit_focus_entered():
-	$NameLineEdit.select()

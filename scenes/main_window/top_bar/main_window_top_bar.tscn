@@ -37,11 +37,13 @@ script = ExtResource("1_03lao")
 
 [node name="PauseButton" type="Button" parent="VBoxContainer/MainWindowMenuBar/RunButtonsContainer"]
 layout_mode = 2
+disabled = true
 text = "pause"
 script = ExtResource("2_fi6wo")
 
 [node name="StopButton" type="Button" parent="VBoxContainer/MainWindowMenuBar/RunButtonsContainer"]
 layout_mode = 2
+disabled = true
 text = "stop"
 script = ExtResource("3_1x6q7")
 

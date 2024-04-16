@@ -17,23 +17,23 @@ func zap_processing():
 	
 	if zap != null:
 		zap.remove_myself()
+	add_to_group("working_blocks")
 	
 	zap = Zap.new()
 	zap.block_begin = self
 	GB.line_creation_wanted.emit(zap)
 	GB.create_log_group_wanted.emit(zap)
 	if await zap_processing_control(zap):
-		
+		zap.log_group.write_record(block_name, self)
 		if begin_point.end_point != null:
-			zap.log_group.write_record(block_name, self)
 			begin_point.end_point.block.zap_processing(zap)
 		else:
 			error_next_block_not_exist(zap)
 
 func arg_zap_processing(zap:Zap):
 	if await zap_processing_control(zap):
+		zap.log_group.write_record(block_name, self)
 		if begin_point.end_point != null:
-			zap.log_group.write_record(block_name, self)
 			begin_point.end_point.block.zap_processing(zap)
 		else:
 			error_next_block_not_exist(zap)

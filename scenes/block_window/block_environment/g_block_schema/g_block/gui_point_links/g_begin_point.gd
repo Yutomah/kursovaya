@@ -22,7 +22,7 @@ func _on_gui_input(event):
 func _input(event):
 	if event.is_action_released("LKM") and LKM_pressed:
 		LKM_pressed = false
-		
+		print(3)
 		remove_link()
 		var focus_owner = get_viewport().gui_get_focus_owner()
 		if focus_owner != null and focus_owner.get_parent() is GEndPoint:

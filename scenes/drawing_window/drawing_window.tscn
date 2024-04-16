@@ -34,12 +34,6 @@ layout_mode = 2
 text = "Вернуть камеру"
 script = ExtResource("2_fn5v8")
 
-[node name="SpinBox" type="SpinBox" parent="VerticalContainer/HBoxContainer/CameraContainer"]
-layout_mode = 2
-
-[node name="HSlider" type="HSlider" parent="VerticalContainer/HBoxContainer/CameraContainer"]
-layout_mode = 2
-
 [node name="FieldSizeContainer" type="HFlowContainer" parent="VerticalContainer"]
 layout_mode = 2
 

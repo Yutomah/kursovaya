@@ -34,12 +34,17 @@ func _process(_delta):
 func _on_control_gui_input(event):
 	if event.is_action_pressed("LKM") and GB.current_tool == GB.HAND_TOOL:
 		GB.hand_tool_on_block_pressed.emit(event)
+		
 	if event.is_action_pressed("LKM") and GB.current_tool == GB.SELECTION_TOOL:
 		LKM_pressed = true
 		old_mouse_position = get_local_mouse_position()
 		
-		
 		$Control.accept_event()
+	
+	if event is InputEventMouseButton \
+	and event.button_index == MOUSE_BUTTON_LEFT and event.double_click:
+		m_highlight()
+		m_highlight_related_log_records()
 		
 	if event.is_action_pressed("RKM"):
 		open_context_menu()
@@ -94,7 +99,8 @@ func m_dehighlight_related_log_records():
 		log_record.m_dehighlight()
 		
 func error_base():
-	PSM.process_input(PSM.INPUT.STOP)
+	remove_from_group("working_blocks")
+	PSM.process_input(PSM.INPUT.LSTOP)
 	
 	
 func error_next_block_not_exist(zap:Zap):
@@ -114,10 +120,6 @@ func _on_control_focus_exited():
 	m_dehighlight()
 	m_dehighlight_related_log_records()
 
-func _on_control_focus_entered():
-	m_highlight()
-	m_highlight_related_log_records()
-
 func on_state_changed():
 	match PSM.state:
 		PSM.STATE.PLAY:
@@ -129,3 +131,4 @@ func on_state_changed():
 		PSM.STATE.CLEAR:
 			related_log_records = []
 		
+
