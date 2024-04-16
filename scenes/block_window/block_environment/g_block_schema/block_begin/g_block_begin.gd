@@ -37,10 +37,6 @@ func arg_zap_processing(zap:Zap):
 			begin_point.end_point.block.zap_processing(zap)
 		else:
 			error_next_block_not_exist(zap)
-			
-func _on_activate_button_pressed():
-	PSM.process_input(PSM.INPUT.LPLAY)
-	zap_processing()
 	
 
 func on_activate_all():
