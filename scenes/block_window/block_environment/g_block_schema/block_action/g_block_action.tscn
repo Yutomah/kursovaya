@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c75mlnjq5y7ft"]
+[gd_scene load_steps=6 format=3 uid="uid://c75mlnjq5y7ft"]
 
 [ext_resource type="PackedScene" uid="uid://176g3cp8n76a" path="res://scenes/block_window/block_environment/g_block_schema/g_block/g_block.tscn" id="1_ub27w"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/g_block_schema/block_action/g_block_action.gd" id="2_4uot8"]
+[ext_resource type="PackedScene" uid="uid://d1in5wx8kx4ek" path="res://scenes/block_window/Arrows/arrows.tscn" id="3_2h44i"]
 [ext_resource type="PackedScene" uid="uid://cq3i7td46je11" path="res://scenes/block_window/block_environment/g_block_schema/g_block/gui_point_links/g_end_point.tscn" id="3_cqbes"]
 [ext_resource type="PackedScene" uid="uid://dvd6ysg6qyrj2" path="res://scenes/block_window/block_environment/g_block_schema/g_block/gui_point_links/g_begin_point.tscn" id="4_dknfx"]
 
@@ -11,36 +12,15 @@ script = ExtResource("2_4uot8")
 [node name="Type" parent="Control/MarginContainer/Content" index="1"]
 text = "Блок действия"
 
-[node name="XContainer" type="HBoxContainer" parent="Control/MarginContainer/Content" index="2"]
+[node name="DirectionContainer" parent="Control/MarginContainer/Content" index="2" instance=ExtResource("3_2h44i")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/MarginContainer/Content/XContainer" index="0"]
-layout_mode = 2
-text = "X"
-
-[node name="SpinBox" type="SpinBox" parent="Control/MarginContainer/Content/XContainer" index="1"]
-layout_mode = 2
-min_value = -1.0
-max_value = 1.0
-
-[node name="YContainer" type="HBoxContainer" parent="Control/MarginContainer/Content" index="3"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/MarginContainer/Content/YContainer" index="0"]
-layout_mode = 2
-text = "Y"
-
-[node name="SpinBox" type="SpinBox" parent="Control/MarginContainer/Content/YContainer" index="1"]
-layout_mode = 2
-min_value = -1.0
-max_value = 1.0
-
-[node name="CheckBox" type="CheckBox" parent="Control/MarginContainer/Content" index="4"]
+[node name="CheckBox" type="CheckBox" parent="Control/MarginContainer/Content" index="3"]
 layout_mode = 2
 text = "Прыжок"
 
 [node name="GEndPoint" parent="EndPoints" index="0" instance=ExtResource("3_cqbes")]
-position = Vector2(0, -87)
+position = Vector2(0, -66)
 
 [node name="GBeginPoint" parent="BeginPoints" index="0" instance=ExtResource("4_dknfx")]
-position = Vector2(0, 88)
+position = Vector2(0, 67)

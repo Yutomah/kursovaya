@@ -14,9 +14,8 @@ func _process(delta):
 func zap_processing(zap:Zap):
 	if await zap_processing_control(zap):
 		zap.log_group.write_record(block_name, self)
-		var x = $Control/MarginContainer/Content/XContainer/SpinBox.value
-		var y = $Control/MarginContainer/Content/YContainer/SpinBox.value
-		var direction = Vector2i(x,y)
+		
+		var direction = $Control/MarginContainer/Content/DirectionContainer.get_direction()
 		
 		var line_drawed:bool
 		if $Control/MarginContainer/Content/CheckBox.button_pressed == true:

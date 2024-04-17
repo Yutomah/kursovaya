@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bna6lcmwx6e22"]
+[gd_scene load_steps=4 format=3 uid="uid://bna6lcmwx6e22"]
 
 [ext_resource type="PackedScene" uid="uid://y7rt1fkggvb0" path="res://scenes/block_window/block_environment/g_block_schema/g_block_schema.tscn" id="1_54gbm"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/Control.gd" id="3_1xnwo"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/Loader.gd" id="3_4ltng"]
 
 [node name="BlockEnvironment" type="SubViewportContainer"]
 anchors_preset = 15
@@ -37,5 +38,8 @@ camera = NodePath("../../Camera2D")
 
 [node name="GBlockSchema" parent="SubViewport/Root" instance=ExtResource("1_54gbm")]
 unique_name_in_owner = true
+
+[node name="Loader" type="Node2D" parent="SubViewport/Root"]
+script = ExtResource("3_4ltng")
 
 [connection signal="gui_input" from="SubViewport/Root/CanvasLayer/Control" to="SubViewport/Root/CanvasLayer/Control" method="_on_gui_input"]

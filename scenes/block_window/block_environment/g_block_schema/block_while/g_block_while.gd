@@ -18,9 +18,7 @@ func _process(delta):
 func zap_processing(zap:Zap):
 	if await zap_processing_control(zap):
 		zap.log_group.write_record(block_name, self)
-		var x_dir = $Control/MarginContainer/Content/XContainer/XSpinBox.value
-		var y_dir = $Control/MarginContainer/Content/YContainer/YSpinBox.value
-		var direction = Vector2i(x_dir,y_dir)
+		var direction = $Control/MarginContainer/Content/Arrows.get_direction()
 		var distance = $"Control/MarginContainer/Content/Distance container/DistanceSpinBox".value
 		
 		if zap.grid_line.check_for_border(direction, distance):
