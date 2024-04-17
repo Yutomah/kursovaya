@@ -27,8 +27,7 @@ func  serialize():
 	var dict = super.serialize()
 	dict["begin_point"] = begin_point
 	dict["end_point"] = end_point
-	dict["func"] = null if %OptionButton.selected == -1 \
-		else %OptionButton.block_begin_array[%OptionButton.selected]
+	dict["func"] = %OptionButton.current_block
 	
 	dict["link"] = begin_point.end_point
 	
@@ -37,8 +36,9 @@ func  serialize():
 func deserialize(dict, id_map):
 	super.deserialize(dict, id_map)
 	
-	#dict["func"] null if %OptionButton.selected == -1 \
-		#else %OptionButton.block_begin_array[%OptionButton.selected]
+	if id_map[dict["func"]] != null:
+		%OptionButton.current_block = id_map[dict["func"]]
+		%OptionButton.selected = %OptionButton.block_begin_array.find(%OptionButton.current_block)
 	
 	if id_map[dict["link"]] != null:
 		begin_point.create_link(id_map[dict["link"]])
@@ -46,5 +46,6 @@ func deserialize(dict, id_map):
 	
 
 func map_point_id(id_map, dict):
+	super.map_point_id(id_map, dict)
 	id_map[dict["end_point"]] = end_point
 	id_map[dict["begin_point"]] = begin_point

@@ -58,6 +58,7 @@ func deserialize(dict, id_map):
 		false_point.create_link(id_map[dict["link_false"]])
 
 func map_point_id(id_map, dict):
+	super.map_point_id(id_map, dict)
 	id_map[dict["false_point"]] = false_point
 	id_map[dict["true_point"]] = true_point
 	id_map[dict["end_point"]] = end_point 

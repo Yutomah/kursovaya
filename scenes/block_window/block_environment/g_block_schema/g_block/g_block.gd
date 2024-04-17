@@ -146,6 +146,8 @@ func deserialize(dict, id_map):
 	position.x = dict["pos_x"]
 	position.y = dict["pos_y"]
 	block_name = dict["block_name"]
+	$Control/MarginContainer/Content/NameContainer/NameLabel.text = block_name
+	GB.block_name_changed.emit()
 
 func map_point_id(id_map, dict):
-	pass
+	id_map[dict["id"]] = self

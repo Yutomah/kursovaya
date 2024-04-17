@@ -36,4 +36,5 @@ func deserialize(dict, id_map):
 	super.deserialize(dict, id_map)
 
 func map_point_id(id_map, dict):
+	super.map_point_id(id_map, dict)
 	id_map[dict["end_point"]] = end_point

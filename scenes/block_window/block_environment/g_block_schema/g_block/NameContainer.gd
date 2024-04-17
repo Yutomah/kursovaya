@@ -32,4 +32,4 @@ func _on_name_line_edit_text_submitted(new_text):
 	$NameLabel.show()
 	$NameLineEdit.hide()
 
-
+	

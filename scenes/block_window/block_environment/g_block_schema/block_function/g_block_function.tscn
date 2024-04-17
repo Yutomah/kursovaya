@@ -23,3 +23,5 @@ position = Vector2(0, -50)
 
 [node name="GBeginPoint" parent="BeginPoints" index="0" instance=ExtResource("4_vrcjd")]
 position = Vector2(0, 50)
+
+[connection signal="item_selected" from="Control/MarginContainer/Content/OptionButton" to="Control/MarginContainer/Content/OptionButton" method="_on_item_selected"]
