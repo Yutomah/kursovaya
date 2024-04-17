@@ -42,3 +42,21 @@ func arg_zap_processing(zap:Zap):
 func on_activate_all():
 	if $Control/MarginContainer/Content/MassActivationCheckbox.button_pressed:
 		zap_processing()
+
+func  serialize():
+	
+	var dict = super.serialize()
+	dict["mass_activation"] = $Control/MarginContainer/Content/MassActivationCheckbox.button_pressed
+	dict["begin_point"] = begin_point
+	dict["link"] = begin_point.end_point
+	return dict
+	
+func deserialize(dict, id_map):
+	super.deserialize(dict, id_map)
+	$Control/MarginContainer/Content/MassActivationCheckbox.button_pressed = dict["mass_activation"] 
+	if id_map[dict["link"]] != null:
+		begin_point.create_link(id_map[dict["link"]])
+	
+
+func map_point_id(id_map, dict):
+	id_map[dict["begin_point"]] = begin_point

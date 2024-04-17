@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bseqanhbkxpgw"]
+[gd_scene load_steps=9 format=3 uid="uid://bseqanhbkxpgw"]
 
 [ext_resource type="Script" path="res://scenes/drawing_window/PlayButton.gd" id="1_03lao"]
+[ext_resource type="Script" path="res://scenes/main_window/top_bar/SaveButton.gd" id="1_quj8s"]
 [ext_resource type="Script" path="res://scenes/drawing_window/PauseButton.gd" id="2_fi6wo"]
 [ext_resource type="Script" path="res://scenes/main_window/top_bar/SelectionButton.gd" id="2_unrqb"]
+[ext_resource type="Script" path="res://scenes/main_window/top_bar/LoadButton.gd" id="2_wp86u"]
 [ext_resource type="Script" path="res://scenes/drawing_window/StupButton.gd" id="3_1x6q7"]
 [ext_resource type="Script" path="res://scenes/main_window/top_bar/HandButton.gd" id="3_4dl4s"]
 [ext_resource type="Script" path="res://scenes/drawing_window/ClearFieldButton.gd" id="4_q5st8"]
@@ -22,10 +24,13 @@ layout_mode = 2
 [node name="SaveButton" type="Button" parent="VBoxContainer/MainWindowMenuBar"]
 layout_mode = 2
 text = "Сохранить"
+script = ExtResource("1_quj8s")
 
-[node name="OpenProgrammsButton" type="Button" parent="VBoxContainer/MainWindowMenuBar"]
+[node name="LoadButton" type="Button" parent="VBoxContainer/MainWindowMenuBar"]
 layout_mode = 2
-text = "Открыть"
+text = "Загрузить
+"
+script = ExtResource("2_wp86u")
 
 [node name="RunButtonsContainer" type="HBoxContainer" parent="VBoxContainer/MainWindowMenuBar"]
 layout_mode = 2
@@ -65,6 +70,8 @@ layout_mode = 2
 text = "Перетаскивание"
 script = ExtResource("3_4dl4s")
 
+[connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/SaveButton" to="VBoxContainer/MainWindowMenuBar/SaveButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/LoadButton" to="VBoxContainer/MainWindowMenuBar/LoadButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/PlayButton" to="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/PlayButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/PauseButton" to="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/PauseButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/StopButton" to="VBoxContainer/MainWindowMenuBar/RunButtonsContainer/StopButton" method="_on_pressed"]

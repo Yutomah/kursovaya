@@ -24,3 +24,16 @@ func zap_processing(zap:Zap):
 		else:
 			remove_from_group("working_blocks")
 			PSM.process_input(PSM.INPUT.LSTOP)
+
+func  serialize():
+	
+	var dict = super.serialize()
+	dict["end_point"] = end_point
+	
+	return dict
+	
+func deserialize(dict, id_map):
+	super.deserialize(dict, id_map)
+
+func map_point_id(id_map, dict):
+	id_map[dict["end_point"]] = end_point

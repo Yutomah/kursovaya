@@ -1,6 +1,10 @@
 extends HBoxContainer
 class_name Arrows
 
+var selected:int = 0:
+	set(value):
+		$Direction.selected = value
+		
 func get_direction()->Vector2:
 	match($Direction.selected):
 		0:
@@ -21,3 +25,7 @@ func get_direction()->Vector2:
 			return Vector2(-1,-1)
 	
 	return Vector2.ZERO
+
+
+func _on_direction_item_selected(index):
+	selected = index

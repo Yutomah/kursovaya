@@ -14,7 +14,7 @@ layout_mode = 2
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer" index="0"]
 layout_mode = 2
-item_count = 8
+item_count = 7
 selected = 0
 allow_reselect = true
 popup/item_0/text = "Начальный блок"
@@ -23,16 +23,14 @@ popup/item_1/text = "Блок действия"
 popup/item_1/id = 1
 popup/item_2/text = "Блок если"
 popup/item_2/id = 2
-popup/item_3/text = "Блок объединения"
-popup/item_3/id = 3
-popup/item_4/text = "Блок while"
-popup/item_4/id = 4
-popup/item_5/text = "Блок for"
-popup/item_5/id = 5
-popup/item_6/text = "Блок функции"
-popup/item_6/id = 6
-popup/item_7/text = "Конечный блок"
-popup/item_7/id = 7
+popup/item_3/text = "Блок while"
+popup/item_3/id = 4
+popup/item_4/text = "Блок for"
+popup/item_4/id = 5
+popup/item_5/text = "Блок функции"
+popup/item_5/id = 6
+popup/item_6/text = "Конечный блок"
+popup/item_6/id = 7
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer" index="1"]
 layout_mode = 2

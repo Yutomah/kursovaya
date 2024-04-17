@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://u1gdr7xpdmf4"]
+[gd_scene load_steps=6 format=3 uid="uid://u1gdr7xpdmf4"]
 
 [ext_resource type="PackedScene" uid="uid://176g3cp8n76a" path="res://scenes/block_window/block_environment/g_block_schema/g_block/g_block.tscn" id="1_lin3s"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/g_block_schema/block_if/g_block_if.gd" id="2_dopg3"]
 [ext_resource type="PackedScene" uid="uid://cq3i7td46je11" path="res://scenes/block_window/block_environment/g_block_schema/g_block/gui_point_links/g_end_point.tscn" id="2_rnk41"]
 [ext_resource type="PackedScene" uid="uid://dvd6ysg6qyrj2" path="res://scenes/block_window/block_environment/g_block_schema/g_block/gui_point_links/g_begin_point.tscn" id="3_f2iht"]
+[ext_resource type="PackedScene" uid="uid://d1in5wx8kx4ek" path="res://scenes/block_window/Arrows/arrows.tscn" id="3_gxrce"]
 
 [node name="GBlockIf" instance=ExtResource("1_lin3s")]
 script = ExtResource("2_dopg3")
@@ -11,36 +12,15 @@ script = ExtResource("2_dopg3")
 [node name="Type" parent="Control/MarginContainer/Content" index="1"]
 text = "Блок если"
 
-[node name="XContainer" type="HBoxContainer" parent="Control/MarginContainer/Content" index="2"]
+[node name="Arrows" parent="Control/MarginContainer/Content" index="2" instance=ExtResource("3_gxrce")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/MarginContainer/Content/XContainer" index="0"]
-layout_mode = 2
-text = "X"
-
-[node name="XSpinBox" type="SpinBox" parent="Control/MarginContainer/Content/XContainer" index="1"]
-layout_mode = 2
-min_value = -1.0
-max_value = 1.0
-
-[node name="YContainer" type="HBoxContainer" parent="Control/MarginContainer/Content" index="3"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/MarginContainer/Content/YContainer" index="0"]
-layout_mode = 2
-text = "Y"
-
-[node name="YSpinBox" type="SpinBox" parent="Control/MarginContainer/Content/YContainer" index="1"]
-layout_mode = 2
-min_value = -1.0
-max_value = 1.0
-
-[node name="Distance container" type="HBoxContainer" parent="Control/MarginContainer/Content" index="4"]
+[node name="Distance container" type="HBoxContainer" parent="Control/MarginContainer/Content" index="3"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/MarginContainer/Content/Distance container" index="0"]
 layout_mode = 2
-text = "Dist"
+text = "Расстояние"
 
 [node name="DistanceSpinBox" type="SpinBox" parent="Control/MarginContainer/Content/Distance container" index="1"]
 layout_mode = 2
@@ -50,10 +30,10 @@ value = 1.0
 allow_greater = true
 
 [node name="GEndPoint" parent="EndPoints" index="0" instance=ExtResource("2_rnk41")]
-position = Vector2(0, -87)
+position = Vector2(0, -66)
 
 [node name="GBeginPoint" parent="BeginPoints" index="0" instance=ExtResource("3_f2iht")]
-position = Vector2(-25, 86)
+position = Vector2(-58, 67)
 
 [node name="GBeginPoint2" parent="BeginPoints" index="1" instance=ExtResource("3_f2iht")]
-position = Vector2(25, 86)
+position = Vector2(43, 67)

@@ -21,6 +21,7 @@ signal create_log_group_wanted(zap:Zap)
 #context_menu
 signal context_menu_open_wanted(context_menu:ContextMenu)
 
+signal loader_created(loader:Loader)
 
 #tools
 enum {NONE_TOOL, SELECTION_TOOL, HAND_TOOL, ZOOM_TOOL}

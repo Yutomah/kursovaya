@@ -132,3 +132,20 @@ func on_state_changed():
 			related_log_records = []
 		
 
+func  serialize():
+	var dict = {
+		"id":self,
+		"type":$Control/MarginContainer/Content/Type.text,
+		"block_name":block_name,
+		"pos_x":position.x,
+		"pos_y":position.y
+	}
+	return dict
+
+func deserialize(dict, id_map):
+	position.x = dict["pos_x"]
+	position.y = dict["pos_y"]
+	block_name = dict["block_name"]
+
+func map_point_id(id_map, dict):
+	pass

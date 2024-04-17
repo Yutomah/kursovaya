@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d7qjkm8p3k2i"]
+
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/block_loader/loader.gd" id="1_dagxe"]
+
+[node name="Loader" type="Node2D"]
+script = ExtResource("1_dagxe")

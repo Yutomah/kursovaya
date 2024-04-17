@@ -31,3 +31,24 @@ func zap_processing(zap:Zap):
 		else:
 			error_line_beyond_borders(zap)
 
+func  serialize():
+	
+	var dict = super.serialize()
+	
+	dict["direction"] = $Control/MarginContainer/Content/DirectionContainer.selected
+	dict["jump"] = $Control/MarginContainer/Content/CheckBox.button_pressed
+	dict["end_point"] = end_point
+	dict["begin_point"] = begin_point
+	dict["link"] = begin_point.end_point
+	return dict
+	
+func deserialize(dict, id_map):
+	super.deserialize(dict, id_map)
+	$Control/MarginContainer/Content/DirectionContainer.selected = dict["direction"]
+	$Control/MarginContainer/Content/CheckBox.button_pressed = dict["jump"]
+	if id_map[dict["link"]] != null:
+		begin_point.create_link(id_map[dict["link"]])
+
+func map_point_id(id_map, dict):
+	id_map[dict["end_point"]] = end_point
+	id_map[dict["begin_point"]] = begin_point
