@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://cxwodag5337da"]
+[gd_scene load_steps=3 format=3 uid="uid://cxwodag5337da"]
+
+[ext_resource type="Script" path="res://scenes/main_window/top_bar/StepButton.gd" id="1_6g3yd"]
+[ext_resource type="Script" path="res://scenes/main_window/top_bar/StepCheckbox.gd" id="2_plmem"]
 
 [node name="LogToolBar" type="PanelContainer"]
 anchors_preset = 10
@@ -8,10 +11,16 @@ grow_horizontal = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="HBoxContainer"]
+[node name="StepButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-text = "button1"
+disabled = true
+text = "Шаг"
+script = ExtResource("1_6g3yd")
 
-[node name="Button2" type="Button" parent="HBoxContainer"]
+[node name="StepCheckbox" type="CheckBox" parent="HBoxContainer"]
 layout_mode = 2
-text = "button2"
+text = "Пошаговый режим"
+script = ExtResource("2_plmem")
+
+[connection signal="pressed" from="HBoxContainer/StepButton" to="HBoxContainer/StepButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/StepCheckbox" to="HBoxContainer/StepCheckbox" method="_on_pressed"]

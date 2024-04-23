@@ -10,10 +10,19 @@ func _ready():
 
 func _process(delta):
 	super._process(delta)
+
+func send_msg_to_log(zap:Zap):
+	var arrow_path = $Control/MarginContainer/Content/DirectionContainer.get_arrow_path()
+	var msg
+	if $Control/MarginContainer/Content/CheckBox.button_pressed:
+		msg = "%s: Курсор перемещён в сторону [img]%s[/img]" % [block_name, arrow_path]
+	else:
+		msg = "%s: Линия нарисована в сторону [img]%s[/img]" % [block_name, arrow_path]
+	zap.log_group.write_record(msg, self)
 	
 func zap_processing(zap:Zap):
 	if await zap_processing_control(zap):
-		zap.log_group.write_record(block_name, self)
+		send_msg_to_log(zap)
 		
 		var direction = $Control/MarginContainer/Content/DirectionContainer.get_direction()
 		

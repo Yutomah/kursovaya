@@ -46,8 +46,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "Имя блока
+Кликни 2 раза для изменения"
 mouse_filter = 1
-text = "aboba"
+text = "Базовый блок"
 
 [node name="NameLineEdit" type="LineEdit" parent="Control/MarginContainer/Content/NameContainer"]
 visible = false
@@ -64,6 +66,9 @@ drag_and_drop_selection_enabled = false
 
 [node name="Type" type="Label" parent="Control/MarginContainer/Content"]
 layout_mode = 2
+tooltip_text = "Тип блока"
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
 text = "Базовый блок"
 
 [node name="EndPoints" type="Node2D" parent="."]

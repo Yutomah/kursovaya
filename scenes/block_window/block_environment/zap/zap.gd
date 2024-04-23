@@ -4,6 +4,8 @@ var grid_line:GridLine = null
 var block_begin:GBlockBegin = null
 var return_stack:Array[GBlock]
 var log_group:LogGroup = null
+var for_counters:Dictionary = {}
+
 
 func remove_myself():
 	block_begin.zap = null

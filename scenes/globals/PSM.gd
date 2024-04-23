@@ -29,8 +29,9 @@ func process_input(input: INPUT):
 func play_state(input:INPUT):
 	match input:
 		INPUT.PLAY:
-			state = STATE.STOP
-			process_input(input)
+			pass
+			#state = STATE.STOP
+			#process_input(input)
 		INPUT.LPLAY:
 			pass
 		INPUT.PAUSE_CONTINUE:
@@ -48,8 +49,9 @@ func play_state(input:INPUT):
 func pause_state(input:INPUT):
 	match input:
 		INPUT.PLAY:
-			state = STATE.STOP
-			process_input(input)
+			#state = STATE.STOP
+			#process_input(input)
+			state = STATE.PLAY
 		INPUT.LPLAY:
 			pass
 		INPUT.PAUSE_CONTINUE:

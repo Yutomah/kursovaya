@@ -6,14 +6,23 @@
 
 [node name="GBlockBegin" instance=ExtResource("1_pendl")]
 script = ExtResource("2_7df40")
+colors = Array[Color]([Color(0.968627, 0, 0, 1), Color(0, 0.968627, 0, 1), Color(0, 0, 0.854902, 1), Color(0, 0.533333, 0.686275, 1), Color(0.866667, 0.756863, 0, 1), Color(0.588235, 0, 0.713726, 1), Color(0.227451, 0.470588, 0.188235, 1), Color(0.929412, 0.6, 0.141176, 1), Color(0.101961, 0.678431, 0.0392157, 1)])
 
 [node name="Type" parent="Control/MarginContainer/Content" index="1"]
 text = "Начальный блок"
 
 [node name="MassActivationCheckbox" type="CheckBox" parent="Control/MarginContainer/Content" index="2"]
 layout_mode = 2
-button_pressed = true
-text = "Активировать со всеми"
+tooltip_text = "Если этот чекбокс активирован
+этот блок не будет запущен
+при начале работы"
+text = "Выключить"
+
+[node name="ColorRect" type="ColorRect" parent="Control" index="2"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="GBeginPoint" parent="BeginPoints" index="0" instance=ExtResource("3_ebcp8")]
 position = Vector2(2, 49)

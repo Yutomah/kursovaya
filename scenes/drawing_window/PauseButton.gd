@@ -7,16 +7,16 @@ func _ready():
 func on_state_changed():
 	match PSM.state:
 		PSM.STATE.PLAY:
-			text = "pause"
+			#text = "pause"
 			disabled = false
 		PSM.STATE.PAUSE:
-			text = "continue"
+			#text = "continue"
 			disabled = false
 		PSM.STATE.STOP:
-			text = "pause"
+			#text = "pause"
 			disabled = true
 		PSM.STATE.CLEAR:
-			text = "pause"
+			#text = "pause"
 			disabled = true
 		
 func _on_pressed():

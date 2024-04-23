@@ -12,9 +12,18 @@ func _process(delta):
 	super._process(delta)
 	pass
 
+func send_msg_to_log(zap:Zap):
+	var result = zap.return_stack.size() > 0
+	var msg
+	if result:
+		msg = "%s: функция завершена" % block_name
+	else:
+		msg = "%s: программа завершена" % block_name
+	zap.log_group.write_record(msg, self)
+	
 func zap_processing(zap:Zap):
 	if await zap_processing_control(zap):
-		zap.log_group.write_record(block_name, self)
+		send_msg_to_log(zap)
 		if zap.return_stack.size() > 0:
 			var return_block:GBlock = zap.return_stack.pop_back()
 			if return_block != null:
@@ -22,7 +31,7 @@ func zap_processing(zap:Zap):
 			else:
 				error_next_block_not_exist(zap)
 		else:
-			remove_from_group("working_blocks")
+			zap.block_begin.remove_from_group("working_blocks")
 			PSM.process_input(PSM.INPUT.LSTOP)
 
 func  serialize():

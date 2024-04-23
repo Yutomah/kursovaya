@@ -1,13 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://bseqanhbkxpgw"]
+[gd_scene load_steps=16 format=3 uid="uid://bseqanhbkxpgw"]
 
 [ext_resource type="Script" path="res://scenes/drawing_window/PlayButton.gd" id="1_03lao"]
+[ext_resource type="Texture2D" uid="uid://6kxsa0sthl8p" path="res://Sprites/save_icons/save.png" id="1_5wlji"]
 [ext_resource type="Script" path="res://scenes/main_window/top_bar/SaveButton.gd" id="1_quj8s"]
 [ext_resource type="Script" path="res://scenes/drawing_window/PauseButton.gd" id="2_fi6wo"]
 [ext_resource type="Script" path="res://scenes/main_window/top_bar/SelectionButton.gd" id="2_unrqb"]
 [ext_resource type="Script" path="res://scenes/main_window/top_bar/LoadButton.gd" id="2_wp86u"]
 [ext_resource type="Script" path="res://scenes/drawing_window/StupButton.gd" id="3_1x6q7"]
 [ext_resource type="Script" path="res://scenes/main_window/top_bar/HandButton.gd" id="3_4dl4s"]
+[ext_resource type="Texture2D" uid="uid://2iyac8o47djd" path="res://Sprites/save_icons/savings.png" id="3_5sulf"]
+[ext_resource type="Texture2D" uid="uid://c0liph588lpuf" path="res://Sprites/player_icons/play-button-arrowhead (1) копия.png" id="3_a4dqq"]
 [ext_resource type="Script" path="res://scenes/drawing_window/ClearFieldButton.gd" id="4_q5st8"]
+[ext_resource type="Texture2D" uid="uid://bc4gtg4usyrsd" path="res://Sprites/player_icons/pause копия.png" id="5_y6dwr"]
+[ext_resource type="Texture2D" uid="uid://j1aqadbkga54" path="res://Sprites/player_icons/stop-button копия.png" id="7_r8wcl"]
+[ext_resource type="Texture2D" uid="uid://djh65tbnsbaes" path="res://Sprites/cursor.png" id="7_yxwn1"]
+[ext_resource type="Texture2D" uid="uid://binntib1nopli" path="res://Sprites/hand.png" id="9_s5twt"]
 
 [node name="MainWindowTopBar" type="PanelContainer"]
 anchors_preset = 10
@@ -24,12 +31,14 @@ layout_mode = 2
 [node name="SaveButton" type="Button" parent="VBoxContainer/MainWindowMenuBar"]
 layout_mode = 2
 text = "Сохранить"
+icon = ExtResource("1_5wlji")
 script = ExtResource("1_quj8s")
 
 [node name="LoadButton" type="Button" parent="VBoxContainer/MainWindowMenuBar"]
 layout_mode = 2
-text = "Загрузить
+text = "Сохранения
 "
+icon = ExtResource("3_5sulf")
 script = ExtResource("2_wp86u")
 
 [node name="RunButtonsContainer" type="HBoxContainer" parent="VBoxContainer/MainWindowMenuBar"]
@@ -37,24 +46,24 @@ layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="VBoxContainer/MainWindowMenuBar/RunButtonsContainer"]
 layout_mode = 2
-text = "play"
+icon = ExtResource("3_a4dqq")
 script = ExtResource("1_03lao")
 
 [node name="PauseButton" type="Button" parent="VBoxContainer/MainWindowMenuBar/RunButtonsContainer"]
 layout_mode = 2
 disabled = true
-text = "pause"
+icon = ExtResource("5_y6dwr")
 script = ExtResource("2_fi6wo")
 
 [node name="StopButton" type="Button" parent="VBoxContainer/MainWindowMenuBar/RunButtonsContainer"]
 layout_mode = 2
 disabled = true
-text = "stop"
+icon = ExtResource("7_r8wcl")
 script = ExtResource("3_1x6q7")
 
 [node name="ClearFieldButton" type="Button" parent="VBoxContainer/MainWindowMenuBar/RunButtonsContainer"]
 layout_mode = 2
-text = "Стереть всё"
+text = "Стереть рисунок"
 script = ExtResource("4_q5st8")
 
 [node name="MainWindowToolBar" type="HFlowContainer" parent="VBoxContainer"]
@@ -63,11 +72,13 @@ layout_mode = 2
 [node name="SelectionButton" type="Button" parent="VBoxContainer/MainWindowToolBar"]
 layout_mode = 2
 text = "Выделение"
+icon = ExtResource("7_yxwn1")
 script = ExtResource("2_unrqb")
 
 [node name="HandButton" type="Button" parent="VBoxContainer/MainWindowToolBar"]
 layout_mode = 2
-text = "Перетаскивание"
+text = "Рука"
+icon = ExtResource("9_s5twt")
 script = ExtResource("3_4dl4s")
 
 [connection signal="pressed" from="VBoxContainer/MainWindowMenuBar/SaveButton" to="VBoxContainer/MainWindowMenuBar/SaveButton" method="_on_pressed"]

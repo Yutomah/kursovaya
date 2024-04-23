@@ -26,6 +26,7 @@ func line_jump(direction:Vector2i):
 		var new_pos:Vector2i = current_grid_pos * CELL_SIZE
 		
 		var new_line:Line2D = Line2D.new()
+		new_line.default_color = color
 		new_line.points = PackedVector2Array([new_pos])
 		new_line.width = 3
 		add_child(new_line)

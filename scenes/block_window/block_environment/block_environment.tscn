@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4kel1u4v6pie"]
+[gd_scene load_steps=5 format=3 uid="uid://c4kel1u4v6pie"]
 
 [ext_resource type="PackedScene" uid="uid://y7rt1fkggvb0" path="res://scenes/block_window/block_environment/g_block_schema/g_block_schema.tscn" id="1_54gbm"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/Camera2D.gd" id="2_7q4t2"]
 [ext_resource type="PackedScene" uid="uid://d7qjkm8p3k2i" path="res://scenes/block_window/block_environment/block_loader/loader.tscn" id="2_etrns"]
 
 [sub_resource type="GDScript" id="GDScript_qhvw5"]
@@ -55,6 +56,7 @@ render_target_update_mode = 4
 [node name="Loader" parent="SubViewport/Root" instance=ExtResource("2_etrns")]
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport/Root"]
+script = ExtResource("2_7q4t2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewport/Root"]
 layer = -1

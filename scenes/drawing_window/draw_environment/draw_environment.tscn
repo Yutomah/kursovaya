@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://x83yn2bdb4nx"]
+[gd_scene load_steps=7 format=3 uid="uid://x83yn2bdb4nx"]
 
 [ext_resource type="Script" path="res://scenes/drawing_window/draw_environment/draw_environment.gd" id="1_ivwxe"]
 [ext_resource type="Script" path="res://scenes/drawing_window/draw_environment/draw_field/Grid.gd" id="2_51bjt"]
+[ext_resource type="Script" path="res://scenes/drawing_window/draw_environment/Camera2D.gd" id="2_xtifu"]
 [ext_resource type="Script" path="res://scenes/drawing_window/draw_environment/draw_field/InfiniteGrid.gd" id="3_wa6gs"]
 [ext_resource type="Script" path="res://scenes/drawing_window/draw_environment/draw_field/FiniteGrid.gd" id="4_qjrpv"]
 [ext_resource type="Script" path="res://scenes/drawing_window/draw_environment/draw_field/Lines.gd" id="5_qdnu8"]
@@ -22,6 +23,7 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport"]
+script = ExtResource("2_xtifu")
 
 [node name="Grid" type="Node2D" parent="SubViewport" node_paths=PackedStringArray("camera")]
 script = ExtResource("2_51bjt")

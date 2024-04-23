@@ -71,6 +71,13 @@ func zap_processing_control(zap:Zap):
 	
 	await get_tree().create_timer(delay).timeout
 	
+	zap.block_begin.is_stepped = true
+	
+	if GB.is_step_by_step:
+		zap.block_begin.is_stepped = true
+		await GB.make_step
+		zap.block_begin.is_stepped = false
+	
 	if PSM.state == PSM.STATE.PAUSE:
 		await PSM.state_changed
 		
@@ -85,11 +92,10 @@ func _on_tree_exited():
 	GB.block_name_changed.emit()
 
 func m_highlight():
-	$Control.modulate = Color.BURLYWOOD
+	$Control/Background.self_modulate = Color.AQUAMARINE
 
 func m_dehighlight():
-	$Control.modulate = Color.WHITE
-
+	$Control/Background.self_modulate = Color.WHITE
 func m_highlight_related_log_records():
 	for log_record:LogRecord in related_log_records:
 		log_record.m_highlight()
@@ -98,28 +104,31 @@ func m_dehighlight_related_log_records():
 	for log_record:LogRecord in related_log_records:
 		log_record.m_dehighlight()
 		
-func error_base():
-	remove_from_group("working_blocks")
+func error_base(zap:Zap):
+	zap.block_begin.remove_from_group("working_blocks")
 	PSM.process_input(PSM.INPUT.LSTOP)
 	
 	
 func error_next_block_not_exist(zap:Zap):
 	zap.log_group.write_record("Отсутствует блок для последующей передачи", self)
-	error_base()
+	error_base(zap)
 
 func error_line_beyond_borders(zap:Zap):
 	zap.log_group.write_record("Линия вышла за границы доски", self)
-	error_base()
+	error_base(zap)
 	
 func error_no_selected_begin_block(zap:Zap):
 	zap.log_group.write_record("Не выбрано функции в блоке функции", self)
-	error_base()
+	error_base(zap)
 
 
 func _on_control_focus_exited():
 	m_dehighlight()
 	m_dehighlight_related_log_records()
 
+func send_msg_to_log(zap:Zap):
+	zap.log_group.write_record(block_name, self)
+	
 func on_state_changed():
 	match PSM.state:
 		PSM.STATE.PLAY:

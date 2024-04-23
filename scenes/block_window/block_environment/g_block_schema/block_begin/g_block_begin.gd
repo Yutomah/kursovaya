@@ -5,14 +5,38 @@ class_name GBlockBegin
 var zap:Zap = null
 # Called when the node enters the scene tree for the first time.
 
+@export var colors:Array[Color]
+var pencil_color:Color 
+var is_stepped = false
+
 func _ready():
 	super._ready()
 	PSM.activate_all_begin_blocks_wanted.connect(on_activate_all)
-
+	pick_unique_color()
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super._process(delta)
 
+func pick_unique_color():
+	var found = false
+	for color in colors:
+		if GB.used_colors.find_key(color) == null:
+			GB.used_colors[str(self)] = color
+			pencil_color = color
+			$Control/ColorRect.color = color
+			found = true
+			break
+	if !found:
+		var c =  colors.pick_random()
+		GB.used_colors[str(self)] = c
+		pencil_color = c
+		$Control/ColorRect.color = c
+
+func send_msg_to_log(zap:Zap):
+	var msg = "%s: ветка запущена" % block_name
+	zap.log_group.write_record(msg, self)
+	
 func zap_processing():
 	
 	if zap != null:
@@ -21,10 +45,11 @@ func zap_processing():
 	
 	zap = Zap.new()
 	zap.block_begin = self
+	is_stepped = false
 	GB.line_creation_wanted.emit(zap)
 	GB.create_log_group_wanted.emit(zap)
 	if await zap_processing_control(zap):
-		zap.log_group.write_record(block_name, self)
+		send_msg_to_log(zap)
 		if begin_point.end_point != null:
 			begin_point.end_point.block.zap_processing(zap)
 		else:
@@ -32,7 +57,8 @@ func zap_processing():
 
 func arg_zap_processing(zap:Zap):
 	if await zap_processing_control(zap):
-		zap.log_group.write_record(block_name, self)
+		var msg = "%s: функция запущена" % block_name
+		zap.log_group.write_record(msg, self)
 		if begin_point.end_point != null:
 			begin_point.end_point.block.zap_processing(zap)
 		else:
@@ -40,7 +66,7 @@ func arg_zap_processing(zap:Zap):
 	
 
 func on_activate_all():
-	if $Control/MarginContainer/Content/MassActivationCheckbox.button_pressed:
+	if !$Control/MarginContainer/Content/MassActivationCheckbox.button_pressed:
 		zap_processing()
 
 func  serialize():

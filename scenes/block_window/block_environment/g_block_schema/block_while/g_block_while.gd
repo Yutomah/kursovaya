@@ -14,12 +14,30 @@ func _ready():
 func _process(delta):
 	super._process(delta)
 	pass
+	
+func send_msg_to_log(zap:Zap):
+	var arrow_path = $Control/MarginContainer/Content/Arrows.get_arrow_path()
+	
+	var direction = $Control/MarginContainer/Content/Arrows.get_direction()
+	var distance = $"Control/MarginContainer/Content/Distance container/DistanceSpinBox".value
+	
+	var result = !zap.grid_line.check_for_border(direction, distance)
+	var msg
+	if result:
+		msg = "%s: Произведена проверка на стену в сторону [img]%s[/img] на дистанции %s. Результат: %s. Цикл завершён." \
+			% [block_name, arrow_path, distance, result]
+	else:
+		msg = "%s: Произведена проверка на стену в сторону [img]%s[/img] на дистанции %s. Результат: %s. Цикл продолжается." \
+			% [block_name, arrow_path, distance, result]
+	zap.log_group.write_record(msg, self)
+
 
 func zap_processing(zap:Zap):
 	if await zap_processing_control(zap):
-		zap.log_group.write_record(block_name, self)
+		send_msg_to_log(zap)
 		var direction = $Control/MarginContainer/Content/Arrows.get_direction()
 		var distance = $"Control/MarginContainer/Content/Distance container/DistanceSpinBox".value
+		
 		
 		if zap.grid_line.check_for_border(direction, distance):
 			if true_point.end_point != null:

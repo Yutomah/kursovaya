@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://0xrcbxqh5a7r"]
+
+[ext_resource type="Script" path="res://scenes/globals/camera_buttons.gd" id="1_2c4yk"]
+[ext_resource type="Texture2D" uid="uid://dwycuvrad6spm" path="res://Sprites/magnifying_glass/glas_minus.png" id="1_n7q17"]
+[ext_resource type="Texture2D" uid="uid://b2eeg1lwhny0x" path="res://Sprites/magnifying_glass/return.png" id="2_chyig"]
+[ext_resource type="Texture2D" uid="uid://boubtys60x3mc" path="res://Sprites/magnifying_glass/glass_plus.png" id="3_fhe24"]
+
+[node name="CameraButtons" type="HBoxContainer"]
+script = ExtResource("1_2c4yk")
+
+[node name="ZoomOut" type="Button" parent="."]
+layout_mode = 2
+icon = ExtResource("1_n7q17")
+
+[node name="Return" type="Button" parent="."]
+layout_mode = 2
+icon = ExtResource("2_chyig")
+
+[node name="ZoomIn" type="Button" parent="."]
+layout_mode = 2
+icon = ExtResource("3_fhe24")
+
+[connection signal="pressed" from="ZoomOut" to="." method="_on_zoom_out_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="ZoomIn" to="." method="_on_zoom_in_pressed"]

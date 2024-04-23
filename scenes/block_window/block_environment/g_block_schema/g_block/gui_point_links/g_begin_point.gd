@@ -6,7 +6,11 @@ var LKM_pressed = false
 @onready var line:Line2D = %Line
 @onready var block:GBlock = get_parent().get_parent()
 var end_point:GEndPoint
+@export var point_label:String
 
+func _ready():
+	$Label.text = point_label
+	
 func _draw():
 	draw_circle(Vector2.ZERO, 7, Color.SKY_BLUE)
 
@@ -22,7 +26,6 @@ func _on_gui_input(event):
 func _input(event):
 	if event.is_action_released("LKM") and LKM_pressed:
 		LKM_pressed = false
-		print(3)
 		remove_link()
 		var focus_owner = get_viewport().gui_get_focus_owner()
 		if focus_owner != null and focus_owner.get_parent() is GEndPoint:

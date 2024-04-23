@@ -16,10 +16,10 @@ func _on_gui_input(event):
 		block.m_highlight()
 
 func m_highlight():
-	modulate = Color.BURLYWOOD
+	$ColorRect.self_modulate = Color.AQUAMARINE
 
 func m_dehighlight():
-	modulate = Color.WHITE
+	$ColorRect.self_modulate = Color.WHITE
 
 func _on_focus_exited():
 	m_dehighlight()

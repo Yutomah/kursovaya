@@ -34,6 +34,8 @@ position = Vector2(0, -66)
 
 [node name="GBeginPoint" parent="BeginPoints" index="0" instance=ExtResource("3_f2iht")]
 position = Vector2(-58, 67)
+point_label = "+"
 
 [node name="GBeginPoint2" parent="BeginPoints" index="1" instance=ExtResource("3_f2iht")]
 position = Vector2(43, 67)
+point_label = "-"

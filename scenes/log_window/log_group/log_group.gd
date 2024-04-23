@@ -3,6 +3,7 @@ class_name LogGroup
 
 var zap:Zap
 var log_record_scene = preload("res://scenes/log_window/log_record/log_record.tscn")
+var color:Color
 func remove_myself():
 	queue_free()
 

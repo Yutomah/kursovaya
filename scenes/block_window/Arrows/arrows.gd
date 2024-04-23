@@ -26,6 +26,8 @@ func get_direction()->Vector2:
 	
 	return Vector2.ZERO
 
+func get_arrow_path():
+	return $Direction.get_item_icon($Direction.selected).resource_path
 
 func _on_direction_item_selected(index):
 	selected = index

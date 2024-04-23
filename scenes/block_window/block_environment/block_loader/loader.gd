@@ -6,6 +6,7 @@ var save_folder = "user://saves"
 	"begin" :preload("res://scenes/block_window/block_environment/g_block_schema/block_begin/g_block_begin.tscn"),
 	"action":preload("res://scenes/block_window/block_environment/g_block_schema/block_action/g_block_action.tscn"),
 	"if": preload("res://scenes/block_window/block_environment/g_block_schema/block_if/g_block_if.tscn"),
+	"end_if" : preload("res://scenes/block_window/block_environment/g_block_schema/block_end_if/g_block_end_if.tscn"),
 	"while":preload("res://scenes/block_window/block_environment/g_block_schema/block_while/g_block_while.tscn"),
 	"for":preload("res://scenes/block_window/block_environment/g_block_schema/block_for/g_block_for.tscn"),
 	"end" :preload("res://scenes/block_window/block_environment/g_block_schema/block_end/g_block_end.tscn"),
@@ -84,5 +85,8 @@ func get_block_by_type(block_type):
 			return BlockTypes["while"].instantiate()
 		"Блок если":
 			return BlockTypes["if"].instantiate()
+		"Конец если":
+			return BlockTypes["end_if"].instantiate()
+		
 	return -1
 	

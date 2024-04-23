@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dmcqpynme8xtt"]
 
-[ext_resource type="Script" path="res://scenes/drawing_window/CameraToDefaultButton.gd" id="2_fn5v8"]
+[ext_resource type="PackedScene" uid="uid://0xrcbxqh5a7r" path="res://scenes/globals/camera_buttons.tscn" id="1_kjwar"]
 [ext_resource type="Script" path="res://scenes/drawing_window/InfiniteGridCheckBox.gd" id="6_4l1ua"]
 [ext_resource type="Script" path="res://scenes/drawing_window/FieldSizeApplyButton.gd" id="7_tywt6"]
 [ext_resource type="PackedScene" uid="uid://x83yn2bdb4nx" path="res://scenes/drawing_window/draw_environment/draw_environment.tscn" id="8_bcpr3"]
@@ -26,13 +26,10 @@ mouse_filter = 0
 [node name="HBoxContainer" type="HFlowContainer" parent="VerticalContainer"]
 layout_mode = 2
 
-[node name="CameraContainer" type="HBoxContainer" parent="VerticalContainer/HBoxContainer"]
+[node name="CameraButtons" parent="VerticalContainer/HBoxContainer" instance=ExtResource("1_kjwar")]
 layout_mode = 2
-
-[node name="CameraToDefaultButton" type="Button" parent="VerticalContainer/HBoxContainer/CameraContainer"]
-layout_mode = 2
-text = "Вернуть камеру"
-script = ExtResource("2_fn5v8")
+camera_zooms = Array[float]([1.0, 0.5])
+window_type = 1
 
 [node name="FieldSizeContainer" type="HFlowContainer" parent="VerticalContainer"]
 layout_mode = 2
@@ -80,6 +77,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[connection signal="pressed" from="VerticalContainer/HBoxContainer/CameraContainer/CameraToDefaultButton" to="VerticalContainer/HBoxContainer/CameraContainer/CameraToDefaultButton" method="_on_pressed"]
 [connection signal="toggled" from="VerticalContainer/FieldSizeContainer/InfiniteGridCheckBox" to="VerticalContainer/FieldSizeContainer/InfiniteGridCheckBox" method="_on_toggled"]
 [connection signal="pressed" from="VerticalContainer/FieldSizeContainer/FieldSizeApplyButton" to="VerticalContainer/FieldSizeContainer/FieldSizeApplyButton" method="_on_pressed"]

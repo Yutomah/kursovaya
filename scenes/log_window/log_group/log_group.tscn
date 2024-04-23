@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://3o5ofixyy612"]
+[gd_scene load_steps=3 format=3 uid="uid://3o5ofixyy612"]
 
 [ext_resource type="Script" path="res://scenes/log_window/log_group/log_group.gd" id="1_8tgjb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8s2ei"]
+resource_local_to_scene = true
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [node name="LogGroup" type="ScrollContainer"]
 custom_minimum_size = Vector2(200, 0)
@@ -9,6 +17,7 @@ anchor_bottom = 1.0
 offset_right = 208.0
 grow_vertical = 2
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_8s2ei")
 horizontal_scroll_mode = 0
 script = ExtResource("1_8tgjb")
 

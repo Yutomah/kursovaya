@@ -17,9 +17,7 @@ func remove_link():
 
 func _on_control_end_gui_input(event):
 	if  event.is_action_pressed("LKM") and GB.current_tool == GB.SELECTION_TOOL:
-		print("1")
 		if begin_point != null:
-			print("2")
 			begin_point.LKM_pressed = true
 			$ControlEnd.accept_event()
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvnp5l08gxo0"]
+[gd_scene load_steps=3 format=3 uid="uid://cvnp5l08gxo0"]
 
-[ext_resource type="PackedScene" uid="uid://bna6lcmwx6e22" path="res://scenes/block_window/block_environment/block_environment.tscn" id="1_g73mk"]
+[ext_resource type="PackedScene" uid="uid://0xrcbxqh5a7r" path="res://scenes/globals/camera_buttons.tscn" id="1_engce"]
+[ext_resource type="PackedScene" uid="uid://c4kel1u4v6pie" path="res://scenes/block_window/block_environment/block_environment.tscn" id="1_g73mk"]
 
 [node name="BlockWindow" type="Control"]
 clip_contents = true
@@ -22,13 +23,8 @@ grow_vertical = 2
 [node name="BlockMenuRow" type="HFlowContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/BlockMenuRow"]
+[node name="CameraButtons" parent="VBoxContainer/BlockMenuRow" instance=ExtResource("1_engce")]
 layout_mode = 2
-text = "Камера"
-
-[node name="Button2" type="Button" parent="VBoxContainer/BlockMenuRow"]
-layout_mode = 2
-text = "Загрузить"
 
 [node name="BlockEnvironment" parent="VBoxContainer" instance=ExtResource("1_g73mk")]
 layout_mode = 2

@@ -6,7 +6,7 @@ var LKM_pressed:bool = false
 var old_mouse_position:Vector2
 
 func _ready():
-	GB.camera_to_default_wanted.connect(camera_to_default)
+	pass
 	
 	
 func _process(_delta):
@@ -23,6 +23,4 @@ func _input(event):
 	if event.is_action_released("LKM") and LKM_pressed:
 		LKM_pressed = false
 
-func camera_to_default():
-	camera.offset = Vector2.ZERO
 

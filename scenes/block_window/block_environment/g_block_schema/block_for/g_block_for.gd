@@ -7,35 +7,44 @@ class_name GBlockFor
 @onready var true_point:GBeginPoint = $BeginPoints/GBeginPoint2
 
 
-var counter = 0
-
 func _ready():
-	PSM.state_changed.connect(on_state_changed)
 	super._ready()
 	pass # Replace with function body.
-	
-	
-func on_state_changed():
-	match PSM.state:
-		PSM.STATE.PLAY:
-			counter = 0
+			
 
 func _process(delta):
 	super._process(delta)
 	pass
 
+func send_msg_to_log(zap:Zap):
+	var max_count = $Control/MarginContainer/Content/IterAmountContainer/SpinBox.value
+	var current_count = zap.for_counters[str(self)]
+	var result = zap.for_counters[str(self)] < $Control/MarginContainer/Content/IterAmountContainer/SpinBox.value
+	
+	var msg
+	if result:
+		msg = "%s: значение счётчика = %s, нужно считать до %s, цикл продолжается" % [block_name, current_count, max_count]
+	else:
+		msg = "%s: значение счётчика = %s, нужно считать до %s, цикл завершён" % [block_name, current_count, max_count]
+	zap.log_group.write_record(msg, self)
+	
 func zap_processing(zap:Zap):
 	if await zap_processing_control(zap):
-		zap.log_group.write_record(block_name, self)
 		
-		if counter < $Control/MarginContainer/Content/IterAmountContainer/SpinBox.value:
+		
+		if !zap.for_counters.has(str(self)):
+			zap.for_counters[str(self)] = 0
+			
+		send_msg_to_log(zap)
+		if zap.for_counters[str(self)] < $Control/MarginContainer/Content/IterAmountContainer/SpinBox.value:
 			if true_point.end_point != null:
-				counter += 1
+				zap.for_counters[str(self)] += 1
 				true_point.end_point.block.zap_processing(zap)
 			else:
 				error_next_block_not_exist(zap)
 		else:
 			if false_point.end_point != null:
+				zap.for_counters.erase(str(self))
 				false_point.end_point.block.zap_processing(zap)
 			else:
 				error_next_block_not_exist(zap)

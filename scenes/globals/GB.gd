@@ -1,7 +1,6 @@
 extends Node
 
 #drawing_field
-signal camera_to_default_wanted
 signal change_field_size_wanted(is_infinite:bool, size:Vector2i)
 signal change_drawing_window_vision
 
@@ -23,6 +22,20 @@ signal context_menu_open_wanted(context_menu:ContextMenu)
 
 signal loader_created(loader:Loader)
 
+#step by step
+signal make_step()
+var is_step_by_step:bool = false
+#camera
+signal camera_to_default_wanted(window_type)
+signal camera_zoom_to(zoom_value:float, window_type)
+
+#begin block
+var used_colors:Dictionary = {}
+
+
 #tools
 enum {NONE_TOOL, SELECTION_TOOL, HAND_TOOL, ZOOM_TOOL}
 var current_tool = SELECTION_TOOL
+
+# window types
+enum WIN_TYPE{BLOCK_WINDOW, DRAW_WINDOW, LOG_WINDOW}

@@ -6,13 +6,15 @@ func _ready():
 func on_state_changed():
 	match PSM.state:
 		PSM.STATE.PLAY:
-			text = "replay"
+			#icon = load("res://Sprites/magnifying_glass/return.png")
+			icon = load("res://Sprites/player_icons/play-button-arrowhead (1) копия.png")
 		PSM.STATE.PAUSE:
-			text = "replay"
+			icon = load("res://Sprites/player_icons/play-button-arrowhead (1) копия.png")
 		PSM.STATE.STOP:
-			text = "play"
+			icon = load("res://Sprites/player_icons/play-button-arrowhead (1) копия.png")
 		PSM.STATE.CLEAR:
-			text = "play"
+			icon = load("res://Sprites/player_icons/play-button-arrowhead (1) копия.png")
+	pass
 		
 func _on_pressed():
 	PSM.process_input(PSM.INPUT.PLAY)
