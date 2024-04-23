@@ -13,6 +13,8 @@ signal line_draw_ended(result:bool)
 signal hand_tool_on_block_pressed(event:InputEvent)
 signal block_name_changed()
 signal block_begin_array_changed(begin_block_array:Array[GBlockBegin])
+signal block_amount_changed(block_amount:int)
+signal block_amount_wanted()
 
 #log
 signal create_log_group_wanted(zap:Zap)
@@ -25,6 +27,7 @@ signal loader_created(loader:Loader)
 #step by step
 signal make_step()
 var is_step_by_step:bool = false
+
 #camera
 signal camera_to_default_wanted(window_type)
 signal camera_zoom_to(zoom_value:float, window_type)

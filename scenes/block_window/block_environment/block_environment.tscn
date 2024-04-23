@@ -77,3 +77,5 @@ camera = NodePath("../../Camera2D")
 unique_name_in_owner = true
 
 [connection signal="gui_input" from="SubViewport/Root/CanvasLayer/Control" to="SubViewport/Root/CanvasLayer/Control" method="_on_gui_input"]
+[connection signal="child_entered_tree" from="SubViewport/Root/GBlockSchema" to="SubViewport/Root/GBlockSchema" method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="SubViewport/Root/GBlockSchema" to="SubViewport/Root/GBlockSchema" method="_on_child_exiting_tree"]

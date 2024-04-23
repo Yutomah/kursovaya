@@ -36,7 +36,7 @@ position = Vector2(0, -66)
 position = Vector2(-100, 0)
 
 [node name="GBeginPoint" parent="BeginPoints" index="0" instance=ExtResource("4_ualsm")]
-position = Vector2(37, 67)
+position = Vector2(37, 65)
 point_label = "+"
 
 [node name="GBeginPoint2" parent="BeginPoints" index="1" instance=ExtResource("4_ualsm")]
