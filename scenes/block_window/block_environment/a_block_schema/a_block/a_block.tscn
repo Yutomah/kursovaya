@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmgbms3pjuitq"]
+
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_block/a_block.gd" id="1_od1h3"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_block/background.gd" id="2_0skse"]
+
+[sub_resource type="Theme" id="Theme_23ues"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ej8e"]
+bg_color = Color(0.6, 0.6, 0.6, 0.0823529)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.673317, 0, 0.151154, 1)
+
+[node name="ABlock" type="Control" node_paths=PackedStringArray("background", "body")]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme = SubResource("Theme_23ues")
+script = ExtResource("1_od1h3")
+background = NodePath("Body/Background")
+body = NodePath("Body")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ej8e")
+
+[node name="Body" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel2" type="Panel" parent="Body"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ej8e")
+
+[node name="Background" type="TextureButton" parent="Body"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_0skse")
+
+[connection signal="pressed" from="Body/Background" to="Body/Background" method="_on_pressed"]

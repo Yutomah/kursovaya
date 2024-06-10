@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://caw5d2htar3v3"]
+
+[ext_resource type="PackedScene" uid="uid://b86q33r2c72ap" path="res://scenes/block_window/block_environment/zones/a_zone/a_zone.tscn" id="1_uqp2x"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_begin_zone/a_begin_zone.gd" id="2_213yq"]
+
+[node name="ABeginZone" instance=ExtResource("1_uqp2x")]
+script = ExtResource("2_213yq")
