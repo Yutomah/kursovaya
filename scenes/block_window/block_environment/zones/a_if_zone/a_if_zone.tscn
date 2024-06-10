@@ -1,38 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://djuobocnqvj2h"]
+[gd_scene load_steps=4 format=3 uid="uid://fulylan1kuo1"]
 
 [ext_resource type="PackedScene" uid="uid://b86q33r2c72ap" path="res://scenes/block_window/block_environment/zones/a_zone/a_zone.tscn" id="1_654dm"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_if_zone/a_if_zone.gd" id="2_5kvvp"]
-[ext_resource type="PackedScene" uid="uid://ck2wyw48ue3gi" path="res://scenes/block_window/block_environment/a_block_schema/a_if_block/a_if_block.tscn" id="3_f5agr"]
+[ext_resource type="PackedScene" uid="uid://ck2wyw48ue3gi" path="res://scenes/block_window/block_environment/a_block_schema/a_if_block/a_if_block.tscn" id="2_c1unl"]
 
-[node name="AIfZone" node_paths=PackedStringArray("center_list", "left_list", "right_list") instance=ExtResource("1_654dm")]
+[node name="AIfZone" node_paths=PackedStringArray("center_list", "horizontal_list", "left_list", "right_list") instance=ExtResource("1_654dm")]
 script = ExtResource("2_5kvvp")
 center_list = NodePath("PanelContainer/VBoxContainer")
-left_list = NodePath("PanelContainer/VBoxContainer/VBoxContainer#HBoxContainer/AZone/PanelContainer/VBoxContainer")
-right_list = NodePath("PanelContainer/VBoxContainer/VBoxContainer#HBoxContainer/AZone2/PanelContainer/VBoxContainer")
+horizontal_list = NodePath("PanelContainer/VBoxContainer/HBoxContainer")
+left_list = NodePath("PanelContainer/VBoxContainer/HBoxContainer/AZone/PanelContainer/VBoxContainer")
+right_list = NodePath("PanelContainer/VBoxContainer/HBoxContainer/AZone2/PanelContainer/VBoxContainer")
 
-[node name="VBoxContainer#AIfBlock" parent="PanelContainer/VBoxContainer" index="0" instance=ExtResource("3_f5agr")]
+[node name="AIfBlock" parent="PanelContainer/VBoxContainer" index="0" instance=ExtResource("2_c1unl")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
-[node name="VBoxContainer#HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" index="1"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" index="1"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
 mouse_filter = 2
-theme_override_constants/separation = 20
 
-[node name="AZone" parent="PanelContainer/VBoxContainer/VBoxContainer#HBoxContainer" index="0" instance=ExtResource("1_654dm")]
+[node name="AZone" parent="PanelContainer/VBoxContainer/HBoxContainer" index="0" instance=ExtResource("1_654dm")]
 layout_mode = 2
 
-[node name="VBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer#HBoxContainer/AZone/PanelContainer" index="0"]
-size_flags_horizontal = 8
-
-[node name="AZone2" parent="PanelContainer/VBoxContainer/VBoxContainer#HBoxContainer" index="1" instance=ExtResource("1_654dm")]
+[node name="AZone2" parent="PanelContainer/VBoxContainer/HBoxContainer" index="1" node_paths=PackedStringArray("main_list") instance=ExtResource("1_654dm")]
 layout_mode = 2
+main_list = NodePath("../AZone/PanelContainer/VBoxContainer")
 
-[node name="VBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer#HBoxContainer/AZone2/PanelContainer" index="0"]
-size_flags_horizontal = 0
-
-[editable path="PanelContainer/VBoxContainer/VBoxContainer#HBoxContainer/AZone"]
-[editable path="PanelContainer/VBoxContainer/VBoxContainer#HBoxContainer/AZone2"]
+[editable path="PanelContainer/VBoxContainer/HBoxContainer/AZone"]
+[editable path="PanelContainer/VBoxContainer/HBoxContainer/AZone2"]
