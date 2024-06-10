@@ -14,7 +14,5 @@ func _ready():
 
 
 func _on_pressed():
-	print("-----")
-	print_debug(size)
-	print_debug($"..".size)
-	print_debug($"../..".size)
+	print_debug(self)
+

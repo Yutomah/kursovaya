@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cai755nf0acib"]
+
+[ext_resource type="Script" path="res://scenes/block_window/spawn_block_button/spawn_block_button.gd" id="1_eevtu"]
+
+[node name="SpawnBlockButton" type="MenuButton"]
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "+"
+script = ExtResource("1_eevtu")

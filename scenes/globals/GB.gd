@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 #drawing_field
 signal change_field_size_wanted(is_infinite:bool, size:Vector2i)
@@ -42,3 +42,11 @@ var current_tool = SELECTION_TOOL
 
 # window types
 enum WIN_TYPE{BLOCK_WINDOW, DRAW_WINDOW, LOG_WINDOW}
+
+var ablocks:Array[Dictionary] = [
+	{"name" : "Блок действия", 
+	"scene" : preload("res://scenes/block_window/block_environment/a_block_schema/a_action_block/a_action_block.tscn")},
+	{"name" : "Блок если", 
+	"scene" : preload("res://scenes/block_window/block_environment/zones/a_if_zone/a_if_zone.tscn")},
+]
+	

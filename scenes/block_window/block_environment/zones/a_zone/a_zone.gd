@@ -1,11 +1,8 @@
 extends MarginContainer
 class_name AZone
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@export var main_list:VBoxContainer
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func spawn_block(ablock, pos:int):
+	main_list.add_child(ablock)
+	main_list.move_child(ablock, pos)

@@ -6,7 +6,7 @@
 [sub_resource type="Theme" id="Theme_23ues"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ej8e"]
-bg_color = Color(0.6, 0.6, 0.6, 0.0823529)
+bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -63,5 +63,15 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_0skse")
+
+[node name="Content" type="Control" parent="Body"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="Body/Background" to="Body/Background" method="_on_pressed"]

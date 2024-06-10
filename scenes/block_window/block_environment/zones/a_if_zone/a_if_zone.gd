@@ -1,11 +1,13 @@
 extends AZone
 class_name AIfZone
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@export var center:VBoxContainer
+@export var left:VBoxContainer
+@export var right:VBoxContainer
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func spawn_right(block):
+	right.add_child(block)
+	
+func spawn_left(block):
+	left.add_child(block)
