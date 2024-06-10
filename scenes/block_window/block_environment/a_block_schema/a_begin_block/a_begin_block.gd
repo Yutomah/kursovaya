@@ -1,11 +1,16 @@
 extends ABlock
 class_name ABeginBlock
 
-# Called when the node enters the scene tree for the first time.
+@onready var zone:AZone = get_node("../../../")
+@export var spawn_block_button:SpawnBlockButton
+
+
 func _ready():
+	super._ready()
+	spawn_block_button.item_pressed.connect(on_item_pressed)
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+
+func on_item_pressed(ablock):
+	zone.spawn_block(ablock, get_index())

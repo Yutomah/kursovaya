@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/Camera2D.gd" id="2_7q4t2"]
 [ext_resource type="PackedScene" uid="uid://d7qjkm8p3k2i" path="res://scenes/block_window/block_environment/block_loader/loader.tscn" id="2_etrns"]
-[ext_resource type="PackedScene" uid="uid://djuobocnqvj2h" path="res://scenes/block_window/block_environment/zones/a_if_zone/a_if_zone.tscn" id="3_b2d85"]
+[ext_resource type="PackedScene" uid="uid://caw5d2htar3v3" path="res://scenes/block_window/block_environment/zones/a_begin_zone/a_begin_zone.tscn" id="3_iawam"]
 
 [sub_resource type="GDScript" id="GDScript_qhvw5"]
 script/source = "extends Control
@@ -75,11 +75,7 @@ camera = NodePath("../../Camera2D")
 
 [node name="Blocks" type="Node2D" parent="SubViewport/Root"]
 
-[node name="AIfZone" parent="SubViewport/Root/Blocks" instance=ExtResource("3_b2d85")]
-custom_minimum_size = Vector2(0, 0)
-theme_override_constants/margin_left = -10
-theme_override_constants/margin_top = -10
-theme_override_constants/margin_right = -10
-theme_override_constants/margin_bottom = -10
+[node name="ABeginZone" parent="SubViewport/Root/Blocks" instance=ExtResource("3_iawam")]
+custom_minimum_size = Vector2(300, 200)
 
 [connection signal="gui_input" from="SubViewport/Root/CanvasLayer/Control" to="SubViewport/Root/CanvasLayer/Control" method="_on_gui_input"]

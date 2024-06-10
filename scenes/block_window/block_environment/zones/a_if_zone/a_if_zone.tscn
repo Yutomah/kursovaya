@@ -4,19 +4,22 @@
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_if_zone/a_if_zone.gd" id="2_5kvvp"]
 [ext_resource type="PackedScene" uid="uid://ck2wyw48ue3gi" path="res://scenes/block_window/block_environment/a_block_schema/a_if_block/a_if_block.tscn" id="3_f5agr"]
 
-[node name="AIfZone" node_paths=PackedStringArray("center", "left", "right") instance=ExtResource("1_654dm")]
+[node name="AIfZone" node_paths=PackedStringArray("center_list", "left_list", "right_list") instance=ExtResource("1_654dm")]
 script = ExtResource("2_5kvvp")
-center = NodePath("PanelContainer/VBoxContainer")
-left = NodePath("PanelContainer/VBoxContainer/VBoxContainer#HBoxContainer/AZone/PanelContainer/VBoxContainer")
-right = NodePath("PanelContainer/VBoxContainer/VBoxContainer#HBoxContainer/AZone2/PanelContainer/VBoxContainer")
+center_list = NodePath("PanelContainer/VBoxContainer")
+left_list = NodePath("PanelContainer/VBoxContainer/VBoxContainer#HBoxContainer/AZone/PanelContainer/VBoxContainer")
+right_list = NodePath("PanelContainer/VBoxContainer/VBoxContainer#HBoxContainer/AZone2/PanelContainer/VBoxContainer")
 
 [node name="VBoxContainer#AIfBlock" parent="PanelContainer/VBoxContainer" index="0" instance=ExtResource("3_f5agr")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="VBoxContainer#HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" index="1"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/separation = 20
 
 [node name="AZone" parent="PanelContainer/VBoxContainer/VBoxContainer#HBoxContainer" index="0" instance=ExtResource("1_654dm")]

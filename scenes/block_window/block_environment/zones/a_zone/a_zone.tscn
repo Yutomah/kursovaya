@@ -14,19 +14,22 @@ border_color = Color(0.60388, 0.0263482, 0.604494, 1)
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_cq6bi")
 
 [node name="AZone" type="MarginContainer" node_paths=PackedStringArray("main_list")]
-custom_minimum_size = Vector2(300, 200)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = SubResource("Theme_suyhu")
 script = ExtResource("1_5577t")
 main_list = NodePath("PanelContainer/VBoxContainer")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+custom_minimum_size = Vector2(300, 200)
 layout_mode = 2
-theme_override_constants/separation = 20
+mouse_filter = 2
+theme_override_constants/separation = 0

@@ -49,4 +49,6 @@ var ablocks:Array[Dictionary] = [
 	{"name" : "Блок если", 
 	"scene" : preload("res://scenes/block_window/block_environment/zones/a_if_zone/a_if_zone.tscn")},
 ]
-	
+
+var h_separation = 50
+var v_separation = 50
