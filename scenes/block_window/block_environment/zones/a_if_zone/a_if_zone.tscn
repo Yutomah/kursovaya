@@ -1,15 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://fulylan1kuo1"]
+[gd_scene load_steps=5 format=3 uid="uid://fulylan1kuo1"]
 
 [ext_resource type="PackedScene" uid="uid://b86q33r2c72ap" path="res://scenes/block_window/block_environment/zones/a_zone/a_zone.tscn" id="1_654dm"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_if_zone/a_if_zone.gd" id="2_5kvvp"]
 [ext_resource type="PackedScene" uid="uid://ck2wyw48ue3gi" path="res://scenes/block_window/block_environment/a_block_schema/a_if_block/a_if_block.tscn" id="2_c1unl"]
+[ext_resource type="PackedScene" uid="uid://cl4ge7hvp558d" path="res://scenes/block_window/block_environment/zones/a_if_zone/a_if_sub_zone.tscn" id="4_6pdm7"]
 
 [node name="AIfZone" node_paths=PackedStringArray("center_list", "horizontal_list", "left_list", "right_list") instance=ExtResource("1_654dm")]
 script = ExtResource("2_5kvvp")
 center_list = NodePath("PanelContainer/VBoxContainer")
 horizontal_list = NodePath("PanelContainer/VBoxContainer/HBoxContainer")
-left_list = NodePath("PanelContainer/VBoxContainer/HBoxContainer/AZone/PanelContainer/VBoxContainer")
-right_list = NodePath("PanelContainer/VBoxContainer/HBoxContainer/AZone2/PanelContainer/VBoxContainer")
+left_list = NodePath("PanelContainer/VBoxContainer/HBoxContainer/AIfSubZone/PanelContainer/VBoxContainer")
+right_list = NodePath("PanelContainer/VBoxContainer/HBoxContainer/AIfSubZone2/PanelContainer/VBoxContainer")
 
 [node name="AIfBlock" parent="PanelContainer/VBoxContainer" index="0" instance=ExtResource("2_c1unl")]
 layout_mode = 2
@@ -18,12 +19,18 @@ layout_mode = 2
 layout_mode = 2
 mouse_filter = 2
 
-[node name="AZone" parent="PanelContainer/VBoxContainer/HBoxContainer" index="0" instance=ExtResource("1_654dm")]
+[node name="AIfSubZone" parent="PanelContainer/VBoxContainer/HBoxContainer" index="0" instance=ExtResource("4_6pdm7")]
 layout_mode = 2
 
-[node name="AZone2" parent="PanelContainer/VBoxContainer/HBoxContainer" index="1" node_paths=PackedStringArray("main_list") instance=ExtResource("1_654dm")]
-layout_mode = 2
-main_list = NodePath("../AZone/PanelContainer/VBoxContainer")
+[node name="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/AIfSubZone/PanelContainer" index="0"]
+size_flags_horizontal = 8
 
-[editable path="PanelContainer/VBoxContainer/HBoxContainer/AZone"]
-[editable path="PanelContainer/VBoxContainer/HBoxContainer/AZone2"]
+[node name="AIfSubZone2" parent="PanelContainer/VBoxContainer/HBoxContainer" index="1" node_paths=PackedStringArray("main_list") instance=ExtResource("4_6pdm7")]
+layout_mode = 2
+main_list = NodePath("../AIfSubZone/PanelContainer/VBoxContainer")
+
+[node name="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/AIfSubZone2/PanelContainer" index="0"]
+size_flags_horizontal = 0
+
+[editable path="PanelContainer/VBoxContainer/HBoxContainer/AIfSubZone"]
+[editable path="PanelContainer/VBoxContainer/HBoxContainer/AIfSubZone2"]
