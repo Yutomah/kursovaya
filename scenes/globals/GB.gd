@@ -53,3 +53,14 @@ var ablocks:Array[Dictionary] = [
 var h_separation = 50
 var v_separation = 50
 var default_min_size = Vector2(300,200)
+
+var begin_zones:Array[ABeginZone] = []
+
+func get_my_begin_zone(block):
+	if block is ABeginZone:
+		return block
+		
+	for begin_zone in begin_zones:
+		if begin_zone.is_ancestor_of(block):
+			return begin_zone
+

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ck2wyw48ue3gi" path="res://scenes/block_window/block_environment/a_block_schema/a_if_block/a_if_block.tscn" id="3_476r7"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_zone/a_zone.gd" id="4_v6q2f"]
 
-[node name="AIfZone2" node_paths=PackedStringArray("center_list", "horizontal_list", "left_body", "right_body", "left_list", "right_list") instance=ExtResource("1_m04dp")]
+[node name="AIfZone2" node_paths=PackedStringArray("center_list", "horizontal_list", "left_body", "right_body", "left_list", "right_list", "a_if_block") instance=ExtResource("1_m04dp")]
 script = ExtResource("2_axymh")
 center_list = NodePath("PanelContainer/VBoxContainer")
 horizontal_list = NodePath("PanelContainer/VBoxContainer/HBoxContainer")
@@ -13,6 +13,7 @@ left_body = NodePath("PanelContainer/VBoxContainer/HBoxContainer/LeftBody")
 right_body = NodePath("PanelContainer/VBoxContainer/HBoxContainer/RightBody")
 left_list = NodePath("PanelContainer/VBoxContainer/HBoxContainer/LeftBody/PanelContainer/LeftList")
 right_list = NodePath("PanelContainer/VBoxContainer/HBoxContainer/RightBody/PanelContainer/RightList")
+a_if_block = NodePath("PanelContainer/VBoxContainer/AIfBlock")
 
 [node name="AIfBlock" parent="PanelContainer/VBoxContainer" index="0" instance=ExtResource("3_476r7")]
 layout_mode = 2

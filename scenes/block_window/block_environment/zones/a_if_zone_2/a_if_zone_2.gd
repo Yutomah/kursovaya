@@ -7,6 +7,7 @@ class_name AIfZone2
 @export var right_body:AZone
 @export var left_list:VBoxContainer
 @export var right_list:VBoxContainer
+@export var a_if_block:AIfBlock
 
 var default_min_size = Vector2(300,200)
 
@@ -19,7 +20,8 @@ func _ready():
 func update_alignment():
 	left_body.update_alignment()
 	right_body.update_alignment()
-
+	
+	a_if_block.align_block(get_left_size().x)
 
 
 

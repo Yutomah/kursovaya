@@ -12,11 +12,9 @@ func _ready():
 
 
 func on_left_pressed(ablock):
-	print("left")
 	if_zone.spawn_left(ablock)
 	
 func on_right_pressed(ablock):
-	print("right")
 	if_zone.spawn_right(ablock)
 
 
