@@ -11,7 +11,7 @@ func spawn_block(ablock, pos:int):
 	main_list.add_child(ablock)
 	main_list.move_child(ablock, pos)
 	
-	GB.get_my_begin_zone(self).update_alignment()
+	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_alignment)
 
 func update_alignment():
 	for child in main_list.get_children():
@@ -32,9 +32,8 @@ func left_right_min_size_to_default():
 			child.min_size_to_default()
 				
 func get_max_left_right_min_size():
-	var left:float = 0
-	var right:float = 0
-	var middle:float = 0
+	var left:float = -1
+	var right:float = -1
 	for child in main_list.get_children():
 		if child is AIfZone2:
 			if left < child.get_left_size().x:
