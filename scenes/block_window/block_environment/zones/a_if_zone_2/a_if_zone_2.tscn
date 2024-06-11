@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbfb1tkufntxl"]
+
+[ext_resource type="PackedScene" uid="uid://b86q33r2c72ap" path="res://scenes/block_window/block_environment/zones/a_zone/a_zone.tscn" id="1_m04dp"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_if_zone_2/a_if_zone_2.gd" id="2_axymh"]
+[ext_resource type="PackedScene" uid="uid://ck2wyw48ue3gi" path="res://scenes/block_window/block_environment/a_block_schema/a_if_block/a_if_block.tscn" id="3_476r7"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_zone/a_zone.gd" id="4_v6q2f"]
+
+[node name="AIfZone2" instance=ExtResource("1_m04dp")]
+script = ExtResource("2_axymh")
+
+[node name="AIfBlock" parent="PanelContainer/VBoxContainer" index="0" node_paths=PackedStringArray("left", "right", "background", "body") instance=ExtResource("3_476r7")]
+layout_mode = 2
+left = NodePath("")
+right = NodePath("")
+background = NodePath("")
+body = NodePath("")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" index="1"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LeftBody" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" index="0" node_paths=PackedStringArray("main_list")]
+layout_mode = 2
+script = ExtResource("4_v6q2f")
+main_list = NodePath("")
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/LeftBody" index="0"]
+layout_mode = 2
+
+[node name="LeftList" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/LeftBody/PanelContainer" index="0"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+
+[node name="RightBody" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" index="1" node_paths=PackedStringArray("main_list")]
+layout_mode = 2
+script = ExtResource("4_v6q2f")
+main_list = NodePath("")
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/RightBody" index="0"]
+layout_mode = 2
+
+[node name="RightList" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/RightBody/PanelContainer" index="0"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
