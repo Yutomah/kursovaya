@@ -3,21 +3,31 @@ class_name AIfZone
 
 @export var center_list:VBoxContainer
 @export var horizontal_list:HBoxContainer
+@export var left_body:AZone
+@export var right_body:AZone
 @export var left_list:VBoxContainer
 @export var right_list:VBoxContainer
+
+var default_min_size = Vector2(300,200)
 
 func _ready():
 	super._ready()
 	horizontal_list.add_theme_constant_override("separation", 100)
+	main_list.custom_minimum_size = GB.default_min_size
 	
-var default_min_size = Vector2(300,200)
-func spawn_right(block):
-	right_list.add_child(block)
-	right_list.move_child(block, 0)
-	
+
+func update_alignment():
+	left_body.update_alignment()
+	right_body.update_alignment()
+
+
+
+
 func spawn_left(block):
-	left_list.add_child(block)
-	left_list.move_child(block, 0)
+	left_body.spawn_block(block, 0)
+	
+func spawn_right(block):
+	right_body.spawn_block(block, 0)
 
 func get_left_size():
 	return left_list.size

@@ -13,6 +13,10 @@ func spawn_block(ablock, pos:int):
 	update_alignment()
 
 func update_alignment():
+	for child in main_list.get_children():
+		if child is AZone:
+			child.update_alignment()
+			
 	left_right_min_size_to_default()
 	
 	var left_right_size = get_max_left_right_min_size()

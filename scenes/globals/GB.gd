@@ -52,3 +52,4 @@ var ablocks:Array[Dictionary] = [
 
 var h_separation = 50
 var v_separation = 50
+var default_min_size = Vector2(300,200)
