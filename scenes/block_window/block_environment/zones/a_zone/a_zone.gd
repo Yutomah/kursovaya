@@ -9,7 +9,7 @@ func _ready():
 	
 func spawn_block(ablock, pos:int):
 	main_list.add_child(ablock)
-	main_list.move_child(ablock, pos+1)
+	main_list.move_child(ablock, pos)
 	update_alignment()
 
 func update_alignment():

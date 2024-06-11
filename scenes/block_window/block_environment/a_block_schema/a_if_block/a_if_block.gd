@@ -1,7 +1,7 @@
 extends ABlock
 class_name AIfBlock
 
-@onready var if_zone:AIfZone = get_node("../../../")
+@onready var if_zone:AIfZone2 = get_node("../../../")
 @export var left:SpawnBlockButton
 @export var right:SpawnBlockButton
 

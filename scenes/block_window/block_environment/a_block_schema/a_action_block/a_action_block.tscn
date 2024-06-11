@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cmgbms3pjuitq" path="res://scenes/block_window/block_environment/a_block_schema/a_block/a_block.tscn" id="1_vbe43"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_action_block/a_action_block.gd" id="2_d168i"]
-[ext_resource type="Texture2D" uid="uid://cahftl83vsyvx" path="res://Sprites/block_sprites/1x/Asset 10.png" id="3_mfboe"]
+[ext_resource type="Texture2D" uid="uid://cahftl83vsyvx" path="res://Sprites/block_sprites/1x/Asset 10.png" id="3_671ld"]
 [ext_resource type="PackedScene" uid="uid://cai755nf0acib" path="res://scenes/block_window/spawn_block_button/spawn_block_button.tscn" id="4_05i4a"]
 
 [node name="AActionBlock" node_paths=PackedStringArray("spawn_block_button") instance=ExtResource("1_vbe43")]
@@ -14,7 +14,7 @@ offset_left = -151.0
 offset_top = -91.0
 offset_right = 151.0
 offset_bottom = 91.0
-texture_normal = ExtResource("3_mfboe")
+texture_normal = ExtResource("3_671ld")
 
 [node name="SpawnBlockButton" parent="Body/Content" index="0" instance=ExtResource("4_05i4a")]
 layout_mode = 0

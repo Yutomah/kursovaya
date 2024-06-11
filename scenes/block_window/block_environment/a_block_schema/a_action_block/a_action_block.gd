@@ -13,4 +13,4 @@ func _ready():
 
 
 func on_item_pressed(ablock):
-	zone.spawn_block(ablock, get_index())
+	zone.spawn_block(ablock, get_index()+1)
