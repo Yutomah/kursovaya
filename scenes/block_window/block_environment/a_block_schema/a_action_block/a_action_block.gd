@@ -1,7 +1,6 @@
 extends ABlock
 class_name AActionBlock
 
-@onready var zone:AZone = get_node("../../../")
 @export var spawn_block_button:SpawnBlockButton
 
 # Called when the node enters the scene tree for the first time.

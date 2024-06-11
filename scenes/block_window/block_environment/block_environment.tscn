@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4kel1u4v6pie"]
+[gd_scene load_steps=6 format=3 uid="uid://c4kel1u4v6pie"]
 
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/Camera2D.gd" id="2_7q4t2"]
 [ext_resource type="PackedScene" uid="uid://d7qjkm8p3k2i" path="res://scenes/block_window/block_environment/block_loader/loader.tscn" id="2_etrns"]
 [ext_resource type="PackedScene" uid="uid://caw5d2htar3v3" path="res://scenes/block_window/block_environment/zones/a_begin_zone/a_begin_zone.tscn" id="3_iawam"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/PopupMenu.gd" id="3_jtdlk"]
 
 [sub_resource type="GDScript" id="GDScript_qhvw5"]
 script/source = "extends Control
@@ -10,11 +11,10 @@ script/source = "extends Control
 var LKM_pressed:bool = false
 var old_mouse_position:Vector2
 @export var camera:Camera2D
-var context_menu = preload(\"res://scenes/context_menu_layer/context_menu\\
-/block_field_context_menu/block_field_context_menu.tscn\")
 
 func _ready():
-	GB.hand_tool_on_block_pressed.connect(_on_gui_input)
+	pass
+	
 func _process(_delta):
 	if LKM_pressed:
 		camera.offset += old_mouse_position - camera.get_global_mouse_position()
@@ -25,16 +25,12 @@ func _on_gui_input(event):
 		old_mouse_position = camera.get_global_mouse_position()
 		
 	if event.is_action_pressed(\"RKM\"):
-		open_context_menu()
+		$PopupMenu.visible = true
+		$PopupMenu.position = get_local_mouse_position()
 
 func _input(event):
 	if event.is_action_released(\"LKM\") and LKM_pressed:
 		LKM_pressed = false
-
-func open_context_menu():
-	var menu := context_menu.instantiate() as BlockFieldContextMenu
-	menu.block_schema = %GBlockSchema
-	GB.context_menu_open_wanted.emit(menu)
 	
 "
 
@@ -73,9 +69,17 @@ mouse_filter = 1
 script = SubResource("GDScript_qhvw5")
 camera = NodePath("../../Camera2D")
 
+[node name="PopupMenu" type="PopupMenu" parent="SubViewport/Root/CanvasLayer/Control" node_paths=PackedStringArray("blocks")]
+item_count = 1
+item_0/text = "Создать новую блок схему"
+item_0/id = 0
+script = ExtResource("3_jtdlk")
+blocks = NodePath("../../../Blocks")
+
 [node name="Blocks" type="Node2D" parent="SubViewport/Root"]
 
 [node name="ABeginZone" parent="SubViewport/Root/Blocks" instance=ExtResource("3_iawam")]
 custom_minimum_size = Vector2(300, 200)
 
 [connection signal="gui_input" from="SubViewport/Root/CanvasLayer/Control" to="SubViewport/Root/CanvasLayer/Control" method="_on_gui_input"]
+[connection signal="id_pressed" from="SubViewport/Root/CanvasLayer/Control/PopupMenu" to="SubViewport/Root/CanvasLayer/Control/PopupMenu" method="_on_id_pressed"]

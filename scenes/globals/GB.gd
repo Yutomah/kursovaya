@@ -43,12 +43,15 @@ var current_tool = SELECTION_TOOL
 # window types
 enum WIN_TYPE{BLOCK_WINDOW, DRAW_WINDOW, LOG_WINDOW}
 
+var begin_zone_scene:PackedScene = preload("res://scenes/block_window/block_environment/zones/a_begin_zone/a_begin_zone.tscn")
+
 var ablocks:Array[Dictionary] = [
 	{"name" : "Блок действия", 
 	"scene" : preload("res://scenes/block_window/block_environment/a_block_schema/a_action_block/a_action_block.tscn")},
 	{"name" : "Блок если", 
 	"scene" : preload("res://scenes/block_window/block_environment/zones/a_if_zone_2/a_if_zone_2.tscn")},
 ]
+
 
 var h_separation = 50
 var v_separation = 50

@@ -1,7 +1,6 @@
 extends ABlock
 class_name ABeginBlock
 
-@onready var zone:AZone = get_node("../../../")
 @export var spawn_block_button:SpawnBlockButton
 
 

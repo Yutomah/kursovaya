@@ -1,6 +1,7 @@
 extends Control
 class_name ABlock
 
+@onready var zone = get_node("../../../")
 @export var background:TextureButton
 @export var body:Control
 
@@ -15,3 +16,5 @@ func align_block(left_min_size:float):
 		body.position.x = left_min_size + GB.h_separation - body.size.x / 2 
 	
 	
+func delete_me():
+	pass
