@@ -1,7 +1,7 @@
 extends Control
 class_name ABlock
 
-@onready var zone = get_node("../../../")
+@export var zone:MarginContainer
 @export var background:TextureButton
 @export var body:Control
 

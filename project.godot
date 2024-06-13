@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 GB="*res://scenes/globals/GB.gd"
 PSM="*res://scenes/globals/PSM.gd"
 
+[debug]
+
+gdscript/warnings/unused_parameter=0
+
 [display]
 
 window/stretch/scale_mode="integer"

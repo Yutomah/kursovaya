@@ -1,6 +1,7 @@
 extends MarginContainer
 class_name AZone
 
+var zone:MarginContainer
 @export var main_list:VBoxContainer
 
 func _ready():
@@ -8,6 +9,7 @@ func _ready():
 	
 	
 func spawn_block(ablock, pos:int):
+	ablock.zone = self
 	main_list.add_child(ablock)
 	main_list.move_child(ablock, pos)
 	

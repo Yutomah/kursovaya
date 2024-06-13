@@ -49,7 +49,7 @@ var ablocks:Array[Dictionary] = [
 	{"name" : "Блок действия", 
 	"scene" : preload("res://scenes/block_window/block_environment/a_block_schema/a_action_block/a_action_block.tscn")},
 	{"name" : "Блок если", 
-	"scene" : preload("res://scenes/block_window/block_environment/zones/a_if_zone_2/a_if_zone_2.tscn")},
+	"scene" : preload("res://scenes/block_window/block_environment/zones/a_if/a_if.tscn")},
 ]
 
 
