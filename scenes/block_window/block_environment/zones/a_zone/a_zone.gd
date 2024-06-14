@@ -1,12 +1,15 @@
 extends MarginContainer
 class_name AZone
 
-var zone:MarginContainer
+@export var zone:MarginContainer
 @export var main_list:VBoxContainer
 
 func _ready():
 	main_list.add_theme_constant_override("separation", GB.v_separation)
-	
+	set_min_size()
+
+func set_min_size(min_size:Vector2 = GB.default_min_size):
+	main_list.custom_minimum_size = min_size
 	
 func spawn_block(ablock, pos:int):
 	ablock.zone = self

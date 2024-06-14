@@ -1,8 +1,58 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnujsj0g4pyg0"]
 
 [ext_resource type="PackedScene" uid="uid://ck2wyw48ue3gi" path="res://scenes/block_window/block_environment/a_block_schema/a_if_block/a_if_block.tscn" id="1_7g3m6"]
-[ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_if/a_if.gd" id="1_ldtvf"]
 [ext_resource type="PackedScene" uid="uid://jxl888pt40s7" path="res://scenes/block_window/block_environment/zones/a_if_sub_zone/a_if_sub_zone.tscn" id="3_3po5l"]
+
+[sub_resource type="GDScript" id="GDScript_bdh0n"]
+script/source = "extends MarginContainer
+class_name AIf
+
+var zone:MarginContainer
+@export var main_list:VBoxContainer
+@export var horizontal_list:HBoxContainer
+@export var left_sub_zone:AIfSubZone
+@export var right_sub_zone:AIfSubZone
+@export var left_list:VBoxContainer
+@export var right_list:VBoxContainer
+@export var a_if_block:AIfBlock
+
+func _ready():
+	horizontal_list.add_theme_constant_override(\"separation\", 100)
+	main_list.custom_minimum_size = GB.default_min_size
+	main_list.add_theme_constant_override(\"separation\", GB.v_separation)
+
+func update_alignment():
+	left_sub_zone.update_alignment()
+	right_sub_zone.update_alignment()
+	
+	a_if_block.align_block(get_left_size().x)
+
+
+
+func spawn_left(block):
+	left_sub_zone.spawn_block(block, 0)
+	
+func spawn_right(block):
+	print_debug(right_sub_zone)
+	print_debug(left_sub_zone)
+	print_debug(main_list)
+	print_debug(right_list)
+	right_sub_zone.spawn_block(block, 0)
+
+func get_left_size():
+	return left_list.size
+	
+func get_right_size():
+	return right_list.size
+	
+func min_size_to_default():
+	left_list.custom_minimum_size = GB.default_min_size
+	right_list.custom_minimum_size = GB.default_min_size
+
+func change_min_size(left_right_size:Array):
+	left_list.custom_minimum_size.x = left_right_size[0]
+	right_list.custom_minimum_size.x = left_right_size[1]
+"
 
 [node name="AIf" type="MarginContainer" node_paths=PackedStringArray("main_list", "horizontal_list", "left_sub_zone", "right_sub_zone", "left_list", "right_list", "a_if_block")]
 anchors_preset = 15
@@ -10,7 +60,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ldtvf")
+script = SubResource("GDScript_bdh0n")
 main_list = NodePath("PanelContainer/MainList")
 horizontal_list = NodePath("PanelContainer/MainList/HBoxContainer")
 left_sub_zone = NodePath("PanelContainer/MainList/HBoxContainer/Left")

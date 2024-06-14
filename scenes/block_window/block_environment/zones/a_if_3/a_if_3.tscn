@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd52npxb3eudi"]
+
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_if_3/a_if_3.gd" id="1_2b7id"]
+[ext_resource type="PackedScene" uid="uid://c5obmpb5gn66e" path="res://scenes/block_window/block_environment/a_block_schema/a_if_block_3/a_if_block_3.tscn" id="1_havdp"]
+[ext_resource type="PackedScene" uid="uid://cdyo4g3fafq22" path="res://scenes/block_window/block_environment/zones/a_if_sub_zone_3/a_if_sub_zone_3.tscn" id="2_sawcn"]
+
+[node name="AIf3" type="MarginContainer" node_paths=PackedStringArray("main_list", "horizontal_list", "left_sub_zone", "right_sub_zone", "a_if_block")]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_2b7id")
+main_list = NodePath("PanelContainer/MainList")
+horizontal_list = NodePath("PanelContainer/MainList/HBoxContainer")
+left_sub_zone = NodePath("PanelContainer/MainList/HBoxContainer/LeftZone")
+right_sub_zone = NodePath("PanelContainer/MainList/HBoxContainer/RightZone")
+a_if_block = NodePath("PanelContainer/MainList/AIfBlock3")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="MainList" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="AIfBlock3" parent="PanelContainer/MainList" node_paths=PackedStringArray("zone") instance=ExtResource("1_havdp")]
+layout_mode = 2
+zone = NodePath("../../..")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MainList"]
+layout_mode = 2
+
+[node name="LeftZone" parent="PanelContainer/MainList/HBoxContainer" node_paths=PackedStringArray("zone") instance=ExtResource("2_sawcn")]
+layout_mode = 2
+zone_type = 0
+zone = NodePath("../../../..")
+
+[node name="RightZone" parent="PanelContainer/MainList/HBoxContainer" node_paths=PackedStringArray("zone", "main_list") instance=ExtResource("2_sawcn")]
+layout_mode = 2
+zone_type = 1
+zone = NodePath("../../../..")
+main_list = NodePath("../LeftZone/PanelContainer/MainList")
