@@ -6,9 +6,9 @@ class_name AZone
 
 func _ready():
 	main_list.add_theme_constant_override("separation", GB.v_separation)
-	set_min_size()
+	set_min_size(GB.default_min_size)
 
-func set_min_size(min_size:Vector2 = GB.default_min_size):
+func set_min_size(min_size:Vector2):
 	main_list.custom_minimum_size = min_size
 	
 func spawn_block(ablock, pos:int):
@@ -19,6 +19,7 @@ func spawn_block(ablock, pos:int):
 	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_alignment)
 
 func update_alignment():
+	pass
 	for child in main_list.get_children():
 		if child is AZone:
 			child.update_alignment()
@@ -33,14 +34,14 @@ func update_alignment():
 	
 func left_right_min_size_to_default():
 	for child in main_list.get_children():
-		if child is AIfZone2:
+		if child is AIf4:
 			child.min_size_to_default()
 				
 func get_max_left_right_min_size():
 	var left:float = -1
 	var right:float = -1
 	for child in main_list.get_children():
-		if child is AIfZone2:
+		if child is AIf4:
 			if left < child.get_left_size().x:
 				left = child.get_left_size().x
 				
@@ -51,7 +52,7 @@ func get_max_left_right_min_size():
 			
 func change_left_right_min_size(left_right_size:Array):
 	for child in main_list.get_children():
-		if child is AIfZone2:
+		if child is AIf4:
 			child.change_min_size(left_right_size)
 			
 func align_blocks(left_min_size:float):

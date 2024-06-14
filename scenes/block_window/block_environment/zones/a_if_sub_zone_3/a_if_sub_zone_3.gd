@@ -1,7 +1,7 @@
 extends AZone
 class_name AIfSubZone3
 
-@export_enum("left_sub_zone", "right_sub_zone") var zone_type
+@export_enum("left_sub_zone", "right_sub_zone") var zone_type:String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

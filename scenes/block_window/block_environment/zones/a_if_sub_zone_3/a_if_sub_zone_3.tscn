@@ -5,4 +5,4 @@
 
 [node name="AIfSubZone3" instance=ExtResource("1_ivp6a")]
 script = ExtResource("2_kws4f")
-zone_type = null
+zone_type = ""
