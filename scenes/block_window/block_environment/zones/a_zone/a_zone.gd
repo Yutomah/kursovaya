@@ -21,7 +21,7 @@ func spawn_block(ablock, pos:int):
 func update_alignment():
 	pass
 	for child in main_list.get_children():
-		if child is AZone:
+		if child is AZone or child is AIf3:
 			child.update_alignment()
 			
 	left_right_min_size_to_default()
@@ -34,14 +34,14 @@ func update_alignment():
 	
 func left_right_min_size_to_default():
 	for child in main_list.get_children():
-		if child is AIf4:
+		if child is AIf3:
 			child.min_size_to_default()
 				
 func get_max_left_right_min_size():
 	var left:float = -1
 	var right:float = -1
 	for child in main_list.get_children():
-		if child is AIf4:
+		if child is AIf3:
 			if left < child.get_left_size().x:
 				left = child.get_left_size().x
 				
@@ -52,7 +52,7 @@ func get_max_left_right_min_size():
 			
 func change_left_right_min_size(left_right_size:Array):
 	for child in main_list.get_children():
-		if child is AIf4:
+		if child is AIf3:
 			child.change_min_size(left_right_size)
 			
 func align_blocks(left_min_size:float):

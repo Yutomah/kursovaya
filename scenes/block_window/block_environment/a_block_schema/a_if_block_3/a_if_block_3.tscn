@@ -5,13 +5,16 @@
 [ext_resource type="Texture2D" uid="uid://cumkkx3eu4clt" path="res://Sprites/block_sprites/1x/Asset 9.png" id="3_nkvhk"]
 [ext_resource type="PackedScene" uid="uid://cai755nf0acib" path="res://scenes/block_window/spawn_block_button/spawn_block_button.tscn" id="4_dwvuk"]
 
-[node name="AIfBlock3" node_paths=PackedStringArray("left", "right") instance=ExtResource("1_uj5bs")]
+[node name="AIfBlock3" node_paths=PackedStringArray("left", "right", "background", "body") instance=ExtResource("1_uj5bs")]
 script = ExtResource("2_ttred")
 left = NodePath("Body/Content/Left")
 right = NodePath("Body/Content/Right")
+background = NodePath("Body/Background")
+body = NodePath("Body")
 
-[node name="Background" parent="Body" index="1"]
+[node name="Background" parent="Body" index="1" node_paths=PackedStringArray("popup")]
 texture_normal = ExtResource("3_nkvhk")
+popup = NodePath("../Content/Popup")
 
 [node name="Left" parent="Body/Content" index="0" instance=ExtResource("4_dwvuk")]
 layout_mode = 0
@@ -26,3 +29,6 @@ offset_left = 152.0
 offset_top = -45.0
 offset_right = 177.0
 offset_bottom = 5.0
+
+[node name="Delete" parent="Body/Content/Popup" index="1" node_paths=PackedStringArray("a_block")]
+a_block = NodePath("../../../..")

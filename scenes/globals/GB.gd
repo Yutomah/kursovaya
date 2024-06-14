@@ -12,7 +12,7 @@ signal line_draw_ended(result:bool)
 #blocks
 signal hand_tool_on_block_pressed(event:InputEvent)
 signal block_name_changed()
-signal block_begin_array_changed(begin_block_array:Array[GBlockBegin])
+#signal block_begin_array_changed(begin_block_array:Array[GBlockBegin])
 signal block_amount_changed(block_amount:int)
 signal block_amount_wanted()
 
@@ -66,4 +66,3 @@ func get_my_begin_zone(block):
 	for begin_zone in begin_zones:
 		if begin_zone.is_ancestor_of(block):
 			return begin_zone
-

@@ -72,14 +72,14 @@ camera = NodePath("../../Camera2D")
 [node name="PopupMenu" type="PopupMenu" parent="SubViewport/Root/CanvasLayer/Control" node_paths=PackedStringArray("blocks")]
 item_count = 1
 item_0/text = "Создать новую блок схему"
-item_0/id = 0
 script = ExtResource("3_jtdlk")
 blocks = NodePath("../../../Blocks")
 
 [node name="Blocks" type="Node2D" parent="SubViewport/Root"]
 
-[node name="ABeginZone" parent="SubViewport/Root/Blocks" instance=ExtResource("3_iawam")]
+[node name="ABeginZone" parent="SubViewport/Root/Blocks" node_paths=PackedStringArray("main_list") instance=ExtResource("3_iawam")]
 custom_minimum_size = Vector2(300, 200)
+main_list = NodePath("PanelContainer/MainList")
 
 [connection signal="gui_input" from="SubViewport/Root/CanvasLayer/Control" to="SubViewport/Root/CanvasLayer/Control" method="_on_gui_input"]
 [connection signal="id_pressed" from="SubViewport/Root/CanvasLayer/Control/PopupMenu" to="SubViewport/Root/CanvasLayer/Control/PopupMenu" method="_on_id_pressed"]

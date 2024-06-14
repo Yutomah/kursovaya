@@ -1,5 +1,5 @@
 extends MarginContainer
-class_name AIf4
+class_name AIf3
 
 var zone:MarginContainer
 @export var main_list:VBoxContainer
@@ -12,12 +12,12 @@ func _ready():
 	horizontal_list.add_theme_constant_override("separation", 100)
 	main_list.custom_minimum_size = GB.default_min_size
 	main_list.add_theme_constant_override("separation", GB.v_separation)
-	print_debug(left_sub_zone)
 
 func update_alignment():
 	left_sub_zone.update_alignment()
 	right_sub_zone.update_alignment()
 	
+	print_debug(get_left_size().x)
 	a_if_block.align_block(get_left_size().x)
 
 
