@@ -5,16 +5,20 @@
 [ext_resource type="Texture2D" uid="uid://b41i8iswribph" path="res://Sprites/block_sprites/1x/Asset 11.png" id="3_jktm0"]
 [ext_resource type="PackedScene" uid="uid://cai755nf0acib" path="res://scenes/block_window/spawn_block_button/spawn_block_button.tscn" id="4_1nkcu"]
 
-[node name="ABeginBlock" node_paths=PackedStringArray("spawn_block_button") instance=ExtResource("1_rgtqp")]
+[node name="ABeginBlock" node_paths=PackedStringArray("spawn_block_button", "background", "body") instance=ExtResource("1_rgtqp")]
 script = ExtResource("2_h7bru")
 spawn_block_button = NodePath("Body/Content/SpawnBlockButton")
+background = NodePath("Body/Background")
+body = NodePath("Body")
 
-[node name="Background" parent="Body" index="1"]
+[node name="Background" parent="Body" index="1" node_paths=PackedStringArray("ablock", "popup")]
 offset_left = -151.0
 offset_top = -91.0
 offset_right = 151.0
 offset_bottom = 91.0
 texture_normal = ExtResource("3_jktm0")
+ablock = NodePath("../..")
+popup = NodePath("../Content/PopupMenu")
 
 [node name="SpawnBlockButton" parent="Body/Content" index="0" instance=ExtResource("4_1nkcu")]
 layout_mode = 0

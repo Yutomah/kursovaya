@@ -14,10 +14,10 @@ func _ready():
 	main_list.add_theme_constant_override("separation", GB.v_separation)
 
 func update_alignment():
+	min_size_to_default()
 	left_sub_zone.update_alignment()
 	right_sub_zone.update_alignment()
 	
-	print_debug(get_left_size().x)
 	a_if_block.align_block(get_left_size().x)
 
 

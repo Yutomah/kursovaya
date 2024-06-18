@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmgbms3pjuitq"]
+[gd_scene load_steps=5 format=3 uid="uid://cmgbms3pjuitq"]
 
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_block/a_block.gd" id="1_od1h3"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_block/background.gd" id="2_0skse"]
-[ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_block/Delete.gd" id="3_p0t5f"]
 
 [sub_resource type="Theme" id="Theme_23ues"]
 
@@ -49,7 +48,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ej8e")
 
-[node name="Background" type="TextureButton" parent="Body" node_paths=PackedStringArray("popup")]
+[node name="Background" type="TextureButton" parent="Body" node_paths=PackedStringArray("ablock", "popup")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -61,7 +60,8 @@ grow_vertical = 2
 mouse_filter = 1
 button_mask = 3
 script = ExtResource("2_0skse")
-popup = NodePath("../Content/Popup")
+ablock = NodePath("../..")
+popup = NodePath("../Content/PopupMenu")
 
 [node name="Content" type="Control" parent="Body"]
 layout_mode = 1
@@ -74,15 +74,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Popup" type="PopupPanel" parent="Body/Content"]
-
-[node name="Delete" type="Button" parent="Body/Content/Popup" node_paths=PackedStringArray("a_block")]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 96.0
-offset_bottom = 96.0
-text = "Удалить"
-script = ExtResource("3_p0t5f")
-a_block = NodePath("../../../..")
+[node name="PopupMenu" type="PopupMenu" parent="Body/Content"]
+item_count = 1
+item_0/text = "Удалить"
 
 [connection signal="gui_input" from="Body/Background" to="Body/Background" method="_on_gui_input"]
+[connection signal="id_pressed" from="Body/Content/PopupMenu" to="." method="_on_popup_menu_id_pressed"]

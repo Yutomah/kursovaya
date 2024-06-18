@@ -18,3 +18,9 @@ func align_block(left_min_size:float):
 	
 func delete_me():
 	pass
+
+
+func _on_popup_menu_id_pressed(id: int) -> void:
+	match id:
+		0:
+			delete_me()

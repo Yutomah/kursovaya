@@ -10,6 +10,7 @@ func _ready():
 
 func set_min_size(min_size:Vector2):
 	main_list.custom_minimum_size = min_size
+	main_list.size = min_size
 	
 func spawn_block(ablock, pos:int):
 	ablock.zone = self
@@ -19,7 +20,6 @@ func spawn_block(ablock, pos:int):
 	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_alignment)
 
 func update_alignment():
-	pass
 	for child in main_list.get_children():
 		if child is AZone or child is AIf3:
 			child.update_alignment()

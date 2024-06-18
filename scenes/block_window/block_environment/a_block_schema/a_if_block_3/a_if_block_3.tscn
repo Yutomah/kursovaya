@@ -12,9 +12,10 @@ right = NodePath("Body/Content/Right")
 background = NodePath("Body/Background")
 body = NodePath("Body")
 
-[node name="Background" parent="Body" index="1" node_paths=PackedStringArray("popup")]
+[node name="Background" parent="Body" index="1" node_paths=PackedStringArray("ablock", "popup")]
 texture_normal = ExtResource("3_nkvhk")
-popup = NodePath("../Content/Popup")
+ablock = NodePath("../..")
+popup = NodePath("../Content/PopupMenu")
 
 [node name="Left" parent="Body/Content" index="0" instance=ExtResource("4_dwvuk")]
 layout_mode = 0
@@ -29,6 +30,3 @@ offset_left = 152.0
 offset_top = -45.0
 offset_right = 177.0
 offset_bottom = 5.0
-
-[node name="Delete" parent="Body/Content/Popup" index="1" node_paths=PackedStringArray("a_block")]
-a_block = NodePath("../../../..")

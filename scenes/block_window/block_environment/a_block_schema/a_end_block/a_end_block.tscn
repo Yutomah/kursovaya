@@ -4,8 +4,12 @@
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_end_block/a_end_block.gd" id="2_vmdl0"]
 [ext_resource type="Texture2D" uid="uid://b41i8iswribph" path="res://Sprites/block_sprites/1x/Asset 11.png" id="3_h4ao0"]
 
-[node name="AEndBlock" instance=ExtResource("1_oioqe")]
+[node name="AEndBlock" node_paths=PackedStringArray("background", "body") instance=ExtResource("1_oioqe")]
 script = ExtResource("2_vmdl0")
+background = NodePath("Body/Background")
+body = NodePath("Body")
 
-[node name="Background" parent="Body" index="1"]
+[node name="Background" parent="Body" index="1" node_paths=PackedStringArray("ablock", "popup")]
 texture_normal = ExtResource("3_h4ao0")
+ablock = NodePath("../..")
+popup = NodePath("../Content/PopupMenu")
