@@ -1,13 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6d5re1ykvdiw"]
+[gd_scene load_steps=5 format=3 uid="uid://b6d5re1ykvdiw"]
 
 [ext_resource type="PackedScene" uid="uid://cmgbms3pjuitq" path="res://scenes/block_window/block_environment/a_block_schema/a_block/a_block.tscn" id="1_hdwij"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_for_block/a_for_block.gd" id="2_6hpas"]
 [ext_resource type="Texture2D" uid="uid://gm5wmvcxxxwl" path="res://Sprites/block_sprites/1x/Asset 8.png" id="3_unspq"]
+[ext_resource type="PackedScene" uid="uid://cai755nf0acib" path="res://scenes/block_window/spawn_block_button/spawn_block_button.tscn" id="4_7tc3m"]
 
-[node name="AForBlock" instance=ExtResource("1_hdwij")]
+[node name="AForBlock" node_paths=PackedStringArray("spawn_block_button", "background", "body") instance=ExtResource("1_hdwij")]
 script = ExtResource("2_6hpas")
+spawn_block_button = NodePath("Body/Content/SpawnBlockButton")
+background = NodePath("Body/Background")
+body = NodePath("Body")
 
 [node name="Background" parent="Body" index="1" node_paths=PackedStringArray("ablock", "popup")]
 texture_normal = ExtResource("3_unspq")
 ablock = NodePath("../..")
 popup = NodePath("../Content/PopupMenu")
+
+[node name="SpawnBlockButton" parent="Body/Content" index="1" instance=ExtResource("4_7tc3m")]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 84.0
+offset_right = 27.0
+offset_bottom = 134.0
