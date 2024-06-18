@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ibydhxdmkab"]
+
+[ext_resource type="PackedScene" uid="uid://b86q33r2c72ap" path="res://scenes/block_window/block_environment/zones/a_zone/a_zone.tscn" id="1_pi20v"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_for_zone/a_for_zone.gd" id="2_d7y1c"]
+
+[node name="AForZone" node_paths=PackedStringArray("main_list") instance=ExtResource("1_pi20v")]
+script = ExtResource("2_d7y1c")
+main_list = NodePath("PanelContainer/MainList")

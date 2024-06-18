@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvk83xwqci668"]
+
+[ext_resource type="PackedScene" uid="uid://b86q33r2c72ap" path="res://scenes/block_window/block_environment/zones/a_zone/a_zone.tscn" id="1_e8v73"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_cycle_sub_zone/a_cycle_sub_zone.gd" id="2_dn5ls"]
+
+[node name="ACycleSubZone" node_paths=PackedStringArray("main_list") instance=ExtResource("1_e8v73")]
+script = ExtResource("2_dn5ls")
+main_list = NodePath("PanelContainer/MainList")
