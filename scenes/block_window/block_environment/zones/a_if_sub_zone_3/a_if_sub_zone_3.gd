@@ -5,19 +5,19 @@ class_name AIfSubZone3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(self)
 	super._ready()
 	init_zone_type()
 	
 func init_zone_type():
 	assert(zone_type != null)
 	
+	
 	if zone_type == "left_sub_zone":
-		main_list.size_flags_horizontal = Control.SIZE_SHRINK_END
+		size_flags_horizontal = Control.SIZE_SHRINK_END
 		return
 	
 	if zone_type == "right_sub_zone":
-		main_list.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 		return
 	
 
@@ -26,4 +26,4 @@ func _process(delta):
 	pass
 
 func get_main_list_size():
-	return main_list.size
+	return size

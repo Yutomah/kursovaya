@@ -3,16 +3,17 @@ class_name AIf3
 
 var zone:MarginContainer
 
-@onready var horizontal_list: HBoxContainer = $PanelContainer/MainList/horizontal_list
+@onready var horizontal_list: HBoxContainer = %horizontal_list
 @onready var main_list: VBoxContainer = %MainList
 @onready var a_if_block: AIfBlock3 = %a_if_block
 @onready var left_sub_zone: AIfSubZone3 = %left_sub_zone
 @onready var right_sub_zone: AIfSubZone3 = %right_sub_zone
 
+var zone_type = "AIf"
+
 func _ready():
-	print(left_sub_zone, right_sub_zone)
 	horizontal_list.add_theme_constant_override("separation", 100)
-	main_list.custom_minimum_size = GB.default_min_size
+	custom_minimum_size = GB.default_min_size
 	main_list.add_theme_constant_override("separation", GB.v_separation)
 
 func update_alignment():
@@ -20,7 +21,7 @@ func update_alignment():
 	left_sub_zone.update_alignment()
 	right_sub_zone.update_alignment()
 	
-	a_if_block.align_block(get_left_size().x)
+	#a_if_block.align_block(get_left_size().x)
 
 
 

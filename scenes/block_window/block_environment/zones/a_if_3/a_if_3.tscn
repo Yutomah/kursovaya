@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cdyo4g3fafq22" path="res://scenes/block_window/block_environment/zones/a_if_sub_zone_3/a_if_sub_zone_3.tscn" id="2_sawcn"]
 
 [node name="AIf3" type="MarginContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 612.0
+offset_bottom = 208.0
 mouse_filter = 2
 script = ExtResource("1_2b7id")
 
@@ -29,19 +29,18 @@ background = NodePath("Body/Background")
 body = NodePath("Body")
 
 [node name="horizontal_list" type="HBoxContainer" parent="PanelContainer/MainList"]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 
-[node name="left_sub_zone" parent="PanelContainer/MainList/horizontal_list" node_paths=PackedStringArray("zone", "main_list") instance=ExtResource("2_sawcn")]
+[node name="left_sub_zone" parent="PanelContainer/MainList/horizontal_list" node_paths=PackedStringArray("zone") instance=ExtResource("2_sawcn")]
 unique_name_in_owner = true
 layout_mode = 2
 zone_type = "left_sub_zone"
 zone = NodePath("../../../..")
-main_list = NodePath("PanelContainer/MainList")
 
-[node name="right_sub_zone" parent="PanelContainer/MainList/horizontal_list" node_paths=PackedStringArray("zone", "main_list") instance=ExtResource("2_sawcn")]
+[node name="right_sub_zone" parent="PanelContainer/MainList/horizontal_list" node_paths=PackedStringArray("zone") instance=ExtResource("2_sawcn")]
 unique_name_in_owner = true
 layout_mode = 2
 zone_type = "right_sub_zone"
 zone = NodePath("../../../..")
-main_list = NodePath("PanelContainer/MainList")

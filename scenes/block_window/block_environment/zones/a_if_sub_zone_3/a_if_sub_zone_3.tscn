@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://b86q33r2c72ap" path="res://scenes/block_window/block_environment/zones/a_zone/a_zone.tscn" id="1_ivp6a"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_if_sub_zone_3/a_if_sub_zone_3.gd" id="2_kws4f"]
 
-[node name="AIfSubZone3" node_paths=PackedStringArray("main_list") instance=ExtResource("1_ivp6a")]
+[node name="AIfSubZone3" instance=ExtResource("1_ivp6a")]
 script = ExtResource("2_kws4f")
 zone_type = ""
-main_list = NodePath("PanelContainer/MainList")

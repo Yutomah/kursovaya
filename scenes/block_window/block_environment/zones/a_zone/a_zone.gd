@@ -2,15 +2,15 @@ extends MarginContainer
 class_name AZone
 
 @export var zone:MarginContainer
-@export var main_list:VBoxContainer
+@onready var main_list: VBoxContainer = %MainList
 
 func _ready():
 	main_list.add_theme_constant_override("separation", GB.v_separation)
 	set_min_size(GB.default_min_size)
 
 func set_min_size(min_size:Vector2):
-	main_list.custom_minimum_size = min_size
-	main_list.size = min_size
+	custom_minimum_size = min_size
+	size = min_size
 	
 func spawn_block(ablock, pos:int):
 	ablock.zone = self
@@ -20,6 +20,7 @@ func spawn_block(ablock, pos:int):
 	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_alignment)
 
 func update_alignment():
+	pass
 	update_alignment_if()
 			
 	left_right_min_size_to_default()
@@ -30,18 +31,19 @@ func update_alignment():
 	change_left_right_min_size(left_right_size)
 	align_blocks(left_right_size[0])
 	
+	
 func update_alignment_if():
 	for child in main_list.get_children():
 		if child is AForZone:
 			child.update_alignment_if()
-		if child is AIf3:
+		if "zone_type" in child and child.zone_type == "AIf":
 			child.update_alignment()
 			
 func left_right_min_size_to_default():
 	for child in main_list.get_children():
 		if child is AForZone:
 			child.left_right_min_size_to_default()
-		if child is AIf3:
+		if "zone_type" in child and child.zone_type == "AIf":
 			child.min_size_to_default()
 				
 func get_max_left_right_min_size():
@@ -56,7 +58,7 @@ func get_max_left_right_min_size():
 			if right < left_right[1]:
 				right = left_right[1]
 			
-		if child is AIf3:
+		if "zone_type" in child and child.zone_type == "AIf":
 			if left < child.get_left_size().x:
 				left = child.get_left_size().x
 				
@@ -70,12 +72,15 @@ func change_left_right_min_size(left_right_size:Array):
 		if child is AForZone:
 			child.change_left_right_min_size(left_right_size)
 			
-		if child is AIf3:
+		if "zone_type" in child and child.zone_type == "AIf":
 			child.change_min_size(left_right_size)
+			
 			
 func align_blocks(left_min_size:float):
 	for child in main_list.get_children():
 		if child is AForZone:
 			child.align_blocks(left_min_size)
+		if "zone_type" in child and child.zone_type == "AIf":
+			child.a_if_block.align_block(left_min_size)
 		if child is ABlock:
 			child.align_block(left_min_size)
