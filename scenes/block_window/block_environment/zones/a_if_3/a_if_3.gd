@@ -2,13 +2,15 @@ extends MarginContainer
 class_name AIf3
 
 var zone:MarginContainer
-@export var main_list:VBoxContainer
-@export var horizontal_list:HBoxContainer
-@export var left_sub_zone:AIfSubZone3
-@export var right_sub_zone:AIfSubZone3
-@export var a_if_block:AIfBlock3
+
+@onready var horizontal_list: HBoxContainer = $PanelContainer/MainList/horizontal_list
+@onready var main_list: VBoxContainer = %MainList
+@onready var a_if_block: AIfBlock3 = %a_if_block
+@onready var left_sub_zone: AIfSubZone3 = %left_sub_zone
+@onready var right_sub_zone: AIfSubZone3 = %right_sub_zone
 
 func _ready():
+	print(left_sub_zone, right_sub_zone)
 	horizontal_list.add_theme_constant_override("separation", 100)
 	main_list.custom_minimum_size = GB.default_min_size
 	main_list.add_theme_constant_override("separation", GB.v_separation)

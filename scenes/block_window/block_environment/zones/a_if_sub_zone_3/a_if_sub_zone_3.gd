@@ -5,6 +5,7 @@ class_name AIfSubZone3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(self)
 	super._ready()
 	init_zone_type()
 	

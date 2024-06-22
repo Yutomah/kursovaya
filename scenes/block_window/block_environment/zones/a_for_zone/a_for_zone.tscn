@@ -8,8 +8,9 @@
 script = ExtResource("2_d7y1c")
 main_list = NodePath("PanelContainer/MainList")
 
-[node name="AForBlock" parent="PanelContainer/MainList" index="0" node_paths=PackedStringArray("zone", "background", "body") instance=ExtResource("3_anl6j")]
+[node name="AForBlock" parent="PanelContainer/MainList" index="0" node_paths=PackedStringArray("spawn_block_button", "zone", "background", "body") instance=ExtResource("3_anl6j")]
 layout_mode = 2
+spawn_block_button = NodePath("Body/Content/SpawnBlockButton")
 zone = NodePath("../../..")
 background = NodePath("Body/Background")
 body = NodePath("Body")

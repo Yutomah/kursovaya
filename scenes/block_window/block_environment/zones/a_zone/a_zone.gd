@@ -20,9 +20,7 @@ func spawn_block(ablock, pos:int):
 	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_alignment)
 
 func update_alignment():
-	for child in main_list.get_children():
-		if child is AZone or child is AIf3:
-			child.update_alignment()
+	update_alignment_if()
 			
 	left_right_min_size_to_default()
 	
@@ -32,8 +30,17 @@ func update_alignment():
 	change_left_right_min_size(left_right_size)
 	align_blocks(left_right_size[0])
 	
+func update_alignment_if():
+	for child in main_list.get_children():
+		if child is AForZone:
+			child.update_alignment_if()
+		if child is AIf3:
+			child.update_alignment()
+			
 func left_right_min_size_to_default():
 	for child in main_list.get_children():
+		if child is AForZone:
+			child.left_right_min_size_to_default()
 		if child is AIf3:
 			child.min_size_to_default()
 				
@@ -41,6 +48,14 @@ func get_max_left_right_min_size():
 	var left:float = -1
 	var right:float = -1
 	for child in main_list.get_children():
+		if child is AForZone:
+			var left_right = child.get_max_left_right_min_size()
+			if left < left_right[0]:
+				left = left_right[0]
+			
+			if right < left_right[1]:
+				right = left_right[1]
+			
 		if child is AIf3:
 			if left < child.get_left_size().x:
 				left = child.get_left_size().x
@@ -52,10 +67,15 @@ func get_max_left_right_min_size():
 			
 func change_left_right_min_size(left_right_size:Array):
 	for child in main_list.get_children():
+		if child is AForZone:
+			child.change_left_right_min_size(left_right_size)
+			
 		if child is AIf3:
 			child.change_min_size(left_right_size)
 			
 func align_blocks(left_min_size:float):
 	for child in main_list.get_children():
+		if child is AForZone:
+			child.align_blocks(left_min_size)
 		if child is ABlock:
 			child.align_block(left_min_size)

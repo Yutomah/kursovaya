@@ -9,5 +9,6 @@ func _ready():
 
 func on_id_pressed(id:int):
 	var ablock = GB.ablocks[id]["scene"].instantiate()
+	print(ablock)
 	item_pressed.emit(ablock)
 	

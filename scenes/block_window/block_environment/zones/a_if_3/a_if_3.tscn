@@ -4,26 +4,23 @@
 [ext_resource type="PackedScene" uid="uid://c5obmpb5gn66e" path="res://scenes/block_window/block_environment/a_block_schema/a_if_block_3/a_if_block_3.tscn" id="1_havdp"]
 [ext_resource type="PackedScene" uid="uid://cdyo4g3fafq22" path="res://scenes/block_window/block_environment/zones/a_if_sub_zone_3/a_if_sub_zone_3.tscn" id="2_sawcn"]
 
-[node name="AIf3" type="MarginContainer" node_paths=PackedStringArray("main_list", "horizontal_list", "left_sub_zone", "right_sub_zone", "a_if_block")]
+[node name="AIf3" type="MarginContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 script = ExtResource("1_2b7id")
-main_list = NodePath("PanelContainer/MainList")
-horizontal_list = NodePath("PanelContainer/MainList/HBoxContainer")
-left_sub_zone = NodePath("PanelContainer/MainList/HBoxContainer/Left")
-right_sub_zone = NodePath("PanelContainer/MainList/HBoxContainer/Right")
-a_if_block = NodePath("PanelContainer/MainList/AIfBlock3")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
 mouse_filter = 2
 
 [node name="MainList" type="VBoxContainer" parent="PanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 
-[node name="AIfBlock3" parent="PanelContainer/MainList" node_paths=PackedStringArray("left", "right", "zone", "background", "body") instance=ExtResource("1_havdp")]
+[node name="a_if_block" parent="PanelContainer/MainList" node_paths=PackedStringArray("left", "right", "zone", "background", "body") instance=ExtResource("1_havdp")]
+unique_name_in_owner = true
 layout_mode = 2
 left = NodePath("Body/Content/Left")
 right = NodePath("Body/Content/Right")
@@ -31,16 +28,20 @@ zone = NodePath("../../..")
 background = NodePath("Body/Background")
 body = NodePath("Body")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MainList"]
+[node name="horizontal_list" type="HBoxContainer" parent="PanelContainer/MainList"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Left" parent="PanelContainer/MainList/HBoxContainer" node_paths=PackedStringArray("zone", "main_list") instance=ExtResource("2_sawcn")]
+[node name="left_sub_zone" parent="PanelContainer/MainList/horizontal_list" node_paths=PackedStringArray("zone", "main_list") instance=ExtResource("2_sawcn")]
+unique_name_in_owner = true
 layout_mode = 2
+zone_type = "left_sub_zone"
 zone = NodePath("../../../..")
 main_list = NodePath("PanelContainer/MainList")
 
-[node name="Right" parent="PanelContainer/MainList/HBoxContainer" node_paths=PackedStringArray("zone", "main_list") instance=ExtResource("2_sawcn")]
+[node name="right_sub_zone" parent="PanelContainer/MainList/horizontal_list" node_paths=PackedStringArray("zone", "main_list") instance=ExtResource("2_sawcn")]
+unique_name_in_owner = true
 layout_mode = 2
+zone_type = "right_sub_zone"
 zone = NodePath("../../../..")
 main_list = NodePath("PanelContainer/MainList")
