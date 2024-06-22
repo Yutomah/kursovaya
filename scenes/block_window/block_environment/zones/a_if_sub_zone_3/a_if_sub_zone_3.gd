@@ -13,11 +13,11 @@ func init_zone_type():
 	
 	
 	if zone_type == "left_sub_zone":
-		size_flags_horizontal = Control.SIZE_SHRINK_END
+		main_list.size_flags_horizontal = Control.SIZE_SHRINK_END
 		return
 	
 	if zone_type == "right_sub_zone":
-		size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		main_list.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 		return
 	
 
