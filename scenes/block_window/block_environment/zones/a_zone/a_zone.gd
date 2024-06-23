@@ -8,7 +8,7 @@ class_name AZone
 func _ready():
 	main_list.add_theme_constant_override("separation", GB.v_separation)
 	add_theme_constant_override("margin_bottom", GB.left_right_margin)
-	set_min_size(GB.default_min_size)
+	#set_min_size(GB.default_min_size)
 	
 	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_everything)
 	
@@ -16,7 +16,7 @@ func _ready():
 func set_min_size(min_size:Vector2):
 	custom_minimum_size = min_size
 	size = min_size
-	#
+	
 func spawn_block(ablock, pos:int):
 	ablock.zone = self
 	main_list.add_child(ablock)
@@ -87,18 +87,17 @@ func align_blocks(left_min_size:float):
 	for child in main_list.get_children():
 		if "zone_type" in child and (child.zone_type == "AForZone" or child.zone_type == "AWhileZone"):
 			child.align_blocks(left_min_size)
-			
-		if "zone_type" in child and child.zone_type == "AIf":
+		elif "zone_type" in child and child.zone_type == "AIf":
 			child.a_if_block.align_block(left_min_size)
-			
-		if child is ABlock:
+		else:
 			child.align_block(left_min_size)
 			
 			
 			
 func rec_update_line_connections():
 	for child in main_list.get_children():
-		if !(child is ABlock):
+		if "zone_type" in child and (child.zone_type == "AForZone" or \
+		child.zone_type == "AWhileZone" or child.zone_type == "AIf"):
 			child.rec_update_line_connections()
 			child.update_line_connections()
 			
@@ -107,7 +106,8 @@ func update_line_connections():
 			#
 func rec_connect_blocks():
 	for child in main_list.get_children():
-		if !(child is ABlock):
+		if "zone_type" in child and (child.zone_type == "AForZone" or \
+		child.zone_type == "AWhileZone" or child.zone_type == "AIf"):
 			child.rec_connect_blocks()
 			child.connect_blocks()
 			

@@ -22,6 +22,8 @@ func _ready():
 	main_list.add_theme_constant_override("separation", GB.v_separation)
 	spawn_block_button.item_pressed.connect(on_item_pressed)
 	
+
+
 func get_left_next_block():
 	if left_sub_zone.main_list.get_child_count()>0:
 		return left_sub_zone.get_first_block()
@@ -106,21 +108,6 @@ func connect_blocks():
 	
 	connect_last_left()
 	connect_last_right()
-	#for i in main_list.get_child_count()-1:
-		#var from_child = main_list.get_child(i)
-		#var to_child = main_list.get_child(i+1)
-		#
-		#var line:Line2D = Line2D.new()
-		#line.default_color = GB.line_color
-		#line.width = GB.line_width
-		#line.antialiased = true
-		#lines.add_child(line)
-		#
-		#var from_point = line.to_local(from_child.exit.global_position)
-		#var to_point = line.to_local(to_child.entrance.global_position)
-		#
-		#line.add_point(from_point)
-		#line.add_point(to_point)
 		
 func connect_first_left():
 	var line:Line2D = Line2D.new()

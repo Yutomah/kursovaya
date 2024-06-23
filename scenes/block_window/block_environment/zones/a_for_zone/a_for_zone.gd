@@ -69,7 +69,7 @@ func get_inner_size():
 			if right < left_right[1]:
 				right = left_right[1]
 		
-		if child is AIf3:
+		if "zone_type" in child and child.zone_type == "AIf":
 			var left_right = child.get_inner_size()
 			
 			if left < left_right[0]:

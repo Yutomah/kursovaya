@@ -52,4 +52,5 @@ func update_everything():
 		
 	rec_connect_blocks()
 	connect_blocks()
+	pass
 #endregion

@@ -9,15 +9,42 @@ class_name AIfBlock3
 @onready var left_exit: Marker2D = %LeftExit
 @onready var right_exit: Marker2D = %RightExit
 
+@onready var distance_spin_box: SpinBox = %DistanceSpinBox
+@onready var arrows: Arrows = %Arrows
+
 func _ready():
 	left_spawn_button.item_pressed.connect(on_left_pressed)
 	right_spawn_button.item_pressed.connect(on_right_pressed)
+	block_type = "Блок если"
 	super._ready()
-	
-func get_next_block():
+
+func get_left_next_block():
 	return zone.get_left_next_block()
 	
+func get_right_next_block():
+	return zone.get_right_next_block()
 	
+func send_msg_to_log(zap:Zap):
+	var arrow_path = arrows.get_arrow_path()
+	var direction = arrows.get_direction()
+	var distance = distance_spin_box.value
+	
+	var result = !zap.grid_line.check_for_border(direction, distance)
+	var msg = "%s: Произведена проверка на стену в сторону [img]%s[/img] на дистанции %s. Результат: %s." \
+			% [block_type, arrow_path, distance, result]
+	zap.log_group.write_record(msg, self)
+	
+func zap_processing(zap:Zap):
+	if await zap_processing_control(zap):
+		send_msg_to_log(zap)
+		
+		var direction = arrows.get_direction()
+		var distance = distance_spin_box.value
+		
+		if zap.grid_line.check_for_border(direction, distance):
+			get_right_next_block().zap_processing(zap)
+		else:
+			get_left_next_block().zap_processing(zap)
 	
 #region Alignment
 func delete_me():
