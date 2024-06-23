@@ -3,6 +3,9 @@ class_name AIfSubZone3
 
 @export_enum("left_sub_zone", "right_sub_zone") var zone_type:String
 
+@onready var entrance: Marker2D = %Entrance
+@onready var exit: Marker2D = %Exit
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
@@ -27,3 +30,7 @@ func _process(delta):
 
 func get_main_list_size():
 	return size
+
+func update_line_connections():
+	entrance.position = Vector2(GB.default_min_size.x/2, 0)
+	exit.global_position = Vector2(entrance.global_position.x, global_position.y + size.y)

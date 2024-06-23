@@ -1,12 +1,17 @@
 extends ABlock
 class_name AIfBlock3
 
-@export var left:SpawnBlockButton
-@export var right:SpawnBlockButton
+@onready var left_spawn_button: SpawnBlockButton = %LeftSpawnButton
+@onready var right_spawn_button: SpawnBlockButton = %RightSpawnButton
+
+
+@onready var entrance: Marker2D = %Entrance
+@onready var left_exit: Marker2D = %LeftExit
+@onready var right_exit: Marker2D = %RightExit
 
 func _ready():
-	left.item_pressed.connect(on_left_pressed)
-	right.item_pressed.connect(on_right_pressed)
+	left_spawn_button.item_pressed.connect(on_left_pressed)
+	right_spawn_button.item_pressed.connect(on_right_pressed)
 	super._ready()
 
 func delete_me():

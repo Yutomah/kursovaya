@@ -57,11 +57,11 @@ var ablocks:Array[Dictionary] = [
 
 var h_separation = 50
 var v_separation = 50
-var left_right_margin = 10
+var left_right_margin = 20
 
 var default_min_size = Vector2(300,200)
 
-var line_width:int = 5
+var line_width:int = 3
 var line_color:Color = Color.RED
 
 var begin_zones:Array[ABeginZone] = []

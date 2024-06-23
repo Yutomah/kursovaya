@@ -10,7 +10,7 @@ func _ready():
 	add_theme_constant_override("margin_bottom", GB.left_right_margin)
 	set_min_size(GB.default_min_size)
 	
-	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_alignment)
+	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_everything)
 	
 func set_min_size(min_size:Vector2):
 	custom_minimum_size = min_size
@@ -21,10 +21,9 @@ func spawn_block(ablock, pos:int):
 	main_list.add_child(ablock)
 	main_list.move_child(ablock, pos)
 	
-	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_alignment)
+	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_everything)
 
 func update_alignment():
-	pass
 	update_alignment_if()
 			
 	left_right_min_size_to_default()
@@ -35,7 +34,6 @@ func update_alignment():
 	change_left_right_min_size(left_right_size)
 	align_blocks(left_right_size[0])
 	
-	connect_blocks()
 	
 func update_alignment_if():
 	for child in main_list.get_children():
@@ -88,11 +86,32 @@ func align_blocks(left_min_size:float):
 	for child in main_list.get_children():
 		if child is AForZone:
 			child.align_blocks(left_min_size)
+			
 		if "zone_type" in child and child.zone_type == "AIf":
 			child.a_if_block.align_block(left_min_size)
+			
 		if child is ABlock:
 			child.align_block(left_min_size)
-
+			
+			
+			
+func rec_update_line_connections():
+	for child in main_list.get_children():
+		if !(child is ABlock):
+			child.rec_update_line_connections()
+			child.update_line_connections()
+			
+func update_line_connections():
+	for child in main_list.get_children():
+		if !(child is ABlock):
+			child.update_line_connections()
+			
+func rec_connect_blocks():
+	for child in main_list.get_children():
+		if !(child is ABlock):
+			child.rec_connect_blocks()
+			child.connect_blocks()
+			
 func connect_blocks():
 	for line in lines.get_children():
 		line.queue_free()
@@ -100,11 +119,11 @@ func connect_blocks():
 	for i in main_list.get_child_count()-1:
 		var from_child = main_list.get_child(i)
 		var to_child = main_list.get_child(i+1)
-		var line:Line2D = Line2D.new()
 		
+		var line:Line2D = Line2D.new()
 		line.default_color = GB.line_color
 		line.width = GB.line_width
-		
+		line.antialiased = true
 		lines.add_child(line)
 		
 		var from_point = line.to_local(from_child.exit.global_position)

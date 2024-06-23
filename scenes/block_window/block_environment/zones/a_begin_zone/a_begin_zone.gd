@@ -10,3 +10,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func update_everything():
+	update_alignment()
+	
+	rec_update_line_connections()
+	update_line_connections()
+		
+	rec_connect_blocks()
+	connect_blocks()

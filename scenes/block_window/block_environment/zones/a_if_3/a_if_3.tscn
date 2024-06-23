@@ -19,11 +19,9 @@ unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 
-[node name="a_if_block" parent="PanelContainer/MainList" node_paths=PackedStringArray("left", "right", "zone", "background", "body") instance=ExtResource("1_havdp")]
+[node name="a_if_block" parent="PanelContainer/MainList" node_paths=PackedStringArray("zone", "background", "body") instance=ExtResource("1_havdp")]
 unique_name_in_owner = true
 layout_mode = 2
-left = NodePath("Body/Content/Left")
-right = NodePath("Body/Content/Right")
 zone = NodePath("../../..")
 background = NodePath("Body/Background")
 body = NodePath("Body")
@@ -46,3 +44,16 @@ layout_mode = 2
 theme_override_constants/margin_bottom = 10
 zone_type = "right_sub_zone"
 zone = NodePath("../../../..")
+
+[node name="LineConnections" type="Node2D" parent="."]
+
+[node name="Entrance" type="Marker2D" parent="LineConnections"]
+unique_name_in_owner = true
+position = Vector2(0, -91)
+
+[node name="Exit" type="Marker2D" parent="LineConnections"]
+unique_name_in_owner = true
+position = Vector2(-152, 0)
+
+[node name="Lines" type="Node2D" parent="."]
+unique_name_in_owner = true

@@ -9,18 +9,24 @@ var zone:MarginContainer
 @onready var left_sub_zone: AIfSubZone3 = %left_sub_zone
 @onready var right_sub_zone: AIfSubZone3 = %right_sub_zone
 
+@onready var lines: Node2D = %Lines
+@onready var entrance: Marker2D = %Entrance
+@onready var exit: Marker2D = %Exit
+
 var zone_type = "AIf"
 
 func _ready():
 	horizontal_list.add_theme_constant_override("separation", 100)
 	custom_minimum_size = GB.default_min_size
 	main_list.add_theme_constant_override("separation", GB.v_separation)
+	
 
 func update_alignment():
 	min_size_to_default()
 	left_sub_zone.update_alignment()
 	right_sub_zone.update_alignment()
 	
+	connect_blocks()
 	#a_if_block.align_block(get_left_size().x)
 
 
@@ -44,3 +50,125 @@ func min_size_to_default():
 func change_min_size(left_right_size:Array):
 	left_sub_zone.set_min_size(Vector2(left_right_size[0], GB.default_min_size.y))
 	right_sub_zone.set_min_size(Vector2(left_right_size[1], GB.default_min_size.y))
+
+func rec_update_line_connections():
+	left_sub_zone.rec_update_line_connections()
+	right_sub_zone.rec_update_line_connections()
+	
+	left_sub_zone.update_line_connections()	
+	right_sub_zone.update_line_connections()	
+			
+func update_line_connections():
+	entrance.global_position = a_if_block.entrance.global_position
+	exit.global_position = Vector2(entrance.global_position.x, global_position.y + size.y)
+
+func rec_connect_blocks():
+	left_sub_zone.rec_connect_blocks()
+	right_sub_zone.rec_connect_blocks()
+	
+	left_sub_zone.connect_blocks()
+	right_sub_zone.connect_blocks()
+	
+func connect_blocks():
+	for line in lines.get_children():
+		line.queue_free()
+	
+	connect_first_left()
+	connect_firts_right()
+	
+	connect_last_left()
+	connect_last_right()
+	#for i in main_list.get_child_count()-1:
+		#var from_child = main_list.get_child(i)
+		#var to_child = main_list.get_child(i+1)
+		#
+		#var line:Line2D = Line2D.new()
+		#line.default_color = GB.line_color
+		#line.width = GB.line_width
+		#line.antialiased = true
+		#lines.add_child(line)
+		#
+		#var from_point = line.to_local(from_child.exit.global_position)
+		#var to_point = line.to_local(to_child.entrance.global_position)
+		#
+		#line.add_point(from_point)
+		#line.add_point(to_point)
+		
+func connect_first_left():
+	var line:Line2D = Line2D.new()
+	line.default_color = GB.line_color
+	line.width = GB.line_width
+	line.antialiased = true
+	lines.add_child(line)
+	
+	var from_child = a_if_block.left_exit
+	var from_point = line.to_local(from_child.global_position)
+	
+	
+	if left_sub_zone.main_list.get_child_count()>0:
+		var to_child = left_sub_zone.main_list.get_child(0)
+		var to_point = line.to_local(to_child.entrance.global_position)
+		
+		line.add_point(from_point)
+		line.add_point(Vector2(to_point.x, from_point.y))
+		line.add_point(to_point)
+	else:
+		line.add_point(from_point)
+		line.add_point(Vector2(from_point.x - GB.default_min_size.x/2, from_point.y))
+		line.add_point(Vector2(from_point.x - GB.default_min_size.x/2, exit.position.y))
+		line.add_point(exit.position)
+
+func connect_firts_right():
+	var line:Line2D = Line2D.new()
+	line.default_color = GB.line_color
+	line.width = GB.line_width
+	line.antialiased = true
+	lines.add_child(line)
+	
+	var from_child = a_if_block.right_exit
+	var from_point = line.to_local(from_child.global_position)
+	
+	
+	if right_sub_zone.main_list.get_child_count()>0:
+		var to_child = right_sub_zone.main_list.get_child(0)
+		var to_point = line.to_local(to_child.entrance.global_position)
+		
+		line.add_point(from_point)
+		line.add_point(Vector2(to_point.x, from_point.y))
+		line.add_point(to_point)
+	else:
+		line.add_point(from_point)
+		line.add_point(Vector2(from_point.x + GB.default_min_size.x/2, from_point.y))
+		line.add_point(Vector2(from_point.x + GB.default_min_size.x/2, exit.position.y))
+		line.add_point(exit.position)
+		
+func connect_last_left():
+	if left_sub_zone.main_list.get_child_count()>0:
+		var line:Line2D = Line2D.new()
+		line.default_color = GB.line_color
+		line.width = GB.line_width
+		line.antialiased = true
+		lines.add_child(line)
+		
+		var from_child = left_sub_zone.main_list.get_child(-1)
+		var from_point = line.to_local(from_child.exit.global_position)
+		
+		line.add_point(from_point)
+		line.add_point(Vector2(from_point.x, exit.position.y))
+		line.add_point(exit.position)
+	
+	
+func connect_last_right():
+	if right_sub_zone.main_list.get_child_count()>0:
+		var line:Line2D = Line2D.new()
+		line.default_color = GB.line_color
+		line.width = GB.line_width
+		line.antialiased = true
+		lines.add_child(line)
+		
+		var from_child = right_sub_zone.main_list.get_child(-1)
+		var from_point = line.to_local(from_child.exit.global_position)
+		
+		line.add_point(from_point)
+		line.add_point(Vector2(from_point.x, exit.position.y))
+		line.add_point(exit.position)
