@@ -9,7 +9,7 @@
 [node name="AFunctionBlock" instance=ExtResource("1_yq6x5")]
 script = ExtResource("2_uqvgl")
 
-[node name="Background" parent="Body" index="1"]
+[node name="Background" parent="Body" index="0"]
 texture_normal = ExtResource("3_ai4k5")
 
 [node name="LineConnections" type="Node2D" parent="Body/Content" index="1"]

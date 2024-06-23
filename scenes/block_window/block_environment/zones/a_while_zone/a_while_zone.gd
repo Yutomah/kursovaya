@@ -20,6 +20,9 @@ func _ready() -> void:
 	#add_theme_constant_override("margin_left", GB.left_right_margin)
 	#add_theme_constant_override("margin_right", GB.left_right_margin)
 
+func get_first_block():
+	return a_while_block
+	
 #region Alignment
 func on_item_pressed(ablock):
 	zone.spawn_block(ablock, get_index()+1)

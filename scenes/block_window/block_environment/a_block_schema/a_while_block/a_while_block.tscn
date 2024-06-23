@@ -9,7 +9,7 @@
 [node name="AWhileBlock" instance=ExtResource("1_r4wct")]
 script = ExtResource("2_2yvj8")
 
-[node name="Background" parent="Body" index="1"]
+[node name="Background" parent="Body" index="0"]
 texture_normal = ExtResource("3_a52lh")
 
 [node name="SpawnBlockButton" parent="Body/Content" index="1" instance=ExtResource("3_mwqkr")]

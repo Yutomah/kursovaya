@@ -11,6 +11,15 @@ func _ready():
 	super._ready()
 	init_zone_type()
 	
+func get_first_block():
+	if main_list.get_child_count() > 0:
+		var block = main_list.get_child(0)
+		if block is ABlock:
+			return block
+		else:
+			return block.get_first_block()
+	else:
+		return null
 #region Alignment
 func init_zone_type():
 	assert(zone_type != null)

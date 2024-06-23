@@ -9,7 +9,7 @@
 [node name="ABeginBlock" instance=ExtResource("1_rgtqp")]
 script = ExtResource("2_h7bru")
 
-[node name="Background" parent="Body" index="1"]
+[node name="Background" parent="Body" index="0"]
 offset_left = -151.0
 offset_top = -91.0
 offset_right = 151.0

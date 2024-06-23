@@ -22,6 +22,9 @@ func _ready():
 	main_list.add_theme_constant_override("separation", GB.v_separation)
 	spawn_block_button.item_pressed.connect(on_item_pressed)
 	
+func get_first_block():
+	return a_if_block
+	
 #region Alignment
 func on_item_pressed(ablock):
 	zone.spawn_block(ablock, get_index()+1)

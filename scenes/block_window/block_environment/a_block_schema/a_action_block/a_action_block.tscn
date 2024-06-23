@@ -9,7 +9,7 @@
 [node name="AActionBlock" instance=ExtResource("1_vbe43")]
 script = ExtResource("2_d168i")
 
-[node name="Background" parent="Body" index="1"]
+[node name="Background" parent="Body" index="0"]
 offset_left = -151.0
 offset_top = -91.0
 offset_right = 151.0

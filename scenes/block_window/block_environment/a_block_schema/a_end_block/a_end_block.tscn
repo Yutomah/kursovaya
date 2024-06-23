@@ -8,7 +8,7 @@
 [node name="AEndBlock" instance=ExtResource("1_oioqe")]
 script = ExtResource("2_vmdl0")
 
-[node name="Background" parent="Body" index="1"]
+[node name="Background" parent="Body" index="0"]
 texture_normal = ExtResource("3_h4ao0")
 
 [node name="LineConnections" type="Node2D" parent="Body/Content" index="0"]

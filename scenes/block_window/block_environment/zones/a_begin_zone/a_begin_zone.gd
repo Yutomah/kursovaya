@@ -1,15 +1,18 @@
 extends AZone
 class_name ABeginZone
 
+@onready var a_begin_block: ABeginBlock = %ABeginBlock
+@onready var a_end_block: AEndBlock = %AEndBlock
+
 ## Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
 	GB.begin_zones.append(self)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func get_first_block():
+	return a_begin_block
+
 
 #region Alignment
 func update_everything():
