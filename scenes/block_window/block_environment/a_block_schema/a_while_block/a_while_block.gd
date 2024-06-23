@@ -10,21 +10,52 @@ class_name AWhileBlock
 @onready var cycle_entrance: Marker2D = %CycleEntrance
 @onready var cycle_exit: Marker2D = %CycleExit
 
+@onready var arrows: Arrows = %Arrows
+@onready var distance_spin_box: SpinBox = %DistanceSpinBox
+
 
 func _ready():
 	super._ready()
-	#custom_minimum_size = Vector2(background.size.x + GB.left_right_margin*2, background.size.y)
-	#body.custom_minimum_size =  Vector2(background.size.x + GB.left_right_margin*2, background.size.y)
-	
+	block_type = "Блок while"
 	spawn_block_button.item_pressed.connect(on_item_pressed)
-	pass # Replace with function body.
+	pass 
 
 
-func get_next_block():
-	if randi() % 5 == 0:
-		return zone.get_next_block_exit(self)
-		
+func get_next_block():	
 	return zone.get_next_block(self)
+	
+func get_next_block_exit():
+	return zone.get_next_block_exit(self)
+	
+func send_msg_to_log(zap:Zap):
+	var arrow_path = arrows.get_arrow_path()
+	
+	var direction = arrows.get_direction()
+	var distance = distance_spin_box.value
+	
+	var result = !zap.grid_line.check_for_border(direction, distance)
+	var msg
+	if result:
+		msg = "%s: Произведена проверка на стену в сторону [img]%s[/img] на дистанции %s. Результат: %s. Цикл завершён." \
+			% [block_type, arrow_path, distance, result]
+	else:
+		msg = "%s: Произведена проверка на стену в сторону [img]%s[/img] на дистанции %s. Результат: %s. Цикл продолжается." \
+			% [block_type, arrow_path, distance, result]
+	zap.log_group.write_record(msg, self)
+
+
+func zap_processing(zap:Zap):
+	if await zap_processing_control(zap):
+		send_msg_to_log(zap)
+		var direction = arrows.get_direction()
+		var distance = distance_spin_box.value
+		
+		
+		if zap.grid_line.check_for_border(direction, distance):
+			get_next_block().zap_processing(zap)
+		else:
+			get_next_block_exit().zap_processing(zap)
+	
 #region Alignment
 func delete_me():
 	zone.queue_free()
