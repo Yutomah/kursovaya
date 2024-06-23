@@ -10,7 +10,10 @@ func _ready():
 	spawn_block_button.item_pressed.connect(on_item_pressed)
 	pass # Replace with function body.
 
-
+func get_next_block():
+	return zone.get_next_block(self)
+	
+	
 #region Alignment
 func delete_me():
 	var my_zone = GB.get_my_begin_zone(self)

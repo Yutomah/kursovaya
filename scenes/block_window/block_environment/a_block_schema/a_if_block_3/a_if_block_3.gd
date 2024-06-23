@@ -13,7 +13,12 @@ func _ready():
 	left_spawn_button.item_pressed.connect(on_left_pressed)
 	right_spawn_button.item_pressed.connect(on_right_pressed)
 	super._ready()
-
+	
+func get_next_block():
+	return zone.get_left_next_block()
+	
+	
+	
 #region Alignment
 func delete_me():
 	zone.queue_free()

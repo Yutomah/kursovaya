@@ -20,6 +20,21 @@ func _ready() -> void:
 	#add_theme_constant_override("margin_left", GB.left_right_margin)
 	#add_theme_constant_override("margin_right", GB.left_right_margin)
 
+func get_next_block(block):
+	for i in main_list.get_child_count():
+		if main_list.get_child(i) == block:
+			if main_list.get_child(-1) == block:
+				return a_while_block
+			else:
+				var next_block = main_list.get_child(i+1)
+				if next_block is ABlock:
+					return next_block
+				else:
+					return next_block.get_first_block()
+	
+func get_next_block_exit(block):
+	return zone.get_next_block(self)
+	
 func get_first_block():
 	return a_while_block
 	

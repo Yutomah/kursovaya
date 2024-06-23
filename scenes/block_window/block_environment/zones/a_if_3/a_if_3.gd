@@ -22,6 +22,21 @@ func _ready():
 	main_list.add_theme_constant_override("separation", GB.v_separation)
 	spawn_block_button.item_pressed.connect(on_item_pressed)
 	
+func get_left_next_block():
+	if left_sub_zone.main_list.get_child_count()>0:
+		return left_sub_zone.get_first_block()
+	else:
+		return zone.get_next_block(self)
+		
+func get_right_next_block():
+	if right_sub_zone.main_list.get_child_count()>0:
+		return right_sub_zone.get_first_block()
+	else:
+		return zone.get_next_block(self)
+		
+func get_next_block(block):
+	return zone.get_next_block(self)
+	
 func get_first_block():
 	return a_if_block
 	

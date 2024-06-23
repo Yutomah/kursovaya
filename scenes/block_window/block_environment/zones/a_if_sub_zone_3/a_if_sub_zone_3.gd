@@ -10,7 +10,19 @@ class_name AIfSubZone3
 func _ready():
 	super._ready()
 	init_zone_type()
-	
+
+func get_next_block(block):
+	for i in main_list.get_child_count():
+		if main_list.get_child(i) == block:
+			if main_list.get_child(-1) == block:
+				return zone.get_next_block(self)
+			else:
+				var next_block = main_list.get_child(i+1)
+				if next_block is ABlock:
+					return next_block
+				else:
+					return next_block.get_first_block()
+					
 func get_first_block():
 	if main_list.get_child_count() > 0:
 		var block = main_list.get_child(0)

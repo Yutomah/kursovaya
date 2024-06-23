@@ -9,8 +9,15 @@ func _ready():
 	custom_minimum_size = background.size
 	body.custom_minimum_size = background.size
 
+func get_next_block():
+	pass
 
-
+func a_highlight():
+	background.self_modulate = Color.AQUA
+	
+func a_dehighlight():
+	background.self_modulate = Color.WHITE
+	
 #region Alignment
 func align_block(left_min_size:float):
 	if left_min_size == -1:
