@@ -18,6 +18,7 @@ func _ready():
 	spawn_block_button.item_pressed.connect(on_item_pressed)
 	pass # Replace with function body.
 
+#region Alignment
 func delete_me():
 	zone.queue_free()
 	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_everything)
@@ -35,3 +36,4 @@ func on_item_pressed(ablock):
 		#body.position.x = (zone.size.x - GB.left_right_margin)/2 - body.size.x/2
 	#else:
 		#body.position.x = left_min_size + GB.h_separation - body.size.x / 2 
+#endregion

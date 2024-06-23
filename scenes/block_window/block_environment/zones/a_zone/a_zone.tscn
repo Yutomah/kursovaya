@@ -1,17 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b86q33r2c72ap"]
+[gd_scene load_steps=2 format=3 uid="uid://b86q33r2c72ap"]
 
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_zone/a_zone.gd" id="1_5577t"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cq6bi"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.60388, 0.0263482, 0.604494, 1)
-
-[sub_resource type="Theme" id="Theme_suyhu"]
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_cq6bi")
 
 [node name="AZone" type="MarginContainer"]
 anchors_preset = 15
@@ -20,15 +9,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = SubResource("Theme_suyhu")
 theme_override_constants/margin_bottom = 0
 script = ExtResource("1_5577t")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="MainList" type="VBoxContainer" parent="PanelContainer"]
+[node name="MainList" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 200)
 layout_mode = 2

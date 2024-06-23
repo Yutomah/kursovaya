@@ -20,6 +20,7 @@ func _ready() -> void:
 	#add_theme_constant_override("margin_left", GB.left_right_margin)
 	#add_theme_constant_override("margin_right", GB.left_right_margin)
 
+#region Alignment
 func on_item_pressed(ablock):
 	zone.spawn_block(ablock, get_index()+1)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -178,3 +179,4 @@ func connect_to_exit():
 	line.add_point(Vector2(right_side + cycle_depth*GB.left_right_margin, from_point.y))
 	line.add_point(Vector2(right_side + cycle_depth*GB.left_right_margin, exit.position.y))
 	line.add_point(exit.position)
+#endregion

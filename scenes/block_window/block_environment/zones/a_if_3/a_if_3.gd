@@ -22,6 +22,7 @@ func _ready():
 	main_list.add_theme_constant_override("separation", GB.v_separation)
 	spawn_block_button.item_pressed.connect(on_item_pressed)
 	
+#region Alignment
 func on_item_pressed(ablock):
 	zone.spawn_block(ablock, get_index()+1)
 
@@ -181,3 +182,4 @@ func connect_last_right():
 		line.add_point(from_point)
 		line.add_point(Vector2(from_point.x, exit.position.y))
 		line.add_point(exit.position)
+#endregion

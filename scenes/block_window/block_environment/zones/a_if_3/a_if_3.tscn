@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bd52npxb3eudi"]
+[gd_scene load_steps=7 format=3 uid="uid://bd52npxb3eudi"]
 
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_if_3/a_if_3.gd" id="1_2b7id"]
 [ext_resource type="PackedScene" uid="uid://c5obmpb5gn66e" path="res://scenes/block_window/block_environment/a_block_schema/a_if_block_3/a_if_block_3.tscn" id="1_havdp"]
 [ext_resource type="PackedScene" uid="uid://cdyo4g3fafq22" path="res://scenes/block_window/block_environment/zones/a_if_sub_zone_3/a_if_sub_zone_3.tscn" id="2_sawcn"]
 [ext_resource type="PackedScene" uid="uid://cai755nf0acib" path="res://scenes/block_window/spawn_block_button/spawn_block_button.tscn" id="4_61ex5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cq6bi"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.60388, 0.0263482, 0.604494, 1)
+
+[sub_resource type="Theme" id="Theme_suyhu"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_cq6bi")
 
 [node name="AIf3" type="MarginContainer"]
 offset_right = 612.0
@@ -11,38 +22,36 @@ offset_bottom = 208.0
 mouse_filter = 2
 script = ExtResource("1_2b7id")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="MainList" type="VBoxContainer" parent="PanelContainer"]
+[node name="MainList" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 
-[node name="a_if_block" parent="PanelContainer/MainList" node_paths=PackedStringArray("zone") instance=ExtResource("1_havdp")]
+[node name="a_if_block" parent="MainList" node_paths=PackedStringArray("zone") instance=ExtResource("1_havdp")]
 unique_name_in_owner = true
 layout_mode = 2
-zone = NodePath("../../..")
+zone = NodePath("../..")
 
-[node name="horizontal_list" type="HBoxContainer" parent="PanelContainer/MainList"]
+[node name="horizontal_list" type="HBoxContainer" parent="MainList"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 
-[node name="left_sub_zone" parent="PanelContainer/MainList/horizontal_list" node_paths=PackedStringArray("zone") instance=ExtResource("2_sawcn")]
+[node name="left_sub_zone" parent="MainList/horizontal_list" node_paths=PackedStringArray("zone") instance=ExtResource("2_sawcn")]
 unique_name_in_owner = true
 layout_mode = 2
+theme = SubResource("Theme_suyhu")
 theme_override_constants/margin_bottom = 10
 zone_type = "left_sub_zone"
-zone = NodePath("../../../..")
+zone = NodePath("../../..")
 
-[node name="right_sub_zone" parent="PanelContainer/MainList/horizontal_list" node_paths=PackedStringArray("zone") instance=ExtResource("2_sawcn")]
+[node name="right_sub_zone" parent="MainList/horizontal_list" node_paths=PackedStringArray("zone") instance=ExtResource("2_sawcn")]
 unique_name_in_owner = true
 layout_mode = 2
+theme = SubResource("Theme_suyhu")
 theme_override_constants/margin_bottom = 10
 zone_type = "right_sub_zone"
-zone = NodePath("../../../..")
+zone = NodePath("../../..")
 
 [node name="LineConnections" type="Node2D" parent="."]
 

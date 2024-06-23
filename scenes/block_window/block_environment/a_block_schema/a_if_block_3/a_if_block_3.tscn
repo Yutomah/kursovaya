@@ -9,7 +9,7 @@
 [node name="AIfBlock3" instance=ExtResource("1_uj5bs")]
 script = ExtResource("2_ttred")
 
-[node name="Background" parent="Body" index="1"]
+[node name="Background" parent="Body" index="0"]
 texture_normal = ExtResource("3_nkvhk")
 
 [node name="LeftSpawnButton" parent="Body/Content" index="0" instance=ExtResource("4_dwvuk")]

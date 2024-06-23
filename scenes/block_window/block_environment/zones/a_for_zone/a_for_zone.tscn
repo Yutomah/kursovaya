@@ -15,12 +15,12 @@ grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("2_d7y1c")
 
-[node name="AForBlock" parent="PanelContainer/MainList" index="0" node_paths=PackedStringArray("zone") instance=ExtResource("3_anl6j")]
+[node name="AForBlock" parent="MainList" index="0" node_paths=PackedStringArray("zone") instance=ExtResource("3_anl6j")]
 unique_name_in_owner = true
 layout_mode = 2
-zone = NodePath("../../..")
+zone = NodePath("../..")
 
-[node name="LineConnections" type="Node2D" parent="." index="2"]
+[node name="LineConnections" type="Node2D" parent="." index="1"]
 
 [node name="Entrance" type="Marker2D" parent="LineConnections" index="0"]
 unique_name_in_owner = true
@@ -30,7 +30,7 @@ position = Vector2(0, -91)
 unique_name_in_owner = true
 position = Vector2(-152, 0)
 
-[node name="SpawnButtons" type="Node2D" parent="." index="3"]
+[node name="SpawnButtons" type="Node2D" parent="." index="2"]
 
 [node name="SpawnBlockButton" parent="SpawnButtons" index="0" instance=ExtResource("4_c8nlu")]
 unique_name_in_owner = true

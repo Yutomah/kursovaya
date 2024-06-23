@@ -12,6 +12,7 @@ func _ready():
 	
 	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_everything)
 	
+#region Alignment
 func set_min_size(min_size:Vector2):
 	custom_minimum_size = min_size
 	size = min_size
@@ -131,3 +132,4 @@ func connect_blocks():
 		line.add_point(to_point)
 	
 		
+#endregion

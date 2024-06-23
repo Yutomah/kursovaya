@@ -11,6 +11,7 @@ func _ready():
 	super._ready()
 	init_zone_type()
 	
+#region Alignment
 func init_zone_type():
 	assert(zone_type != null)
 	
@@ -34,3 +35,4 @@ func get_main_list_size():
 func update_line_connections():
 	entrance.position = Vector2(GB.default_min_size.x/2, 0)
 	exit.global_position = Vector2(entrance.global_position.x, global_position.y + size.y)
+#endregion

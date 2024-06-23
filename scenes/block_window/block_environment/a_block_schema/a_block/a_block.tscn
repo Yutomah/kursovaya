@@ -1,17 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmgbms3pjuitq"]
+[gd_scene load_steps=4 format=3 uid="uid://cmgbms3pjuitq"]
 
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_block/a_block.gd" id="1_od1h3"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_block/background.gd" id="2_0skse"]
 
 [sub_resource type="Theme" id="Theme_23ues"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ej8e"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.673317, 0, 0.151154, 1)
 
 [node name="ABlock" type="Control" node_paths=PackedStringArray("background", "body")]
 layout_mode = 3
@@ -24,29 +16,9 @@ script = ExtResource("1_od1h3")
 background = NodePath("Body/Background")
 body = NodePath("Body")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5ej8e")
-
 [node name="Body" type="Control" parent="."]
 anchors_preset = 0
 mouse_filter = 2
-
-[node name="Panel2" type="Panel" parent="Body"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5ej8e")
 
 [node name="Background" type="TextureButton" parent="Body" node_paths=PackedStringArray("ablock", "popup")]
 layout_mode = 1

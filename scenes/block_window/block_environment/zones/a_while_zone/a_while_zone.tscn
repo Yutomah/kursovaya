@@ -8,12 +8,12 @@
 [node name="AWhileZone" instance=ExtResource("1_uiuf3")]
 script = ExtResource("2_un4qa")
 
-[node name="AWhileBlock" parent="PanelContainer/MainList" index="0" node_paths=PackedStringArray("zone") instance=ExtResource("3_ibs0c")]
+[node name="AWhileBlock" parent="MainList" index="0" node_paths=PackedStringArray("zone") instance=ExtResource("3_ibs0c")]
 unique_name_in_owner = true
 layout_mode = 2
-zone = NodePath("../../..")
+zone = NodePath("../..")
 
-[node name="LineConnections" type="Node2D" parent="." index="2"]
+[node name="LineConnections" type="Node2D" parent="." index="1"]
 
 [node name="Entrance" type="Marker2D" parent="LineConnections" index="0"]
 unique_name_in_owner = true
@@ -23,7 +23,7 @@ position = Vector2(0, -91)
 unique_name_in_owner = true
 position = Vector2(-152, 0)
 
-[node name="SpawnButtons" type="Node2D" parent="." index="3"]
+[node name="SpawnButtons" type="Node2D" parent="." index="2"]
 
 [node name="SpawnBlockButton" parent="SpawnButtons" index="0" instance=ExtResource("3_11e78")]
 unique_name_in_owner = true

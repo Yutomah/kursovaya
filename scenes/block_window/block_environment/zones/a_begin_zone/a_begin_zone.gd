@@ -11,6 +11,7 @@ func _ready():
 func _process(delta):
 	pass
 
+#region Alignment
 func update_everything():
 	update_alignment()
 	
@@ -19,3 +20,4 @@ func update_everything():
 		
 	rec_connect_blocks()
 	connect_blocks()
+#endregion
