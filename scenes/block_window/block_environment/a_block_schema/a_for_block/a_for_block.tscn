@@ -5,9 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://gm5wmvcxxxwl" path="res://Sprites/block_sprites/1x/Asset 8.png" id="3_unspq"]
 [ext_resource type="PackedScene" uid="uid://cai755nf0acib" path="res://scenes/block_window/spawn_block_button/spawn_block_button.tscn" id="4_7tc3m"]
 
-[node name="AForBlock" node_paths=PackedStringArray("spawn_block_button", "background", "body") instance=ExtResource("1_hdwij")]
+[node name="AForBlock" node_paths=PackedStringArray("background", "body") instance=ExtResource("1_hdwij")]
 script = ExtResource("2_6hpas")
-spawn_block_button = NodePath("Body/Content/SpawnBlockButton")
 background = NodePath("Body/Background")
 body = NodePath("Body")
 
@@ -17,8 +16,27 @@ ablock = NodePath("../..")
 popup = NodePath("../Content/PopupMenu")
 
 [node name="SpawnBlockButton" parent="Body/Content" index="1" instance=ExtResource("4_7tc3m")]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 2.0
 offset_top = 84.0
 offset_right = 27.0
 offset_bottom = 134.0
+
+[node name="LineConnections" type="Node2D" parent="Body/Content" index="2"]
+
+[node name="Entrance" type="Marker2D" parent="Body/Content/LineConnections" index="0"]
+unique_name_in_owner = true
+position = Vector2(0, -91)
+
+[node name="Exit" type="Marker2D" parent="Body/Content/LineConnections" index="1"]
+unique_name_in_owner = true
+position = Vector2(152, 0)
+
+[node name="CycleEntrance" type="Marker2D" parent="Body/Content/LineConnections" index="2"]
+unique_name_in_owner = true
+position = Vector2(-151, 0)
+
+[node name="CycleExit" type="Marker2D" parent="Body/Content/LineConnections" index="3"]
+unique_name_in_owner = true
+position = Vector2(0, 92)

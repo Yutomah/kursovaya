@@ -30,6 +30,10 @@ func update_alignment():
 	#a_if_block.align_block(get_left_size().x)
 
 
+func get_inner_size():
+	var l = left_sub_zone.get_main_list_size().x
+	var r = right_sub_zone.get_main_list_size().x
+	return [l,r]
 
 func spawn_left(block):
 	left_sub_zone.spawn_block(block, 0)
@@ -38,10 +42,10 @@ func spawn_right(block):
 	right_sub_zone.spawn_block(block, 0)
 
 func get_left_size():
-	return left_sub_zone.get_main_list_size()
+	return left_sub_zone.size
 	
 func get_right_size():
-	return right_sub_zone.get_main_list_size()
+	return right_sub_zone.size
 	
 func min_size_to_default():
 	left_sub_zone.set_min_size(GB.default_min_size)

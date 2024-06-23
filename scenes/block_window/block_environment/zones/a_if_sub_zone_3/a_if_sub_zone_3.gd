@@ -29,7 +29,7 @@ func _process(delta):
 	pass
 
 func get_main_list_size():
-	return size
+	return main_list.size
 
 func update_line_connections():
 	entrance.position = Vector2(GB.default_min_size.x/2, 0)

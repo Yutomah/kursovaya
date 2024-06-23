@@ -15,7 +15,7 @@ func _ready():
 func set_min_size(min_size:Vector2):
 	custom_minimum_size = min_size
 	size = min_size
-	
+	#
 func spawn_block(ablock, pos:int):
 	ablock.zone = self
 	main_list.add_child(ablock)
@@ -37,14 +37,14 @@ func update_alignment():
 	
 func update_alignment_if():
 	for child in main_list.get_children():
-		if child is AForZone:
+		if "zone_type" in child and child.zone_type == "AForZone":
 			child.update_alignment_if()
 		if "zone_type" in child and child.zone_type == "AIf":
 			child.update_alignment()
 			
 func left_right_min_size_to_default():
 	for child in main_list.get_children():
-		if child is AForZone:
+		if "zone_type" in child and child.zone_type == "AForZone":
 			child.left_right_min_size_to_default()
 		if "zone_type" in child and child.zone_type == "AIf":
 			child.min_size_to_default()
@@ -55,7 +55,7 @@ func get_max_left_right_min_size():
 
 	
 	for child in main_list.get_children():
-		if child is AForZone:
+		if "zone_type" in child and child.zone_type == "AForZone":
 			var left_right = child.get_max_left_right_min_size()
 				
 			if left < left_right[0]:
@@ -75,16 +75,16 @@ func get_max_left_right_min_size():
 			
 func change_left_right_min_size(left_right_size:Array):
 	for child in main_list.get_children():
-		if child is AForZone:
+		if  "zone_type" in child and child.zone_type == "AForZone":
 			child.change_left_right_min_size(left_right_size)
 			
 		if "zone_type" in child and child.zone_type == "AIf":
 			child.change_min_size(left_right_size)
 			
-			
+			#
 func align_blocks(left_min_size:float):
 	for child in main_list.get_children():
-		if child is AForZone:
+		if "zone_type" in child and child.zone_type == "AForZone":
 			child.align_blocks(left_min_size)
 			
 		if "zone_type" in child and child.zone_type == "AIf":
@@ -102,10 +102,8 @@ func rec_update_line_connections():
 			child.update_line_connections()
 			
 func update_line_connections():
-	for child in main_list.get_children():
-		if !(child is ABlock):
-			child.update_line_connections()
-			
+	pass
+			#
 func rec_connect_blocks():
 	for child in main_list.get_children():
 		if !(child is ABlock):
