@@ -21,6 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = SubResource("Theme_suyhu")
+theme_override_constants/margin_bottom = 0
 script = ExtResource("1_5577t")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -33,3 +34,6 @@ custom_minimum_size = Vector2(300, 200)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
+
+[node name="Lines" type="Node2D" parent="."]
+unique_name_in_owner = true

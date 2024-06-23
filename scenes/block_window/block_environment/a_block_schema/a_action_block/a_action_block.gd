@@ -1,7 +1,11 @@
 extends ABlock
 class_name AActionBlock
 
-@export var spawn_block_button:SpawnBlockButton
+@onready var spawn_block_button: SpawnBlockButton = %SpawnBlockButton
+@onready var entrance: Marker2D = %Entrance
+@onready var exit: Marker2D = %Exit
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -11,7 +11,7 @@ func _ready():
 
 func align_block(left_min_size:float):
 	if left_min_size == -1:
-		body.position.x = size.x/2 - body.size.x/2
+		body.position.x = zone.size.x/2 - body.size.x/2
 	else:
 		body.position.x = left_min_size + GB.h_separation - body.size.x / 2 
 	

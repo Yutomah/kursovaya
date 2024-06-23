@@ -1,7 +1,8 @@
 extends ABlock
 class_name ABeginBlock
 
-@export var spawn_block_button:SpawnBlockButton
+@onready var spawn_block_button: SpawnBlockButton = %SpawnBlockButton
+@onready var exit: Marker2D = %Exit
 
 
 func _ready():

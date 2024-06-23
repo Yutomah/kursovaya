@@ -13,3 +13,9 @@ body = NodePath("Body")
 texture_normal = ExtResource("3_h4ao0")
 ablock = NodePath("../..")
 popup = NodePath("../Content/PopupMenu")
+
+[node name="LineConnections" type="Node2D" parent="Body/Content" index="0"]
+
+[node name="Entrance" type="Marker2D" parent="Body/Content/LineConnections" index="0"]
+unique_name_in_owner = true
+position = Vector2(0, -91)
