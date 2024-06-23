@@ -1,12 +1,12 @@
 extends PanelContainer
 class_name LogRecord
 
-#var block:GBlock
+var block:ABlock
 
-#func write_record(msg:String, block:GBlock):
-	#self.block = block
-	#$Label.text = msg
-	#block.related_log_records.append(self)
+func write_record(msg:String, block:ABlock):
+	self.block = block
+	$Label.text = msg
+	block.related_log_records.append(self)
 
 
 func _on_gui_input(event):

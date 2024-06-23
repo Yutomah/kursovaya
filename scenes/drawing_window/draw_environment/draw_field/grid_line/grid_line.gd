@@ -4,6 +4,7 @@ class_name GridLine
 var zap:Zap
 var CELL_SIZE:int
 var color:Color = Color.WHITE
+
 @onready var grid = get_parent().get_parent()
 
 @onready var current_line:Line2D = $Line2D

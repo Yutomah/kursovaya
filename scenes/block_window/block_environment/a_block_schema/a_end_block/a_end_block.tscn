@@ -18,3 +18,9 @@ unique_name_in_owner = true
 position = Vector2(0, -91)
 arrow_angle = 90
 arrow_enabled = true
+
+[node name="MarginContainer" parent="Body/Content/PopupPanel" index="1"]
+offset_right = 191.0
+
+[node name="DeleteButton" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="0"]
+text = "Удалить блок-схему"

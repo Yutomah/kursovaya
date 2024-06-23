@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://ooqio54w34cg"]
+[gd_scene load_steps=8 format=3 uid="uid://ooqio54w34cg"]
 
 [ext_resource type="PackedScene" uid="uid://cmgbms3pjuitq" path="res://scenes/block_window/block_environment/a_block_schema/a_block/a_block.tscn" id="1_vbe43"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_action_block/a_action_block.gd" id="2_d168i"]
 [ext_resource type="Texture2D" uid="uid://cahftl83vsyvx" path="res://Sprites/block_sprites/1x/Asset 10.png" id="3_671ld"]
 [ext_resource type="PackedScene" uid="uid://cai755nf0acib" path="res://scenes/block_window/spawn_block_button/spawn_block_button.tscn" id="4_05i4a"]
 [ext_resource type="PackedScene" uid="uid://dsg1n6q26m5g2" path="res://scenes/block_window/arrow_marker/arrow_marker.tscn" id="4_fns6l"]
+[ext_resource type="PackedScene" uid="uid://d1in5wx8kx4ek" path="res://scenes/block_window/Arrows/arrows.tscn" id="6_hmjys"]
+[ext_resource type="PackedScene" uid="uid://jlclgu25xey1" path="res://scenes/block_window/Arrows/pencil_move/pencil_mode.tscn" id="7_vs38n"]
 
 [node name="AActionBlock" instance=ExtResource("1_vbe43")]
 script = ExtResource("2_d168i")
@@ -35,3 +37,25 @@ offset_left = 5.0
 offset_top = 79.0
 offset_right = 30.0
 offset_bottom = 129.0
+
+[node name="PopupPanel" parent="Body/Content" index="2"]
+size = Vector2i(187, 107)
+
+[node name="MarginContainer" parent="Body/Content/PopupPanel" index="1"]
+offset_right = 187.0
+offset_bottom = 107.0
+
+[node name="Arrows" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="0" instance=ExtResource("6_hmjys")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2" index="0"]
+layout_mode = 2
+text = "Тип действия"
+
+[node name="PencilMode" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2" index="1" instance=ExtResource("7_vs38n")]
+unique_name_in_owner = true
+layout_mode = 2

@@ -1,7 +1,8 @@
 extends TextureButton
 
 @export var ablock:ABlock
-@export var popup:Popup
+@onready var popup_panel: PopupPanel = %PopupPanel
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var img = Image.new()
@@ -14,8 +15,7 @@ func _ready():
 
 func _on_gui_input(event):
 	if event.is_action_pressed("RKM"):
-		if !(ablock is AEndBlock):
-			popup.visible = true
-			popup.position = get_viewport().get_mouse_position()
+		popup_panel.visible = true
+		popup_panel.position = get_viewport().get_mouse_position()
 	if event.is_action_pressed("LKM"):
 		print("lkm")

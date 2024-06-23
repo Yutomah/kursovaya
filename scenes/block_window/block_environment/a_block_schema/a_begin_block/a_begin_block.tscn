@@ -29,3 +29,49 @@ offset_left = 7.0
 offset_top = 88.0
 offset_right = 32.0
 offset_bottom = 138.0
+
+[node name="PopupPanel" parent="Body/Content" index="2"]
+size = Vector2i(246, 149)
+
+[node name="MarginContainer" parent="Body/Content/PopupPanel" index="1"]
+offset_right = 246.0
+offset_bottom = 149.0
+
+[node name="NameContainer" type="HBoxContainer" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer/NameContainer" index="0"]
+layout_mode = 2
+text = "Имя"
+
+[node name="NameLineEdit" type="LineEdit" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer/NameContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_length = 20
+
+[node name="ColorContainer" type="HBoxContainer" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="ColorLabel" type="Label" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer/ColorContainer" index="0"]
+layout_mode = 2
+text = "Цвет линии"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer/ColorContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="OnOffContainer" type="HBoxContainer" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="OnOffLabel" type="Label" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer/OnOffContainer" index="0"]
+layout_mode = 2
+text = "Выключить блок-схему"
+
+[node name="OnOffCheckBox" type="CheckBox" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer/OnOffContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DeleteButton" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="3"]
+text = "Удалить блок-схему"

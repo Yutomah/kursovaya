@@ -5,6 +5,8 @@ class_name AActionBlock
 @onready var entrance: Marker2D = %Entrance
 @onready var exit: Marker2D = %Exit
 
+@onready var arrows: Arrows = %Arrows
+@onready var pencil_mode: OptionButton = %PencilMode
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,6 +15,32 @@ func _ready():
 	spawn_block_button.item_pressed.connect(on_item_pressed)
 	pass # Replace with function body.
 
+func send_msg_to_log(zap:Zap):
+	var arrow_path = arrows.get_arrow_path()
+	var msg
+	if pencil_mode.is_jumping():
+		msg = "%s: Курсор перемещён в сторону [img]%s[/img]" % [block_type, arrow_path]
+	else:
+		msg = "%s: Линия нарисована в сторону [img]%s[/img]" % [block_type, arrow_path]
+	zap.log_group.write_record(msg, self)
+
+func zap_processing(zap:Zap):
+	if await zap_processing_control(zap):
+		send_msg_to_log(zap)
+		
+		var direction = arrows.get_direction()
+		
+		var line_drawed:bool
+		if pencil_mode.is_jumping():
+			line_drawed = zap.grid_line.line_jump(direction)
+		else:
+			line_drawed = zap.grid_line.line_draw(direction)
+			
+		if line_drawed:
+			get_next_block().zap_processing(zap)
+		else:
+			error_line_beyond_borders(zap)
+			
 func get_next_block():
 	return zone.get_next_block(self)
 	

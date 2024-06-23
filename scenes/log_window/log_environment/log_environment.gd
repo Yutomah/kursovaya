@@ -23,7 +23,7 @@ func on_create_log_group_wanted(zap:Zap):
 	#log_group.add_color_override("border_color",Color.RED)
 	#log_group.set("border_color", Color.RED)
 	#print(log_group.get("theme_override_styles/panel"))
-	log_group.get("theme_override_styles/panel").set("border_color", zap.block_begin.pencil_color)
+	log_group.get("theme_override_styles/panel").set("border_color", zap.a_begin_block.pencil_color)
 	$HBoxContainer.add_child(log_group)
 	
 func clear_log_groups():

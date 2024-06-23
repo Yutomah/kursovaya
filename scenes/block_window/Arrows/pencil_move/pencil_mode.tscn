@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://jlclgu25xey1"]
+
+[ext_resource type="Texture2D" uid="uid://tmcqrofqc00b" path="res://Sprites/icons8-pencil-16 (1).png" id="1_p6c7f"]
+[ext_resource type="Texture2D" uid="uid://fssqgjwhdffl" path="res://Sprites/icons8-forward-arrow-16.png" id="2_xjx8d"]
+[ext_resource type="Script" path="res://scenes/block_window/Arrows/pencil_move/pencil_mode.gd" id="3_glnau"]
+
+[node name="PencilMode" type="OptionButton"]
+offset_right = 32.0
+offset_bottom = 20.0
+selected = 0
+item_count = 2
+popup/item_0/icon = ExtResource("1_p6c7f")
+popup/item_1/icon = ExtResource("2_xjx8d")
+popup/item_1/id = 1
+script = ExtResource("3_glnau")
