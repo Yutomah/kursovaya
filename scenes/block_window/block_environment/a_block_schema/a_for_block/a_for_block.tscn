@@ -1,19 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6d5re1ykvdiw"]
+[gd_scene load_steps=6 format=3 uid="uid://b6d5re1ykvdiw"]
 
 [ext_resource type="PackedScene" uid="uid://cmgbms3pjuitq" path="res://scenes/block_window/block_environment/a_block_schema/a_block/a_block.tscn" id="1_hdwij"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_for_block/a_for_block.gd" id="2_6hpas"]
 [ext_resource type="Texture2D" uid="uid://gm5wmvcxxxwl" path="res://Sprites/block_sprites/1x/Asset 8.png" id="3_unspq"]
 [ext_resource type="PackedScene" uid="uid://cai755nf0acib" path="res://scenes/block_window/spawn_block_button/spawn_block_button.tscn" id="4_7tc3m"]
+[ext_resource type="PackedScene" uid="uid://dsg1n6q26m5g2" path="res://scenes/block_window/arrow_marker/arrow_marker.tscn" id="5_y0yvi"]
 
-[node name="AForBlock" node_paths=PackedStringArray("background", "body") instance=ExtResource("1_hdwij")]
+[node name="AForBlock" instance=ExtResource("1_hdwij")]
 script = ExtResource("2_6hpas")
-background = NodePath("Body/Background")
-body = NodePath("Body")
 
-[node name="Background" parent="Body" index="1" node_paths=PackedStringArray("ablock", "popup")]
+[node name="Background" parent="Body" index="1"]
 texture_normal = ExtResource("3_unspq")
-ablock = NodePath("../..")
-popup = NodePath("../Content/PopupMenu")
 
 [node name="SpawnBlockButton" parent="Body/Content" index="1" instance=ExtResource("4_7tc3m")]
 unique_name_in_owner = true
@@ -25,18 +22,21 @@ offset_bottom = 134.0
 
 [node name="LineConnections" type="Node2D" parent="Body/Content" index="2"]
 
-[node name="Entrance" type="Marker2D" parent="Body/Content/LineConnections" index="0"]
+[node name="Entrance" parent="Body/Content/LineConnections" index="0" instance=ExtResource("5_y0yvi")]
 unique_name_in_owner = true
 position = Vector2(0, -91)
+arrow_angle = 90
+arrow_enabled = true
 
-[node name="Exit" type="Marker2D" parent="Body/Content/LineConnections" index="1"]
+[node name="Exit" parent="Body/Content/LineConnections" index="1" instance=ExtResource("5_y0yvi")]
 unique_name_in_owner = true
 position = Vector2(152, 0)
 
-[node name="CycleEntrance" type="Marker2D" parent="Body/Content/LineConnections" index="2"]
+[node name="CycleEntrance" parent="Body/Content/LineConnections" index="2" instance=ExtResource("5_y0yvi")]
 unique_name_in_owner = true
 position = Vector2(-151, 0)
+arrow_enabled = true
 
-[node name="CycleExit" type="Marker2D" parent="Body/Content/LineConnections" index="3"]
+[node name="CycleExit" parent="Body/Content/LineConnections" index="3" instance=ExtResource("5_y0yvi")]
 unique_name_in_owner = true
 position = Vector2(0, 92)

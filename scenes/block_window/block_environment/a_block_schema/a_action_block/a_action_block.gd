@@ -15,7 +15,7 @@ func _ready():
 
 func delete_me():
 	queue_free()
-	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_everything())
+	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_everything)
 
 func on_item_pressed(ablock):
 	zone.spawn_block(ablock, get_index()+1)

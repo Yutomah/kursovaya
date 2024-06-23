@@ -14,12 +14,10 @@ grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("2_d7y1c")
 
-[node name="AForBlock" parent="PanelContainer/MainList" index="0" node_paths=PackedStringArray("zone", "background", "body") instance=ExtResource("3_anl6j")]
+[node name="AForBlock" parent="PanelContainer/MainList" index="0" node_paths=PackedStringArray("zone") instance=ExtResource("3_anl6j")]
 unique_name_in_owner = true
 layout_mode = 2
 zone = NodePath("../../..")
-background = NodePath("Body/Background")
-body = NodePath("Body")
 
 [node name="LineConnections" type="Node2D" parent="." index="2"]
 

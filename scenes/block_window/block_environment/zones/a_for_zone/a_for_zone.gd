@@ -14,6 +14,7 @@ var zone_type = "AForZone"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
+	add_theme_constant_override("margin_bottom", 2*GB.left_right_margin)
 	#add_theme_constant_override("margin_left", GB.left_right_margin)
 	#add_theme_constant_override("margin_right", GB.left_right_margin)
 
@@ -104,6 +105,8 @@ func update_line_connections():
 	else:
 		right_side = entrance.position.x + left_right[1] + GB.left_right_margin/2
 	cycle_depth = get_cycle_depth()
+	
+	
 func connect_blocks():
 	for line in lines.get_children():
 		line.queue_free()
@@ -130,6 +133,7 @@ func connect_blocks():
 		line.add_point(to_point)
 	
 	connect_cycle_loop()
+	connect_to_exit()
 	
 func connect_cycle_loop():
 	var line:Line2D = Line2D.new()
@@ -151,10 +155,22 @@ func connect_cycle_loop():
 	var to_point = line.to_local(to_child.cycle_entrance.global_position)
 	
 	line.add_point(from_point)
-	line.add_point(Vector2(from_point.x, exit.position.y))
-	line.add_point(Vector2(left_side - cycle_depth*GB.left_right_margin, exit.position.y))
+	line.add_point(Vector2(from_point.x, exit.position.y - GB.left_right_margin))
+	line.add_point(Vector2(left_side - cycle_depth*GB.left_right_margin, exit.position.y -GB.left_right_margin))
 	line.add_point(Vector2(left_side - cycle_depth*GB.left_right_margin, to_point.y))
 	line.add_point(to_point)
 	
 func connect_to_exit():
-	pass
+	var line:Line2D = Line2D.new()
+	line.default_color = GB.line_color
+	line.width = GB.line_width
+	line.antialiased = true
+	lines.add_child(line)
+
+	var from_child = main_list.get_child(0)
+	var from_point = line.to_local(from_child.exit.global_position)
+	
+	line.add_point(from_point)
+	line.add_point(Vector2(right_side + cycle_depth*GB.left_right_margin, from_point.y))
+	line.add_point(Vector2(right_side + cycle_depth*GB.left_right_margin, exit.position.y))
+	line.add_point(exit.position)

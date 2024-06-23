@@ -8,14 +8,10 @@
 [node name="ABeginZone" instance=ExtResource("1_uqp2x")]
 script = ExtResource("2_213yq")
 
-[node name="ABeginBlock" parent="PanelContainer/MainList" index="0" node_paths=PackedStringArray("zone", "background", "body") instance=ExtResource("3_tgxtv")]
+[node name="ABeginBlock" parent="PanelContainer/MainList" index="0" node_paths=PackedStringArray("zone") instance=ExtResource("3_tgxtv")]
 layout_mode = 2
 zone = NodePath("../../..")
-background = NodePath("Body/Background")
-body = NodePath("Body")
 
-[node name="AEndBlock" parent="PanelContainer/MainList" index="1" node_paths=PackedStringArray("zone", "background", "body") instance=ExtResource("4_2thj8")]
+[node name="AEndBlock" parent="PanelContainer/MainList" index="1" node_paths=PackedStringArray("zone") instance=ExtResource("4_2thj8")]
 layout_mode = 2
 zone = NodePath("../../..")
-background = NodePath("Body/Background")
-body = NodePath("Body")

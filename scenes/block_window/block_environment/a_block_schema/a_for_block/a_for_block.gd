@@ -20,7 +20,7 @@ func _ready():
 
 func delete_me():
 	zone.queue_free()
-	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_everything())
+	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_everything)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
