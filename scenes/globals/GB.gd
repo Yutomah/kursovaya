@@ -54,6 +54,8 @@ var ablocks:Array[Dictionary] = [
 	"scene" : load("res://scenes/block_window/block_environment/zones/a_for_zone/a_for_zone.tscn")},
 	{"name" : "Блок while", 
 	"scene" : load("res://scenes/block_window/block_environment/zones/a_while_zone/a_while_zone.tscn")},
+	{"name" : "Блок функции", 
+	"scene" : load("res://scenes/block_window/block_environment/a_block_schema/a_function_block/a_function_block.tscn")},
 ]
 
 
