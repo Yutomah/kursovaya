@@ -37,14 +37,14 @@ func update_alignment():
 	
 func update_alignment_if():
 	for child in main_list.get_children():
-		if "zone_type" in child and child.zone_type == "AForZone":
+		if "zone_type" in child and (child.zone_type == "AForZone" or child.zone_type == "AWhileZone"):
 			child.update_alignment_if()
 		if "zone_type" in child and child.zone_type == "AIf":
 			child.update_alignment()
 			
 func left_right_min_size_to_default():
 	for child in main_list.get_children():
-		if "zone_type" in child and child.zone_type == "AForZone":
+		if "zone_type" in child and (child.zone_type == "AForZone" or child.zone_type == "AWhileZone"):
 			child.left_right_min_size_to_default()
 		if "zone_type" in child and child.zone_type == "AIf":
 			child.min_size_to_default()
@@ -55,7 +55,7 @@ func get_max_left_right_min_size():
 
 	
 	for child in main_list.get_children():
-		if "zone_type" in child and child.zone_type == "AForZone":
+		if "zone_type" in child and (child.zone_type == "AForZone" or child.zone_type == "AWhileZone"):
 			var left_right = child.get_max_left_right_min_size()
 				
 			if left < left_right[0]:
@@ -75,7 +75,7 @@ func get_max_left_right_min_size():
 			
 func change_left_right_min_size(left_right_size:Array):
 	for child in main_list.get_children():
-		if  "zone_type" in child and child.zone_type == "AForZone":
+		if  "zone_type" in child and (child.zone_type == "AForZone" or child.zone_type == "AWhileZone"):
 			child.change_left_right_min_size(left_right_size)
 			
 		if "zone_type" in child and child.zone_type == "AIf":
@@ -84,7 +84,7 @@ func change_left_right_min_size(left_right_size:Array):
 			#
 func align_blocks(left_min_size:float):
 	for child in main_list.get_children():
-		if "zone_type" in child and child.zone_type == "AForZone":
+		if "zone_type" in child and (child.zone_type == "AForZone" or child.zone_type == "AWhileZone"):
 			child.align_blocks(left_min_size)
 			
 		if "zone_type" in child and child.zone_type == "AIf":

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c03wlv2vlh0f4"]
+
+[ext_resource type="PackedScene" uid="uid://b86q33r2c72ap" path="res://scenes/block_window/block_environment/zones/a_zone/a_zone.tscn" id="1_uiuf3"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_while_zone/a_while_zone.gd" id="2_un4qa"]
+[ext_resource type="PackedScene" uid="uid://cai755nf0acib" path="res://scenes/block_window/spawn_block_button/spawn_block_button.tscn" id="3_11e78"]
+[ext_resource type="PackedScene" uid="uid://dclr1m78mjbf8" path="res://scenes/block_window/block_environment/a_block_schema/a_while_block/a_while_block.tscn" id="3_ibs0c"]
+
+[node name="AWhileZone" instance=ExtResource("1_uiuf3")]
+script = ExtResource("2_un4qa")
+
+[node name="AWhileBlock" parent="PanelContainer/MainList" index="0" node_paths=PackedStringArray("zone") instance=ExtResource("3_ibs0c")]
+unique_name_in_owner = true
+layout_mode = 2
+zone = NodePath("../../..")
+
+[node name="LineConnections" type="Node2D" parent="." index="2"]
+
+[node name="Entrance" type="Marker2D" parent="LineConnections" index="0"]
+unique_name_in_owner = true
+position = Vector2(0, -91)
+
+[node name="Exit" type="Marker2D" parent="LineConnections" index="1"]
+unique_name_in_owner = true
+position = Vector2(-152, 0)
+
+[node name="SpawnButtons" type="Node2D" parent="." index="3"]
+
+[node name="SpawnBlockButton" parent="SpawnButtons" index="0" instance=ExtResource("3_11e78")]
+unique_name_in_owner = true
+offset_right = 25.0
+offset_bottom = 50.0
+metadata/_edit_use_anchors_ = true

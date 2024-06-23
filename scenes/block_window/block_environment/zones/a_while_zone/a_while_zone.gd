@@ -1,17 +1,17 @@
 extends AZone
-class_name AForZone
+class_name AWhileZone
 
 var left_side:float
 var right_side:float
 var cycle_depth:float
 
-@onready var a_for_block: AForBlock = %AForBlock
+@onready var a_while_block:AWhileBlock = %AWhileBlock
 
 @onready var entrance: Marker2D = %Entrance
 @onready var exit: Marker2D = %Exit
 @onready var spawn_block_button: SpawnBlockButton = %SpawnBlockButton
 
-var zone_type = "AForZone"
+var zone_type = "AWhileZone"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
@@ -92,7 +92,7 @@ func get_max_left_right_min_size():
 
 
 func update_line_connections():
-	entrance.global_position = a_for_block.entrance.global_position
+	entrance.global_position = a_while_block.entrance.global_position
 	exit.global_position = Vector2(entrance.global_position.x, global_position.y + size.y)
 	
 	spawn_block_button.position = exit.position + Vector2(0,-10)
@@ -100,12 +100,12 @@ func update_line_connections():
 	
 	var left_right = get_inner_size()
 	if left_right[0] == -1:
-		left_side = entrance.position.x - a_for_block.body.size.x/2
+		left_side = entrance.position.x - a_while_block.body.size.x/2
 	else:
 		left_side = entrance.position.x - left_right[0] - GB.left_right_margin/2
 		
 	if left_right[1] == -1:
-		right_side = entrance.position.x + a_for_block.body.size.x/2
+		right_side = entrance.position.x + a_while_block.body.size.x/2
 	else:
 		right_side = entrance.position.x + left_right[1] + GB.left_right_margin/2
 	cycle_depth = get_cycle_depth()
@@ -126,7 +126,7 @@ func connect_blocks():
 		lines.add_child(line)
 		
 		var from_point
-		if from_child is AForBlock:
+		if from_child is AWhileBlock:
 			from_point = line.to_local(from_child.cycle_exit.global_position)
 		else:
 			from_point = line.to_local(from_child.exit.global_position)
@@ -151,7 +151,7 @@ func connect_cycle_loop():
 	var to_child = main_list.get_child(0)
 	
 	var from_point
-	if from_child is AForBlock:
+	if from_child is AWhileBlock:
 		from_point = line.to_local(from_child.cycle_exit.global_position)
 	else:
 		from_point = line.to_local(from_child.exit.global_position)
