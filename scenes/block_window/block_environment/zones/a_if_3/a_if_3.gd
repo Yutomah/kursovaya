@@ -13,13 +13,17 @@ var zone:MarginContainer
 @onready var entrance: Marker2D = %Entrance
 @onready var exit: Marker2D = %Exit
 
+@onready var spawn_block_button: SpawnBlockButton = %SpawnBlockButton
 var zone_type = "AIf"
 
 func _ready():
 	horizontal_list.add_theme_constant_override("separation", 100)
 	custom_minimum_size = GB.default_min_size
 	main_list.add_theme_constant_override("separation", GB.v_separation)
+	spawn_block_button.item_pressed.connect(on_item_pressed)
 	
+func on_item_pressed(ablock):
+	zone.spawn_block(ablock, get_index()+1)
 
 func update_alignment():
 	min_size_to_default()
@@ -65,7 +69,8 @@ func rec_update_line_connections():
 func update_line_connections():
 	entrance.global_position = a_if_block.entrance.global_position
 	exit.global_position = Vector2(entrance.global_position.x, global_position.y + size.y)
-
+	
+	spawn_block_button.position = exit.position + Vector2(0,-10)
 func rec_connect_blocks():
 	left_sub_zone.rec_connect_blocks()
 	right_sub_zone.rec_connect_blocks()

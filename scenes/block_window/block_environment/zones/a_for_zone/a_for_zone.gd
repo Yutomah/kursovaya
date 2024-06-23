@@ -9,16 +9,19 @@ var cycle_depth:float
 
 @onready var entrance: Marker2D = %Entrance
 @onready var exit: Marker2D = %Exit
+@onready var spawn_block_button: SpawnBlockButton = %SpawnBlockButton
 
 var zone_type = "AForZone"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
 	add_theme_constant_override("margin_bottom", 2*GB.left_right_margin)
+	spawn_block_button.item_pressed.connect(on_item_pressed)
 	#add_theme_constant_override("margin_left", GB.left_right_margin)
 	#add_theme_constant_override("margin_right", GB.left_right_margin)
 
-
+func on_item_pressed(ablock):
+	zone.spawn_block(ablock, get_index()+1)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -92,6 +95,7 @@ func update_line_connections():
 	entrance.global_position = a_for_block.entrance.global_position
 	exit.global_position = Vector2(entrance.global_position.x, global_position.y + size.y)
 	
+	spawn_block_button.position = exit.position + Vector2(0,-10)
 	
 	
 	var left_right = get_inner_size()

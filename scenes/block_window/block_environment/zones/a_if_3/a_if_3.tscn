@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd52npxb3eudi"]
+[gd_scene load_steps=5 format=3 uid="uid://bd52npxb3eudi"]
 
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_if_3/a_if_3.gd" id="1_2b7id"]
 [ext_resource type="PackedScene" uid="uid://c5obmpb5gn66e" path="res://scenes/block_window/block_environment/a_block_schema/a_if_block_3/a_if_block_3.tscn" id="1_havdp"]
 [ext_resource type="PackedScene" uid="uid://cdyo4g3fafq22" path="res://scenes/block_window/block_environment/zones/a_if_sub_zone_3/a_if_sub_zone_3.tscn" id="2_sawcn"]
+[ext_resource type="PackedScene" uid="uid://cai755nf0acib" path="res://scenes/block_window/spawn_block_button/spawn_block_button.tscn" id="4_61ex5"]
 
 [node name="AIf3" type="MarginContainer"]
 offset_right = 612.0
@@ -55,3 +56,11 @@ position = Vector2(-152, 0)
 
 [node name="Lines" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[node name="SpawnButtons" type="Node2D" parent="."]
+
+[node name="SpawnBlockButton" parent="SpawnButtons" instance=ExtResource("4_61ex5")]
+unique_name_in_owner = true
+offset_right = 25.0
+offset_bottom = 50.0
+metadata/_edit_use_anchors_ = true
