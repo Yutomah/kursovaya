@@ -10,19 +10,7 @@ func on_create_log_group_wanted(zap:Zap):
 	var log_group:LogGroup = log_group_scene.instantiate()
 	zap.log_group = log_group
 	log_group.zap = zap
-	
-	
-	#var new_theme:Theme = Theme.new()
-	#new_theme.add_type("ScrollContainer")
-	#new_theme.set_color()
-	#var styleBox: StyleBoxFlat = get_theme_stylebox("ScrollContainer")
-	#styleBox.set("border_color", zap.block_begin.pencil_color)
-	#styleBox.set("border_width_right", 3)
-	#log_group.add_theme_stylebox_override("ScrollContainer", styleBox)
-	#log_group.theme.set_color("border_color", "ScrollContainer", Color.RED)
-	#log_group.add_color_override("border_color",Color.RED)
-	#log_group.set("border_color", Color.RED)
-	#print(log_group.get("theme_override_styles/panel"))
+
 	log_group.get("theme_override_styles/panel").set("border_color", zap.a_begin_block.pencil_color)
 	$HBoxContainer.add_child(log_group)
 	

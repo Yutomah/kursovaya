@@ -8,7 +8,7 @@ class_name ABeginZone
 func _ready():
 	super._ready()
 	GB.begin_zones.append(self)
-	
+	GB.block_begin_array_changed.emit(GB.begin_zones)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_down"):

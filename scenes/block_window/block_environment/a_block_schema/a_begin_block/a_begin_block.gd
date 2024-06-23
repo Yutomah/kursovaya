@@ -11,11 +11,14 @@ var zap:Zap = null
 var pencil_color:Color
 var is_stepped:bool = false
 
+var block_name:String = ""
+
 func _ready():
 	super._ready()
 	spawn_block_button.item_pressed.connect(on_item_pressed)
 	PSM.activate_all_begin_blocks_wanted.connect(on_activate_all)
 	block_type = "Начальный блок"
+	GB.block_begin_array_changed.emit()
 	pass # Replace with function body.
 
 func on_activate_all():

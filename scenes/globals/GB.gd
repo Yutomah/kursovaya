@@ -11,8 +11,7 @@ signal line_draw_ended(result:bool)
 
 #blocks
 signal hand_tool_on_block_pressed(event:InputEvent)
-signal block_name_changed()
-signal block_begin_array_changed(begin_block_array:Array[ABeginBlock])
+signal block_begin_array_changed()
 signal block_amount_changed(block_amount:int)
 signal block_amount_wanted()
 

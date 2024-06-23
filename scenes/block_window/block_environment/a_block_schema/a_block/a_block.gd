@@ -16,7 +16,7 @@ func _ready():
 	custom_minimum_size = background.size
 	body.custom_minimum_size = background.size
 	
-	GB.block_name_changed.emit()
+
 	PSM.state_changed.connect(on_state_changed)
 	
 func get_next_block():

@@ -5,17 +5,34 @@ class_name AFunctionBlock
 @onready var entrance: Marker2D = %Entrance
 @onready var exit: Marker2D = %Exit
 
+@onready var option_button: OptionButton = %OptionButton
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
 	spawn_block_button.item_pressed.connect(on_item_pressed)
+	block_type = "Блок функции"
 	pass # Replace with function body.
 
 func get_next_block():
 	return zone.get_next_block(self)
 	
+func send_msg_to_log(zap:Zap):
+	var func_name = option_button.block_begin_array[option_button.selected].block_name
+	
+	var msg = "%s: выполнение функции с именем %s началось" % [block_type, func_name]
+	zap.log_group.write_record(msg, self)
+	
+func zap_processing(zap:Zap):
+	if await zap_processing_control(zap):
+		send_msg_to_log(zap)
+		if option_button.selected != -1:
+			zap.return_stack.append(get_next_block())
+			option_button.block_begin_array[option_button.selected].arg_zap_processing(zap)
+		else:
+			error_no_selected_begin_block(zap)
+			
 #region Alignment
 func delete_me():
 	queue_free()

@@ -18,4 +18,4 @@ func _on_gui_input(event):
 		popup_panel.visible = true
 		popup_panel.position = get_viewport().get_mouse_position()
 	if event.is_action_pressed("LKM"):
-		print("lkm")
+		pass
