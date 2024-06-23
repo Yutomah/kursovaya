@@ -57,7 +57,7 @@ func m_dehighlight_related_log_records():
 		log_record.m_dehighlight()
 		
 func error_base(zap:Zap):
-	zap.block_begin.remove_from_group("working_blocks")
+	zap.a_begin_block.remove_from_group("working_blocks")
 	PSM.process_input(PSM.INPUT.LSTOP)
 
 func error_line_beyond_borders(zap:Zap):

@@ -20,9 +20,9 @@ func send_msg_to_log(zap:Zap):
 	var arrow_path = arrows.get_arrow_path()
 	var msg
 	if pencil_mode.is_jumping():
-		msg = "%s: Курсор перемещён в сторону [img]%s[/img]" % [block_type, arrow_path]
+		msg = "%s: курсор перемещён в сторону [img]%s[/img]" % [block_type, arrow_path]
 	else:
-		msg = "%s: Линия нарисована в сторону [img]%s[/img]" % [block_type, arrow_path]
+		msg = "%s: линия нарисована в сторону [img]%s[/img]" % [block_type, arrow_path]
 	zap.log_group.write_record(msg, self)
 
 func zap_processing(zap:Zap):

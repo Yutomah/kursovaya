@@ -12,6 +12,24 @@ script = ExtResource("2_6hpas")
 [node name="Background" parent="Body" index="0"]
 texture_normal = ExtResource("3_unspq")
 
+[node name="PopupPanel" parent="Body/Content" index="0"]
+size = Vector2i(206, 100)
+
+[node name="MarginContainer" parent="Body/Content/PopupPanel" index="1"]
+offset_right = 206.0
+
+[node name="RepetitionsContainer" type="HBoxContainer" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="RepetitonsLabel" type="Label" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer/RepetitionsContainer" index="0"]
+layout_mode = 2
+text = "Повторения"
+
+[node name="RepetitionsSpinBox" type="SpinBox" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer/RepetitionsContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 1.0
+
 [node name="SpawnBlockButton" parent="Body/Content" index="1" instance=ExtResource("4_7tc3m")]
 unique_name_in_owner = true
 layout_mode = 0
