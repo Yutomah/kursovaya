@@ -13,12 +13,16 @@ class_name AWhileBlock
 @onready var arrows: Arrows = %Arrows
 @onready var distance_spin_box: SpinBox = %DistanceSpinBox
 
+@onready var direction_texture_rect: TextureRect = %DirectionTextureRect
 
 func _ready():
 	super._ready()
 	block_type = "Блок while"
 	block_type_label.text = block_type
 	spawn_block_button.item_pressed.connect(on_item_pressed)
+	
+	direction_texture_rect.texture = load(arrows.get_arrow_path())
+	arrows.arrow_selected.connect(func(): direction_texture_rect.texture = load(arrows.get_arrow_path()))
 	pass 
 
 
