@@ -57,7 +57,7 @@ size = Vector2i(168, 100)
 [node name="MarginContainer" parent="Body/Content/PopupPanel" index="1"]
 offset_right = 168.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="1"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="0"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer/HBoxContainer" index="0"]

@@ -63,14 +63,14 @@ func deserialize(dict):
 	a_if_block.deserialize(dict["a_if_block"])
 	
 	for child_dict in dict["left_list"]:
-		var block = get_block_from_type(dict["type"])
+		var block = get_block_from_type(child_dict["type"]).instantiate()
 		left_sub_zone.spawn_block(block, -1)
-		block.deserialize()
+		block.deserialize(child_dict)
 	
 	for child_dict in dict["right_list"]:
-		var block = get_block_from_type(dict["type"])
+		var block = get_block_from_type(dict["type"]).instantiate()
 		right_sub_zone.spawn_block(block, -1)
-		block.deserialize()
+		block.deserialize(child_dict)
 		
 func get_block_from_type(dict_type):
 	var block = null

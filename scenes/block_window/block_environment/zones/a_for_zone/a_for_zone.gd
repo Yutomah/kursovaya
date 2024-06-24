@@ -54,9 +54,9 @@ func deserialize(dict):
 	a_for_block.deserialize(dict["a_for_block"])
 	
 	for child_dict in dict["main_list"]:
-		var block = get_block_from_type(dict["type"])
+		var block = get_block_from_type(child_dict["type"]).instantiate()
 		spawn_block(block, -1)
-		block.deserialize()
+		block.deserialize(child_dict)
 		
 #endregion
 

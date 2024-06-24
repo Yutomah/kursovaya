@@ -41,16 +41,21 @@ func save_blocks(json_string, file_name):
 	var file = FileAccess.open(save_folder.path_join(file_name), FileAccess.WRITE)
 	file.store_string(json_string)
 	
-#func load_blocks(file_name):
-	#var file = FileAccess.open(save_folder.path_join(file_name), FileAccess.READ)
-	#var content = file.get_as_text()
-	#
-	#
-	#var json = JSON.new()
-	#json.parse(content)
-	#var blocks = json.data
-	#
-	#
+func load_blocks(file_name):
+	var file = FileAccess.open(save_folder.path_join(file_name), FileAccess.READ)
+	var content = file.get_as_text()
+	
+	
+	var json = JSON.new()
+	json.parse(content)
+	var blocks = json.data
+	
+	for key in blocks:
+		var begin_zone_scene = load("res://scenes/block_window/block_environment/zones/a_begin_zone/a_begin_zone.tscn")
+		var begin_zone = begin_zone_scene.instantiate()
+		GB.spawn_begin_zone.emit(begin_zone)
+		begin_zone.deserialize(blocks[key])
+		
 	#var id_map = {null:null}
 	#var new_blocks = []
 	#for key in blocks:

@@ -78,3 +78,5 @@ func get_my_begin_zone(block):
 	for begin_zone in begin_zones:
 		if begin_zone.is_ancestor_of(block):
 			return begin_zone
+
+signal spawn_begin_zone(begin_zone)

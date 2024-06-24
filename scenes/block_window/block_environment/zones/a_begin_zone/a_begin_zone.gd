@@ -47,7 +47,8 @@ func get_first_block():
 func serialize():
 	var dict = {
 		"type":zone_type,
-		"pos":position,
+		"pos_x":position.x,
+		"pos_y":position.y,
 		"a_begin_block":a_begin_block.serialize(),
 		"a_end_block":a_end_block.serialize(),
 		"main_list":[],
@@ -58,14 +59,15 @@ func serialize():
 	return dict	
 	
 func deserialize(dict):
-	position = dict["pos"]
+	position.x = dict["pos_x"]
+	position.y = dict["pos_y"]
 	a_begin_block.deserialize(dict["a_begin_block"])
 	a_end_block.deserialize(dict["a_end_block"])
 	
 	for child_dict in dict["main_list"]:
-		var block = get_block_from_type(dict["type"])
+		var block = get_block_from_type(child_dict["type"]).instantiate()
 		spawn_block(block, -2)
-		block.deserialize()
+		block.deserialize(child_dict)
 
 #endregion
 

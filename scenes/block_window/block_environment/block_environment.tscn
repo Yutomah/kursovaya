@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4kel1u4v6pie"]
+[gd_scene load_steps=7 format=3 uid="uid://c4kel1u4v6pie"]
 
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/Camera2D.gd" id="2_7q4t2"]
 [ext_resource type="PackedScene" uid="uid://d7qjkm8p3k2i" path="res://scenes/block_window/block_environment/block_loader/loader.tscn" id="2_etrns"]
 [ext_resource type="PackedScene" uid="uid://caw5d2htar3v3" path="res://scenes/block_window/block_environment/zones/a_begin_zone/a_begin_zone.tscn" id="3_iawam"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/PopupMenu.gd" id="3_jtdlk"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/blocks.gd" id="4_hs8ct"]
 
 [sub_resource type="GDScript" id="GDScript_qhvw5"]
 script/source = "extends Control
@@ -76,6 +77,7 @@ script = ExtResource("3_jtdlk")
 blocks = NodePath("../../../Blocks")
 
 [node name="Blocks" type="Node2D" parent="SubViewport/Root"]
+script = ExtResource("4_hs8ct")
 
 [node name="ABeginZone" parent="SubViewport/Root/Blocks" instance=ExtResource("3_iawam")]
 custom_minimum_size = Vector2(300, 200)
