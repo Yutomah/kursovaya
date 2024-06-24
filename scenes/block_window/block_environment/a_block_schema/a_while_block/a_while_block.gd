@@ -60,7 +60,17 @@ func zap_processing(zap:Zap):
 			get_next_block().zap_processing(zap)
 		else:
 			get_next_block_exit().zap_processing(zap)
-	
+
+#region saving
+func serialize():
+	var dict = {
+		"type":block_type,
+		"distance":distance_spin_box.value,
+		"direction":arrows.selected
+	}
+	return dict	
+#endregion
+
 #region Alignment
 func delete_me():
 	zone.queue_free()

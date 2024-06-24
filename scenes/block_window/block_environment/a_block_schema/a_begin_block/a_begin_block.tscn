@@ -86,7 +86,7 @@ text = "Имя"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "блок-схема 1"
-max_length = 25
+max_length = 20
 script = ExtResource("6_2vc8x")
 a_begin_block = NodePath("../../../../../../..")
 

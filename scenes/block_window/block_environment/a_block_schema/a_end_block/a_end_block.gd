@@ -30,7 +30,18 @@ func zap_processing(zap:Zap):
 		else:
 			zap.a_begin_block.remove_from_group("working_blocks")
 			PSM.process_input(PSM.INPUT.LSTOP)
-			
+
+func get_next_block():
+	return zone.get_next_block(self)
+	
+#region saving
+func serialize():
+	var dict = {
+		"type":block_type,
+	}
+	return dict	
+#endregion
+		
 #region Alignment
 func delete_me():
 	var my_zone = GB.get_my_begin_zone(self)

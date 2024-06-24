@@ -33,6 +33,15 @@ func zap_processing(zap:Zap):
 			option_button.block_begin_array[option_button.selected].arg_zap_processing(zap)
 		else:
 			error_no_selected_begin_block(zap)
+
+#region saving
+func serialize():
+	var dict = {
+		"type":block_type,
+		"func":option_button.current_block
+	}
+	return dict	
+#endregion
 			
 #region Alignment
 func delete_me():

@@ -61,6 +61,17 @@ func get_next_block():
 	return zone.get_next_block(self)
 	
 	
+#region saving
+func serialize():
+	var dict = {
+		"type":block_type,
+		"color":pencil_color,
+		"on_off":on_off_check_box.button_pressed,
+		"name":block_name,
+	}
+	return dict
+	
+#endregion
 #region Alignment
 func delete_me():
 	var my_zone = GB.get_my_begin_zone(self)

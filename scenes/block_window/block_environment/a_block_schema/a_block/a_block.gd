@@ -81,7 +81,13 @@ func on_state_changed():
 			pass
 		PSM.STATE.CLEAR:
 			related_log_records = []
-			
+	
+	
+#region New Code Region
+func serialize():
+	pass
+#endregion
+	
 #region Alignment
 func align_block(left_min_size:float):
 	if left_min_size == -1:

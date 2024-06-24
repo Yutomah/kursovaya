@@ -50,11 +50,20 @@ func zap_processing(zap:Zap):
 			get_next_block().zap_processing(zap)
 		else:
 			error_line_beyond_borders(zap)
-			
+
 func get_next_block():
 	return zone.get_next_block(self)
+				
+#region saving
+func serialize():
 	
-	
+	var dict = {
+		"type":block_type,
+		"direction" : arrows.selected,
+		"pencil_mode" : pencil_mode.selected
+	}
+	return dict	
+#endregion
 	
 #region Alignment
 func delete_me():
