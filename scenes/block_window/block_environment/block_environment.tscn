@@ -13,7 +13,7 @@ var old_mouse_position:Vector2
 @export var camera:Camera2D
 
 func _ready():
-	pass
+	GB.hand_tool_on_block_pressed.connect(_on_gui_input)
 	
 func _process(_delta):
 	if LKM_pressed:
@@ -77,9 +77,8 @@ blocks = NodePath("../../../Blocks")
 
 [node name="Blocks" type="Node2D" parent="SubViewport/Root"]
 
-[node name="ABeginZone" parent="SubViewport/Root/Blocks" node_paths=PackedStringArray("main_list") instance=ExtResource("3_iawam")]
+[node name="ABeginZone" parent="SubViewport/Root/Blocks" instance=ExtResource("3_iawam")]
 custom_minimum_size = Vector2(300, 200)
-main_list = NodePath("PanelContainer/MainList")
 
 [connection signal="gui_input" from="SubViewport/Root/CanvasLayer/Control" to="SubViewport/Root/CanvasLayer/Control" method="_on_gui_input"]
 [connection signal="id_pressed" from="SubViewport/Root/CanvasLayer/Control/PopupMenu" to="SubViewport/Root/CanvasLayer/Control/PopupMenu" method="_on_id_pressed"]

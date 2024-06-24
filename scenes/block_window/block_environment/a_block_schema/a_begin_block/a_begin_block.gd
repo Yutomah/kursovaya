@@ -64,7 +64,7 @@ func delete_me():
 	var my_zone = GB.get_my_begin_zone(self)
 	GB.begin_zones.erase(my_zone)
 	my_zone.queue_free()
-	
+	GB.block_begin_array_changed.emit()
 	
 func on_item_pressed(ablock):
 	zone.spawn_block(ablock, get_index()+1)
