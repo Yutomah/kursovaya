@@ -11,6 +11,8 @@ class_name AForBlock
 
 @onready var repetitions_spin_box: SpinBox = %RepetitionsSpinBox
 
+@onready var repetition_amount_label: Label = %RepetitionAmountLabel
+
 func _ready():
 	super._ready()
 	spawn_block_button.item_pressed.connect(on_item_pressed)

@@ -12,7 +12,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kajr8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
+border_color = Color(1, 1, 1, 1)
 
 [node name="ABeginBlock" instance=ExtResource("1_rgtqp")]
 script = ExtResource("2_h7bru")
@@ -53,26 +53,20 @@ tooltip_text = "Это начальный блок.
 3. Выключить блок-схему - эта блок-схема не будет запускаться при отрисовке поля
 4. Удалить блок-схему - удаляет эту блок-схему"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Body/Content/HBoxContainer" index="1"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="ColorRect" type="ColorRect" parent="Body/Content/HBoxContainer/HBoxContainer2" index="0"]
+[node name="ColorRect" type="ColorRect" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="0"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="NameLabel" type="Label" parent="Body/Content/HBoxContainer/HBoxContainer2" index="1"]
+[node name="NameLabel" type="Label" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_kajr8")
 
-[node name="OnOffLabel" type="Label" parent="Body/Content/HBoxContainer/HBoxContainer2" index="2"]
+[node name="OnOffLabel" type="Label" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="2"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="PopupPanel" parent="Body/Content" index="3"]
 size = Vector2i(246, 149)

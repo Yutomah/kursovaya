@@ -29,6 +29,9 @@ tooltip_text = "Это конечный блок.
 В меню можно настроить:
 1. Удалить блок-схему - удаляет эту блок-схему"
 
+[node name="PanelContainer" parent="Body/Content/HBoxContainer" index="1"]
+visible = false
+
 [node name="MarginContainer" parent="Body/Content/PopupPanel" index="1"]
 offset_right = 191.0
 
