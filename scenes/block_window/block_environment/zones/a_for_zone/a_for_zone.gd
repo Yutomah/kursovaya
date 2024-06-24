@@ -143,12 +143,12 @@ func update_line_connections():
 	if left_right[0] == -1:
 		left_side = entrance.position.x - a_for_block.body.size.x/2
 	else:
-		left_side = entrance.position.x - left_right[0] - GB.left_right_margin/2
+		left_side = entrance.position.x - left_right[0] - GB.left_right_margin * 2
 		
 	if left_right[1] == -1:
 		right_side = entrance.position.x + a_for_block.body.size.x/2
 	else:
-		right_side = entrance.position.x + left_right[1] + GB.left_right_margin/2
+		right_side = entrance.position.x + left_right[1] + GB.left_right_margin * 2
 	cycle_depth = get_cycle_depth()
 	
 	
