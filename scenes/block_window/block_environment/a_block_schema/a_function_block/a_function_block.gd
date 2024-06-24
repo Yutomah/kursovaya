@@ -43,7 +43,9 @@ func serialize():
 	return dict	
 
 func deserialize(dict):
-	pass
+	await GB.load_ended
+	option_button.current_block = GB.id_map[dict["func"]]
+	option_button.update_options()
 	
 #endregion
 			

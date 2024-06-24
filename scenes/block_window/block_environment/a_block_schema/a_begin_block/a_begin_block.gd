@@ -78,6 +78,7 @@ func serialize():
 		"color_a":pencil_color.a,
 		"on_off":on_off_check_box.button_pressed,
 		"name":block_name,
+		"self":self
 	}
 	return dict
 	
@@ -91,6 +92,7 @@ func deserialize(dict):
 	block_name = dict["name"]
 	name_line_edit._on_text_changed(block_name)
 	
+	GB.id_map[dict["self"]] = self
 	
 	
 #endregion

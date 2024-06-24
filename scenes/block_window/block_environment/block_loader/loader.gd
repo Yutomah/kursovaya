@@ -50,12 +50,13 @@ func load_blocks(file_name):
 	json.parse(content)
 	var blocks = json.data
 	
+	GB.id_map = {null:null}
 	for key in blocks:
 		var begin_zone_scene = load("res://scenes/block_window/block_environment/zones/a_begin_zone/a_begin_zone.tscn")
 		var begin_zone = begin_zone_scene.instantiate()
 		GB.spawn_begin_zone.emit(begin_zone)
 		begin_zone.deserialize(blocks[key])
-		
+	GB.load_ended.emit()
 	#var id_map = {null:null}
 	#var new_blocks = []
 	#for key in blocks:

@@ -80,3 +80,5 @@ func get_my_begin_zone(block):
 			return begin_zone
 
 signal spawn_begin_zone(begin_zone)
+signal load_ended()
+var id_map:Dictionary
