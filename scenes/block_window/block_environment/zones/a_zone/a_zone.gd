@@ -5,13 +5,19 @@ class_name AZone
 @onready var main_list: VBoxContainer = %MainList
 @onready var lines: Node2D = %Lines
 
+
 func _ready():
 	main_list.add_theme_constant_override("separation", GB.v_separation)
 	add_theme_constant_override("margin_bottom", GB.left_right_margin)
 	#set_min_size(GB.default_min_size)
 	
 	get_tree().create_timer(0.01).timeout.connect(GB.get_my_begin_zone(self).update_everything)
-	
+
+#region saving
+func serialize():
+	pass
+#endregion
+
 #region Alignment
 func set_min_size(min_size:Vector2):
 	custom_minimum_size = min_size

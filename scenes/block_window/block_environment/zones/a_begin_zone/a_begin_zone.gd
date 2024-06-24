@@ -4,6 +4,7 @@ class_name ABeginZone
 @onready var a_begin_block: ABeginBlock = %ABeginBlock
 @onready var a_end_block: AEndBlock = %AEndBlock
 
+var zone_type = "ABeginZone"
 ## Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
@@ -42,6 +43,20 @@ func get_next_block(block):
 func get_first_block():
 	return a_begin_block
 
+#region saving
+func serialize():
+	var dict = {
+		"type":zone_type,
+		"pos":position,
+		"a_begin_block":a_begin_block.serialize(),
+		"a_end_block":a_end_block.serialize(),
+		"main_list":[],
+	}
+	
+	for i in range(1, main_list.get_child_count()-1):
+		dict["main_list"].append(main_list.get_child(i).serialize())
+	return dict	
+#endregion
 
 #region Alignment
 func update_everything():

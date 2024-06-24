@@ -1,11 +1,12 @@
 extends AZone
 class_name AIfSubZone3
 
-@export_enum("left_sub_zone", "right_sub_zone") var zone_type:String
+@export_enum("left_sub_zone", "right_sub_zone") var left_right:String
 
 @onready var entrance: Marker2D = %Entrance
 @onready var exit: Marker2D = %Exit
 
+var zone_type = "AIfSubZone3"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
@@ -32,16 +33,29 @@ func get_first_block():
 			return block.get_first_block()
 	else:
 		return null
+		
+#region saving
+func serialize():
+	var dict = {
+		"type":zone_type,
+		"main_list":[],
+	}
+	
+	for i in range(0, main_list.get_child_count()):
+		dict["main_list"].append(main_list.get_child(i).serialize())
+	return dict	
+#endregion
+		
 #region Alignment
 func init_zone_type():
-	assert(zone_type != null)
+	assert(left_right != null)
 	
 	
-	if zone_type == "left_sub_zone":
+	if left_right == "left_sub_zone":
 		main_list.size_flags_horizontal = Control.SIZE_SHRINK_END
 		return
 	
-	if zone_type == "right_sub_zone":
+	if left_right == "right_sub_zone":
 		main_list.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 		return
 	

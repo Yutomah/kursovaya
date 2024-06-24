@@ -5,7 +5,7 @@
 
 [node name="AIfSubZone3" instance=ExtResource("1_ivp6a")]
 script = ExtResource("2_kws4f")
-zone_type = ""
+left_right = ""
 
 [node name="LineConnections" type="Node2D" parent="." index="2"]
 
