@@ -13,6 +13,7 @@ class_name AIfBlock3
 @onready var arrows: Arrows = %Arrows
 
 @onready var direction_texture_rect: TextureRect = %DirectionTextureRect
+@onready var distance_display_label: Label = %DistanceDisplayLabel
 
 func _ready():
 	left_spawn_button.item_pressed.connect(on_left_pressed)
@@ -66,6 +67,9 @@ func serialize():
 func deserialize(dict):
 	distance_spin_box.value = dict["distance"]
 	arrows.selected = dict["direction"]
+	
+	arrows.arrow_selected.emit()
+	distance_display_label.text = str(distance_spin_box.value)
 #endregion
 
 #region Alignment

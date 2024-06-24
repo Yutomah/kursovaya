@@ -5,6 +5,7 @@ signal arrow_selected()
 
 var selected:int = 0:
 	set(value):
+		selected = value
 		$Direction.selected = value
 		
 func get_direction()->Vector2:

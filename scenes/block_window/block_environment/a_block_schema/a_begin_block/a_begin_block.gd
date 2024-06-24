@@ -3,8 +3,14 @@ class_name ABeginBlock
 
 @onready var spawn_block_button: SpawnBlockButton = %SpawnBlockButton
 @onready var exit: Marker2D = %Exit
+
+@onready var name_line_edit: LineEdit = %NameLineEdit
 @onready var on_off_check_box: CheckBox = %OnOffCheckBox
 @onready var color_picker_button: ColorPickerButton = %ColorPickerButton
+
+@onready var color_rect: ColorRect = %ColorRect
+@onready var name_label: Label = %NameLabel
+@onready var on_off_label: Label = %OnOffLabel
 
 
 
@@ -21,6 +27,7 @@ func _ready():
 	block_type = "Начальный блок"
 	block_type_label.text = block_type
 	GB.block_begin_array_changed.emit()
+	pencil_color = color_picker_button.color
 	pass # Replace with function body.
 
 func on_activate_all():
@@ -65,16 +72,27 @@ func get_next_block():
 func serialize():
 	var dict = {
 		"type":block_type,
-		"color":pencil_color,
+		"color_r":pencil_color.r,
+		"color_g":pencil_color.g,
+		"color_b":pencil_color.b,
+		"color_a":pencil_color.a,
 		"on_off":on_off_check_box.button_pressed,
 		"name":block_name,
 	}
 	return dict
 	
 func deserialize(dict):
-	pencil_color = dict["color"]
+	var p = Color(dict["color_r"], dict["color_g"], dict["color_b"], dict["color_a"])
+	pencil_color = p
+	color_picker_button._on_color_changed(pencil_color)
+	
 	on_off_check_box.button_pressed = dict["on_off"]
+	
 	block_name = dict["name"]
+	name_line_edit._on_text_changed(block_name)
+	
+	
+	
 #endregion
 #region Alignment
 func delete_me():

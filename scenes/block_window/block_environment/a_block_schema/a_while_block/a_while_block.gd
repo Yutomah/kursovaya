@@ -15,6 +15,8 @@ class_name AWhileBlock
 
 @onready var direction_texture_rect: TextureRect = %DirectionTextureRect
 
+@onready var distance_display_label: Label = %DistanceDisplayLabel
+
 func _ready():
 	super._ready()
 	block_type = "Блок while"
@@ -74,6 +76,8 @@ func deserialize(dict):
 	distance_spin_box.value = dict["distance"]
 	arrows.selected = dict["direction"]
 	
+	arrows.arrow_selected.emit()
+	distance_display_label.text = str(distance_spin_box.value)
 #endregion
 
 #region Alignment

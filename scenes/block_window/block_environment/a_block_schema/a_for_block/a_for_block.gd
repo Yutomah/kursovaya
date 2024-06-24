@@ -61,7 +61,7 @@ func serialize():
 
 func deserialize(dict):
 	repetitions_spin_box.value = dict["iter_amount"]
-	
+	repetition_amount_label.text = str(repetitions_spin_box.value)
 #endregion
 
 #region Alignment

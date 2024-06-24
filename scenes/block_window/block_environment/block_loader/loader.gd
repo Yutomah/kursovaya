@@ -32,9 +32,9 @@ func serialize():
 		dict[block] = block.serialize()
 	return JSON.stringify(dict, "   ")
 	
-#func remove_blocks(file_name):
-	#DirAccess.remove_absolute(save_folder.path_join(file_name))
-	#
+func remove_blocks(file_name):
+	DirAccess.remove_absolute(save_folder.path_join(file_name))
+	
 func save_blocks(json_string, file_name):
 	
 	DirAccess.make_dir_absolute(save_folder)
