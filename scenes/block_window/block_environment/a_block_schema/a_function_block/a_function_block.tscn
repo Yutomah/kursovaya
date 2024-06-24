@@ -27,6 +27,10 @@ tooltip_text = "Это блок функции.
 	(имя блок схемы можно настроить в начальном блоке).
 2. Удалить блок - удаляет этот блок"
 
+[node name="FunctionNameLabel" type="Label" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="LineConnections" type="Node2D" parent="Body/Content" index="1"]
 
 [node name="Entrance" parent="Body/Content/LineConnections" index="0" instance=ExtResource("4_h8lga")]

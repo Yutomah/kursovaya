@@ -1,5 +1,6 @@
 extends OptionButton
 
+@onready var function_name_label: Label = %FunctionNameLabel
 
 var block_begin_array:Array[ABeginBlock]
 var current_block:ABeginBlock = null
@@ -23,7 +24,16 @@ func update_options():
 		current_block = null
 	else:
 		selected = block_begin_array.find(current_block)
-
+	
+	update_display()
+	
 
 func _on_item_selected(index):
 	current_block = block_begin_array[index]
+	update_display()
+
+func update_display():
+	if current_block == null:
+		function_name_label.text = "---"
+	else:
+		function_name_label.text = current_block.block_name
