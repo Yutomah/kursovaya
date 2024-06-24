@@ -12,11 +12,17 @@ class_name AIfBlock3
 @onready var distance_spin_box: SpinBox = %DistanceSpinBox
 @onready var arrows: Arrows = %Arrows
 
+@onready var direction_texture_rect: TextureRect = %DirectionTextureRect
+
 func _ready():
 	left_spawn_button.item_pressed.connect(on_left_pressed)
 	right_spawn_button.item_pressed.connect(on_right_pressed)
 	block_type = "Блок если"
 	block_type_label.text = block_type
+	
+	direction_texture_rect.texture = load(arrows.get_arrow_path())
+	arrows.arrow_selected.connect(func(): direction_texture_rect.texture = load(arrows.get_arrow_path()))
+	
 	super._ready()
 
 func get_left_next_block():

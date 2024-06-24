@@ -7,7 +7,7 @@
 [sub_resource type="Theme" id="Theme_23ues"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_754fr"]
-bg_color = Color(0.52114, 0.521141, 0.52114, 1)
+bg_color = Color(0.38367, 0.477823, 0.501026, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
