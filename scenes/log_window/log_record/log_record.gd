@@ -13,7 +13,7 @@ func _on_gui_input(event):
 	if event.is_action_pressed("LKM"):
 		grab_focus()
 		m_highlight()
-		#block.m_highlight()
+		block.a_highlight()
 
 func m_highlight():
 	$ColorRect.self_modulate = Color.AQUAMARINE
@@ -23,4 +23,4 @@ func m_dehighlight():
 
 func _on_focus_exited():
 	m_dehighlight()
-	#block.m_dehighlight()
+	block.a_dehighlight()

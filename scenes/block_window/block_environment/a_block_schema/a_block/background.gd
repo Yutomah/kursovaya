@@ -34,5 +34,15 @@ func _on_gui_input(event):
 		if !dragging:
 			dragging = true
 			old_mouse_position = get_local_mouse_position()
-			
 	
+	
+	if event is InputEventMouseButton \
+	and event.button_index == MOUSE_BUTTON_LEFT and event.double_click:
+		ablock.a_highlight()
+		ablock.m_highlight_related_log_records()
+	
+
+
+func _on_focus_exited() -> void:
+	ablock.a_dehighlight()
+	ablock.m_dehighlight_related_log_records()
