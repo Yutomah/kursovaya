@@ -53,7 +53,7 @@ unique_name_in_owner = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_ut0t0")
 
 [node name="MarginContainer" type="MarginContainer" parent="Body/Content/PopupPanel"]
-offset_right = 100.0
+offset_right = 139.0
 offset_bottom = 100.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -68,5 +68,6 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Удалить блок"
 
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="gui_input" from="Body/Background" to="Body/Background" method="_on_gui_input"]
 [connection signal="pressed" from="Body/Content/PopupPanel/MarginContainer/VBoxContainer/DeleteButton" to="." method="_on_delete_button_pressed"]

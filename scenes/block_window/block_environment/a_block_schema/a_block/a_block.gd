@@ -15,8 +15,9 @@ var block_type:String
 func _ready():
 	custom_minimum_size = background.size
 	body.custom_minimum_size = background.size
+	GB.block_amount += 1
+	GB.block_amount_changed.emit()
 	
-
 	PSM.state_changed.connect(on_state_changed)
 	
 func get_next_block():
@@ -94,3 +95,8 @@ func delete_me():
 
 
 #endregion
+
+
+func _on_tree_exiting() -> void:
+	GB.block_amount -= 1
+	GB.block_amount_changed.emit()

@@ -12,8 +12,8 @@ signal line_draw_ended(result:bool)
 #blocks
 signal hand_tool_on_block_pressed(event:InputEvent)
 signal block_begin_array_changed()
-signal block_amount_changed(block_amount:int)
-signal block_amount_wanted()
+signal block_amount_changed()
+#signal block_amount_wanted()
 
 #log
 signal create_log_group_wanted(zap:Zap)
@@ -69,6 +69,7 @@ var line_color:Color = Color.RED
 
 var begin_zones:Array[ABeginZone] = []
 
+var block_amount = 0
 func get_my_begin_zone(block):
 	if block is ABeginZone:
 		return block
