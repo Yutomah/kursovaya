@@ -49,6 +49,15 @@ func serialize():
 	for i in range(1, main_list.get_child_count()):
 		dict["main_list"].append(main_list.get_child(i).serialize())
 	return dict	
+	
+func deserialize(dict):
+	a_while_block.deserialize(dict["a_while_block"])
+	
+	for child_dict in dict["main_list"]:
+		var block = get_block_from_type(dict["type"])
+		spawn_block(block, -1)
+		block.deserialize()
+		
 #endregion
 	
 #region Alignment

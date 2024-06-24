@@ -41,6 +41,10 @@ func serialize():
 		"func":option_button.current_block
 	}
 	return dict	
+
+func deserialize(dict):
+	pass
+	
 #endregion
 			
 #region Alignment

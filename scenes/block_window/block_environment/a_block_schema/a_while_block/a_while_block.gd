@@ -69,6 +69,11 @@ func serialize():
 		"direction":arrows.selected
 	}
 	return dict	
+	
+func deserialize(dict):
+	distance_spin_box.value = dict["distance"]
+	arrows.selected = dict["direction"]
+	
 #endregion
 
 #region Alignment

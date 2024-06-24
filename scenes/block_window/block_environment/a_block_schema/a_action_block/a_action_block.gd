@@ -63,6 +63,10 @@ func serialize():
 		"pencil_mode" : pencil_mode.selected
 	}
 	return dict	
+	
+func deserialize(dict):
+	arrows.selected = dict["direction"]
+	pencil_mode.selected = dict["pencil_mode"]
 #endregion
 	
 #region Alignment

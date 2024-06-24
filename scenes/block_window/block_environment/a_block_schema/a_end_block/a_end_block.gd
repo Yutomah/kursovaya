@@ -40,6 +40,9 @@ func serialize():
 		"type":block_type,
 	}
 	return dict	
+	
+func deserialize(dict):
+	pass
 #endregion
 		
 #region Alignment

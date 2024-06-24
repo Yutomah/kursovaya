@@ -58,6 +58,10 @@ func serialize():
 		"iter_amount":repetitions_spin_box.value
 	}
 	return dict	
+
+func deserialize(dict):
+	repetitions_spin_box.value = dict["iter_amount"]
+	
 #endregion
 
 #region Alignment

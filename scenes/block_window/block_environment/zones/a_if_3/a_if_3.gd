@@ -58,6 +58,34 @@ func serialize():
 		dict["right_list"].append(right_sub_zone.main_list.get_child(i).serialize())
 		
 	return dict	
+	
+func deserialize(dict):
+	a_if_block.deserialize(dict["a_if_block"])
+	
+	for child_dict in dict["left_list"]:
+		var block = get_block_from_type(dict["type"])
+		left_sub_zone.spawn_block(block, -1)
+		block.deserialize()
+	
+	for child_dict in dict["right_list"]:
+		var block = get_block_from_type(dict["type"])
+		right_sub_zone.spawn_block(block, -1)
+		block.deserialize()
+		
+func get_block_from_type(dict_type):
+	var block = null
+	match dict_type:
+		"Блок действия":
+			block = load("res://scenes/block_window/block_environment/a_block_schema/a_action_block/a_action_block.tscn")
+		"AIf":
+			block = load("res://scenes/block_window/block_environment/zones/a_if_3/a_if_3.tscn")
+		"AForZone":
+			block = load("res://scenes/block_window/block_environment/zones/a_for_zone/a_for_zone.tscn")
+		"AWhileZone":
+			block = load("res://scenes/block_window/block_environment/zones/a_while_zone/a_while_zone.tscn")
+		"Блок функции":
+			block = load("res://scenes/block_window/block_environment/a_block_schema/a_function_block/a_function_block.tscn")
+	return block
 #endregion
 
 #region Alignment

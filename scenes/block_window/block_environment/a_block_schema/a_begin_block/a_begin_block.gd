@@ -71,6 +71,10 @@ func serialize():
 	}
 	return dict
 	
+func deserialize(dict):
+	pencil_color = dict["color"]
+	on_off_check_box.button_pressed = dict["on_off"]
+	block_name = dict["name"]
 #endregion
 #region Alignment
 func delete_me():
