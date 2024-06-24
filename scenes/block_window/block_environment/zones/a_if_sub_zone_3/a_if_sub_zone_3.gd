@@ -35,15 +35,15 @@ func get_first_block():
 		return null
 		
 #region saving
-func serialize():
-	var dict = {
-		"type":zone_type,
-		"main_list":[],
-	}
-	
-	for i in range(0, main_list.get_child_count()):
-		dict["main_list"].append(main_list.get_child(i).serialize())
-	return dict	
+#func serialize():
+	#var dict = {
+		#"type":zone_type,
+		#"main_list":[],
+	#}
+	#
+	#for i in range(0, main_list.get_child_count()):
+		#dict["main_list"].append(main_list.get_child(i).serialize())
+	#return dict	
 #endregion
 		
 #region Alignment

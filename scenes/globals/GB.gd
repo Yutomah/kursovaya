@@ -67,9 +67,10 @@ var default_min_size = Vector2(300,200)
 var line_width:int = 3
 var line_color:Color = Color.RED
 
-var begin_zones:Array[ABeginZone] = []
-
 var block_amount = 0
+
+
+var begin_zones:Array[ABeginZone] = []
 func get_my_begin_zone(block):
 	if block is ABeginZone:
 		return block

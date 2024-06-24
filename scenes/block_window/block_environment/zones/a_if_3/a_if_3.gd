@@ -42,6 +42,24 @@ func get_next_block(block):
 func get_first_block():
 	return a_if_block
 	
+#region saving
+func serialize():
+	var dict = {
+		"type":zone_type,
+		"a_if_block": a_if_block.serialize(),
+		"left_list":[],
+		"right_list":[]
+	}
+	
+	for i in range(0, left_sub_zone.main_list.get_child_count()):
+		dict["left_list"].append(left_sub_zone.main_list.get_child(i).serialize())
+	
+	for i in range(0, right_sub_zone.main_list.get_child_count()):
+		dict["right_list"].append(right_sub_zone.main_list.get_child(i).serialize())
+		
+	return dict	
+#endregion
+
 #region Alignment
 func on_item_pressed(ablock):
 	zone.spawn_block(ablock, get_index()+1)

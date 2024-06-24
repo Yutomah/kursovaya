@@ -1,7 +1,7 @@
 extends Node2D
 class_name Loader
 #
-#var save_folder = "user://saves"
+var save_folder = "user://saves"
 #@onready var BlockTypes = {
 	#"begin" :preload("res://scenes/block_window/block_environment/g_block_schema/block_begin/g_block_begin.tscn"),
 	#"action":preload("res://scenes/block_window/block_environment/g_block_schema/block_action/g_block_action.tscn"),
@@ -26,7 +26,7 @@ func get_all_saves():
 	return DirAccess.get_files_at("user://saves")
 
 func serialize():
-	var blocks = %GBlockSchema.get_children()
+	var blocks = GB.begin_zones
 	var dict = {}
 	for block in blocks:
 		dict[block] = block.serialize()
@@ -35,12 +35,12 @@ func serialize():
 #func remove_blocks(file_name):
 	#DirAccess.remove_absolute(save_folder.path_join(file_name))
 	#
-#func save_blocks(json_string, file_name):
-	#
-	#DirAccess.make_dir_absolute(save_folder)
-	#var file = FileAccess.open(save_folder.path_join(file_name), FileAccess.WRITE)
-	#file.store_string(json_string)
-	#
+func save_blocks(json_string, file_name):
+	
+	DirAccess.make_dir_absolute(save_folder)
+	var file = FileAccess.open(save_folder.path_join(file_name), FileAccess.WRITE)
+	file.store_string(json_string)
+	
 #func load_blocks(file_name):
 	#var file = FileAccess.open(save_folder.path_join(file_name), FileAccess.READ)
 	#var content = file.get_as_text()
