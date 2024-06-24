@@ -1,6 +1,8 @@
 extends HBoxContainer
 class_name Arrows
 
+signal arrow_selected()
+
 var selected:int = 0:
 	set(value):
 		$Direction.selected = value
@@ -31,3 +33,4 @@ func get_arrow_path():
 
 func _on_direction_item_selected(index):
 	selected = index
+	arrow_selected.emit()

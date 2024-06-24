@@ -91,7 +91,7 @@ text = "Имя"
 [node name="NameLineEdit" type="LineEdit" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer/NameContainer" index="1" node_paths=PackedStringArray("a_begin_block")]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Имя блок-схемы 1"
+text = "блок-схема 1"
 max_length = 25
 script = ExtResource("6_2vc8x")
 a_begin_block = NodePath("../../../../../../..")

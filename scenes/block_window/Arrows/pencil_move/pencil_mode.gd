@@ -1,5 +1,6 @@
 extends OptionButton
 
+signal pencil_selected
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -14,4 +15,8 @@ func is_jumping():
 
 
 func get_pencil_path():
-	return $Direction.get_item_icon($Direction.selected).resource_path
+	return get_item_icon(selected).resource_path
+
+
+func _on_item_selected(index: int) -> void:
+	pencil_selected.emit()

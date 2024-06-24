@@ -8,6 +8,9 @@ class_name AActionBlock
 @onready var arrows: Arrows = %Arrows
 @onready var pencil_mode: OptionButton = %PencilMode
 
+@onready var direction_texture_rect: TextureRect = %DirectionTextureRect
+@onready var type_texture_rect: TextureRect = %TypeTextureRect
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +18,11 @@ func _ready():
 	spawn_block_button.item_pressed.connect(on_item_pressed)
 	block_type = "Блок действия"
 	block_type_label.text = block_type
+	
+	direction_texture_rect.texture = load(arrows.get_arrow_path())
+	type_texture_rect.texture = load(pencil_mode.get_pencil_path())
+	arrows.arrow_selected.connect(func(): direction_texture_rect.texture = load(arrows.get_arrow_path()))
+	pencil_mode.pencil_selected.connect(func(): type_texture_rect.texture = load(pencil_mode.get_pencil_path()))
 	pass # Replace with function body.
 
 func send_msg_to_log(zap:Zap):

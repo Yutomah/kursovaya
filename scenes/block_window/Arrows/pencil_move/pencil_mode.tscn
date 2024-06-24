@@ -13,3 +13,5 @@ popup/item_0/icon = ExtResource("1_p6c7f")
 popup/item_1/icon = ExtResource("2_xjx8d")
 popup/item_1/id = 1
 script = ExtResource("3_glnau")
+
+[connection signal="item_selected" from="." to="." method="_on_item_selected"]
