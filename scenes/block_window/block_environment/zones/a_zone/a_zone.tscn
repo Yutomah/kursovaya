@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://b86q33r2c72ap"]
+[gd_scene load_steps=4 format=3 uid="uid://b86q33r2c72ap"]
 
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/zones/a_zone/a_zone.gd" id="1_5577t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8f31a"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.136826, 0.136826, 0.136826, 1)
+
+[sub_resource type="Theme" id="Theme_vtv6p"]
+TooltipPanel/styles/panel = SubResource("StyleBoxFlat_8f31a")
 
 [node name="AZone" type="MarginContainer"]
 anchors_preset = 15
@@ -9,6 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = SubResource("Theme_vtv6p")
 theme_override_constants/margin_bottom = 0
 script = ExtResource("1_5577t")
 

@@ -32,6 +32,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "Это базовый блок"
 mouse_filter = 1
 button_mask = 3
 script = ExtResource("2_0skse")
@@ -66,6 +67,7 @@ mouse_filter = 2
 [node name="BlockTypeLabel" type="Label" parent="Body/Content/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="PopupPanel" type="PopupPanel" parent="Body/Content"]
