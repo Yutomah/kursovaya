@@ -10,6 +10,9 @@
 script = ExtResource("2_6hpas")
 
 [node name="Background" parent="Body" index="0"]
+texture_normal = ExtResource("3_unspq")
+
+[node name="TextureRect" parent="Body/Content/HBoxContainer/HBoxContainer" index="1"]
 tooltip_text = "Это блок for.
 Он позволяет повторять блоки внутри себя указаннное количество раз.
 Когда когда блок for повторится указанное количество раз 
@@ -21,7 +24,6 @@ tooltip_text = "Это блок for.
 В меню можно настроить:
 1. Число повторений - сколько раз блоки внутри себя повторятся.
 2. Удалить блок - удаляет этот блок и все блоки, находящиеся внутри него."
-texture_normal = ExtResource("3_unspq")
 
 [node name="SpawnBlockButton" parent="Body/Content" index="1" instance=ExtResource("4_7tc3m")]
 unique_name_in_owner = true

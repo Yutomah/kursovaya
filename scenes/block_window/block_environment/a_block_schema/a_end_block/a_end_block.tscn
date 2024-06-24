@@ -9,14 +9,6 @@
 script = ExtResource("2_vmdl0")
 
 [node name="Background" parent="Body" index="0"]
-tooltip_text = "Это конечный блок.
-В нём завершается выполнение программы
-
-Правая кнопка мыши - открыть меню
-Два раза левой кнопкой мыши - выделить блок
-
-В меню можно настроить:
-1. Удалить блок-схему - удаляет эту блок-схему"
 texture_normal = ExtResource("3_h4ao0")
 
 [node name="LineConnections" type="Node2D" parent="Body/Content" index="0"]
@@ -26,6 +18,16 @@ unique_name_in_owner = true
 position = Vector2(0, -91)
 arrow_angle = 90
 arrow_enabled = true
+
+[node name="TextureRect" parent="Body/Content/HBoxContainer/HBoxContainer" index="1"]
+tooltip_text = "Это конечный блок.
+В нём завершается выполнение программы
+
+Правая кнопка мыши - открыть меню
+Два раза левой кнопкой мыши - выделить блок
+
+В меню можно настроить:
+1. Удалить блок-схему - удаляет эту блок-схему"
 
 [node name="MarginContainer" parent="Body/Content/PopupPanel" index="1"]
 offset_right = 191.0

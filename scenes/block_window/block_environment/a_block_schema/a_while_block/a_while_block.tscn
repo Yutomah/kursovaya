@@ -11,6 +11,9 @@
 script = ExtResource("2_2yvj8")
 
 [node name="Background" parent="Body" index="0"]
+texture_normal = ExtResource("3_a52lh")
+
+[node name="TextureRect" parent="Body/Content/HBoxContainer/HBoxContainer" index="1"]
 tooltip_text = "Это блок while.
 Он повторяет блоки внутри себя пока не встретит стену в указанном направлении.
 Когда блок while встретит стену, программа  выйдет из блока while пойдёт дальше.
@@ -22,7 +25,6 @@ tooltip_text = "Это блок while.
 1. Направление - направление в котором будет проверятся наличие стены
 2. Дистанция - дистанция на которой будет проверятся наличие стены
 3. Удалить блок - удаляет этот блок и все блоки, находящиеся внутри него."
-texture_normal = ExtResource("3_a52lh")
 
 [node name="SpawnBlockButton" parent="Body/Content" index="1" instance=ExtResource("3_mwqkr")]
 unique_name_in_owner = true

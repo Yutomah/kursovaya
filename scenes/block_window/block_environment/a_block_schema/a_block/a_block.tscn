@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmgbms3pjuitq"]
+[gd_scene load_steps=6 format=3 uid="uid://cmgbms3pjuitq"]
 
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_block/a_block.gd" id="1_od1h3"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_block/background.gd" id="2_0skse"]
+[ext_resource type="Texture2D" uid="uid://da8t7fgs85glm" path="res://Sprites/icons8-question-16 (1).png" id="3_x4jg4"]
 
 [sub_resource type="Theme" id="Theme_23ues"]
 
@@ -32,7 +33,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-tooltip_text = "Это базовый блок"
 mouse_filter = 1
 button_mask = 3
 script = ExtResource("2_0skse")
@@ -64,11 +64,21 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="BlockTypeLabel" type="Label" parent="Body/Content/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Body/Content/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="BlockTypeLabel" type="Label" parent="Body/Content/HBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Body/Content/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Это базовый блок"
+texture = ExtResource("3_x4jg4")
+stretch_mode = 5
 
 [node name="PopupPanel" type="PopupPanel" parent="Body/Content"]
 unique_name_in_owner = true
