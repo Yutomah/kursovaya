@@ -9,6 +9,7 @@ var related_log_records:Array[LogRecord] = []
 var delay:float = 0.3
 
 @onready var delete_button: Button = %DeleteButton
+@onready var block_type_label: Label = %BlockTypeLabel
 
 var block_type:String
 
@@ -17,6 +18,7 @@ func _ready():
 	body.custom_minimum_size = background.size
 	GB.block_amount += 1
 	GB.block_amount_changed.emit()
+	
 	
 	PSM.state_changed.connect(on_state_changed)
 	

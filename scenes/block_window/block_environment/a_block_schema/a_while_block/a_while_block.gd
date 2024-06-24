@@ -17,6 +17,7 @@ class_name AWhileBlock
 func _ready():
 	super._ready()
 	block_type = "Блок while"
+	block_type_label.text = block_type
 	spawn_block_button.item_pressed.connect(on_item_pressed)
 	pass 
 

@@ -7,7 +7,7 @@ class_name AEndBlock
 func _ready():
 	super._ready()
 	block_type = "Конечный блок"
-
+	block_type_label.text = block_type
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

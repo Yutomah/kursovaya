@@ -16,6 +16,7 @@ func _ready():
 	left_spawn_button.item_pressed.connect(on_left_pressed)
 	right_spawn_button.item_pressed.connect(on_right_pressed)
 	block_type = "Блок если"
+	block_type_label.text = block_type
 	super._ready()
 
 func get_left_next_block():

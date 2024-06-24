@@ -38,7 +38,7 @@ offset_top = 79.0
 offset_right = 30.0
 offset_bottom = 129.0
 
-[node name="PopupPanel" parent="Body/Content" index="2"]
+[node name="PopupPanel" parent="Body/Content" index="3"]
 size = Vector2i(187, 107)
 
 [node name="MarginContainer" parent="Body/Content/PopupPanel" index="1"]

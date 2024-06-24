@@ -29,7 +29,23 @@ offset_top = -45.0
 offset_right = 177.0
 offset_bottom = 5.0
 
-[node name="PopupPanel" parent="Body/Content" index="2"]
+[node name="LineConnections" type="Node2D" parent="Body/Content" index="3"]
+
+[node name="Entrance" parent="Body/Content/LineConnections" index="0" instance=ExtResource("5_ow4pj")]
+unique_name_in_owner = true
+position = Vector2(0, -92)
+arrow_angle = 90
+arrow_enabled = true
+
+[node name="LeftExit" parent="Body/Content/LineConnections" index="1" instance=ExtResource("5_ow4pj")]
+unique_name_in_owner = true
+position = Vector2(-152, 0)
+
+[node name="RightExit" parent="Body/Content/LineConnections" index="2" instance=ExtResource("5_ow4pj")]
+unique_name_in_owner = true
+position = Vector2(152, 1)
+
+[node name="PopupPanel" parent="Body/Content" index="4"]
 size = Vector2i(196, 114)
 
 [node name="MarginContainer" parent="Body/Content/PopupPanel" index="1"]
@@ -53,19 +69,3 @@ layout_mode = 2
 min_value = 1.0
 value = 1.0
 rounded = true
-
-[node name="LineConnections" type="Node2D" parent="Body/Content" index="3"]
-
-[node name="Entrance" parent="Body/Content/LineConnections" index="0" instance=ExtResource("5_ow4pj")]
-unique_name_in_owner = true
-position = Vector2(0, -92)
-arrow_angle = 90
-arrow_enabled = true
-
-[node name="LeftExit" parent="Body/Content/LineConnections" index="1" instance=ExtResource("5_ow4pj")]
-unique_name_in_owner = true
-position = Vector2(-152, 0)
-
-[node name="RightExit" parent="Body/Content/LineConnections" index="2" instance=ExtResource("5_ow4pj")]
-unique_name_in_owner = true
-position = Vector2(152, 1)

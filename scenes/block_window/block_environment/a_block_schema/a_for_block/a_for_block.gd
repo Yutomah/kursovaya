@@ -15,6 +15,7 @@ func _ready():
 	super._ready()
 	spawn_block_button.item_pressed.connect(on_item_pressed)
 	block_type = "Блок for"
+	block_type_label.text = block_type
 	pass 
 
 func get_next_block():	

@@ -7,6 +7,7 @@ class_name ABeginBlock
 @onready var color_picker_button: ColorPickerButton = %ColorPickerButton
 
 
+
 var zap:Zap = null
 var pencil_color:Color
 var is_stepped:bool = false
@@ -18,6 +19,7 @@ func _ready():
 	spawn_block_button.item_pressed.connect(on_item_pressed)
 	PSM.activate_all_begin_blocks_wanted.connect(on_activate_all)
 	block_type = "Начальный блок"
+	block_type_label.text = block_type
 	GB.block_begin_array_changed.emit()
 	pass # Replace with function body.
 
