@@ -64,15 +64,18 @@ arrow_enabled = true
 unique_name_in_owner = true
 position = Vector2(0, 92)
 
+[node name="PopupPanel" parent="Body/Content" index="3"]
+size = Vector2i(196, 114)
+
 [node name="MarginContainer" parent="Body/Content/PopupPanel" index="1"]
 offset_right = 196.0
 offset_bottom = 114.0
 
-[node name="Arrows" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="1" instance=ExtResource("4_jglkq")]
+[node name="Arrows" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="0" instance=ExtResource("4_jglkq")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="DistanceContainer" type="HBoxContainer" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="2"]
+[node name="DistanceContainer" type="HBoxContainer" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
 
 [node name="DistanceLabel" type="Label" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer/DistanceContainer" index="0"]
