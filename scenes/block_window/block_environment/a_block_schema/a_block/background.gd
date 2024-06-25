@@ -7,10 +7,13 @@ var dragging = false
 var old_mouse_position:Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var img = Image.new()
-	img.load(texture_normal.resource_path)
+	var texture = load(texture_normal.resource_path)
+	var image: Image = texture.get_image()
+	
+	#var img = Image.new()
+	#img.load(texture_normal.resource_path)
 	var bitmap = BitMap.new()
-	bitmap.create_from_image_alpha(img)
+	bitmap.create_from_image_alpha(image)
 	texture_click_mask = bitmap
 
 func _process(_delta):
