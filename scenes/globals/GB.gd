@@ -21,8 +21,6 @@ signal create_log_group_wanted(zap:Zap)
 #context_menu
 signal context_menu_open_wanted(context_menu:ContextMenu)
 
-signal loader_created(loader:Loader)
-
 #step by step
 signal make_step()
 var is_step_by_step:bool = false
@@ -82,3 +80,4 @@ func get_my_begin_zone(block):
 signal spawn_begin_zone(begin_zone)
 signal load_ended()
 var id_map:Dictionary
+var loader:Loader

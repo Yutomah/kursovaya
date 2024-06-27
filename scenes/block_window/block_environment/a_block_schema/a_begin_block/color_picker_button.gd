@@ -14,5 +14,6 @@ func _process(delta: float) -> void:
 
 
 func _on_color_changed(color: Color) -> void:
+	self.color = color
 	color_rect.color = color
 	a_begin_block.pencil_color = color

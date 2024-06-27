@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cyjgfn2m8cog1"]
+[gd_scene load_steps=11 format=3 uid="uid://cyjgfn2m8cog1"]
 
 [ext_resource type="PackedScene" uid="uid://cmgbms3pjuitq" path="res://scenes/block_window/block_environment/a_block_schema/a_block/a_block.tscn" id="1_rgtqp"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_begin_block/a_begin_block.gd" id="2_h7bru"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_begin_block/name_line_edit.gd" id="6_2vc8x"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_begin_block/color_picker_button.gd" id="7_o0u74"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_begin_block/on_off_check_box.gd" id="8_0a0oa"]
+[ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_begin_block/save_button.gd" id="9_jpvrb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kajr8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -73,7 +74,7 @@ size = Vector2i(246, 149)
 
 [node name="MarginContainer" parent="Body/Content/PopupPanel" index="1"]
 offset_right = 246.0
-offset_bottom = 149.0
+offset_bottom = 176.0
 
 [node name="NameContainer" type="HBoxContainer" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="0"]
 layout_mode = 2
@@ -102,7 +103,7 @@ text = "Цвет линии"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-color = Color(0.52549, 0, 0, 1)
+color = Color(1, 0, 0, 1)
 edit_alpha = false
 script = ExtResource("7_o0u74")
 a_begin_block = NodePath("../../../../../../..")
@@ -119,9 +120,16 @@ unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("8_0a0oa")
 
-[node name="DeleteButton" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="3"]
+[node name="SaveButton" type="Button" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="3" node_paths=PackedStringArray("a_begin_block")]
+layout_mode = 2
+text = "Сохранить блок-схему"
+script = ExtResource("9_jpvrb")
+a_begin_block = NodePath("../../../../../..")
+
+[node name="DeleteButton" parent="Body/Content/PopupPanel/MarginContainer/VBoxContainer" index="4"]
 text = "Удалить блок-схему"
 
 [connection signal="text_changed" from="Body/Content/PopupPanel/MarginContainer/VBoxContainer/NameContainer/NameLineEdit" to="Body/Content/PopupPanel/MarginContainer/VBoxContainer/NameContainer/NameLineEdit" method="_on_text_changed"]
 [connection signal="color_changed" from="Body/Content/PopupPanel/MarginContainer/VBoxContainer/ColorContainer/ColorPickerButton" to="Body/Content/PopupPanel/MarginContainer/VBoxContainer/ColorContainer/ColorPickerButton" method="_on_color_changed"]
 [connection signal="toggled" from="Body/Content/PopupPanel/MarginContainer/VBoxContainer/OnOffContainer/OnOffCheckBox" to="Body/Content/PopupPanel/MarginContainer/VBoxContainer/OnOffContainer/OnOffCheckBox" method="_on_toggled"]
+[connection signal="pressed" from="Body/Content/PopupPanel/MarginContainer/VBoxContainer/SaveButton" to="Body/Content/PopupPanel/MarginContainer/VBoxContainer/SaveButton" method="_on_pressed"]
