@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cmgbms3pjuitq" path="res://scenes/block_window/block_environment/a_block_schema/a_block/a_block.tscn" id="1_r4wct"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_while_block/a_while_block.gd" id="2_2yvj8"]
-[ext_resource type="Texture2D" uid="uid://bvb42vnad2mfy" path="res://Sprites/block_sprites/Asset 8.png" id="3_0e3fn"]
+[ext_resource type="Texture2D" uid="uid://csmdor65ydw78" path="res://Sprites/block_sprites/Asset 9.png" id="3_efwku"]
 [ext_resource type="PackedScene" uid="uid://cai755nf0acib" path="res://scenes/block_window/spawn_block_button/spawn_block_button.tscn" id="3_mwqkr"]
 [ext_resource type="PackedScene" uid="uid://d1in5wx8kx4ek" path="res://scenes/block_window/Arrows/arrows.tscn" id="4_jglkq"]
 [ext_resource type="PackedScene" uid="uid://dsg1n6q26m5g2" path="res://scenes/block_window/arrow_marker/arrow_marker.tscn" id="4_yh0qn"]
@@ -12,7 +12,7 @@
 script = ExtResource("2_2yvj8")
 
 [node name="Background" parent="Body" index="0"]
-texture_normal = ExtResource("3_0e3fn")
+texture_normal = ExtResource("3_efwku")
 
 [node name="TextureRect" parent="Body/Content/HBoxContainer/HBoxContainer" index="1"]
 tooltip_text = "Это блок while.
