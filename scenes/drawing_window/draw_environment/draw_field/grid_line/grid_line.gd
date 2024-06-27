@@ -5,10 +5,15 @@ var zap:Zap
 var CELL_SIZE:int
 var color:Color = Color.WHITE
 
+@onready var pencil: Sprite2D = $Pencil
+
 @onready var grid = get_parent().get_parent()
 
 @onready var current_line:Line2D = $Line2D
-var current_grid_pos:Vector2i = Vector2i.ZERO
+var current_grid_pos:Vector2i = Vector2i.ZERO:
+	set(value):
+		pencil.position = value * CELL_SIZE
+		current_grid_pos = value
 
 func _ready():
 	CELL_SIZE = get_parent().get_parent().CELL_SIZE

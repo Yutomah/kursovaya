@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxh32jixytoni"]
+[gd_scene load_steps=3 format=3 uid="uid://dxh32jixytoni"]
 
 [ext_resource type="Script" path="res://scenes/drawing_window/draw_environment/draw_field/grid_line/grid_line.gd" id="1_kg1we"]
+[ext_resource type="Texture2D" uid="uid://tmcqrofqc00b" path="res://Sprites/icons8-pencil-16 (1).png" id="2_ou1ub"]
 
 [node name="GridLine" type="Node2D"]
 script = ExtResource("1_kg1we")
@@ -8,3 +9,9 @@ script = ExtResource("1_kg1we")
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0)
 width = 3.0
+
+[node name="Pencil" type="Sprite2D" parent="."]
+texture_filter = 2
+scale = Vector2(2, 2)
+texture = ExtResource("2_ou1ub")
+offset = Vector2(8, -8)

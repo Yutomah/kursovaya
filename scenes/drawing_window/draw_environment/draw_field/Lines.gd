@@ -11,6 +11,7 @@ func on_line_creation_wanted(zap:Zap):
 	add_child(line);
 	zap.grid_line = line
 	line.zap = zap
+	line.pencil.modulate = zap.a_begin_block.pencil_color
 	line.color = zap.a_begin_block.pencil_color
 	line.get_node("Line2D").default_color = zap.a_begin_block.pencil_color
 
