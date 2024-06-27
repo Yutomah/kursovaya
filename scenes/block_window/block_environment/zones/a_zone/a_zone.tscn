@@ -10,6 +10,8 @@ content_margin_bottom = 5.0
 bg_color = Color(0.38367, 0.477823, 0.501026, 1)
 
 [sub_resource type="Theme" id="Theme_vtv6p"]
+Label/font_sizes/font_size = 20
+TooltipLabel/font_sizes/font_size = 16
 TooltipPanel/styles/panel = SubResource("StyleBoxFlat_8f31a")
 
 [node name="AZone" type="MarginContainer"]

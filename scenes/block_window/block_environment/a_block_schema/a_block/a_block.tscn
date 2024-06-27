@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmgbms3pjuitq"]
+[gd_scene load_steps=8 format=3 uid="uid://cmgbms3pjuitq"]
 
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_block/a_block.gd" id="1_od1h3"]
 [ext_resource type="Script" path="res://scenes/block_window/block_environment/a_block_schema/a_block/background.gd" id="2_0skse"]
@@ -12,6 +12,9 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_12ulm"]
+Label/font_sizes/font_size = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ut0t0"]
 bg_color = Color(0.38367, 0.477823, 0.501026, 1)
@@ -71,22 +74,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Body/Content/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="BlockTypeLabel" type="Label" parent="Body/Content/HBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-
-[node name="TextureRect" type="TextureRect" parent="Body/Content/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-tooltip_text = "Это базовый блок"
-texture = ExtResource("3_x4jg4")
-stretch_mode = 5
-
 [node name="PanelContainer" type="PanelContainer" parent="Body/Content/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -102,8 +89,16 @@ theme_override_constants/margin_bottom = 5
 [node name="HBoxContainer2" type="HBoxContainer" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+tooltip_text = "Это базовый блок"
+texture = ExtResource("3_x4jg4")
+stretch_mode = 5
+
 [node name="PopupPanel" type="PopupPanel" parent="Body/Content"]
 unique_name_in_owner = true
+theme = SubResource("Theme_12ulm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ut0t0")
 
 [node name="MarginContainer" type="MarginContainer" parent="Body/Content/PopupPanel"]

@@ -30,7 +30,16 @@ offset_top = -45.0
 offset_right = 177.0
 offset_bottom = 5.0
 
-[node name="TextureRect" parent="Body/Content/HBoxContainer/HBoxContainer" index="1"]
+[node name="DirectionTextureRect" type="TextureRect" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="DistanceDisplayLabel" type="Label" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="2"]
 tooltip_text = "Это блок если.
 Он позволяет проверять наличие стены в указанном направлении.
 Если стена присутствует, сигнал идёт по левой ветке.
@@ -43,14 +52,6 @@ tooltip_text = "Это блок если.
 1. Направление - направление в котором будет проверятся наличие стены
 2. Дистанция - дистанция на которой будет проверятся наличие стены
 3. Удалить блок - удаляет этот блок и все блоки, находящиеся внутри него."
-
-[node name="DirectionTextureRect" type="TextureRect" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="0"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="DistanceDisplayLabel" type="Label" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="1"]
-unique_name_in_owner = true
-layout_mode = 2
 
 [node name="LineConnections" type="Node2D" parent="Body/Content" index="3"]
 

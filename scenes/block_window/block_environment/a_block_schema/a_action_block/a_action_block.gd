@@ -17,7 +17,6 @@ func _ready():
 	super._ready()
 	spawn_block_button.item_pressed.connect(on_item_pressed)
 	block_type = "Блок действия"
-	block_type_label.text = block_type
 	
 	direction_texture_rect.texture = load(arrows.get_arrow_path())
 	type_texture_rect.texture = load(pencil_mode.get_pencil_path())

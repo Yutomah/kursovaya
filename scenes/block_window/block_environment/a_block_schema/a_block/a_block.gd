@@ -9,7 +9,6 @@ var related_log_records:Array[LogRecord] = []
 var delay:float = 0.2
 
 @onready var delete_button: Button = %DeleteButton
-@onready var block_type_label: Label = %BlockTypeLabel
 
 var block_type:String
 

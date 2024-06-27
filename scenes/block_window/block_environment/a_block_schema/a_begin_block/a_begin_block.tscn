@@ -39,7 +39,23 @@ offset_top = 88.0
 offset_right = 32.0
 offset_bottom = 138.0
 
-[node name="TextureRect" parent="Body/Content/HBoxContainer/HBoxContainer" index="1"]
+[node name="ColorRect" type="ColorRect" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_kajr8")
+visible_characters = 15
+
+[node name="OnOffLabel" type="Label" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="3"]
 tooltip_text = "Это начальный блок.
 В нём можно настраивать характеристики всей блок схемы. 
 Он является местом начала выполнения программы.
@@ -52,22 +68,8 @@ tooltip_text = "Это начальный блок.
 и которой будет обводить сообщения в логе
 2. Имя - используется в блоке функции, для выбора функции
 3. Выключить блок-схему - эта блок-схема не будет запускаться при отрисовке поля
-4. Удалить блок-схему - удаляет эту блок-схему"
-
-[node name="ColorRect" type="ColorRect" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="0"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="NameLabel" type="Label" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="1"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_kajr8")
-
-[node name="OnOffLabel" type="Label" parent="Body/Content/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer2" index="2"]
-unique_name_in_owner = true
-layout_mode = 2
+4. Сохранить блок-схему - сохраняет конкретно эту блок схему
+5. Удалить блок-схему - удаляет эту блок-схему"
 
 [node name="PopupPanel" parent="Body/Content" index="3"]
 size = Vector2i(246, 149)
@@ -88,7 +90,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "блок-схема 1"
-max_length = 20
+max_length = 30
 script = ExtResource("6_2vc8x")
 a_begin_block = NodePath("../../../../../../..")
 

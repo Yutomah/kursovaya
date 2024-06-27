@@ -29,4 +29,3 @@ func _on_zoom_in_pressed():
 	if current_zoom == 0:
 		$ZoomIn.disabled = true
 		
-
