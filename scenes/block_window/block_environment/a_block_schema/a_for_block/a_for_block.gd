@@ -49,6 +49,7 @@ func zap_processing(zap:Zap):
 			zap.for_counters[str(self)] += 1
 			get_next_block().zap_processing(zap)
 		else:
+			zap.for_counters.erase(str(self))
 			get_next_block_exit().zap_processing(zap)
 	
 #region saving
