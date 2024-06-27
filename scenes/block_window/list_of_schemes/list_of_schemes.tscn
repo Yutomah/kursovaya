@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://jyfwu6hbw435"]
+
+[ext_resource type="Script" path="res://scenes/block_window/list_of_schemes/list_of_schemes.gd" id="1_d1ubh"]
+
+[node name="ListOfSchemes" type="ScrollContainer"]
+vertical_scroll_mode = 0
+script = ExtResource("1_d1ubh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2

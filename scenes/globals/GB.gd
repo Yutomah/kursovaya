@@ -28,6 +28,7 @@ var is_step_by_step:bool = false
 #camera
 signal camera_to_default_wanted(window_type)
 signal camera_zoom_to(zoom_value:float, window_type)
+signal camera_to_zone_wanted(zone)
 
 #begin block
 var used_colors:Dictionary = {}

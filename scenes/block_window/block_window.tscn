@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvnp5l08gxo0"]
+[gd_scene load_steps=4 format=3 uid="uid://cvnp5l08gxo0"]
 
 [ext_resource type="PackedScene" uid="uid://0xrcbxqh5a7r" path="res://scenes/globals/camera_buttons.tscn" id="1_engce"]
 [ext_resource type="PackedScene" uid="uid://c4kel1u4v6pie" path="res://scenes/block_window/block_environment/block_environment.tscn" id="1_g73mk"]
+[ext_resource type="PackedScene" uid="uid://jyfwu6hbw435" path="res://scenes/block_window/list_of_schemes/list_of_schemes.tscn" id="2_ge6j2"]
 
 [node name="BlockWindow" type="Control"]
 clip_contents = true
@@ -25,6 +26,10 @@ layout_mode = 2
 
 [node name="CameraButtons" parent="VBoxContainer/BlockMenuRow" instance=ExtResource("1_engce")]
 layout_mode = 2
+
+[node name="ListOfSchemes" parent="VBoxContainer/BlockMenuRow" instance=ExtResource("2_ge6j2")]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="BlockEnvironment" parent="VBoxContainer" instance=ExtResource("1_g73mk")]
 layout_mode = 2
