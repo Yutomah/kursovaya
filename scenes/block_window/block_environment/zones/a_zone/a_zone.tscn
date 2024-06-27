@@ -13,6 +13,7 @@ bg_color = Color(0.38367, 0.477823, 0.501026, 1)
 TooltipPanel/styles/panel = SubResource("StyleBoxFlat_8f31a")
 
 [node name="AZone" type="MarginContainer"]
+layout_direction = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

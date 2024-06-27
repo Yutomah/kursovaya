@@ -16,7 +16,8 @@ func _process(delta: float) -> void:
 
 
 func _on_text_changed(new_text: String) -> void:
-	text=new_text
+	if text != new_text:
+		text=new_text
 	a_begin_block.block_name = new_text
 	name_label.text = new_text
 	GB.block_begin_array_changed.emit()
